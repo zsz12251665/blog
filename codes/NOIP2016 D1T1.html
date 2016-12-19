@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="shortcut icon" href="http://blog.zsz12251665.cf/indexfile/chipmunk.ico">
+		<title>NOIP2016 D1T1 - zsz12251665's codeblog</title>
+		<style type="text/css">
+			@font-face
+			{
+				font-family: "Cambria";
+				src: url("http://font.zsz12251665.cf/English/Microsoft/Cambria.woff");
+			}
+			@font-face
+			{
+				font-family: "Courier New";
+				src: url("http://font.zsz12251665.cf/English/Monotype/Courier New.woff");
+			}
+			a
+			{
+				color: #0000FF;
+				text-decoration: none;
+			}
+			body
+			{
+				background-image: url("http://blog.zsz12251665.cf/indexfile/code.jpg");
+				font-family: "Cambria"; 
+			}
+			h1,h2,h3,h4,h5,h6,li,p
+			{
+				color: #00FF00;
+				font-family: "Cambria"; 
+			}
+			var
+			{
+				color: #00FF00;
+				font-size: 10px;
+			}
+			#menu
+			{
+				height: 700px;
+				outline-color: #00FF00;
+				outline-style: dotted;
+				padding-right: 10px;
+			}
+			.codebox
+			{
+				background-color: #00FF00;
+				color: #000000;
+				font-family: "Courier New";
+				margin-left: auto;
+				margin-right: auto;
+				padding: 10px;
+				text-align: left;
+				width: 80%;
+			}
+			.mainframe
+			{
+				background-color: #000000;
+				color: #00FF00;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 10px;
+				width: 80%;
+			}
+			.notebox
+			{
+				background-color: #00FF00;
+				color: #FF0000;
+				font-family: "Courier New";
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mainframe">
+			<h1>zsz12251665's codeblog</h1>
+			<p>Hello, welcome to zsz12251665's codeblog. </p>
+			<hr height="10px" color="#00FF00"/>
+			<table width="100%">
+				<td valign="top" id="menu">
+					<a target="_parent" href="http://blog.zsz12251665.cf/"><h3>Home</h3></a>
+					<a target="_parent" href="http://blog.zsz12251665.cf/posts/list.html"><h3>Post List</h3></a>
+					<a target="_parent" href="http://blog.zsz12251665.cf/codes/list.html"><h3>Code List</h3></a>
+					<ul>
+						<li><a target="_parent" href="http://blog.zsz12251665.cf/codes/NOIP2016 D1T1.html">NOIP2016 D1T1</a></li>
+					</ul>
+					<h3>Friendly Link</h3>
+					<ul>
+						<li>_|￣|○ <a target="_parent" href="http://oceaneye.ayun.pw/wordpress/">HFer_FDC</a></li>
+						<li>_|￣|○ <a target="_parent" href="http://yohanlong.lofter.com/">HFer_LHZ</a></li>
+						<li>_|￣|○ <a target="_parent" href="http://blog.csdn.net/haarmony/">HFer_MHX</a></li>
+						<li>_|￣|○ <a target="_parent" href="http://blog.eleele.gq/">HFer_WHJ</a></li>
+						<li>_|￣|○ <a target="_parent" href="http://wwwzbwcom.com/wordpress/">HFer_ZBW</a></li>
+						<li>_|￣|○ <a target="_parent" href="http://code.del.moe/">HFer_ZFR</a></li>
+					</ul>
+				</td>
+				<td width="80%" valign="top">
+					<center>
+						<h2>NOIP2016 D1T1</h2>
+						<var>2016-12-19 17:04</var>
+					</center>
+					<h3>Problem</h3>
+					<a target="_blank" href="https://www.luogu.org/problem/show?pid=1563">&emsp;Luogu</a>
+					<h3>Solution</h3>
+					<p>&emsp;To solve this problem, we just need to simulate the scene, and decide if Xiao Nan should move clockwise or counterclockwise. </p>
+					<h3>Code</h3>
+					<p>&emsp;Pascal</p>
+					<div class="codebox">
+						const<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;MAXN=100000;<br/>
+						type<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;toy=record<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;job:string;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;face:integer;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;a:array[1..MAXN]of toy;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,p,d,s:longint;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;readln(n,m);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(a[i].face,a[i].job);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;p:=1;<strong class="notebox">//Start from the 1st toy</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to m do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(d,s);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if a[p].face=d then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+n-s-1) mod n+1<strong class="notebox">//Move clockwise</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+s-1) mod n+1;<strong class="notebox">//Move counterclockwise</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;writeln(copy(a[p].job,2,20));<br/>
+						end.
+					</div>
+					<p>&emsp;C++</p>
+					<div class="codebox">
+						#include&#60;cstdio&#62;<br/>
+						#define MAXN 100000<br/>
+						int face[MAXN];<br/>
+						char job[MAXN][20];<br/>
+						int main()<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int n,m;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;n,&amp;m);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&#60;n;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%s",&amp;face[i],&amp;job[i]);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int p=0;<strong class="notebox">//Start from the 1st toy</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&#60;m;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d,s;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;d,&amp;s);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(face[p]==d)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p+=n-s;<strong class="notebox">//Move clockwise</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p+=s;<strong class="notebox">//Move counterclockwise</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p%=n;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%s",job[p]);<br/>
+						}<br/>
+					</div>
+				</td>
+			</table>
+			<center>
+				<var style="font-size: 10px;">© 2016 zsz12251665. Powered by zsz12251665. Theme by zsz12251665.</var>
+			</center>
+		</div>
+	</body>
+</html>
