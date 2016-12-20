@@ -29,10 +29,24 @@
 				color: #00FF00;
 				font-family: "Cambria"; 
 			}
+			iframe
+			{
+				height: 100%;
+				width: 100%;
+			}
 			var
 			{
 				color: #00FF00;
 				font-size: 10px;
+			}
+			#mainframe
+			{
+				background-color: #000000;
+				color: #00FF00;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 10px;
+				width: 80%;
 			}
 			#menu
 			{
@@ -40,6 +54,11 @@
 				outline-color: #00FF00;
 				outline-style: dotted;
 				padding-right: 10px;
+			}
+			#text
+			{
+				padding: 10px;
+				width: 80%;
 			}
 			.codebox
 			{
@@ -52,41 +71,17 @@
 				text-align: left;
 				width: 80%;
 			}
-			.mainframe
-			{
-				background-color: #000000;
-				color: #00FF00;
-				margin-left: auto;
-				margin-right: auto;
-				padding: 10px;
-				width: 80%;
-			}
 		</style>
 	</head>
 	<body>
-		<div class="mainframe">
+		<div id="mainframe">
 			<h1>zsz12251665's codeblog</h1>
 			<p>Hello, welcome to zsz12251665's codeblog. </p>
 			<hr height="10px" color="#00FF00"/>
 			<table width="100%">
 				<td valign="top" id="menu">
-					<a target="_parent" href="http://blog.zsz12251665.cf/"><h3>Home</h3></a>
-					<a target="_parent" href="http://blog.zsz12251665.cf/posts/"><h3>Post List</h3></a>
-					<a target="_parent" href="http://blog.zsz12251665.cf/codes/"><h3>Code List</h3></a>
-					<ul>
-						<li><a target="_parent" href="http://blog.zsz12251665.cf/codes/NOIP2016 TGD1T1.html">NOIP2016 TGD1T1</a></li>
-					</ul>
-					<h3>Friendly Link</h3>
-					<ul>
-						<li>_|￣|○ <a target="_parent" href="http://oceaneye.ayun.pw/wordpress/">HFer_FDC</a></li>
-						<li>_|￣|○ <a target="_parent" href="http://yohanlong.lofter.com/">HFer_LHZ</a></li>
-						<li>_|￣|○ <a target="_parent" href="http://blog.csdn.net/haarmony/">HFer_MHX</a></li>
-						<li>_|￣|○ <a target="_parent" href="http://blog.eleele.gq/">HFer_WHJ</a></li>
-						<li>_|￣|○ <a target="_parent" href="http://wwwzbwcom.com/wordpress/">HFer_ZBW</a></li>
-						<li>_|￣|○ <a target="_parent" href="http://code.del.moe/">HFer_ZFR</a></li>
-					</ul>
-				</td>
-				<td width="80%" valign="top">
+					<iframe src="http://blog.zsz12251665.cf/codes/menu.html" frameborder="0"></iframe>
+				<td valign="top" id="text">
 					<center>
 						<h2>Code List</h2>
 						<table border="2" bordercolor="#00FF00">
