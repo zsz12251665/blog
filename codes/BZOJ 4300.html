@@ -106,65 +106,65 @@
 					<h3>Code</h3>
 					<p>Solution 1 C++</p>
 					<div class="codebox">
-					#include&#60;cstdio&#62;<br/>
-					#define MAXN 100000<br/>
-					long a[MAXN],len[MAXN];<br/>
-					int main()<br/>
-					{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;n;i++)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len[i]=1;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;i;j++)<strong>//Update the array len</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(((a[j]&amp;a[i])!=0)&amp;&amp;(len[j]+1&#62;len[i]))<strong>//Judge if a[i] can be added after a[j] and if it's the best solution</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len[i]=len[j]+1;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ans&#60;len[i])<strong>//Update the answer</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=len[i];<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-					}
+						#include&#60;cstdio&#62;<br/>
+						#define MAXN 100000<br/>
+						long a[MAXN],len[MAXN];<br/>
+						int main()<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;n;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len[i]=1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;i;j++)<strong>//Update the array len</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(((a[j]&amp;a[i])!=0)&amp;&amp;(len[j]+1&#62;len[i]))<strong>//Judge if a[i] can be added after a[j] and if it's the best solution</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len[i]=len[j]+1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ans&#60;len[i])<strong>//Update the answer</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=len[i];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+						}<br/>
 					</div>
 					<p>Solution 2 C++</p>
 					<div class="codebox">
-					#include&#60;cstdio&#62;<br/>
-					#define MAXN 100000<br/>
-					long a[MAXN],dp[32];<br/>
-					long max(long a,long b)<br/>
-					{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;if(a&#62;b)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return b;<br/>
-					}<br/>
-					int main()<br/>
-					{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;n;i++)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long now=0;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&amp;(1&#60;&#60;j))!=0)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now=max(dp[j],now);<strong>//Find the length of the longest subsequence that can be added by a[i]</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now++;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&amp;(1&#60;&#60;j))!=0)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[j]=max(dp[j],now);<strong>//Update the dp array</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=max(dp[j],ans);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-					}
+						#include&#60;cstdio&#62;<br/>
+						#define MAXN 100000<br/>
+						long a[MAXN],dp[32];<br/>
+						long max(long a,long b)<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;if(a&#62;b)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return b;<br/>
+						}<br/>
+						int main()<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;n;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long now=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&amp;(1&#60;&#60;j))!=0)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now=max(dp[j],now);<strong>//Find the length of the longest subsequence that can be added by a[i]</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now++;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&amp;(1&#60;&#60;j))!=0)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[j]=max(dp[j],now);<strong>//Update the dp array</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=max(dp[j],ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+						}<br/>
 					</div>
 				</td>
 			</table>
 			<center>
-				<var>&copy; 2016 zsz12251665. Powered by zsz12251665. Theme by zsz12251665.</var>
+				<var>&copy; 2016 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var>
 			</center>
 		</div>
 	</body>
