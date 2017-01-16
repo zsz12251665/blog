@@ -1,0 +1,157 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="shortcut icon" href="https://zsz12251665.github.io/main/icon.ico">
+		<title>NOIP2015 PJT1 - zsz12251665's codeblog</title>
+		<style type="text/css">
+			@font-face
+			{
+				font-family: "Cambria";
+				src: url("https://zsz12251665.github.io/font/English/Microsoft/Cambria.woff");
+			}
+			@font-face
+			{
+				font-family: "Courier New";
+				src: url("https://zsz12251665.github.io/font/English/Monotype/Courier New.woff");
+			}
+			a
+			{
+				color: #FF0000;
+				font-family: "Cambria";
+				text-decoration: none;
+			}
+			body
+			{
+				background-image: url("https://zsz12251665.github.io/main/code.jpg");
+			}
+			h1,h2,h3,h4,h5,h6,li,p
+			{
+				color: #00FF00;
+				font-family: "Cambria";
+			}
+			iframe
+			{
+				height: 100%;
+				width: 100%;
+			}
+			var
+			{
+				color: #00FF00;
+				font-family: "Cambria";
+				font-size: 10px;
+			}
+			#mainframe
+			{
+				background-color: #000000;
+				color: #00FF00;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 10px;
+				width: 80%;
+			}
+			#menu
+			{
+				height: 700px;
+				outline-color: #00FF00;
+				outline-style: dotted;
+				padding-right: 10px;
+			}
+			#text
+			{
+				padding: 10px;
+				width: 80%;
+			}
+			#text a,#text p
+			{
+				margin-left: 20px;
+			}
+			.codebox
+			{
+				background-color: #00FF00;
+				color: #000000;
+				font-family: "Courier New";
+				margin-left: auto;
+				margin-right: auto;
+				padding: 10px;
+				text-align: left;
+				width: 80%;
+			}
+			.codebox strong
+			{
+				background-color: #00FF00;
+				color: #FF0000;
+				font-family: "Courier New";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's codeblog</h1>
+			<p>Hello, welcome to zsz12251665's codeblog. </p>
+			<hr height="10px" color="#00FF00"/>
+			<table width="100%">
+				<td valign="top" id="menu"><iframe src="https://zsz12251665.github.io/blog/codes/menu.html" frameborder="0"></iframe></td>
+				<td valign="top" id="text">
+					<center>
+						<h2>NOIP2015 PJT1</h2>
+						<var>2017-01-16 18:30 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<a target="_blank" href="https://www.luogu.org/problem/show?pid=2669">Luogu</a>
+					<br/>
+					<a target="_blank" href="http://codevs.cn/problem/4492/">CodeVS</a>
+					<h3>Solution</h3>
+					<p>To solve this problem, all we need to do is to simulate the scene because the data range is so small that we dont't any algorithms to simplify it. </p>
+					<h3>Code</h3>
+					<p>Pascal</p>
+					<div class="codebox">
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;k,i,j:integer;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;ans:longint;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;read(k);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;i:=1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;while k&#62;0 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to i do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if k&#62;0 then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans+i;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(k);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(i);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
+						end.<br/>
+					</div>
+					<p>C++</p>
+					<div class="codebox">
+						#include&#60;cstdio&#62;<br/>
+						int main()<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int i=0,k;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;long ans=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;k);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;while(k&#62;0)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&#60;i;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(k&#62;0)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k--;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans+=i;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+						}<br/>
+					</div>
+				</td>
+			</table>
+			<center>
+				<var>&copy; 2016 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var>
+			</center>
+		</div>
+	</body>
+</html>
