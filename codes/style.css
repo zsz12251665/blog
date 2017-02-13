@@ -1,12 +1,12 @@
 @font-face
 {
 	font-family: "Cambria";
-	src: url("https://zsz12251665.github.io/font/English/Microsoft/Cambria.woff");
+	src: url("http://font.zsz12251665.cf/English/Microsoft/Cambria.woff");
 }
 @font-face
 {
 	font-family: "Courier New";
-	src: url("https://zsz12251665.github.io/font/English/Monotype/Courier New.woff");
+	src: url("http://font.zsz12251665.cf/English/Monotype/Courier New.woff");
 }
 a
 {
@@ -16,7 +16,7 @@ a
 }
 body
 {
-	background-image: url("https://zsz12251665.github.io/blog/codes/bg.jpg");
+	background-image: url("http://blog.zsz12251665.cf/codes/bg.jpg");
 }
 h1,h2,h3,h4,h5,h6,li,p
 {

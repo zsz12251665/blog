@@ -1,7 +1,7 @@
 @font-face
 {
 	font-family: "Segoe Print";
-	src: url("https://zsz12251665.github.io/font/English/Monotype/Segoe Print.woff");
+	src: url("http://font.zsz12251665.cf/English/Monotype/Segoe Print.woff");
 }
 a
 {
@@ -11,7 +11,7 @@ a
 }
 body
 {
-	background-image: url("https://zsz12251665.github.io/blog/posts/bg.jpg");
+	background-image: url("http://blog.zsz12251665.cf/posts/bg.jpg");
 }
 h1,h2,h3,h4,h5,h6,li,p
 {
