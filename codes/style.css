@@ -76,3 +76,12 @@ var
 	color: #FF0000;
 	font-family: "Courier New";
 }
+.sheet
+{
+	margin: auto;
+}
+.sheet th,.sheet td
+{
+	color: #00FF00;
+	font-family: "Cambria";
+}
