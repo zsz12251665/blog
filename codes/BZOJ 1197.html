@@ -1,0 +1,133 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="http://main.zsz12251665.cf/icon.ico"/>
+		<title>BZOJ 1197 - &copy;zsz12251665's blog</title>
+		<link rel="stylesheet" type="text/css" href="http://blog.zsz12251665.cf/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="menu">
+					<div style="height: 100%;"><iframe src="http://blog.zsz12251665.cf/codes/menu.html" frameborder="0"></iframe></div>
+				</td>
+				<td valign="top" id="text">
+					<center>
+						<h2>BZOJ 1197</h2>
+						<var>2017-03-30 16:20 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<a target="_blank" href="http://vjudge.net/problem/HYSBZ-1197">vjudge</a>
+					<br/>
+					<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=1197">BZOJ</a>
+					<h3>Solution</h3>
+					<p>The meeting with the problem was during an in-team competition, which problems are from HNOI. It was the only one which I had the idea on what the problem is. But I had no idea on the solution. After the test, one of my friends advised me to write out every pair of n and m. And I dit it. Then I had a sheet like this: </p>
+					<table border="3" bordercolor="#00FF00" align="center" style="color: #00FF00;">
+						<tr align="center">
+							<th width="30px">n\m</th>
+							<th width="30px">0</th>
+							<th width="30px">1</th>
+							<th width="30px">2</th>
+							<th width="30px">3</th>
+							<th width="30px">4</th>
+							<th width="30px">5</th>
+							<th width="30px">6</th>
+							<th width="30px">7</th>
+							<th width="30px">8</th>
+							<th width="30px">9</th>
+							<th width="30px">10</th>
+							<th width="30px">...</th>
+						</tr>
+						<tr align="center">
+							<th>1</th>
+							<td>1</td>
+							<td>2</td>
+							<td>4</td>
+							<td>6</td>
+							<td>8</td>
+							<td>10</td>
+							<td>12</td>
+							<td>14</td>
+							<td>16</td>
+							<td>18</td>
+							<td>20</td>
+							<td>...</td>
+						</tr>
+						<tr align="center">
+							<th>2</th>
+							<td>1</td>
+							<td>2</td>
+							<td>4</td>
+							<td>8</td>
+							<td>14</td>
+							<td>22</td>
+							<td>32</td>
+							<td>44</td>
+							<td>58</td>
+							<td>74</td>
+							<td>92</td>
+							<td>...</td>
+						</tr>
+						<tr align="center">
+							<th>3</th>
+							<td>1</td>
+							<td>2</td>
+							<td>4</td>
+							<td>8</td>
+							<td>16</td>
+							<td>30</td>
+							<td>52</td>
+							<td>84</td>
+							<td>128</td>
+							<td>186</td>
+							<td>260</td>
+							<td>...</td>
+						</tr>
+					</table>
+					<p>According to the limited data, we can find some interesting rules. First of all, it is obvious that the number of kinds of flowers equals 1 while m equals 0. Besides, when n equals 1 and m is greater than 0, the number of kinds of flowers is 2 times as large as m. What's more, when n is greater than 1 and m is greater than 0, the number of kinds of flowers equals the sum of the one with (n-1,m-1) and the one with (n,m-1). And that's the solution! I don't know how to prove it, but the when I submitted the problem with this solution, it returned an AC(Accepted). </p>
+					<h3>Code</h3>
+					<p>Pascal</p>
+					<div class="codebox">
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;f:array[1..10,0..100]of int64;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,j:integer;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;read(m,n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<strong>//When m equals 0</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[i,0]:=1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to m do<strong>//When n equals 1</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[1,j]:=2*j;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=2 to n do<strong>//When n is greater than 1 and m is greater than 0</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to m do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[i,j]:=f[i-1,j-1]+f[i,j-1];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;write(f[n,m]);<br/>
+						end.<br/>
+					</div>
+					<p>C++</p>
+					<div class="codebox">
+						#include&#60;cstdio&#62;<br/>
+						long long f[11][101];<strong>//f[n][m] keeps the number of kinds of flowers</strong><br/>
+						int main()<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int n,m;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;m,&amp;n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&#60;=n;i++)<strong>//While m equals 0</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[i][0]=1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int j=1;j&#60;=m;j++)<strong>//When n equals 1</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[1][j]=2*j;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=2;i&#60;=n;i++)<strong>//When n is greater than 1 and m is greater than 0</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=1;j&#60;=m;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[i][j]=f[i-1][j-1]+f[i][j-1];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld",f[n][m]);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+						}<br/>
+					</div>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+	</body>
+</html>
