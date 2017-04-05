@@ -35,7 +35,7 @@
 						int main()<br/>
 						{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;n;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
@@ -46,7 +46,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ans&#60;len[i])<strong>//Update the answer</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=len[i];<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 						}<br/>
 					</div>
@@ -65,10 +65,10 @@
 						int main()<br/>
 						{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;n;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;a[i]);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long now=0;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&amp;(1&#60;&#60;j))!=0)<br/>
@@ -80,7 +80,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&#60;32;j++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=max(dp[j],ans);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 						}<br/>
 					</div>

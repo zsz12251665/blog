@@ -60,15 +60,15 @@
 						char job[MAXN][20];<br/>
 						int main()<br/>
 						{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;int n,m;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;n,&amp;m);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&#60;n;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;long n,m;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;n;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%s",&amp;face[i],&amp;job[i]);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;int p=0;<strong>//Start from the 1st toy</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&#60;m;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;long p=0;<strong>//Start from the 1st toy</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&#60;m;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d,s;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;d,&amp;s);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long d,s;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;d,&amp;s);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(face[p]==d)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p+=n-s;<strong>//Move clockwise</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
