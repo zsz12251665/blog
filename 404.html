@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="http://blog.zsz12251665.cf/icon.ico"/>
+		<title>404 Not Found - &copy;zsz12251665's blog</title>
+		<link rel="stylesheet" type="text/css" href="http://blog.zsz12251665.cf/style.css"/>
+		<style type="text/css">
+			#goback
+			{
+				font-size: 24px;
+				font-weight: bold;
+				text-decoration: underline;
+			}
+			#num1, #num2, #num3
+			{
+				font-size: 120px;
+				font-weight: 900;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<table>
+				<tr align="center">
+					<td></td>
+					<td><img src="http://blog.zsz12251665.cf/404/fear.png"/></td>
+					<td><img src="http://blog.zsz12251665.cf/404/crying.png"/></td>
+					<td><img src="http://blog.zsz12251665.cf/404/sweat.png"/></td>
+					<td></td>
+				</tr>
+				<tr align="center">
+					<td><img src="http://blog.zsz12251665.cf/404/rolling.png"/></td>
+					<td><p id="num1" onclick="trick(document.getElementById('num1'))">4</p></td>
+					<td><p id="num2" onclick="trick(document.getElementById('num2'))">0</p></td>
+					<td><p id="num3" onclick="trick(document.getElementById('num3'))">4</p></td>
+					<td><img src="http://blog.zsz12251665.cf/404/thinking.png"/></td>
+				</tr>
+			</table>
+			<var>404: Not Found</var>
+			<p>Ah oh! It seems that you're visiting a page that is going to be published. <br/>Maybe it'll come along later, or the spelling of your URL has just made a mistake. </p>
+			<a id="goback" target="_parent" href="http://blog.zsz12251665.cf/">Please press here to go to the homepage of blog.zsz12251665.cf. </a>
+			<br/>
+			<br/>
+			<var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var>
+		</center>
+		<script type="text/javascript">
+			function trick(n)
+			{
+				n.innerHTML=(Number(n.innerHTML)+1)%10;
+			}
+		</script>
+	</body>
+</html>

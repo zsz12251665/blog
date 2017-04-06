@@ -1,0 +1,51 @@
+@font-face
+{
+    font-family: "Jokerman";
+    src: url("http://font.zsz12251665.cf/English/ITC/Jokerman.woff");
+}
+a
+{
+    color: #B0E2FF;
+    font-family: "Jokerman";
+    text-decoration: none;
+}
+body
+{
+    background-image: url("http://blog.zsz12251665.cf/bg.jpg");
+}
+h1,h2,h3,h4,h5,h6,li,p
+{
+    color: #B5E853;
+    font-family: "Jokerman";
+}
+iframe
+{
+    height: 100%;
+    width: 100%;
+}
+var
+{
+    color: #B5E853;
+    font-family: "Jokerman";
+    font-size: 10px;
+}
+#mainframe
+{
+    color: #B5E853;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 80%;
+}
+#menu
+{
+    height: 700px;
+    outline-color: #B0E2FF;
+    outline-style: dotted;
+    padding-right: 10px;
+}
+#text
+{
+    padding: 10px;
+    width: 80%;
+}
