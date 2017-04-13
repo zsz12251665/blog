@@ -38,14 +38,14 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;readln(n,m);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to m do<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if j&#60;m then<strong>//This is to avoid the problem that the char enter and the char return might bring</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if j&lt;m then<strong>//This is to avoid the problem that the char enter and the char return might bring</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(field[i,j])<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(field[i,j]);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<strong>//Scan the minefield</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to m do<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if field[i,j]&#60;&#62;'*' then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if field[i,j]&lt;&gt;'*' then<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count:=0;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if field[i-1,j-1]='*' then<br/>
@@ -74,25 +74,25 @@
 					</div>
 					<p>C++</p>
 					<div class="codebox">
-						#include&#60;cstdio&#62;<br/>
+						#include&lt;cstdio&gt;<br/>
 						char field[102][102];<strong>//Make the minefield a liitle larger to avoid the subscript out of range</strong><br/>
 						int main()<br/>
 						{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&#60;102;i++)<strong>//Initialize the minefield</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&#60;102;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;102;i++)<strong>//Initialize the minefield</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;102;j++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field[i][j]='?';<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;int n,m;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;n,&amp;m);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&#60;=n;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;=n;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%s",&amp;field[i]);<strong>//There may be some problems if we use scanf("%c",&amp;field[i][j]) or getchar() because of the char enter and the char return, so instead we use a different way here</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=101;j&#62;0;j--)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=101;j&gt;0;j--)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field[i][j]=field[i][j-1];<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field[i][0]='?';<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&#60;=n;i++)<strong>//Scan the minefield</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;=n;i++)<strong>//Scan the minefield</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=1;j&#60;=m;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=1;j&lt;=m;j++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(field[i][j]!='*')<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int count=0;<br/>
