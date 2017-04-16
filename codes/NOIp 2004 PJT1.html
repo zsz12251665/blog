@@ -20,9 +20,9 @@
 						<var>2017-02-23 19:53 by zsz12251665</var>
 					</center>
 					<h3>Problem</h3>
-					<a target="_blank" href="http://www.luogu.org/problem/show?pid=1085">Luogu</a>
+					<a target="_blank" href="https://www.luogu.org/problem/show?pid=1085">Luogu</a>
 					<br/>
-					<a target="_blank" href="http://codevs.cn/problem/1092/">CodeVS</a>
+					<a target="_blank" href="https://www.vijos.org/p/1113">Vijos</a>
 					<h3>Solution</h3>
 					<p>I don't know how to write the solution because it is too easy to to write the solution. So this time I'll just post the code out without any solutions. </p>
 					<h3>Code</h3>
@@ -32,7 +32,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;ans,mxt,a,b,i:integer;<br/>
 					begin<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;mxt:=8;<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;mxt:=8;<strong>//mxt equals 8 because she won't be unhappy if the time is less than 8 hours</strong><br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 7 do<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(a,b);<br/>
@@ -50,13 +50,13 @@
 						#include&lt;cstdio&gt;<br/>
 						int main()<br/>
 						{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;int ans=0,mxt=8,a,b;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int ans=0,mxt=8,a,b;<strong>//mxt equals 8 because she won't be unhappy if the time is less than 8 hours</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;8;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;a,&amp;b);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(a+b&gt;mxt)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mtx=a+b;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mxt=a+b;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=i;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
