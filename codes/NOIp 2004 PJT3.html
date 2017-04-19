@@ -28,51 +28,51 @@
 					<h3>Code</h3>
 					<p>Pascal</p>
 					<div class="codebox">
-					var<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;s:ansistring;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;n:integer;<br/>
-					function traversal(l,r:integer):char;<strong>//The function of recursion</strong><br/>
-					var<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;lc,rc:char;<br/>
-					begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;if l=r then<strong>//If it is a leaf node, return it</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if s[l]='0' then<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('B');<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('B');<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('I');<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('I');<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;lc:=traversal(l,(l+r-1) div 2);<strong>//Get the childern nodes by recursion</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;rc:=traversal((l+r-1) div 2+1,r);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;if lc=rc then<strong>//Decide what the parent node should be</strong><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(lc);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(lc);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('F');<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('F');<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-					end;<br/>
-					function power(n:integer):integer;<strong>//Get the 2 of the n-th power</strong><br/>
-					begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;power:=1;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;while n>0 do<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(n);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power:=power*2;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;
-					end;<br/>
-					begin<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;readln(n);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;readln(s);<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;n:=ord(traversal(1,power(n)));<strong>//Though we don't need the return of the traversal function at last, it is better to collect the return in Pascal</strong><br/>
-					end.<br/>
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;s:ansistring;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;n:integer;<br/>
+						function traversal(l,r:integer):char;<strong>//The function of recursion</strong><br/>
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;lc,rc:char;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;if l=r then<strong>//If it is a leaf node, return it</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if s[l]='0' then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('B');<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('B');<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('I');<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('I');<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;lc:=traversal(l,(l+r-1) div 2);<strong>//Get the childern nodes by recursion</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;rc:=traversal((l+r-1) div 2+1,r);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;if lc=rc then<strong>//Decide what the parent node should be</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(lc);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(lc);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('F');<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('F');<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						end;<br/>
+						function power(n:integer):integer;<strong>//Get the 2 of the n-th power</strong><br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;power:=1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;while n>0 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power:=power*2;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;
+						end;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;readln(n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;readln(s);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;n:=ord(traversal(1,power(n)));<strong>//Though we don't need the return of the traversal function at last, it is better to collect the return in Pascal</strong><br/>
+						end.<br/>
 					</div>
 					<p>C++</p>
 					<div class="codebox">
