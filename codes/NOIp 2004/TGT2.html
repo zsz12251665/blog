@@ -1,0 +1,162 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="http://blog.zsz12251665.cf/blog.png"/>
+		<title>NOIp 2004 TGT2 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="http://blog.zsz12251665.cf/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="menu">
+					<div style="height: 100%;"><iframe src="http://blog.zsz12251665.cf/codes/menu.html" frameborder="0"></iframe></div>
+				</td>
+				<td valign="top" id="text">
+					<center>
+						<h2>NOIp 2004 TGT2</h2>
+						<var>2017-04-25 20:12 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<a target="_blank" href="https://www.luogu.org/problem/show?pid=1090">Luogu</a>
+					<br/>
+					<a target="_blank" href="https://www.vijos.org/p/1097">Vijos</a>
+					<h3>Solution</h3>
+					<p>Well, let's define that the bunches of fruits are fruit[1] to fruit[n]. And for very i in [1,n-1], fruit[i] is smaller than fruit[i+1]. When we need to combine two bunches of fruits, choose fruit[1] and fruit[2] can keep the least cost since they are the smallest ones. And then we add the new bunch which is fruit[1]+fruit[2] back to the fruit array. Now we have n-1 bunches now. Repeat these steps, we can finally have a single bunch with least cost. </p>
+					<p>What's important is that we can use a heap to keep the fruit array. The heap is a data structure with an O(lg(n)) insert and O(lg(n)) extract. With the heap to keep the fruit array, we can reduce the time complexity to O(n lg(n)), which is fast enough to solve the problem. </p>
+					<p>While building up the heap, I found a way to make fewer mistakes when extracting. That is fill the null part with maxlongint. That means if a point has no child, it has a child or two children with maxlongint. That can be very helpful because I don't need to judge if the point has child or not by the size of the heap. </p>
+					<h3>Code</h3>
+					<p>Pascal</p>
+					<div class="codebox">
+						const<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;MAXN=10000;<br/>
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit:array[1..2*MAXN]of longint;<strong>//To avoid overlimit, I made the fruit array twice larger</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;n,size,i:integer;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;ans,tmp:longint;<br/>
+						procedure insert(a:longint);<strong>//The proceudure to insert a number into the fruit array</strong><br/>
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;i:integer;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;tmp:longint;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;inc(size);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit[size]:=a;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;i:=size;<strong>//Maintain the heap</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;while (i&gt;1)and(fruit[i]&lt;fruit[i div 2]) do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=fruit[i];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]:=fruit[i div 2];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i div 2]:=tmp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i:=i div 2;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						end;<br/>
+						function extract:longint;<strong>//The proceudure to extract the top from the fruit array</strong><br/>
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;i:integer;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;tmp:longint;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;extract:=fruit[1];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit[1]:=fruit[size];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit[size]:=maxlongint;<strong>//Fill the null part with maxlongint</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;dec(size);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;i:=1;<strong>//Maintain the heap</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;while (fruit[i*2]&lt;fruit[i])or(fruit[i*2+1]&lt;fruit[i]) do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if fruit[i*2]&lt;fruit[i*2+1] then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i:=i*2<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i:=i*2+1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=fruit[i];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]:=fruit[i div 2];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i div 2]:=tmp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						end;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;size:=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;read(n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 2*n do<strong>//Fill the array with maxlongint</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]:=maxlongint;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(tmp);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert(tmp);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n-1 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=extract+extract;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans+tmp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert(tmp);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
+						end.<br/>
+					</div>
+					<p>C++</p>
+					<div class="codebox">
+						#include&lt;cstdio&gt;<br/>
+						#define MAXN 10000<br/>
+						#define maxlongint 2147483647<br/>
+						long fruit[2*MAXN];<strong>//To avoid overlimit, I made the fruit array twice larger</strong><br/>
+						int size=0;<br/>
+						void insert(long a)<strong>//The proceudure to insert a number into the fruit array</strong><br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;size++;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit[size]=a;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int i=size;<strong>//Maintain the heap</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;while((i&gt;1)&amp;&amp;(fruit[i]&lt;fruit[i/2]))<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long tmp=fruit[i];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]=fruit[i/2];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i/2]=tmp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i/=2;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}<br/>
+						long extract()<strong>//The proceudure to extract the top from the fruit array</strong><br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;long ans=fruit[1];<strong>//C++ couldn't use the use the name of function to keep the feedback, so I have to use another longint to keep it</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit[1]=fruit[size];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit[size]=maxlongint;<strong>//Fill the null part with maxlongint</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;size--;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int i=1;<strong>//Maintain the heap</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;while((fruit[i*2]&lt;fruit[i])||(fruit[i*2+1]&lt;fruit[i]))<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(fruit[i*2]&lt;fruit[i*2+1])<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i*=2;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i=i*2+1;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long tmp=fruit[i];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]=fruit[i/2];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i/2]=tmp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return ans;<br/>
+						}<br/>
+						int main()<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;long ans=0,tmp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int n;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;=2*n;i++)<strong>//Fill the array with maxlongint</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]=maxlongint;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;tmp);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert(tmp);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;n;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp=extract()+extract();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans+=tmp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert(tmp);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+						}<br/>
+					</div>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+	</body>
+</html>
