@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="http://blog.zsz12251665.cf/blog.png"/>
+		<title>POJ 2965 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="http://blog.zsz12251665.cf/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="menu">
+					<div style="height: 100%;"><iframe src="http://blog.zsz12251665.cf/codes/menu.html" frameborder="0"></iframe></div>
+				</td>
+				<td valign="top" id="text">
+					<center>
+						<h2>POJ 2965</h2>
+						<var>2017-04-27 16:59 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<a target="_blank" href="https://vjudge.net/problem/POJ-2965">vjudge</a>
+					<br/>
+					<a target="_blank" href="http://poj.org/problem?id=2965">POJ</a>
+					<h3>Solution</h3>
+					<p>Well, first of all, we can get some information from the description. Firstly, your action on a handle have two stages: do and not do. That is because every twice you do on the same handle, it is as same as what it is like when you haven't do. Secondly, if you do on all the handles on the row i and column j, it will just change the stage of [i,j]. That is because the handles which are not on row i or column j had been change twice. For example, [a,b] was change when doing on [i,b] and doing on [a,j]. And the handles on the row i or column j(not include [i,j]) had been change 4 times(when doing on [i,1], doing on [i,2], doing on [i,3] amd doing on [i,4] or when doing on [1,j], doing on [j,2], doing on [j,3] and doing on [j,4]). [i,j] had been change for 7 times(every change has covered on [i,j]), which is the only one that was changed odd times. </p>
+					<p>With the information above, the solution is very clear. First of all, scan the handles. Whenever finding a '+' on [i,j], do on every handle on the row i and column j. If it was done, set it as not do. The information of whether it was done will be kept in the done array. After the scanning, count the number of the handles that are done. And then, print the number and the coordinates of the handles that are done. </p>
+					<h3>Code</h3>
+					<p>Pascal</p>
+					<div class="codebox">
+						var<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;done:array[1..4,1..4]of boolean;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;i,j,k,ans:integer;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;handle:string;<br/>
+						begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 4 do<strong>//Format the done array</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 4 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[i,j]:=false;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 4 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(handle);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 4 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if handle[j]='+' then<strong>//Scan the handles</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k:=1 to 4 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[i,k]:=not(done[i,k]);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[k,j]:=not(done[k,j]);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[i,j]:=not(done[i,j]);<strong>//In the for-loop, [i,j] has been done twice, so add once more can keep that all the seven handles is done</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 4 do<strong>//Count the number</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 4 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if done[i,j] then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;writeln(ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 4 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 4 do<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if done[i,j] then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(i,' ',j);<br/>
+						end.<br/>
+					</div>
+					<p>C++</p>
+					<div class="codebox">
+						#include&lt;cstdio&gt;<br/>
+						int done[4][4];<br/>
+						int main()<br/>
+						{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;char handle[4];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;4;i++)<strong>//Format the done array</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;4;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[i][j]=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;4;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%s",&amp;handle);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;4;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(handle[j]=='+')<strong>//Scan the handles</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int k=0;k<4;k++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[i][k]=1-done[i][k];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[k][j]=1-done[k][j];<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done[i][j]=1-done[i][j];<strong>//In the for-loop, [i,j] has been done twice, so add once more can keep that all the seven handles is done</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;int ans=0;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;4;i++)<strong>//Count the number</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;4;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(done[i][j]==1)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans++;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;printf("%d\n",ans);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;4;i++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;4;j++)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(done[i][j]==1)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d %d\n",i+1,j+1);<strong>//Don't forget to plus 1 because your loop is from 0 to 3 in C++</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+						}<br/>
+					</div>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+	</body>
+</html>
