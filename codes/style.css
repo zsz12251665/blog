@@ -5,8 +5,8 @@
 }
 @font-face
 {
-	font-family: "Courier New";
-	src: url("http://font.zsz12251665.cf/English/Monotype/Courier New.woff");
+	font-family: "Source Code Pro";
+	src: url("http://font.zsz12251665.cf/English/Adobe/Source Code Pro.woff");
 }
 a
 {
@@ -63,7 +63,7 @@ var
 {
 	background-color: #00FF00;
 	color: #000000;
-	font-family: "Courier New";
+	font-family: "Source Code Pro";
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
@@ -75,7 +75,7 @@ var
 {
 	background-color: #00FF00;
 	color: #FF0000;
-	font-family: "Courier New";
+	font-family: "Source Code Pro";
 }
 .sheet
 {
