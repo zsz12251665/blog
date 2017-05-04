@@ -3,6 +3,11 @@
 	font-family: "Segoe Print";
 	src: url("http://font.zsz12251665.cf/English/Microsoft/Segoe Print.woff");
 }
+@font-face
+{
+	font-family: "Waltograph";
+	src: url("http://font.zsz12251665.cf/English/Disney/Waltograph.woff");
+}
 a
 {
 	color: #FFFF00;
@@ -44,6 +49,16 @@ var
 	outline-color: #FFFF00;
 	outline-style: dotted;
 	padding-right: 10px;
+}
+#music
+{
+	background-color: #FFFFFF;
+}
+#music p
+{
+	color: #FF0000;
+	font-family: "Waltograph";
+	font-size: 20px;
 }
 #text
 {
