@@ -19,7 +19,34 @@
 						<h2>The Story of the Chorus-III</h2>
 						<var>2017-03-27 19:33</var>
 					</center>
-					<iframe src="http://song.zsz12251665.cf/总政歌舞团/英雄赞歌/" frameborder="0" style="height: 90px;width: 375px;"></iframe>
+					<audio id="audio" src="http://blog.zsz12251665.cf/posts/The Story of the Chorus-III/总政歌舞团 - 英雄赞歌.mp3" onloadedmetadata="format()" oncanplay="click_play()" ontimeupdate='change_audio()' onended="end()"></audio>
+					<table id="music">
+						<tr align="center">
+							<td rowspan="2">
+								<img id="but_play" src="http://blog.zsz12251665.cf/posts/music/play.svg" height="60px" width="60px" onclick="click_play()"/>
+							</td>
+							<td>
+								<img id="but_muted" src="http://blog.zsz12251665.cf/posts/music/unmuted.svg" height="30px" width="30px" onclick="click_muted()"/>
+							</td>
+							<td width="130px">
+								<p id="p_volume">Volume: 100</p>
+							</td>
+							<td>
+								<input id="rng_volume" type="range" min="0" max="100" value="100" step="1" oninput="change_volume()"/>
+							</td>
+						</tr>
+						<tr align="center">
+							<td>
+								<img id="but_repeat" src="http://blog.zsz12251665.cf/posts/music/repeat.svg" height="30px" width="30px" onclick="click_repeat()"/>
+							</td>
+							<td width="130px">
+								<p id="p_timeline">00:00/00:00</p>
+							</td>
+							<td>
+								<input id="rng_timeline" type="range" min='0' max='0' value='0' step='1' oninput="change_timeline()"/>
+							</td>
+						</tr>
+					</table>
 					<p>Over a month, here it came the competiton, which was the time to show our voice. During the last lesson, we came to the gym, and ended the Story of Chorus. </p>
 					<p>At 4 p.m., everyone arrived at the gym and the competition is ready to start. According to the order, we were the second class to sing the song. When we stood at the side of the stage, waiting for our turn, everyone is peaceful, with a little nervous. We five leaders had stood on stages serveral times. So all we worried about was whether the boys can sing it correctly(Yes, I said "correctly"). As the host began to introduce us, we finally walked onto the stage. After a deep breath, the accompany began. The Chorus was quite fine, everything went on correctly, until the first part was over. Between the first and second part, there should have been an acting, but when the actors came to the front, I didn't hear the sound of piccolo trumpets, but the mixture of the piano and violen. It's the accompany of the second part! The music of acting part was lost! So when the acting was over, it came to the refrain, I tried my best to sing the refrain as loudly as I can to cover their main-part melody. The rest of the song was quite okay. But Liu was annoyed that they didn't play the right accompany. So we went to the judge and told them what had happened. After the confirm with the man who played accompany, we finally got another chance to sing our song on the stage after every class had finished their chorus. So in the next hour, we trained and trained until our time arrived. I even miss the song of Class 5 and 6, which I am very interested in how well they could do this time. </p>
 					<p>Well, again we stood on the stage to show our work last month. As the right accompany began, I thought: "This time we can make it! " However, on the contrary, the two fools behind me caught my ears. They sang terribly! They sang the song in the wrong tone and they sing the song too fast. They even sang so loudly that I could hardly hear anybody else except for these two idiots! I am so terrified that I tried to sing loudly and pull them back to the right tone and the right speed. The commander also looked at me and asked me to correct them by eye contact. However, they just closed their ears and went on their way, which made me very difficult to keep the tone and speed. I had to not breath until a part of melody was over, which made me almost pass out on the stage. After we came down from stage, Liu, He Haolin the commander and I sighed and siighed, worried and worried, thinking "Well, since our bad work, we have no chance to win any prize". </p>
@@ -29,5 +56,6 @@
 			</table>
 			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
 		</div>
+		<script type="text/javascript" src="http://blog.zsz12251665.cf/posts/music/script.js"></script>
 	</body>
 </html>
