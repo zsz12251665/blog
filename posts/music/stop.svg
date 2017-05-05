@@ -25,17 +25,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="48.2"
-     inkscape:cx="1.8360996"
+     inkscape:zoom="60.5"
+     inkscape:cx="5"
      inkscape:cy="5"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1280"
-     inkscape:window-height="657"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1440"
+     inkscape:window-height="836"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -54,17 +54,20 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-1042.3622)">
-    <path
-       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.12536947;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 3.5,1045.8622 0,3 3,0 0,-3 z"
-       id="path4593"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
-    <circle
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4136"
-       cx="5"
-       cy="1047.3622"
-       r="4.5" />
+    <g
+       id="g7506">
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path4593"
+         d="m 3.5,1045.8622 0,3 3,0 0,-3 z"
+         style="fill:#600007;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.12536947;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         r="4.5"
+         cy="1047.3622"
+         cx="5"
+         id="path4136"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#600007;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
   </g>
 </svg>
