@@ -3,11 +3,6 @@
 	font-family: "Segoe Print";
 	src: url("http://font.zsz12251665.cf/English/Microsoft/Segoe Print.woff");
 }
-@font-face
-{
-	font-family: "Waltograph";
-	src: url("http://font.zsz12251665.cf/English/Disney/Waltograph.woff");
-}
 a
 {
 	color: #FFFF00;
@@ -56,9 +51,10 @@ var
 }
 #music p
 {
-	color: #FF0000;
-	font-family: "Waltograph";
+	color: #600007;
+	font-family: "Segoe Print";
 	font-size: 20px;
+	width: 150px;
 }
 #text
 {
