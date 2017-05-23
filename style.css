@@ -11,6 +11,7 @@ a
 }
 body
 {
+	background-color: #4F4F4F;
     background-image: url("http://blog.zsz12251665.cf/bg.jpg");
 }
 h1,h2,h3,h4,h5,h6,li,p
@@ -29,6 +30,16 @@ var
     font-family: "Jokerman";
     font-size: 10px;
 }
+#body
+{
+	background-image: url("");
+}
+#goback
+{
+	font-size: 24px;
+	font-weight: bold;
+	text-decoration: underline;
+}
 #mainframe
 {
 	background-color: #4F4F4F;
@@ -44,6 +55,11 @@ var
     outline-color: #B0E2FF;
     outline-style: dotted;
     padding-right: 10px;
+}
+#num1, #num2, #num3
+{
+	font-size: 120px;
+	font-weight: 900;
 }
 #text
 {
