@@ -16,6 +16,7 @@ a
 }
 body
 {
+	background-color: #000000;
 	background-image: url("http://blog.zsz12251665.cf/codes/bg.jpg");
 }
 h1,h2,h3,h4,h5,h6,li,p
@@ -33,6 +34,10 @@ var
 	color: #00FF00;
 	font-family: "Cambria";
 	font-size: 10px;
+}
+#body
+{
+	background-image: url("");
 }
 #mainframe
 {
