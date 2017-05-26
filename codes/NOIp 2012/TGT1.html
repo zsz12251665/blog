@@ -1,9 +1,9 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-		<link rel="shortcut icon" href="http://blog.zsz12251665.cf/blog.png"/>
+		<link rel="shortcut icon" href="/blog.png"/>
 		<title>NOIp 2012 TGT1 - &copy;zsz12251665's Blog</title>
-		<link rel="stylesheet" type="text/css" href="http://blog.zsz12251665.cf/codes/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
 		<div id="mainframe">
@@ -13,7 +13,7 @@
 			<table width="100%">
 				<td valign="top" id="menu">
 					<div style="height: 100%;">
-						<iframe src="http://blog.zsz12251665.cf/codes/menu.html" frameborder="0"></iframe>
+						<iframe src="/codes/menu.html" frameborder="0"></iframe>
 					</div>
 				</td>
 				<td valign="top" id="text">
@@ -48,7 +48,7 @@
 						int main()<br/>
 						{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;char key[100],txt[1000];<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%s%s",&key,&txt);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%s%s",&amp;key,&amp;txt);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;int keylen=strlen(key),txtlen=strlen(txt);<strong>//In C/C++, the strlen() is not very fast, so I use two variable to keep them</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;txtlen;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt[i]=(txt[i]%32-key[i%keylen]%32+26)%26+txt[i]-txt[i]%32+1;<strong>//In ASCII, 'A' ~ 'Z' are 65 to 90, 'a' ~ 'z' are 97 to 122. So a char which modulo 32 can show its order in the alphabet</strong><br/>
