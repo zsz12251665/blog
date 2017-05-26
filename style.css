@@ -1,7 +1,7 @@
 @font-face
 {
     font-family: "Jokerman";
-    src: url("http://blog.zsz12251665.cf/Font/Jokerman.woff");
+    src: url("/Font/Jokerman.woff");
 }
 a
 {
@@ -12,7 +12,7 @@ a
 body
 {
 	background-color: #4F4F4F;
-    background-image: url("http://blog.zsz12251665.cf/bg.jpg");
+    background-image: url("/bg.jpg");
 }
 h1,h2,h3,h4,h5,h6,li,p
 {

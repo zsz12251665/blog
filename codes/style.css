@@ -1,12 +1,12 @@
 @font-face
 {
 	font-family: "Cambria";
-	src: url("http://blog.zsz12251665.cf/Font/Cambria.woff");
+	src: url("/Font/Cambria.woff");
 }
 @font-face
 {
 	font-family: "Source Code Pro";
-	src: url("http://blog.zsz12251665.cf/Font/Source Code Pro.woff");
+	src: url("/Font/Source Code Pro.woff");
 }
 a
 {
@@ -17,7 +17,7 @@ a
 body
 {
 	background-color: #000000;
-	background-image: url("http://blog.zsz12251665.cf/codes/bg.jpg");
+	background-image: url("/codes/bg.jpg");
 }
 h1,h2,h3,h4,h5,h6,li,p
 {

@@ -11,12 +11,12 @@ function play_pause()
     if(playing==0)
     {
         player.pause();
-        document.getElementById('but_play').src='http://blog.zsz12251665.cf/posts/music/play.svg';
+        document.getElementById('but_play').src='/posts/music/play.svg';
     }
     else
     {
         player.play();
-        document.getElementById('but_play').src='http://blog.zsz12251665.cf/posts/music/pause.svg';
+        document.getElementById('but_play').src='/posts/music/pause.svg';
     }
 }
 function click_play()
@@ -62,18 +62,18 @@ function click_repeat()
 {
     repeat=1-repeat;
     if(repeat==0)
-        document.getElementById('but_repeat').src='http://blog.zsz12251665.cf/posts/music/no-repeat.svg';
+        document.getElementById('but_repeat').src='/posts/music/no-repeat.svg';
     else
-        document.getElementById('but_repeat').src='http://blog.zsz12251665.cf/posts/music/repeat.svg';
+        document.getElementById('but_repeat').src='/posts/music/repeat.svg';
 }
 function change_volume()
 {
     document.getElementById('p_volume').innerHTML='Volume: '+document.getElementById('rng_volume').value;
     player.volume=Number(document.getElementById('rng_volume').value)/100;
     if(document.getElementById('rng_volume').value==0)
-        document.getElementById('but_muted').src='http://blog.zsz12251665.cf/posts/music/muted.svg';
+        document.getElementById('but_muted').src='/posts/music/muted.svg';
     else
-        document.getElementById('but_muted').src='http://blog.zsz12251665.cf/posts/music/unmuted.svg';
+        document.getElementById('but_muted').src='/posts/music/unmuted.svg';
 }
 function click_muted()
 {
