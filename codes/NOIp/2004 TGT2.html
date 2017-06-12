@@ -32,10 +32,8 @@
 					<h3>Code</h3>
 					<p>Pascal</p>
 					<div class="codebox">
-						const<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;MAXN=10000;<br/>
 						var<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;fruit:array[1..2*MAXN]of longint;<strong>//To avoid overlimit, I made the fruit array twice larger</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit:array[1..20000]of longint;<strong>//To avoid overlimit, I made the fruit array twice larger</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;n,size,i:integer;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;ans,tmp:longint;<br/>
 						procedure insert(a:longint);<strong>//The proceudure to insert a number into the fruit array</strong><br/>
@@ -98,9 +96,7 @@
 					<p>C++</p>
 					<div class="codebox">
 						#include&lt;cstdio&gt;<br/>
-						#define MAXN 10000<br/>
-						#define maxlongint 2147483647<br/>
-						long fruit[2*MAXN];<strong>//To avoid overlimit, I made the fruit array twice larger</strong><br/>
+						long fruit[20000];<strong>//To avoid overlimit, I made the fruit array twice larger</strong><br/>
 						int size=0;<br/>
 						void insert(long a)<strong>//The proceudure to insert a number into the fruit array</strong><br/>
 						{<br/>
@@ -119,7 +115,7 @@
 						{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;long ans=fruit[1];<strong>//C++ couldn't use the use the name of function to keep the feedback, so I have to use another longint to keep it</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;fruit[1]=fruit[size];<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;fruit[size]=maxlongint;<strong>//Fill the null part with maxlongint</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;fruit[size]=2147483647;<strong>//Fill the null part with maxlongint</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;size--;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;int i=1;<strong>//Maintain the heap</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;while((fruit[i*2]&lt;fruit[i])||(fruit[i*2+1]&lt;fruit[i]))<br/>
@@ -140,7 +136,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;int n;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;=2*n;i++)<strong>//Fill the array with maxlongint</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]=maxlongint;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fruit[i]=2147483647;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;tmp);<br/>

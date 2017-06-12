@@ -31,18 +31,15 @@
 					<h3>Code</h3>
 					<p>Pascal</p>
 					<div class="codebox">
-						const<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;MAXN=100000;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;MAXP=300000;<br/>
 						var<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;nation:array[1..MAXP]of longint;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;count,passenger:array[1..MAXN+1]of longint;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;time:array[1..MAXN]of longint;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;nation:array[1..300000]of longint;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;count,passenger:array[1..100001]of longint;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;time:array[1..100000]of longint;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;n,ans,queue,i,j:longint;<br/>
 						begin<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br>
 						&nbsp;&nbsp;&nbsp;&nbsp;queue:=1;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to MAXN+1 do<strong>//Format the count array</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 100001 do<strong>//Format the count array</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]:=0;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;passenger[1]:=1;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;read(n);<br/>
@@ -74,13 +71,11 @@
 					<p>C++</p>
 					<div class="codebox">
 						#include&lt;cstdio&gt;<br/>
-						#define MAXP 300000<br/>
-						#define MAXN 100000<br/>
-						long nation[MAXP],count[MAXN+1],time[MAXN],passenger[MAXN+1];<strong>//The nationalies are from 1 to 100000, so we need a count array with a size of 100001 since the array is started from 0 in C++</strong><br/>
+						long nation[300000],count[100001],time[100000],passenger[100001];<strong>//The nationalies are from 1 to 100000, so we need a count array with a size of 100001 since the array is started from 0 in C++</strong><br/>
 						int main()<br/>
 						{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0,queue=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;MAXN+1;i++)<strong>//Format the count array</strong><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;100001;i++)<strong>//Format the count array</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]=0;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;passenger[0]=0;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>

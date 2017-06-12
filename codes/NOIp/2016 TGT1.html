@@ -30,38 +30,31 @@
 					<h3>Code</h3>
 					<p>Pascal</p>
 					<div class="codebox">
-						const<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;MAXN=100000;<br/>
-						type<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;toy=record<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;job:string;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;face:integer;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 						var<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;a:array[1..MAXN]of toy;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;face:array[1..100000]of integer;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;job:array[1..100000]of string;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,p,d,s:longint;<br/>
 						begin<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;readln(n,m);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(a[i].face,a[i].job);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(face[i],job[i]);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;p:=1;<strong>//Start from the 1st toy</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to m do<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(d,s);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if a[p].face=d then<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if face[p]=d then<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+n-s-1) mod n+1<strong>//Move clockwise</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+s-1) mod n+1;<strong>//Move counterclockwise</strong><br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;writeln(copy(a[p].job,2,20));<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;writeln(copy(job[p],2,20));<br/>
 						end.<br/>
 					</div>
 					<p>C++</p>
 					<div class="codebox">
 						#include&lt;cstdio&gt;<br/>
-						#define MAXN 100000<br/>
-						int face[MAXN];<br/>
-						char job[MAXN][20];<br/>
+						int face[100000];<br/>
+						char job[100000][20];<br/>
 						int main()<br/>
 						{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;long n,m;<br/>
