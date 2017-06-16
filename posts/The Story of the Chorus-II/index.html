@@ -21,7 +21,7 @@
 						<h2>The Story of the Chorus-II</h2>
 						<var>2017-03-16 13:37</var>
 					</center>
-					<audio id="audio" src="/posts/The Story of the Chorus-II/Various Artists - The British Grenadiers.mp3" onloadedmetadata="format()" oncanplay="click_play()" ontimeupdate='change_audio()' onended="end()"></audio>
+					<audio id="audio" src="/posts/The Story of the Chorus-II/Various Artists - The British Grenadiers.mp3" onloadedmetadata="format()" ontimeupdate="show_time(1)" onended="play_pause(!(player.loop))"></audio>
 					<table id="music">
 						<tr align="center">
 							<td rowspan="2"><img id="but_play" src="/posts/music/play.svg" height="60px" width="60px" onclick="click_play()"/></td>
@@ -32,7 +32,7 @@
 						<tr align="center">
 							<td><img id="but_repeat" src="/posts/music/repeat.svg" height="30px" width="30px" onclick="click_repeat()"/></td>
 							<td><p id="p_timeline">00:00/00:00</p></td>
-							<td><input id="rng_timeline" type="range" min='0' max='0' value='0' step='1' oninput="change_timeline()"/></td>
+							<td><input id="rng_timeline" type="range" min='0' max='0' value='0' step='1' oninput="show_time(0)"/></td>
 						</tr>
 					</table>
 					<p>Two weeks has gone. Next Monday, we are going to have the choir competition. Let's wait and see how these boys and girls will do in singing. </p>

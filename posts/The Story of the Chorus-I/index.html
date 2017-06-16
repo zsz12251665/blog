@@ -21,7 +21,7 @@
 						<h2>The Story of the Chorus-I</h2>
 						<var>2017-03-02 09:25</var>
 					</center>
-					<audio id="audio" src="/posts/The Story of the Chorus-I/总政歌舞团 - 游击队歌.mp3" onloadedmetadata="format()" oncanplay="click_play()" ontimeupdate='change_audio()' onended="end()"></audio>
+					<audio id="audio" src="/posts/The Story of the Chorus-I/总政歌舞团 - 游击队歌.mp3" onloadedmetadata="format()" ontimeupdate="show_time(1)" onended="play_pause(!(player.loop))"></audio>
 					<table id="music">
 						<tr align="center">
 							<td rowspan="2"><img id="but_play" src="/posts/music/play.svg" height="60px" width="60px" onclick="click_play()"/></td>
@@ -32,7 +32,7 @@
 						<tr align="center">
 							<td><img id="but_repeat" src="/posts/music/repeat.svg" height="30px" width="30px" onclick="click_repeat()"/></td>
 							<td><p id="p_timeline">00:00/00:00</p></td>
-							<td><input id="rng_timeline" type="range" min='0' max='0' value='0' step='1' oninput="change_timeline()"/></td>
+							<td><input id="rng_timeline" type="range" min='0' max='0' value='0' step='1' oninput="show_time(0)"/></td>
 						</tr>
 					</table>
 					<p>All the things started last Wednesday. On the Wednesday afternoon, the officers' meeting of the student's union in Senior Grade 1 took place. During the meeting, they drew lots to decide the song that each class will sing on the choir competition in the late March. We got the Song of the Guerrillas. I suppose it may be a satisfying one, at least not the worst one because all of us had heard about this song. On Friday, the notice had been posted and we began to prepare for it. </p>
