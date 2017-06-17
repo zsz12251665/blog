@@ -11,10 +11,8 @@
 			<p>Hello, welcome to zsz12251665's blog. </p>
 			<hr height="10px" color="#FFFF00"/>
 			<table width="100%">
-				<td valign="top" id="menu">
-					<div style="height: 100%;">
-						<iframe src="/posts/menu.html" frameborder="0"></iframe>
-					</div>
+				<td valign="top" id="bar">
+					<div id="menu"></div>
 				</td>
 				<td valign="top" id="text">
 					<center>
@@ -24,15 +22,15 @@
 					<audio id="audio" src="/posts/About Me/One Direction - What Makes You Beautiful.mp3" onloadedmetadata="format()" ontimeupdate="show_time(1)" onended="play_pause(!(player.loop))"></audio>
 					<table id="music">
 						<tr align="center">
-							<td rowspan="2"><img id="but_play" src="/posts/music/play.svg" height="60px" width="60px" onclick="click_play()"/></td>
+							<td rowspan="2"><img id="but_play" src="/posts/music/pause.svg" height="60px" width="60px" onclick="click_play()"/></td>
 							<td><img id="but_muted" src="/posts/music/unmuted.svg" height="30px" width="30px" onclick="click_muted()"/></td>
 							<td><p id="p_volume">Volume: 100</p></td>
-							<td><input id="rng_volume" type="range" min="0" max="100" value="100" step="1" oninput="show_time(0)"/></td>
+							<td><input id="rng_volume" type="range" min="0" max="100" value="100" step="1" oninput="change_volume()"/></td>
 						</tr>
 						<tr align="center">
 							<td><img id="but_repeat" src="/posts/music/repeat.svg" height="30px" width="30px" onclick="click_repeat()"/></td>
 							<td><p id="p_timeline">00:00/00:00</p></td>
-							<td><input id="rng_timeline" type="range" min='0' max='0' value='0' step='1' oninput="change_timeline()"/></td>
+							<td><input id="rng_timeline" type="range" min='0' max='0' value='0' step='1' oninput="show_time(0)"/></td>
 						</tr>
 					</table>
 					<p>This is zsz12251665 written here. I'm going to introduce myself to you in this passage. </p>
@@ -51,6 +49,7 @@
 			</table>
 			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
 		</div>
+		<script type="text/javascript" src="/menu.js"></script>
 		<script type="text/javascript" src="/posts/music/script.js"></script>
 	</body>
 </html>

@@ -35,9 +35,11 @@ var
 	font-family: "Cambria";
 	font-size: 10px;
 }
-#body
+#bar
 {
-	background-image: url("");
+    height: 700px;
+    outline-color: #FF0000;
+    outline-style: dotted;
 }
 #mainframe
 {
@@ -50,10 +52,10 @@ var
 }
 #menu
 {
-	height: 700px;
-	outline-color: #FF0000;
-	outline-style: dotted;
-	padding-right: 10px;
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 #text
 {
