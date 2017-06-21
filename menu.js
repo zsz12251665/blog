@@ -42,6 +42,7 @@ menu+='	<li><a target="_parent" href="/codes/POJ/1003.html">POJ 1003</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/1004.html">POJ 1004</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/1006.html">POJ 1006</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/1007.html">POJ 1007</a></li>';
+menu+='	<li><a target="_parent" href="/codes/POJ/1088.html">POJ 1088</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/2000.html">POJ 2000</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/2506.html">POJ 2506</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/2965.html">POJ 2965</a></li>';
