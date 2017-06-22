@@ -18,71 +18,76 @@
 						<var>2017-05-19 16:30 by zsz12251665</var>
 					</center>
 					<h3>Problem</h3>
-					<a target="_blank" href="https://www.luogu.org/problem/show?pid=1311">Luogu</a>
-					<br/>
-					<a target="_blank" href="https://www.vijos.org/p/1737">Vijos</a>
+					<section>
+						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1311">Luogu</a>
+						<br/>
+						<a target="_blank" href="https://www.vijos.org/p/1737">Vijos</a>
+					</section>
 					<h3>Solution</h3>
-					<p>We can think this problem in this way: we have known the number of the ways when there are i hotels. Now how should I change the answer when I add one hotel more? First of all, one of these two guys must stay in the new hotel because every plan that none of them stay in the hotel has all been counted. Second, If the new cafe is under the cost limit, the other guy can stay in any hotels in the same colour. Or he can stay in any hotels in the same colour except the ones which have no fit cafe on the way to the new hotel. Third, we can use a counter to count how many hotels the second guy can stay in. When you get a new hotel, if its cafe is under the limit, set it as same as the number of the hotels in the same colour. Or do nothing to the counter and just count the numbers of the hotels in the same colour. So that's the solution, which starts from no hotels and 0 ways to stay in. </p>
+					<section>
+						<p>We can think this problem in this way: we have known the number of the ways when there are i hotels. Now how should I change the answer when I add one hotel more? First of all, one of these two guys must stay in the new hotel because every plan that none of them stay in the hotel has all been counted. Second, If the new cafe is under the cost limit, the other guy can stay in any hotels in the same colour. Or he can stay in any hotels in the same colour except the ones which have no fit cafe on the way to the new hotel. Third, we can use a counter to count how many hotels the second guy can stay in. When you get a new hotel, if its cafe is under the limit, set it as same as the number of the hotels in the same colour. Or do nothing to the counter and just count the numbers of the hotels in the same colour. So that's the solution, which starts from no hotels and 0 ways to stay in. </p>
+					</section>
 					<h3>Code</h3>
-					<p>Pascal</p>
-					<div class="codebox">
-						var<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;count,last:array[0..50]of longint;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;ans,n,i:longint;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;k,p,colour,cost:integer;<br/>
-						begin<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;read(n,k,p);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for colour:=0 to k-1 do<strong>//Format the arrays</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[colour]:=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last[colour]:=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(colour,cost);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(count[colour]);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if cost&lt;=p then<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last:=count;<strong>//Renew the last array</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans+count[colour]-1;<strong>//Remember to minus 1 becuase they would not stay in the same hotel</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans+last[colour];<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;writeln(ans);<br/>
-						end.<br/>
-					</div>
-					<p>C++</p>
-					<div class="codebox">
-						#include&lt;cstdio&gt;<br/>
-						#include&lt;cstring&gt;<strong>//We need to use the memcpy function in cstring</strong><br/>
-						long count[50],last[50];<br/>
-						int main()<br/>
-						{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;int k,p;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%d%d",&amp;n,&amp;k,&amp;p);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(int colour=0;colour&lt;k;colour++)<strong>//Format the arrays</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[colour]=last[colour]=0;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int colour,cost;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;colour,&amp;cost);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[colour]++;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(cost&lt;=p)<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;memcpy(last,count,sizeof(last));<strong>//Renew the last array</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans+=count[colour]-1;<strong>//Remember to minus 1 becuase they would not stay in the same hotel</strong><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans+=last[colour];<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-						}<br/>
-
-					</div>
+					<section>
+						<p>Pascal</p>
+						<div class="codebox">
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;count,last:array[0..50]of longint;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;ans,n,i:longint;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;k,p,colour,cost:integer;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;read(n,k,p);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for colour:=0 to k-1 do<strong>//Format the arrays</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[colour]:=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last[colour]:=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(colour,cost);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(count[colour]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if cost&lt;=p then<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last:=count;<strong>//Renew the last array</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans+count[colour]-1;<strong>//Remember to minus 1 becuase they would not stay in the same hotel</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans+last[colour];<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;writeln(ans);<br/>
+							end.<br/>
+						</div>
+						<p>C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							#include&lt;cstring&gt;<strong>//We need to use the memcpy function in cstring</strong><br/>
+							long count[50],last[50];<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int k,p;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%d%d",&amp;n,&amp;k,&amp;p);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int colour=0;colour&lt;k;colour++)<strong>//Format the arrays</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[colour]=last[colour]=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int colour,cost;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;colour,&amp;cost);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[colour]++;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(cost&lt;=p)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;memcpy(last,count,sizeof(last));<strong>//Renew the last array</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans+=count[colour]-1;<strong>//Remember to minus 1 becuase they would not stay in the same hotel</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans+=last[colour];<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+					</section>
 				</td>
 			</table>
 			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
