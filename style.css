@@ -63,3 +63,17 @@ var
     padding: 10px;
     width: 80%;
 }
+.sheet
+{
+	border-color: #B5E853;
+	border-style: solid;
+	border-width: 3px;
+}
+.sheet th,.sheet td
+{
+	border-color: #B5E853;
+	border-style: solid;
+	border-width: 1px;
+    color: #B5E853;
+    font-family: "Jokerman";
+}

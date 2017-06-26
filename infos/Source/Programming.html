@@ -1,0 +1,470 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>Programming - &copy;zsz12251665's Information</title>
+		<link rel="stylesheet" type="text/css" href="/infos/Source/style.css"/>
+		<style type="text/css">
+			@font-face
+			{
+				font-family: "Comic Sans MS";
+				src: url("/Font/Comic Sans MS.woff");
+			}
+			@font-face
+			{
+				font-family: "Courier New";
+				src: url("/Font/Courier New.woff");
+			}
+			@font-face
+			{
+				font-family: "FZYaoTi";
+				src: url("/Font/FZYaoTi.woff");
+			}
+			@font-face
+			{
+				font-family: "PMingLiU";
+				src: url("/Font/PMingLiU.woff");
+			}
+			@font-face
+			{
+				font-family: "Times New Roman";
+				src: url("/Font/Times New Roman.woff");
+			}
+			#prolanguage li
+			{
+				color: #000000;
+				font-family: "PMingLiU";
+				font-size: 12pt;
+			}
+			.headline
+			{
+				color: #000000;
+				font-family: "Times New Roman";
+				font-size: 24pt;
+			}
+			.typename
+			{
+				color: #000000;
+				font-family: "Comic Sans MS";
+				font-size: 20pt;
+			}
+			.codeline
+			{
+				background-color: #FFFFFF;
+				color: #000000;
+				font-family: "Courier New";
+				font-size: 12pt;
+			}
+			.數據類型 p
+			{
+				color: #003366;
+				font-family: "FZYaoTi";
+				font-size: 16pt;
+			}
+			.數據類型 li
+			{
+				color: #003366;
+				font-family: "PMingLiU";
+				font-size: 12pt;
+			}
+			.定義方式 p
+			{
+				color: #CC9900;
+				font-family: "FZYaoTi";
+				font-size: 16pt;
+			}
+			.注意事項 p
+			{
+				color: #FF0000;
+				font-family: "FZYaoTi";
+				font-size: 16pt;
+			}
+			.注意事項 li
+			{
+				color: #FF0000;
+				font-family: "PMingLiU";
+				font-size: 12pt;
+			}
+			.例子 p
+			{
+				color: #7030A0;
+				font-family: "FZYaoTi";
+				font-size: 16pt;
+			}
+			.例子 li
+			{
+				color: #7030A0;
+				font-family: "PMingLiU";
+				font-size: 12pt;
+			}
+		</style>
+	</head>
+	<body>
+		<h2 align="center">Programming</h2>
+		<div id="prolanguage">
+			<p class="headline">Pro Language</p>
+			<ul>
+				<li>Pro語言是一種有結構化程序設計，具有變量作用域以及遞歸功能的過程式編程語言。</li>
+				<li>Pro語言的代碼支持Unicode字符集，且區分大小寫。但是你無須為忘記關鍵字的大小寫擔心，因為所有的關鍵字都是首字母大寫的。</li>
+				<li>Pro語言的主過程為Main函數。</li>
+				<li>Pro語言可以通過頭文件導入調用其他Pro編程文件中的數據類型函數與過程。</li>
+				<li>Pro語言的所有函數和過程（頭文件導入函數除外）均調用了其它Pro編程文件，用戶可以根據自己的喜好更改所有Pro語言中的數據類型、函數與過程的名稱，實現了名稱高度自由化。</li>
+				<li>Pro語言同時支持調用其他編程語言來編程，但是在你調用該語言前，你得先提供該語言的編譯器。</li>
+				<li>由於支持Unicode字符集且可以更改所有數據類型、函數與過程的名稱，不同國家和地區的用戶也可以通過下載對應的語言包來輕鬆通過自己的母語來編程（語法還需按照Pro語言的語法）。</li>
+				<li>我們正在努力開發新型的IDE，將來Pro語言的用戶能使用程式模塊編程。屆時，即使不懂得Pro語言的語法的用戶也能使用Pro語言進行編程，也能讓來自不同國家和地區的Pro語言用戶交流共享自己的代碼。</li>
+			</ul>
+		</div>
+		<div id="Basic Data Type">
+			<p class="headline">Basic Data Type</p>
+			<div id="Integer">
+				<p class="typename">Integer</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Integer類型就是整數類型（簡稱整型）。它允許用戶儲存一個在其數據範圍內的整數。</li>
+						<li>Integer類型是Pro語言中最重要的數據類型之一。在程序中將會經常用到這種數據類型（尤其是在循環計數和數組下標中）。</li>
+						<li>請注意區分Integer類型和Float類型之間的差別，一些函數或過程只允許Integer類型作為其參數，而不允許Float類型作為其參數。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As [Signed/Unsigned] [Shortint/Integer/Longint/Number];</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Signed/Unsigned為可選項。Signed為有符號整型，Unsigned為無符號整型。當這一選項被省略（不填）時，將默認為Signed。</li>
+						<li>ShortInt/Integer/Longint?Number為必選項。Shortint為短整型，Integer為標準整型，Longint為長整型，Number為大整型。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義無符號長整型變量i，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim i As Unsigned Longint;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Float">
+				<p class="typename">Float</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Float類型就是浮點數類型（簡稱浮點型）。它允許用戶儲存一個在其數據範圍內的浮點數。</li>
+						<li>請注意，浮點數不是實數。浮點數可能會跟實際數字存在誤差（尤其當該數字是一個高位小數時），所以計算結果也會存在差異（甚至不同的浮點類型都可能帶來計算結果上的巨大差異）。</li>
+						<li>浮點數計算不符合部分數學規律（或定理）。若要進行精密計算，建議使用高精度計算。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As [Signed/Unsigned] [Float/Single/Double/Real];</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Signed/Unsigned為可選項。Signed為有符號浮點型，Unsigned為無符號浮點型。當這一選項被省略（不填）時，將默認為Signed。</li>
+						<li>Float/Single/Double/Real為必選項。Float為標準浮點型，Single為單精度浮點型，Double為雙精度浮點型，Real為高精度浮點型。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義（有符號）單精度浮點型變量f，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim f As Single;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Char">
+				<p class="typename">Char</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Char類型就是字符類型（簡稱字符型）。它允許用戶儲存一個字符。</li>
+						<li>一個字符是指在字符集編碼中占一個字元的符號或對其它顯示設備的命令。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As [Char/Unicode];</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Char/Unicode為必選項。Char為ASCII碼字符型，Unicode為Unicode字符型。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義Unicode字符型變量u，應使用以下語句：</li>
+						<div class="codeline">Dim u As Unicode;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="String">
+				<p class="typename">String</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>String類型就是字符串類型（簡稱字符串型）。它允許用戶儲存一個字符串。</li>
+						<li>一個字符串是指一個由若干個字符組成的有序序列。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As [Limited/Endless] [String/Unistring];</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Limited/Endless為可選項。Limited為長度為255字符的字符串，Endless為無限長度的字符串（最大字符量根據可分配的內存決定）。當這一選項被省略（不填）時，將默認為Limited。</li>
+						<li>String/Unistring為必選項。String為ASCII碼字符串型，Unistring為Unicode字符串型。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義不限長度的ASCII碼字符串型變量s，應使用以下語句：</li>
+						<div class="codeline">Dim s As Endless String;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Enumeration">
+				<p class="typename">Enumeration</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Enumeration類型就是枚舉類型（簡稱枚舉型）。它允許用戶儲存一個（標識符常數表示的）枚舉標識符。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As Enum Of<br/>&emsp;&emsp;&emsp;{<br/>&emsp;&emsp;&emsp;&emsp;[Enum Label] [= Label Index];<br/>&emsp;&emsp;&emsp;&emsp;[Enum Label] [= Label Index];<br/>&emsp;&emsp;&emsp;&emsp;[Enum Label] [= Label Index];<br/>&emsp;&emsp;&emsp;&emsp;...<br/>&emsp;&emsp;&emsp;};</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Enum Label為枚舉標識符（必填）。</li>
+						<li>Label Index為標識符常數（選填）。Label Index應為無符號整型數值。若不填寫Label Index，則默認為比上一個Label Index大的最小整數（第一個Label Index默認為0）。</li>
+						<li>枚舉標識符應根據Label Index從小到大的書序排列，否則可能發生嚴重錯誤。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>以下定義語句中，標識符為abc的Label Index為0，標識符ssd的Label Index為9，標識符trd的Label Index為10，標識符foh的Label Index為30：</li>
+						<div class="codeline">&emsp;&emsp;Dim z As Enum Of<br/>&emsp;&emsp;&emsp;{<br/>&emsp;&emsp;&emsp;&emsp;abc;<br/>&emsp;&emsp;&emsp;&emsp;ssd=9;<br/>&emsp;&emsp;&emsp;&emsp;trd;<br/>&emsp;&emsp;&emsp;&emsp;foh=30;<br/>&emsp;&emsp;&emsp;};</div>
+						<li>定義標識符為first（Label Index=1）、second（Label Index=2）、third（Label Index=3）、fourth（Label Index=4）的枚舉型變量e，應使用以下語句①，語句②是錯誤的：</li>
+						<div class="codeline">①. <br/>&emsp;&emsp;Dim e As Enum Of<br/>&emsp;&emsp;&emsp;{<br/>&emsp;&emsp;&emsp;&emsp;first=1;<br/>&emsp;&emsp;&emsp;&emsp;second=2;<br/>&emsp;&emsp;&emsp;&emsp;third=3;<br/>&emsp;&emsp;&emsp;&emsp;fourth=4;<br/>&emsp;&emsp;&emsp;};<br/>②. <br/>&emsp;&emsp;Dim e As Enum Of<br/>&emsp;&emsp;&emsp;{<br/>&emsp;&emsp;&emsp;&emsp;second=2;<br/>&emsp;&emsp;&emsp;&emsp;fourth=4;<br/>&emsp;&emsp;&emsp;&emsp;first=1;<br/>&emsp;&emsp;&emsp;&emsp;third=3;<br/>&emsp;&emsp;&emsp;};<br/></div>
+					</ol>
+				</div>
+			</div>
+			<div id="Boolean">
+				<p class="typename">Boolean</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Boolean類型就是布爾類型（簡稱布爾型）。它允許用戶儲存一個布爾值。</li>
+						<li>布爾值有兩個，分別是True（真）和False（假）。</li>
+						<li>Boolean是計算機科學中的邏輯類型。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As Boolean;</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義布爾型變量b，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim b As Boolean;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Address">
+				<p class="typename">Address</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Address類型就是地址類型（簡稱地址型）。它允許用戶儲存一個物理內存地址。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As Address;</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義地址型變量g，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim g As Address;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Variant">
+				<p class="typename">Variant</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Variant類型就是變體類型（簡稱變體型）。它允許用戶儲存任意一種基本數據類型（包括Integer、Float、Char、String、Enumeration、Boolean、Address等）的一個值。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As Variant;</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義變體型變量v，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim v As Variant;</div>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<div id="Advanced Data Type">
+			<p class="headline">Advanced Data Type</p>
+			<div id="Array">
+				<p class="typename">Array</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Array類型就是數組類型（簡稱數組）。它允許用戶在一段連續的內存裡存儲若干個相同數據類型的值。</li>
+						<li>Array類型裡不同值的訪問是通過數組的下標實現的，訪問這些值時應該給出其對應的數組下標。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As Array [First Index..Last Index] Of [Data Type];</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>First Index..Last Index為數組下標範圍（選填）。First Index為首項數組下標，Last Index為末項數組下標。當這一選項被省略（不填）時，將默認為可變數組（在程序中可改變數組長度）。</li>
+						<li>First Index和Last Index均只能為字符型或整型數值。</li>
+						<li>Data Type為數組元素的數據類型（必填）。數組元素可以為所有數據類型。</li>
+						<li>欲定義多維數組，請使用數組的嵌套。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義一維半精度浮點型數組f[1..4]，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim f As Array [1..4] Of Float;</div>
+						<li>定義一維地址型指針可變數組l，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim l As Array Of ^Address;</div>
+						<li>不能定義一維變體型指針數組k[(1.1)..(1.2)]，即以下語句是錯誤的：</li>
+						<div class="codeline">&emsp;&emsp;Dim k As Array [(1.1)..(1.2)] Of ^Variant;</div>
+						<li>定義三維布爾型可變數組t[1..5][1..6]（第三維可變），應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim t As Array [1..5] Of Array [1..6] Of Array Of Boolean;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Set">
+				<p class="typename">Set</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+					<ul>
+						<li>Set類型就是集合類型（簡稱集合）。它允許用戶存儲一個由若干個由一種數據類型的值構成的元素構成的集合。</li>
+						<li>Set類型允許用戶對其進行三種基本操作：向集合內添加新的元素、刪除集合內已有的元素、判斷一個元素是否在集合內。</li>
+					</ul>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As Set Of [Basic Data Type];</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Basic Data Type為集合元素的數據類型（必填）。集合元素只能為Integer、Float、Char、String、Boolean、Enumeration、Address、Variant等數據類型，不能為Array、Set、Record、Pointer等數據類型。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義ASCII碼字符型集合c，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim c As Set Of Char;</div>
+						<li>不能定義變體型指針集合w，即以下語句是錯誤的：</li>
+						<div class="codeline">&emsp;&emsp;Dim w As Set Of ^Variant;</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Record">
+				<p class="typename">Record</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As Record Of<br/>&emsp;&emsp;&emsp;{<br/>&emsp;&emsp;&emsp;&emsp;[Record Name] As [Data Type];<br/>&emsp;&emsp;&emsp;&emsp;[Record Name] As [Data Type];<br/>&emsp;&emsp;&emsp;&emsp;[Record Name] As [Data Type];<br/>&emsp;&emsp;&emsp;&emsp;...<br/>&emsp;&emsp;&emsp;};</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Record Name為記錄的屬性名（必填）。</li>
+						<li>Data Type為記錄對應屬性的數據類型（必填）。記錄屬性可以為所有數據類型。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義包含單精度浮點型屬性.ert、字符串型集合屬性.hom的記錄r，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim f As Record Of<br/>&emsp;&emsp;&emsp;{<br/>&emsp;&emsp;&emsp;&emsp;ert As Single;<br/>&emsp;&emsp;&emsp;&emsp;hom As Set Of String;<br/>&emsp;&emsp;&emsp;};</div>
+					</ol>
+				</div>
+			</div>
+			<div id="Pointer">
+				<p class="typename">Pointer</p>
+				<div class="數據類型">
+					<p>數據類型</p>
+				</div>
+				<div class="定義方式">
+					<p>定義方式</p>
+					<div class="codeline">&emsp;&emsp;Dim [Varname] As ^[Data Type];</div>
+				</div>
+				<div class="注意事項">
+					<p>注意事項</p>
+					<ol>
+						<li>Varname為變量名（必填）。</li>
+						<li>Data Type為指針元素的數據類型（必填）。指針元素可以為所有數據類型。</li>
+					</ol>
+				</div>
+				<div class="例子">
+					<p>例子</p>
+					<ol>
+						<li>定義標識符為right、wrong的枚舉型指針p，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim g As ^Enum Of<br/>&emsp;&emsp;&emsp;{<br/>&emsp;&emsp;&emsp;&emsp;right;<br/>&emsp;&emsp;&emsp;&emsp;wrong;<br/>&emsp;&emsp;&emsp;};</div>
+						<li>定義短整型可變數組指針q，應使用以下語句：</li>
+						<div class="codeline">&emsp;&emsp;Dim q As ^Array Of Shortint;</div>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
