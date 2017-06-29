@@ -25,6 +25,7 @@ menu+='	<li><a target="_parent" href="/codes/NOIp/2004 PJT4.html">NOIp 2004 PJT4
 menu+='	<li><a target="_parent" href="/codes/NOIp/2004 TGT1.html">NOIp 2004 TGT1</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2004 TGT2.html">NOIp 2004 TGT2</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2004 TGT3.html">NOIp 2004 TGT3</a></li>';
+menu+='	<li><a target="_parent" href="/codes/NOIp/2005 PJT2.html">NOIp 2005 PJT2</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2005 PJT3.html">NOIp 2005 PJT3</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2005 TGT1.html">NOIp 2005 TGT1</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2011 TGT1.html">NOIp 2011 TGT1</a></li>';
