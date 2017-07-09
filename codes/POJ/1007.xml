@@ -1,0 +1,82 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>POJ 1007</title>
+	<html>
+		<center>
+			<h2>POJ 1007</h2>
+			<var>2017-06-12 15:34 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://vjudge.net/problem/POJ-1007">vjudge</a>
+			<br/>
+			<a target="_blank" href="http://poj.org/problem?id=1007">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem is simple. Count the inversions as the problem tells you and then sort the strings and output them from the smallest inversion to the biggest one. By the way, you can combine the sort and output together by finding the smallest one without mark, marking it and then output it. </p>
+			<p>P. S. : The FPC(Free Pascal Compiler) of POJ didn't work well When I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;s:array[1..100]of string;<br/>
+				&#160;&#160;&#160;&#160;count:array[1..100]of integer;<br/>
+				&#160;&#160;&#160;&#160;n,m,i,j,k,min:integer;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;readln(n,m);<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to m do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;readln(s[i]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[i]:=0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=1 to n do<strong>//Count the inversions</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for k:=j+1 to n do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if s[i][j]&gt;s[i][k] then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;inc(count[i]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to m do<strong>//Sort and output the strings</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;min:=1;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=2 to m do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if count[j]&lt;count[min] then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;min:=j;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[min]:=maxint;<strong>//Set count[i] as maxint to mark that it is outputed</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;writeln(s[min]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				char s[100][51];<strong>//Make the string a little bigger, or you may got an OLE(Output Limit Exceeded)</strong><br/>
+				int count[100];<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;int n,m;<br/>
+				&#160;&#160;&#160;&#160;scanf("%d%d",&amp;n,&amp;m);<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;m;i++)<br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%s",&amp;s[i]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[i]=0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int j=0;j&lt;n;j++)<strong>//Count the inversions</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int k=j+1;k&lt;n;k++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(s[i][j]&gt;s[i][k])<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[i]++;<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;m;i++)<strong>//Sort and output the strings</strong><br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;int min=0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int j=1;j&lt;m;j++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(count[j]&lt;count[min])<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;min=j;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[min]=32767;<strong>//Set count[i] as maxint to mark that it is outputed</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;printf("%s\n",s[min]);<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

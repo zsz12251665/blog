@@ -1,0 +1,81 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp 2011 TGT1</title>
+	<html>
+		<center>
+			<h2>NOIp 2011 TGT2</h2>
+			<var>2017-05-19 16:30 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1311">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1737">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>We can think this problem in this way: we have known the number of the ways when there are i hotels. Now how should I change the answer when I add one hotel more? First of all, one of these two guys must stay in the new hotel because every plan that none of them stay in the hotel has all been counted. Second, If the new cafe is under the cost limit, the other guy can stay in any hotels in the same colour. Or he can stay in any hotels in the same colour except the ones which have no fit cafe on the way to the new hotel. Third, we can use a counter to count how many hotels the second guy can stay in. When you get a new hotel, if its cafe is under the limit, set it as same as the number of the hotels in the same colour. Or do nothing to the counter and just count the numbers of the hotels in the same colour. So that's the solution, which starts from no hotels and 0 ways to stay in. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;count,last:array[0..50]of longint;<br/>
+				&#160;&#160;&#160;&#160;ans,n,i:longint;<br/>
+				&#160;&#160;&#160;&#160;k,p,colour,cost:integer;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;read(n,k,p);<br/>
+				&#160;&#160;&#160;&#160;ans:=0;<br/>
+				&#160;&#160;&#160;&#160;for colour:=0 to k-1 do<strong>//Format the arrays</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[colour]:=0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;last[colour]:=0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to n do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;read(colour,cost);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;inc(count[colour]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if cost&lt;=p then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;last:=count;<strong>//Renew the last array</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans:=ans+count[colour]-1;<strong>//Remember to minus 1 becuase they would not stay in the same hotel</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans:=ans+last[colour];<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;writeln(ans);<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				#include&lt;cstring&gt;<strong>//We need to use the memcpy function in cstring</strong><br/>
+				long count[50],last[50];<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;long n,ans=0;<br/>
+				&#160;&#160;&#160;&#160;int k,p;<br/>
+				&#160;&#160;&#160;&#160;scanf("%ld%d%d",&amp;n,&amp;k,&amp;p);<br/>
+				&#160;&#160;&#160;&#160;for(int colour=0;colour&lt;k;colour++)<strong>//Format the arrays</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[colour]=last[colour]=0;<br/>
+				&#160;&#160;&#160;&#160;for(long i=0;i&lt;n;i++)<br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;int colour,cost;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%d%d",&amp;colour,&amp;cost);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;count[colour]++;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(cost&lt;=p)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;memcpy(last,count,sizeof(last));<strong>//Renew the last array</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans+=count[colour]-1;<strong>//Remember to minus 1 becuase they would not stay in the same hotel</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans+=last[colour];<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;printf("%ld",ans);<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

@@ -1,0 +1,108 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp 2004 PJT3</title>
+	<html>
+		<center>
+			<h2>NOIp 2004 PJT3</h2>
+			<var>2017-02-23 16:53 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1087">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1114">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>You may have probably find it. Yes, the FBI tree is a full binary tree. Each leaf node is a char in the 01 string that if the char is 0, the leaf node is 'B' and if the char is 1, the leaf node is 'I'. What's more, if a non-leaf node has two childern nodes which are all 'B', the node itself must be 'B'. Opposite, the node will be 'I' if his childern node are all 'I'. However, if one of the child node is 'F' or they are 'B' and 'I', their parent node should be 'F'. Above all, the problem can be solved by a recursive algorithm. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;s:ansistring;<br/>
+				&#160;&#160;&#160;&#160;n:integer;<br/>
+				function traversal(l,r:integer):char;<strong>//The function of recursion</strong><br/>
+				var<br/>
+				&#160;&#160;&#160;&#160;lc,rc:char;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;if l=r then<strong>//If it is a leaf node, return it</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if s[l]='0' then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;write('B');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;exit('B');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;write('I');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;exit('I');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;lc:=traversal(l,(l+r-1) div 2);<strong>//Get the childern nodes by recursion</strong><br/>
+				&#160;&#160;&#160;&#160;rc:=traversal((l+r-1) div 2+1,r);<br/>
+				&#160;&#160;&#160;&#160;if lc=rc then<strong>//Decide what the parent node should be</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;write(lc);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;exit(lc);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end<br/>
+				&#160;&#160;&#160;&#160;else<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;write('F');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;exit('F');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				end;<br/>
+				function power(n:integer):integer;<strong>//Get the 2 of the n-th power</strong><br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;power:=1;<br/>
+				&#160;&#160;&#160;&#160;while n>0 do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dec(n);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;power:=power*2;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;
+				end;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;readln(n);<br/>
+				&#160;&#160;&#160;&#160;readln(s);<br/>
+				&#160;&#160;&#160;&#160;n:=ord(traversal(1,power(n)));<strong>//Though we don't need the return of the traversal function at last, it is better to collect the return in Pascal</strong><br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				char s[1024];<br/>
+				char traversal(int l,int r)<strong>//The function of recursion</strong><br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;if(l==r)<strong>//If it is a leaf node, return it</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(s[l]=='0')<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;putchar('B');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return 'B';<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;putchar('I');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return 'I';<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;char lc=traversal(l,(l+r+1)/2-1),rc=traversal((l+r+1)/2,r);<strong>//Get the childern nodes by recursion</strong><br/>
+				&#160;&#160;&#160;&#160;if(lc==rc)<strong>//Decide what the parent node should be</strong><br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;putchar(lc);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return lc;<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;else<br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;putchar('F');<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return 'F';<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;int n;<br/>
+				&#160;&#160;&#160;&#160;scanf("%d%s",&amp;n,&amp;s);<br/>
+				&#160;&#160;&#160;&#160;traversal(0,(1&lt;&lt;n)-1);<strong>//1&lt;&lt;n means 2^n("&lt;&lt;" is a bit operator. It is the right shift that it is able to move 1 to the right for n bits)</strong><br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

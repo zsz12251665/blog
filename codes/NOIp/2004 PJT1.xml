@@ -1,0 +1,61 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp 2004 PJT1</title>
+	<html>
+		<center>
+			<h2>NOIp 2004 PJT1</h2>
+			<var>2017-02-23 19:53 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1085">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1113">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>I don't know how to write the solution because it is too easy to to write the solution. So this time I'll just post the code out without any solutions. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;ans,mxt,a,b,i:integer;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;ans:=0;<br/>
+				&#160;&#160;&#160;&#160;mxt:=8;<strong>//mxt equals 8 because she won't be unhappy if the time is less than 8 hours</strong><br/>
+				&#160;&#160;&#160;&#160;for i:=1 to 7 do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;read(a,b);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if a+b>mxt then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;mxt:=a+b;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans:=i;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;writeln(ans);<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;int ans=0,mxt=8,a,b;<strong>//mxt equals 8 because she won't be unhappy if the time is less than 8 hours</strong><br/>
+				&#160;&#160;&#160;&#160;for(int i=1;i&lt;8;i++)<br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%d%d",&amp;a,&amp;b);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(a+b&gt;mxt)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;mxt=a+b;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans=i;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;printf("%d",ans);<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

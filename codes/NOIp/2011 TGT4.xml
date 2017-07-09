@@ -1,0 +1,75 @@
+﻿<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp 2011 TGT4</title>
+	<html>
+		<center>
+			<h2>NOIp 2011 TGT4</h2>
+			<var>2017-06-27 20:05 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1313">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1739">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>There are two solutions to solve this problem. The first one is to use Pascal's triangle. The second one is DP(Dynamic Planning). The code below is based on the second solution. </p>
+			<p>First, we set up an coe array that coe[i][j] is used to keep the coefficient of (x^i)*(y^j). And the state transition formula is coe[i][j]=a*coe[i-1][j]+b*[i][j-1]. And it is also very easy to verify. So it won't be given here. In this way, we can solve the problem with a time complexity of O(n m). </p>
+			<p>P. S. The i and j in coe[i][j] may not conform i+j=k, but it is the coefficient of (x^i)*(y^i) in the polynomial (a*x+b*y)^(i+j). </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;coe:array[0..1000,0..1000]of longint;<br/>
+				&#160;&#160;&#160;&#160;a,b,k,n,m,i,j:longint;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;read(a,b,k,n,m);<br/>
+				&#160;&#160;&#160;&#160;a:=a mod 10007;<strong>//Avoid making the coefficient too large</strong><br/>
+				&#160;&#160;&#160;&#160;b:=b mod 10007;<br/>
+				&#160;&#160;&#160;&#160;coe[0,0]:=1;<br/>
+				&#160;&#160;&#160;&#160;for i:=0 to n do<strong>//DP Part</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=0 to m do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (i=0)and(j=0) then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;continue;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;coe[i][j]:=0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if i&gt;0 then<strong>//Do not forget this, or your array index may be overlimited</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;coe[i,j]:=(coe[i,j]+coe[i-1,j]*a) mod 10007;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if j&gt;0 then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;coe[i,j]:=(coe[i,j]+coe[i,j-1]*b) mod 10007;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;write(coe[n,m]);<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				long coe[1000][1000];<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;long a,b,k,n,m;<br/>
+				&#160;&#160;&#160;&#160;scanf("%ld%ld%ld%ld%ld",&amp;a,&amp;b,&amp;k,&amp;n,&amp;m);<br/>
+				&#160;&#160;&#160;&#160;a%=10007;<strong>//Avoid making the coefficient too large</strong><br/>
+				&#160;&#160;&#160;&#160;b%=10007;<br/>
+				&#160;&#160;&#160;&#160;coe[0][0]=1;<br/>
+				&#160;&#160;&#160;&#160;for(long i=0;i&lt;=n;i++)<strong>//DP Part</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(long j=0;j&lt;=m;j++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if((i==0)&amp;&amp;(j==0))<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;continue;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;coe[i][j]=0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(i&gt;0)<strong>//Do not forget this, or your array index may be overlimited</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;coe[i][j]=(coe[i][j]+coe[i-1][j]*a)%10007;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(j&gt;0)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;coe[i][j]=(coe[i][j]+coe[i][j-1]*b)%10007;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;printf("%ld",coe[n][m]);<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

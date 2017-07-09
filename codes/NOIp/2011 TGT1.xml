@@ -1,0 +1,65 @@
+﻿<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp 2011 TGT1</title>
+	<html>
+		<center>
+			<h2>NOIp 2011 TGT1</h2>
+			<var>2017-05-18 16:30 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1003">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1736">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>When you read the input format, you may think: "Oh, if I can read the coordinate before the carpets, I can solve it quickly by checking if one of the carpets below has covered there. " However, We can keep the carpet information in an array and check them later. That's the solution. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;a,b,g,k:array[1..10000]of longint;<br/>
+				&#160;&#160;&#160;&#160;n,i:integer;<br/>
+				&#160;&#160;&#160;&#160;x,y:longint;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;read(n);<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to n do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;read(a[i],b[i],g[i],k[i]);<br/>
+				&#160;&#160;&#160;&#160;read(x,y);<br/>
+				&#160;&#160;&#160;&#160;for i:=n downto 1 do<strong>//Remember that we need to output the top one</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (a[i]&lt;=x)and(b[i]&lt;=y)and(a[i]+g[i]&gt;=x)and(b[i]+k[i]&gt;=y) then<strong>//If it has covered the coordinate, output it then exit</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;write(i);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;halt;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;write(-1);<strong>//If no carpet has covered the coordinate, output -1</strong><br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				long a[10000],b[10000],g[10000],k[10000];<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;int n;<br/>
+				&#160;&#160;&#160;&#160;scanf("%d",&amp;n);<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;n;i++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%ld%ld%ld%ld",&amp;a[i],&amp;b[i],&amp;g[i],&amp;k[i]);<br/>
+				&#160;&#160;&#160;&#160;long x,y;<br/>
+				&#160;&#160;&#160;&#160;scanf("%ld%ld",&amp;x,&amp;y);<br/>
+				&#160;&#160;&#160;&#160;for(int i=n-1;i&gt;=0;i--)<strong>//Remember that we need to output the top one</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if((a[i]&lt;=x)&amp;&amp;(b[i]&lt;=y)&amp;&amp;(a[i]+g[i]&gt;=x)&amp;&amp;(b[i]+k[i]&gt;=y))<strong>//If it has covered the coordinate, output it then exit</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;printf("%d",i+1);<strong>//In C/C++, the array indexes are from 0 to n-1, so do not forget to add 1 when you output the index</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return 0;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;printf("-1");<strong>//If no carpet has covered the coordinate, output -1</strong><br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

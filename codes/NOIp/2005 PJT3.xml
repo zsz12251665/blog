@@ -1,0 +1,65 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp 2005 PJT3</title>
+	<html>
+		<center>
+			<h2>NOIp 2005 PJT3</h2>
+			<var>2017-05-31 21:17 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1048">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1104">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem is a 01 knapsack problem. So we can solve it by a DP(Dynamic Planning) algorithm. </p>
+			<p>Usually, a DP algorithm is made up of a dp array and the state transition formula. For a knapsack problem, the formula is dp=max(dp[i-cost]+price). The use of it will be shown in the code below. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;dp:array[0..1000]of longint;<br/>
+				&#160;&#160;&#160;&#160;t,m,cost,price,i,j:integer;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;for i:=0 to 1000 do<strong>//Format the dp array</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dp[i]:=0;<br/>
+				&#160;&#160;&#160;&#160;read(t,m);<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to m do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;read(cost,price);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=t downto cost do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if dp[j]&lt;dp[j-cost]+price then<strong>//dp=max(dp[i-cost]+price)</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dp[j]:=dp[j-cost]+price;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;write(dp[t]);<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				long dp[1001];<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;1001;i++)<strong>//Format the dp array</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dp[i]=0;<br/>
+				&#160;&#160;&#160;&#160;int t,m;<br/>
+				&#160;&#160;&#160;&#160;scanf("%d%d",&amp;t,&amp;m);<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;m;i++)<br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;int cost,price;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%d%d",&amp;cost,&amp;price);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int j=t;j&gt;=cost;j--)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(dp[j]&lt;dp[j-cost]+price)<strong>//dp=max(dp[i-cost]+price)</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dp[j]=dp[j-cost]+price;<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;printf("%ld",dp[t]);<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

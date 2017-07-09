@@ -1,0 +1,53 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>HDU 2548</title>
+	<html>
+		<center>
+			<h2>HDU 2548</h2>
+			<var>2017-05-13 09:21 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://vjudge.net/problem/HDU-2548">vjudge</a>
+			<br/>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2548">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is just a mathmatical problem. The speed how fast the two armies get close is (u+v), the sum of their speeds. Then the time they meet will be l/(u+v). The reporter is always running, so the time he runs is also l/(u+v). And the distance he runs will equals the speed multiply the time that is l/(u+v)*w. So when you read a group of (u,v,w,l), just output l/(u+v)*w. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;t,i:integer;<br/>
+				&#160;&#160;&#160;&#160;u,v,w,l:double;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;read(t);<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to t do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;read(u,v,w,l);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;writeln(l/(u+v)*w:0:3);<strong>//In Pascal, the programmer should pay attention that the / operator will give a real number answer, the div operator will give a integer answer. But the div operator can only calculate integers but not real numbers</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;int t;<br/>
+				&#160;&#160;&#160;&#160;scanf("%d",&amp;t);<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;t;i++)<br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;double u,v,w,l;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%lf%lf%lf%lf",&amp;u,&amp;v,&amp;w,&amp;l);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;printf("%.3lf\n",l/(u+v)*w);<strong>//In C/C++, the / operator will check the data type automatically. If both are integers it, it will give a integer answer(truncate the digits after the decimal point). Or It will give the real number answer</strong><br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

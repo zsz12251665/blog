@@ -1,0 +1,80 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp 2004 TGT3</title>
+	<html>
+		<center>
+			<h2>NOIp 2004 TGT3</h2>
+			<var>2017-04-20 08:26 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1091">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1098">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>First, to every i in 1~n, we need to find the longest ascending subsequence from 1 to i and the longest descending subsequence from i to n. Both of them must include i. In this way, we can count the number of the students who get out when i is the tallest student in the team. And then, we can search the 1~n to get the smallest answer. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;a,inca,deca:array[1..100]of integer;<br/>
+				&#160;&#160;&#160;&#160;n,ans,i,j:integer;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;read(n);<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to n do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;read(a[i]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;inca[i]:=1;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;deca[i]:=1;<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;for i:=2 to n do<strong>//Find the longest ascending subsequences</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=1 to i-1 do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (a[j]&lt;a[i])and(inca[j]+1&gt;inca[i]) then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;inca[i]:=inca[j]+1;<br/>
+				&#160;&#160;&#160;&#160;for i:=n-1 downto 1 do<strong>//Find the longest descending subsequences</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=n downto i+1 do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (a[j]&lt;a[i])and(deca[j]+1&gt;deca[i]) then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;deca[i]:=deca[j]+1;<br/>
+				&#160;&#160;&#160;&#160;ans:=n;<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to n do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if n-inca[i]-deca[i]+1&lt;ans then<strong>//Do not forget to add 1 because you've count i twice</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans:=n-inca[i]-deca[i]+1;<br/>
+				&#160;&#160;&#160;&#160;write(ans);<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				int a[100],inca[100],deca[100];<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;int n;<br/>
+				&#160;&#160;&#160;&#160;scanf("%d",&amp;n);<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;n;i++)<br/>
+				&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%d",&amp;a[i]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;inca[i]=deca[i]=1;<br/>
+				&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;for(int i=1;i&lt;n;i++)<strong>//Find the longest ascending subsequences</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int j=0;j&lt;i;j++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if((a[j]&lt;a[i])&amp;&amp;(inca[j]+1&gt;inca[i]))<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;inca[i]=inca[j]+1;<br/>
+				&#160;&#160;&#160;&#160;for(int i=n-2;i&gt;0;i--)<strong>//Find the longest descending subsequences</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int j=n-1;j&gt;i;j--)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if((a[j]&lt;a[i])&amp;&amp;(deca[j]+1&gt;deca[i]))<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;deca[i]=deca[j]+1;<br/>
+				&#160;&#160;&#160;&#160;int ans=n;<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;n;i++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(n-inca[i]-deca[i]+1&lt;ans)<strong>//Do not forget to add 1 because you've count i twice</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans=n-inca[i]-deca[i]+1;<br/>
+				&#160;&#160;&#160;&#160;printf("%d",ans);<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>

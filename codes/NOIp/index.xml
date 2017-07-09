@@ -1,0 +1,55 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>NOIp</title>
+	<html>
+		<h2 align="center">National Olympiad in Informatics in provinces</h2>
+		<h3>Introduction</h3>
+		<section>
+			<p>National Olympiad in Informatics in provinces(abbr. NOIp) is an informatic competition which is held from 1995 for Chinese secondary school students(including Hong Kong and Macao). The competitors will be devided in 2 groups. The PJ group is mainly for junior high school students, and the TG group is mainly for senior high school students. The preliminary is written test. Only the top 10%~15% of the competitors will be able to attend the final. The final is programming test. For the TG group before 2011 and the PJ group, the final was held in a single day with 4 problems for competitors to solve. From 2011, it is held in the whole weekend with 3 problems each day for TG group. </p>
+		</section>
+		<h3>Problem Set</h3>
+		<section>
+			<p>2004</p>
+			<section>
+				<a target="_parent" href="/codes/NOIp/2004 PJT1.xml">NOIp 2004 PJT1</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2004 PJT2.xml">NOIp 2004 PJT2</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2004 PJT3.xml">NOIp 2004 PJT3</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2004 PJT4.xml">NOIp 2004 PJT4</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2004 TGT1.xml">NOIp 2004 TGT1</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2004 TGT2.xml">NOIp 2004 TGT2</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2004 TGT3.xml">NOIp 2004 TGT3</a>&#160;&#160;&#160;&#160;
+			</section>
+			<p>2005</p>
+			<section>
+				<a target="_parent" href="/codes/NOIp/2005 PJT2.xml">NOIp 2005 PJT2</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2005 PJT3.xml">NOIp 2005 PJT3</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2005 TGT1.xml">NOIp 2005 TGT1</a>&#160;&#160;&#160;&#160;
+			</section>
+			<p>2011</p>
+			<section>
+				<a target="_parent" href="/codes/NOIp/2011 TGT1.xml">NOIp 2011 TGT1</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2011 TGT2.xml">NOIp 2011 TGT2</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2011 TGT4.xml">NOIp 2011 TGT4</a>&#160;&#160;&#160;&#160;
+			</section>
+			<p>2012</p>
+			<section>
+				<a target="_parent" href="/codes/NOIp/2012 PJT1.xml">NOIp 2012 PJT1</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2012 TGT1.xml">NOIp 2012 TGT1</a>&#160;&#160;&#160;&#160;
+			</section>
+			<p>2015</p>
+			<section>
+				<a target="_parent" href="/codes/NOIp/2015 PJT1.xml">NOIp 2015 PJT1</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2015 PJT2.xml">NOIp 2015 PJT2</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2015 TGT1.xml">NOIp 2015 TGT1</a>&#160;&#160;&#160;&#160;
+			</section>
+			<p>2016</p>
+			<section>
+				<a target="_parent" href="/codes/NOIp/2016 PJT1.xml">NOIp 2016 PJT1</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2016 PJT2.xml">NOIp 2016 PJT2</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2016 PJT3.xml">NOIp 2016 PJT3</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2016 TGT1.xml">NOIp 2016 TGT1</a>&#160;&#160;&#160;&#160;
+				<a target="_parent" href="/codes/NOIp/2016 TGT4.xml">NOIp 2016 TGT4</a>&#160;&#160;&#160;&#160;
+			</section>
+		</section>
+	</html>
+</page>

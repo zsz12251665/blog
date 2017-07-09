@@ -1,0 +1,24 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>POJ</title>
+	<html>
+		<h2 align="center">Peking University JudgeOnline for ACM/ICPC</h2>
+		<h3>Introduction</h3>
+		<section>
+			<p>Peking University JudgeOnline for ACM/ICPC(abbr. POJ) is the online judge of Peking University. It is also opened to public. It is famous for its classic problems. Both the beginners and advancers would like to solve problem on this online judge because it keeps a large number of ACM/ICPC problems and they are good-sorted. You can easily find a lot of plans to improve you programming skills with POJ on the Internet. They're all cut into some small knowledge points like simulation, sort algorithms, graphic theory, number theory, dynamic planning, etc. It is so popular among students(including high school students and university students). </p>
+		</section>
+		<h3>Problem Set</h3>
+		<section>
+			<a target="_parent" href="/codes/POJ/1003.xml">POJ 1003</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/1004.xml">POJ 1004</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/1006.xml">POJ 1006</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/1007.xml">POJ 1007</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/1088.xml">POJ 1088</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/2000.xml">POJ 2000</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/2506.xml">POJ 2506</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/2965.xml">POJ 2965</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/3278.xml">POJ 3278</a>&#160;&#160;&#160;&#160;
+			<a target="_parent" href="/codes/POJ/3295.xml">POJ 3295</a>&#160;&#160;&#160;&#160;
+		</section>
+	</html>
+</page>

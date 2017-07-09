@@ -1,0 +1,117 @@
+<?xml-stylesheet type="text/xsl" href="/codes/template.xsl"?>
+<page>
+	<title>POJ 1088</title>
+	<html>
+		<center>
+			<h2>POJ 1088</h2>
+			<var>2017-06-21 19:34 by zsz12251665</var>
+		</center>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://vjudge.net/problem/POJ-1088">vjudge</a>
+			<br/>
+			<a target="_blank" href="http://poj.org/problem?id=1088">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>First of all, I thought it can be solved by a BFS(Breadth First Search) from the lowest point. And I got a WA(Wrong Answer). Later, someone told me a possible situation like this: </p>
+			<table align="center" class="sheet">
+				<tr align="center">
+		<td width="20px">8</td>
+		<td width="20px">9</td>
+		<td width="20px">1</td>
+		<td width="20px">8</td>
+		<td width="20px">8</td>
+				</tr>
+				<tr align="center">
+		<td width="20px">4</td>
+		<td width="20px">5</td>
+		<td width="20px">6</td>
+		<td width="20px">7</td>
+		<td width="20px">8</td>
+				</tr>
+			</table>
+			<p>Obviously, the lonest length is 5. But it is not from the highest point or the lowest. I have to search every point to make sure the length I find is the longest. So I use a kind of memorable search to make the time shorter. So when I search a point, if it has been searched, the search function will return the answer immediately. Or it will search the four points beside it and return the lonest length plus 1. That means length[x][y]=max(length[x-1][y],length[x][y-1],length[x+1][y],length[x][y+1])+1. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<div class="codebox">
+				var<br/>
+				&#160;&#160;&#160;&#160;height,length:array[1..10000,1..10000]of integer;<br/>
+				&#160;&#160;&#160;&#160;r,c,ans,i,j:integer;<br/>
+				function search(x,y:integer):integer;<strong>//Search function</strong><br/>
+				var<br/>
+				&#160;&#160;&#160;&#160;max:integer;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;if length[x,y]&lt;&gt;0 then<strong>//If the point has been searched, return the answer</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;exit(length[x,y]);<br/>
+				&#160;&#160;&#160;&#160;max:=0;<strong>//Search the longest length</strong><br/>
+				&#160;&#160;&#160;&#160;if (x&gt;1)and(height[x-1,y]&lt;height[x,y])and(search(x-1,y)&gt;max) then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max:=length[x-1,y];<br/>
+				&#160;&#160;&#160;&#160;if (y&gt;1)and(height[x,y-1]&lt;height[x,y])and(search(x,y-1)&gt;max) then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max:=length[x,y-1];<br/>
+				&#160;&#160;&#160;&#160;if (x&lt;r)and(height[x+1,y]&lt;height[x,y])and(search(x+1,y)&gt;max) then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max:=length[x+1,y];<br/>
+				&#160;&#160;&#160;&#160;if (y&lt;c)and(height[x,y+1]&lt;height[x,y])and(search(x,y+1)&gt;max) then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max:=length[x,y+1];<br/>
+				&#160;&#160;&#160;&#160;length[x,y]:=max+1;<strong>//Do not forget to plus 1, or you'll forget to count this point</strong><br/><br/>
+				&#160;&#160;&#160;&#160;exit(length[x,y]);<br/>
+				end;<br/>
+				begin<br/>
+				&#160;&#160;&#160;&#160;read(r,c);<br/>
+				&#160;&#160;&#160;&#160;for i:=1 to r do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=1 to c do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;begin<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;length[i,j]:=0;<strong>//Format the length array</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;read(height[i,j]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;end;<br/>
+				&#160;&#160;&#160;&#160;ans:=0;<strong>//Search the longest length of each point and keep the longest one</strong><br/>
+				&#160;&#160;&#160;&#160;for i:=1 to r do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for j:=1 to c do<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if search(i,j)&gt;ans then<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans:=length[i,j];<br/>
+				&#160;&#160;&#160;&#160;write(ans);<br/>
+				end.<br/>
+			</div>
+			<p>C++</p>
+			<div class="codebox">
+				#include&lt;cstdio&gt;<br/>
+				int height[100][100],length[100][100],r,c;<br/>
+				int search(int x,int y)<strong>//Search function</strong><br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;if(length[x][y]!=0)<strong>//If the point has been searched, return the answer</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return length[x][y];<br/>
+				&#160;&#160;&#160;&#160;int max=0;<strong>//Search the longest length</strong><br/>
+				&#160;&#160;&#160;&#160;if((x&gt;0)&amp;&amp;(height[x-1][y]&lt;height[x][y])&amp;&amp;(search(x-1,y)&gt;max))<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max=length[x-1][y];<br/>
+				&#160;&#160;&#160;&#160;if((y&gt;0)&amp;&amp;(height[x][y-1]&lt;height[x][y])&amp;&amp;(search(x,y-1)&gt;max))<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max=length[x][y-1];<br/>
+				&#160;&#160;&#160;&#160;if((x&lt;r-1)&amp;&amp;(height[x+1][y]&lt;height[x][y])&amp;&amp;(search(x+1,y)&gt;max))<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max=length[x+1][y];<br/>
+				&#160;&#160;&#160;&#160;if((y&lt;c-1)&amp;&amp;(height[x][y+1]&lt;height[x][y])&amp;&amp;(search(x,y+1)&gt;max))<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;max=length[x][y+1];<br/>
+				&#160;&#160;&#160;&#160;length[x][y]=max+1;<strong>//Do not forget to plus 1, or you'll forget to count this point</strong><br/>
+				&#160;&#160;&#160;&#160;return length[x][y];<br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&#160;&#160;&#160;&#160;scanf("%d%d",&amp;r,&amp;c);<br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;r;i++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int j=0;j&lt;c;j++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;length[i][j]=0;<strong>//Format the length array</strong><br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;scanf("%d",&amp;height[i][j]);<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br/>
+				&#160;&#160;&#160;&#160;int ans=0;<strong>//Search the longest length of each point and keep the longest one</strong><br/>
+				&#160;&#160;&#160;&#160;for(int i=0;i&lt;r;i++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;for(int j=0;j&lt;c;j++)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if(search(i,j)&gt;ans)<br/>
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ans=length[i][j];<br/>
+				&#160;&#160;&#160;&#160;printf("%d",ans);<br/>
+				&#160;&#160;&#160;&#160;return 0;<br/>
+				}<br/>
+			</div>
+		</section>
+	</html>
+</page>
