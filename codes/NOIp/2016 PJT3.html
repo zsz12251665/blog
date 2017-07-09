@@ -38,7 +38,7 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;time:array[1..100000]of longint;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;n,ans,queue,i,j:longint;<br/>
 							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;queue:=1;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 100001 do<strong>//Format the count array</strong><br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]:=0;<br/>
@@ -96,7 +96,7 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=passenger[queue];j&lt;passenger[queue+1];j++)<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[nation[j]]--;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(count[nation[j]]<=0)<strong>//If there was no one else with this nationality, refresh the answer</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(count[nation[j]]&lt;=0)<strong>//If there was no one else with this nationality, refresh the answer</strong><br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans--;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue++;<br/>

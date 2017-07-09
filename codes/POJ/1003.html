@@ -55,7 +55,7 @@
 							int main()<br/>
 							{<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;double d;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%lf",&d);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%lf",&amp;d);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;while(d&gt;0)<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int ans=1;<strong>//Don't forget it starts from 2 to ans+1</strong><br/>
@@ -65,7 +65,7 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d-=1.0/ans;<strong>//If you just use 1 instead of 1.0, the compiler of C++ may think that you mean 1 div ans and give a 0 back</strong><br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d card(s)\n",ans-1);<strong>//Do not forget to minus 1 since it starts from 2 to ans+1</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%lf",&d);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%lf",&amp;d);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
