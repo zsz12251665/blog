@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2012 TGT1 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="bar"><div id="menu"></div></td>
+				<td valign="top" id="text">
+					<center>
+						<h2>NOIp 2012 TGT1</h2>
+						<var>2017-05-17 21:12 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<section>
+						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1079">Luogu</a>
+						<br/>
+						<a target="_blank" href="https://www.vijos.org/p/1778">Vijos</a>
+					</section>
+					<h3>Solution</h3>
+					<section>
+						<p>It is the first problem of NOIp 2012, so it won't be difficult, will it? The solution is simple because the Vigenère Password can be keep in an easy fomula that is given in the code. </p>
+					</section>
+					<h3>Code</h3>
+					<section>
+						<p>Pascal</p>
+						<div class="codebox">
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;key,txt:ansistring;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;i:integer;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;readln(key);<strong>//In Pascal, read a string means to read every char until a return or an enter, so you'd better to readln them string by string</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;readln(txt);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to length(txt) do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt[i]:=chr((ord(txt[i]) mod 32-ord(key[(i-1) mod length(key)+1]) mod 32+26) mod 26+ord(txt[i])-ord(txt[i]) mod 32+1);<strong>//In ASCII, 'A' ~ 'Z' are 65 to 90, 'a' ~ 'z' are 97 to 122. So a char which modulo 32 can show its order in the alphabet</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;write(txt);<br/>
+							end.<br/>
+						</div>
+						<p>C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							#include&lt;cstring&gt;<strong>//We need to use the strlen function in cstring</strong><br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;char key[100],txt[1000];<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%s%s",&amp;key,&amp;txt);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int keylen=strlen(key),txtlen=strlen(txt);<strong>//In C/C++, the strlen() is not very fast, so I use two variable to keep them</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;txtlen;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt[i]=(txt[i]%32-key[i%keylen]%32+26)%26+txt[i]-txt[i]%32+1;<strong>//In ASCII, 'A' ~ 'Z' are 65 to 90, 'a' ~ 'z' are 97 to 122. So a char which modulo 32 can show its order in the alphabet</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;printf("%s",txt);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+					</section>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>

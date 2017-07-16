@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>BZOJ 4300 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="bar"><div id="menu"></div></td>
+				<td valign="top" id="text">
+					<center>
+						<h2>BZOJ 4300</h2>
+						<var>2016-12-21 20:18 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<section>
+						<a target="_blank" href="https://vjudge.net/problem/HYSBZ-4300">vjudge</a>
+						<br/>
+						<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=4300">BZOJ</a>
+					</section>
+					<h3>Solution</h3>
+					<section>
+						<p>When I read the problem the first time, I thought out a way like solving the longest increasing subsequence problem, which means I just need an array to keep the longest subsequence until this integer. The code is given as Solution 1 in the code part. </p>
+						<p>However, when I submitted it to the judge, the answer was TLE(Time Limit Exceed) because the time complexity is O(n^2). Later, I got another algorithm whose time complexity is O(n lg(ai)). It just needs a dp(dynamic programming) array. dp[i] keeps the length of the longest subsequence whose last integer's i-th digit is not 0 in binary. So after read in each integer in sequence, I can update the dp array in an O(lg(ai)) algorithm. And that is Solution 2, which is accepted. </p>
+					</section>
+					<h3>Code</h3>
+					<section>
+						<p>Solution 1 C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							#define MAXN 100000<br/>
+							long a[MAXN],len[MAXN];<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len[i]=1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&lt;i;j++)<strong>//Update the array len</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(((a[j]&amp;a[i])!=0)&amp;&amp;(len[j]+1&gt;len[i]))<strong>//Judge if a[i] can be added after a[j] and if it's the best solution</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len[i]=len[j]+1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ans&lt;len[i])<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=len[i];<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+						<p>Solution 2 C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							#define MAXN 100000<br/>
+							long a[MAXN],dp[32];<br/>
+							long max(long a,long b)<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if(a&gt;b)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return b;<br/>
+							}<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;a[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long now=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&lt;32;j++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&amp;(1&lt;&lt;j))!=0)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now=max(dp[j],now);<strong>//Find the length of the longest subsequence that can be added by a[i]</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now++;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&lt;32;j++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&amp;(1&lt;&lt;j))!=0)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[j]=max(dp[j],now);<strong>//Update the dp array</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(long j=0;j&lt;32;j++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=max(dp[j],ans);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+					</section>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>

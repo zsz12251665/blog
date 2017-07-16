@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2004 TGT3 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="bar"><div id="menu"></div></td>
+				<td valign="top" id="text">
+					<center>
+						<h2>NOIp 2004 TGT3</h2>
+						<var>2017-04-20 08:26 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<section>
+						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1091">Luogu</a>
+						<br/>
+						<a target="_blank" href="https://www.vijos.org/p/1098">Vijos</a>
+					</section>
+					<h3>Solution</h3>
+					<section>
+						<p>First, to every i in 1~n, we need to find the longest ascending subsequence from 1 to i and the longest descending subsequence from i to n. Both of them must include i. In this way, we can count the number of the students who get out when i is the tallest student in the team. And then, we can search the 1~n to get the smallest answer. </p>
+					</section>
+					<h3>Code</h3>
+					<section>
+						<p>Pascal</p>
+						<div class="codebox">
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;a,inca,deca:array[1..100]of integer;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;n,ans,i,j:integer;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;read(n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(a[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inca[i]:=1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deca[i]:=1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=2 to n do<strong>//Find the longest ascending subsequences</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to i-1 do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a[j]&lt;a[i])and(inca[j]+1&gt;inca[i]) then<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inca[i]:=inca[j]+1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=n-1 downto 1 do<strong>//Find the longest descending subsequences</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=n downto i+1 do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a[j]&lt;a[i])and(deca[j]+1&gt;deca[i]) then<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deca[i]:=deca[j]+1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;ans:=n;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if n-inca[i]-deca[i]+1&lt;ans then<strong>//Do not forget to add 1 because you've count i twice</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=n-inca[i]-deca[i]+1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
+							end.<br/>
+						</div>
+						<p>C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							int a[100],inca[100],deca[100];<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int n;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inca[i]=deca[i]=1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;n;i++)<strong>//Find the longest ascending subsequences</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;i;j++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[j]&lt;a[i])&amp;&amp;(inca[j]+1&gt;inca[i]))<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inca[i]=inca[j]+1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=n-2;i&gt;0;i--)<strong>//Find the longest descending subsequences</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=n-1;j&gt;i;j--)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[j]&lt;a[i])&amp;&amp;(deca[j]+1&gt;deca[i]))<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deca[i]=deca[j]+1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int ans=n;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(n-inca[i]-deca[i]+1&lt;ans)<strong>//Do not forget to add 1 because you've count i twice</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=n-inca[i]-deca[i]+1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+					</section>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>

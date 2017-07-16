@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2004 PJT3 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="bar"><div id="menu"></div></td>
+				<td valign="top" id="text">
+					<center>
+						<h2>NOIp 2004 PJT3</h2>
+						<var>2017-02-23 16:53 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<section>
+						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1087">Luogu</a>
+						<br/>
+						<a target="_blank" href="https://www.vijos.org/p/1114">Vijos</a>
+					</section>
+					<h3>Solution</h3>
+					<section>
+						<p>You may have probably find it. Yes, the FBI tree is a full binary tree. Each leaf node is a char in the 01 string that if the char is 0, the leaf node is 'B' and if the char is 1, the leaf node is 'I'. What's more, if a non-leaf node has two childern nodes which are all 'B', the node itself must be 'B'. Opposite, the node will be 'I' if his childern node are all 'I'. However, if one of the child node is 'F' or they are 'B' and 'I', their parent node should be 'F'. Above all, the problem can be solved by a recursive algorithm. </p>
+					</section>
+					<h3>Code</h3>
+					<section>
+						<p>Pascal</p>
+						<div class="codebox">
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;s:ansistring;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;n:integer;<br/>
+							function traversal(l,r:integer):char;<strong>//The function of recursion</strong><br/>
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;lc,rc:char;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if l=r then<strong>//If it is a leaf node, return it</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if s[l]='0' then<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('B');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('B');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('I');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('I');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;lc:=traversal(l,(l+r-1) div 2);<strong>//Get the childern nodes by recursion</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;rc:=traversal((l+r-1) div 2+1,r);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if lc=rc then<strong>//Decide what the parent node should be</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(lc);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(lc);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write('F');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit('F');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							end;<br/>
+							function power(n:integer):integer;<strong>//Get the 2 of the n-th power</strong><br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;power:=1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;while n>0 do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power:=power*2;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;
+							end;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;readln(n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;readln(s);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;n:=ord(traversal(1,power(n)));<strong>//Though we don't need the return of the traversal function at last, it is better to collect the return in Pascal</strong><br/>
+							end.<br/>
+						</div>
+						<p>C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							char s[1024];<br/>
+							char traversal(int l,int r)<strong>//The function of recursion</strong><br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if(l==r)<strong>//If it is a leaf node, return it</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(s[l]=='0')<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putchar('B');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'B';<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putchar('I');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'I';<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;char lc=traversal(l,(l+r+1)/2-1),rc=traversal((l+r+1)/2,r);<strong>//Get the childern nodes by recursion</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if(lc==rc)<strong>//Decide what the parent node should be</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putchar(lc);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return lc;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putchar('F');<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'F';<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							}<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int n;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%s",&amp;n,&amp;s);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;traversal(0,(1&lt;&lt;n)-1);<strong>//1&lt;&lt;n means 2^n("&lt;&lt;" is a bit operator. It is the right shift that it is able to move 1 to the right for n bits)</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+					</section>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>

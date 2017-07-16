@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2004 PJT4 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="bar"><div id="menu"></div></td>
+				<td valign="top" id="text">
+					<center>
+						<h2>NOIp 2004 PJT4</h2>
+						<var>2017-04-26 11:26 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<section>
+						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1088">Luogu</a>
+						<br/>
+						<a target="_blank" href="https://www.vijos.org/p/1115">Vijos</a>
+					</section>
+					<h3>Solution</h3>
+					<section>
+						<p>I have to admit that the full arragement confused me for a while, but later I found a way. I made a find function to find if there is another finger next to the finger I am using. If there is, it'll return the number of the next finger, or it'll return -1. If it return -1, it means that I need to carry on the previous bit. So the add function is used to add a number to the current bit. What's more, the used array is used to keep whether the finger is used or not so that I can find the next finger faster. That's the solution. </p>
+					</section>
+					<h3>Code</h3>
+					<section>
+						<p>Pascal</p>
+						<div class="codebox">
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;finger:array[1..10000]of integer;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;used:array[1..10000]of boolean;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;n,m,i:integer;<br/>
+							function find(a:integer):integer;<br/>
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;i:integer;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=a+1 to n do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not(used[i]) then<strong>//If there is another finger that is not used</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(i);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;exit(-1);<br/>
+							end;<br/>
+							procedure add(a:integer);<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;used[finger[a]]:=false;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if find(finger[a])=-1 then<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(a-1);<strong>//Carry on the previous bit</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finger[a]:=find(0);<strong>//Find the smallest finger that is not used</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finger[a]:=find(finger[a]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;used[finger[a]]:=true;<br/>
+							end;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(finger[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used[finger[i]]:=true;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to m do<strong>//To add m, just add 1 for m times</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(finger[i],' ');<br/>
+							end.<br/>
+						</div>
+						<p>C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							int finger[10000],used[10001],n;<br/>
+							int find(int a)<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=a+1;i&lt;=n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(used[i]==0)<strong>//If there is another finger that is not used</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return i;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return -1;<br/>
+							}<br/>
+							void add(int a)<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;used[finger[a]]=0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if(find(finger[a])==-1)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(a-1);<strong>//Carry on the previous bit</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finger[a]=find(0);<strong>//Find the smallest finger that is not used</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finger[a]=find(finger[a]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;used[finger[a]]=1;<br/>
+							}<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int m;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;n,&amp;m);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;finger[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used[finger[i]]=1;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;m;i++)<strong>//To add m, just add 1 for m times</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(n-1);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d ",finger[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+					</section>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>

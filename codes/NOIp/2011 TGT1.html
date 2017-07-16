@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2011 TGT1 - &copy;zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr height="10px" color="#FF0000"/>
+			<table width="100%">
+				<td valign="top" id="bar"><div id="menu"></div></td>
+				<td valign="top" id="text">
+					<center>
+						<h2>NOIp 2011 TGT1</h2>
+						<var>2017-05-18 16:30 by zsz12251665</var>
+					</center>
+					<h3>Problem</h3>
+					<section>
+						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1003">Luogu</a>
+						<br/>
+						<a target="_blank" href="https://www.vijos.org/p/1736">Vijos</a>
+					</section>
+					<h3>Solution</h3>
+					<section>
+						<p>When you read the input format, you may think: "Oh, if I can read the coordinate before the carpets, I can solve it quickly by checking if one of the carpets below has covered there. " However, We can keep the carpet information in an array and check them later. That's the solution. </p>
+					</section>
+					<h3>Code</h3>
+					<section>
+						<p>Pascal</p>
+						<div class="codebox">
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;a,b,g,k:array[1..10000]of longint;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;n,i:integer;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;x,y:longint;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;read(n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(a[i],b[i],g[i],k[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;read(x,y);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=n downto 1 do<strong>//Remember that we need to output the top one</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a[i]&lt;=x)and(b[i]&lt;=y)and(a[i]+g[i]&gt;=x)and(b[i]+k[i]&gt;=y) then<strong>//If it has covered the coordinate, output it then exit</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(i);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halt;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;write(-1);<strong>//If no carpet has covered the coordinate, output -1</strong><br/>
+							end.<br/>
+						</div>
+						<p>C++</p>
+						<div class="codebox">
+							#include&lt;cstdio&gt;<br/>
+							long a[10000],b[10000],g[10000],k[10000];<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int n;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld%ld%ld",&amp;a[i],&amp;b[i],&amp;g[i],&amp;k[i]);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;long x,y;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;x,&amp;y);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=n-1;i&gt;=0;i--)<strong>//Remember that we need to output the top one</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i]&lt;=x)&amp;&amp;(b[i]&lt;=y)&amp;&amp;(a[i]+g[i]&gt;=x)&amp;&amp;(b[i]+k[i]&gt;=y))<strong>//If it has covered the coordinate, output it then exit</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",i+1);<strong>//In C/C++, the array indexes are from 0 to n-1, so do not forget to add 1 when you output the index</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;printf("-1");<strong>//If no carpet has covered the coordinate, output -1</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</div>
+					</section>
+				</td>
+			</table>
+			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+		</div>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>
