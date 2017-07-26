@@ -1,3 +1,4 @@
+document.getElementById('music').innerHTML+='<audio id="audio" src="music.mp3"></audio>';
 document.getElementById('music').innerHTML+='<img id="play" src="/posts/music/pause.svg"/>';
 document.getElementById('music').innerHTML+='<span id="timeline">00:00/00:00</span>';
 document.getElementById('music').innerHTML+='<img id="muted" src="/posts/music/unmuted.svg"/>';
