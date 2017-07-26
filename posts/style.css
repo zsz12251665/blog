@@ -51,8 +51,9 @@ var
 {
 	background-color: #FFFFFF;
 	border-radius: 5px;
-	padding: 5px;
 	display: inline-block;
+	padding: 5px;
+	position: relative;
 }
 #music img
 {
@@ -74,6 +75,17 @@ var
 	margin-left: 5px;
 	margin-right: 5px;
 	vertical-align: middle;
+}
+#music #value
+{
+	background-color: #FFFFFF;
+	border-radius: 1px;
+	display: none;
+	left: 200px;
+    position: absolute;
+	text-align: center;
+	top: -25px;
+	width: 40px;
 }
 #text
 {

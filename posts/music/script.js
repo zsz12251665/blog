@@ -4,12 +4,15 @@ document.getElementById('music').innerHTML+='<span id="timeline">00:00/00:00</sp
 document.getElementById('music').innerHTML+='<img id="muted" src="/posts/music/unmuted.svg"/>';
 document.getElementById('music').innerHTML+='<input id="volume" type="range"/>';
 document.getElementById('music').innerHTML+='<img id="repeat" src="/posts/music/repeat.svg"/>';
+document.getElementById('music').innerHTML+='<span id="value">100</span>';
 var audio=document.getElementById('audio');
 var volume=document.getElementById('volume');
 var value=100;
 document.getElementById('play').addEventListener('click',play);
 document.getElementById('muted').addEventListener('click',mute);
 document.getElementById('repeat').addEventListener('click',repeat);
+document.getElementById('volume').addEventListener('mouseout',function(){document.getElementById('value').style.display='none';});
+document.getElementById('volume').addEventListener('mouseover',function(){document.getElementById('value').style.display='block';});
 volume.max=volume.value=100;
 volume.min=0;
 volume.step=1;
@@ -22,6 +25,7 @@ audio.addEventListener('ended',end);
 function ChangeVolume()
 {
 	audio.volume=Number(volume.value)/100;
+	document.getElementById('value').innerHTML=Number(volume.value);
 	if(volume.value==0)
 		document.getElementById('muted').src='/posts/music/muted.svg';
 	else
