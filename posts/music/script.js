@@ -1,72 +1,90 @@
-var player=document.getElementById('audio');
-player.autoplay=true;
-player.loop=true;
-function play_pause(b)
+document.getElementById('music').innerHTML+='<img id="play" src="/posts/music/pause.svg"/>';
+document.getElementById('music').innerHTML+='<span id="timeline">00:00/00:00</span>';
+document.getElementById('music').innerHTML+='<img id="muted" src="/posts/music/unmuted.svg"/>';
+document.getElementById('music').innerHTML+='<input id="volume" type="range"/>';
+document.getElementById('music').innerHTML+='<img id="repeat" src="/posts/music/repeat.svg"/>';
+var audio=document.getElementById('audio');
+var volume=document.getElementById('volume');
+var value=100;
+document.getElementById('play').addEventListener('click',play);
+document.getElementById('muted').addEventListener('click',mute);
+document.getElementById('repeat').addEventListener('click',repeat);
+volume.max=volume.value=100;
+volume.min=0;
+volume.step=1;
+volume.addEventListener('input',ChangeVolume);
+audio.autoplay=true;
+audio.loop=true;
+audio.addEventListener('loadedmetadata',ShowTime);
+audio.addEventListener('timeupdate',ShowTime);
+audio.addEventListener('ended',end);
+function ChangeVolume()
 {
-    if(b)
-        document.getElementById('but_play').src='/posts/music/play.svg';
-    else
-        document.getElementById('but_play').src='/posts/music/pause.svg';
-}
-function click_play()
-{
-    if(player.paused)
-		player.play();
+	audio.volume=Number(volume.value)/100;
+	if(volume.value==0)
+		document.getElementById('muted').src='/posts/music/muted.svg';
 	else
-		player.pause();
-	play_pause(player.paused);
+		document.getElementById('muted').src='/posts/music/unmuted.svg';
 }
-function show_time(i)
+function ShowTime()
 {
-	if(i==0)
-		player.currentTime=document.getElementById('rng_timeline').value;
-	if(i==1)
-		document.getElementById('rng_timeline').value=player.currentTime;
-    var p=document.getElementById('p_timeline');
-    p.innerHTML='';
-    if(Math.floor(player.currentTime/60)<10)
-        p.innerHTML+='0';
-    p.innerHTML+=String(Math.floor(player.currentTime/60));
-    p.innerHTML+=':';
-    if((player.currentTime%60)<10)
-        p.innerHTML+='0';
-    p.innerHTML+=String(Math.floor(player.currentTime%60));
-    p.innerHTML+='/';
-    if(Math.floor(player.duration/60)<10)
-        p.innerHTML+='0';
-    p.innerHTML+=String(Math.floor(player.duration/60));
-    p.innerHTML+=':';
-    if((player.duration%60)<10)
-        p.innerHTML+='0';
-    p.innerHTML+=String(Math.floor(player.duration%60));
+	var p=document.getElementById('timeline');
+	p.innerHTML='';
+	if(Math.floor(audio.currentTime/60)<10)
+		p.innerHTML+='0';
+	p.innerHTML+=String(Math.floor(audio.currentTime/60));
+	p.innerHTML+=':';
+	if((audio.currentTime%60)<10)
+		p.innerHTML+='0';
+	p.innerHTML+=String(Math.floor(audio.currentTime%60));
+	p.innerHTML+='/';
+	if(Math.floor(audio.duration/60)<10)
+		p.innerHTML+='0';
+	p.innerHTML+=String(Math.floor(audio.duration/60));
+	p.innerHTML+=':';
+	if((audio.duration%60)<10)
+		p.innerHTML+='0';
+	p.innerHTML+=String(Math.floor(audio.duration%60));
 }
-function click_repeat()
+function play()
 {
-    player.loop=!(player.loop);
-    if(player.loop)
-        document.getElementById('but_repeat').src='/posts/music/repeat.svg';
-    else
-        document.getElementById('but_repeat').src='/posts/music/no-repeat.svg';
+	if(audio.paused)
+	{
+		audio.play();
+		document.getElementById('play').src='/posts/music/pause.svg';
+	}
+	else
+	{
+		audio.pause();
+		document.getElementById('play').src='/posts/music/play.svg';
+	}
 }
-function change_volume()
+function end()
 {
-    document.getElementById('p_volume').innerHTML='Volume: '+document.getElementById('rng_volume').value;
-    player.volume=Number(document.getElementById('rng_volume').value)/100;
-    if(document.getElementById('rng_volume').value==0)
-        document.getElementById('but_muted').src='/posts/music/muted.svg';
-    else
-        document.getElementById('but_muted').src='/posts/music/unmuted.svg';
+	if(audio.loop)
+		document.getElementById('play').src='/posts/music/pause.svg';
+	else
+		document.getElementById('play').src='/posts/music/play.svg';
 }
-function click_muted()
+function repeat()
 {
-    if(document.getElementById('rng_volume').value==0)
-        document.getElementById('rng_volume').value=100;
-    else
-        document.getElementById('rng_volume').value=0;
-    change_volume();
+	audio.loop=!(audio.loop);
+	if(audio.loop)
+		document.getElementById('repeat').src='/posts/music/repeat.svg';
+	else
+		document.getElementById('repeat').src='/posts/music/no-repeat.svg';
 }
-function format()
+function mute()
 {
-    document.getElementById('rng_timeline').max=player.duration;
-    show_time(-1);
+	if(volume.value==0)
+		if(value==0)
+			volume.value=100;
+		else
+			volume.value=value;
+	else
+	{
+		value=volume.value;
+		volume.value=0;
+	}
+	ChangeVolume();
 }
