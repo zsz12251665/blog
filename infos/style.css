@@ -3,17 +3,22 @@
     font-family: "Source Serif Pro Light";
     src: url("/Font/Source Serif Pro Light.woff");
 }
+@font-face
+{
+	font-family: "KaiTi";
+	src: url("/Font/KaiTi.woff");
+}
 a
 {
     color: #F19C27;
-    font-family: "Source Serif Pro Light";
+    font-family: "Source Serif Pro Light","KaiTi";
     text-decoration: none;
 }
 address,time
 {
     color: #FFF6D9;
 	display: block;
-    font-family: "Source Serif Pro Light";
+    font-family: "Source Serif Pro Light","KaiTi";
     font-size: 10px;
 	font-style: italic;
 	text-align: center;
@@ -23,19 +28,15 @@ body
 	background-color: #884A31;
     background-image: url("/infos/bg.jpg");
 }
-h1,h2,h3,h4,h5,h6,li,p
+h1,h2,h3,h4,h5,h6,li,p,td,th
 {
     color: #FFF6D9;
-    font-family: "Source Serif Pro Light";
+    font-family: "Source Serif Pro Light","KaiTi";
 }
 hr
 {
 	background-color: #F19C27;
 	border-color: #F19C27;
-}
-section
-{
-	margin-left: 20px;
 }
 #bar
 {
@@ -76,5 +77,5 @@ section
 	border-style: solid;
 	border-width: 1px;
     color: #FFF6D9;
-    font-family: "Source Serif Pro Light";
+    font-family: "Source Serif Pro Light","KaiTi";
 }
