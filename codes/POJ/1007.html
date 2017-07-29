@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>POJ 1007 - &copy;zsz12251665's Blog</title>
+		<title>POJ 1007 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>POJ 1007</h2>
-						<var>2017-06-12 15:34 by zsz12251665</var>
-					</center>
+					<h2 align="center">POJ 1007</h2>
+					<time>2017-06-12 15:34 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://vjudge.net/problem/POJ-1007">vjudge</a>
@@ -26,12 +24,12 @@
 					<h3>Solution</h3>
 					<section>
 						<p>The problem is simple. Count the inversions as the problem tells you and then sort the strings and output them from the smallest inversion to the biggest one. By the way, you can combine the sort and output together by finding the smallest one without mark, marking it and then output it. </p>
-						<p>P. S. : The FPC(Free Pascal Compiler) of POJ didn't work well When I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
+						<p>P. S. : The <abbr title="Free Pascal Compiler">FPC</abbr> of POJ didn't work well When I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
 					</section>
 					<h3>Code</h3>
 					<section>
 						<p>Pascal</p>
-						<div class="codebox">
+						<code>
 							var<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;s:array[1..100]of string;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;count:array[1..100]of integer;<br/>
@@ -57,11 +55,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(s[min]);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 							end.<br/>
-						</div>
+						</code>
 						<p>C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
-							char s[100][51];<strong>//Make the string a little bigger, or you may got an OLE(Output Limit Exceeded)</strong><br/>
+							char s[100][51];<strong>//Make the string a little bigger, or you may got an <abbr title="Output Limit Exceeded">OLE</abbr></strong><br/>
 							int count[100];<br/>
 							int main()<br/>
 							{<br/>
@@ -87,11 +85,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

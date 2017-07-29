@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>POJ 1088 - &copy;zsz12251665's Blog</title>
+		<title>POJ 1088 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>POJ 1088</h2>
-						<var>2017-06-21 19:34 by zsz12251665</var>
-					</center>
+					<h2 align="center">POJ 1088</h2>
+					<time>2017-06-21 19:34 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://vjudge.net/problem/POJ-1088">vjudge</a>
@@ -25,7 +23,7 @@
 					</section>
 					<h3>Solution</h3>
 					<section>
-						<p>First of all, I thought it can be solved by a BFS(Breadth First Search) from the lowest point. And I got a WA(Wrong Answer). Later, someone told me a possible situation like this: </p>
+						<p>First of all, I thought it can be solved by a <abbr title="Breadth First Search">BFS</abbr> from the lowest point. And I got a <abbr title="Wrong Answer">WA</abbr>. Later, someone told me a possible situation like this: </p>
 						<table align="center" class="sheet">
 							<tr align="center">
 								<td width="20px">8</td>
@@ -47,7 +45,7 @@
 					<h3>Code</h3>
 					<section>
 						<p>Pascal</p>
-						<div class="codebox">
+						<code>
 							var<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;height,length:array[1..10000,1..10000]of integer;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;r,c,ans,i,j:integer;<br/>
@@ -84,9 +82,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=length[i,j];<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
 							end.<br/>
-						</div>
+						</code>
 						<p>C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							int height[100][100],length[100][100],r,c;<br/>
 							int search(int x,int y)<strong>//Search function</strong><br/>
@@ -122,11 +120,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

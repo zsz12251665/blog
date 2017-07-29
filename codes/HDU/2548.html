@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>HDU 2548 - &copy;zsz12251665's Blog</title>
+		<title>HDU 2548 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>HDU 2548</h2>
-						<var>2017-05-13 09:21 by zsz12251665</var>
-					</center>
+					<h2 align="center">HDU 2548</h2>
+					<time>2017-05-13 09:21 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://vjudge.net/problem/HDU-2548">vjudge</a>
@@ -25,12 +23,12 @@
 					</section>
 					<h3>Solution</h3>
 					<section>
-						<p>This problem is just a mathmatical problem. The speed how fast the two armies get close is (u+v), the sum of their speeds. Then the time they meet will be l/(u+v). The reporter is always running, so the time he runs is also l/(u+v). And the distance he runs will equals the speed multiply the time that is l/(u+v)*w. So when you read a group of (u,v,w,l), just output l/(u+v)*w. </p>
+						<p>This problem is just a mathmatical problem. The speed how fast the two armies get close is (u+v), the sum of their speeds. Then the time they meet will be l/(u+v). The reporter is always running, so the time he runs is also l/(u+v). And the distance he runs will equals the speed multiply the time that is l*w/(u+v). So when you read a group of (u,v,w,l), just output l*w/(u+v). </p>
 					</section>
 					<h3>Code</h3>
 					<section>
 						<p>Pascal</p>
-						<div class="codebox">
+						<code>
 							var<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;t,i:integer;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;u,v,w,l:double;<br/>
@@ -42,9 +40,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(l/(u+v)*w:0:3);<strong>//In Pascal, the programmer should pay attention that the / operator will give a real number answer, the div operator will give a integer answer. But the div operator can only calculate integers but not real numbers</strong><br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 							end.<br/>
-						</div>
+						</code>
 						<p>C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							int main()<br/>
 							{<br/>
@@ -58,11 +56,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

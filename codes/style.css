@@ -14,10 +14,38 @@ a
 	font-family: "Cambria";
 	text-decoration: none;
 }
+address,time
+{
+	color: #00FF00;
+	display: block;
+	font-family: "Cambria";
+	font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
 body
 {
 	background-color: #000000;
 	background-image: url("/codes/bg.jpg");
+}
+code
+{
+	background-color: #00FF00;
+	color: #000000;
+	display: block;
+	font-family: "Source Code Pro";
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	text-align: left;
+	width: 85%;
+	word-break: break-all;
+}
+code strong
+{
+	color: #FF0000;
+	font-family: "Source Code Pro";
+	word-break: normal;
 }
 h1,h2,h3,h4,h5,h6,li,p
 {
@@ -27,12 +55,6 @@ h1,h2,h3,h4,h5,h6,li,p
 section
 {
 	margin-left: 20px;
-}
-var
-{
-	color: #00FF00;
-	font-family: "Cambria";
-	font-size: 10px;
 }
 #bar
 {
@@ -64,23 +86,6 @@ var
 #text a
 {
 	display: inline-block;
-}
-.codebox
-{
-	background-color: #00FF00;
-	color: #000000;
-	font-family: "Source Code Pro";
-	margin-left: auto;
-	margin-right: auto;
-	padding: 10px;
-	text-align: left;
-	width: 85%;
-	word-break: break-all;
-}
-.codebox strong
-{
-	color: #FF0000;
-	font-family: "Source Code Pro";
 }
 .sheet
 {

@@ -9,6 +9,15 @@ a
     font-family: "Jokerman";
     text-decoration: none;
 }
+address,time
+{
+    color: #B5E853;
+	display: block;
+    font-family: "Jokerman";
+    font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
 body
 {
 	background-color: #4F4F4F;
@@ -19,12 +28,6 @@ h1,h2,h3,h4,h5,h6,li,p
     color: #B5E853;
     font-family: "Jokerman";
 }
-var
-{
-    color: #B5E853;
-    font-family: "Jokerman";
-    font-size: 10px;
-}
 #bar
 {
     height: 700px;
@@ -33,8 +36,10 @@ var
 }
 #goback
 {
+	display: block;
 	font-size: 24px;
 	font-weight: bold;
+	text-align: center;
 	text-decoration: underline;
 }
 #mainframe

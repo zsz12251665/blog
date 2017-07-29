@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>HDU 1009 - &copy;zsz12251665's Blog</title>
+		<title>HDU 1009 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>HDU 1009</h2>
-						<var>2017-06-03 19:35 by zsz12251665</var>
-					</center>
+					<h2 align="center">HDU 1009</h2>
+					<time>2017-06-03 19:35 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://vjudge.net/problem/HDU-1009">vjudge</a>
@@ -25,12 +23,12 @@
 					</section>
 					<h3>Solution</h3>
 					<section>
-						<p>The problem requires a greedy algorithm to solve. That can make each pound of cat food earn most JavaBeans. So As the first step, we should sort the rooms according to (j[i]/f[i]). Then access room and took all JavaBeans we can take. In this way we can solve the problem. </p>
+						<p>The problem requires a greedy algorithm to solve. That can make each pound of cat food earn most JavaBeans. So As the first step, we should sort the rooms according to j[i]/f[i]. Then access room and took all JavaBeans we can take. In this way we can solve the problem. </p>
 					</section>
 					<h3>Code</h3>
 					<section>
 						<p>Pascal</p>
-						<div class="codebox">
+						<code>
 							var<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;j,f,cj,cf:array[1..1000]of integer;<strong>//The array cf and cj are used to save a copy while doing merge sort</strong><br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;m,n,i:integer;<br/>
@@ -101,9 +99,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(m,n);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 							end.<br/>
-						</div>
+						</code>
 						<p>C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							#include&lt;cstring&gt;<strong>//We need to use the memcpy function in cstring</strong><br/>
 							int j[1000],f[1000],cj[1000],cf[1000];<strong>//The array cf and cj are used to save a copy while doing merge sort</strong><br/>
@@ -172,11 +170,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

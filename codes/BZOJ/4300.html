@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>BZOJ 4300 - &copy;zsz12251665's Blog</title>
+		<title>BZOJ 4300 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>BZOJ 4300</h2>
-						<var>2016-12-21 20:18 by zsz12251665</var>
-					</center>
+					<h2 align="center">BZOJ 4300</h2>
+					<time>2016-12-21 20:18 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://vjudge.net/problem/HYSBZ-4300">vjudge</a>
@@ -26,12 +24,12 @@
 					<h3>Solution</h3>
 					<section>
 						<p>When I read the problem the first time, I thought out a way like solving the longest increasing subsequence problem, which means I just need an array to keep the longest subsequence until this integer. The code is given as Solution 1 in the code part. </p>
-						<p>However, when I submitted it to the judge, the answer was TLE(Time Limit Exceed) because the time complexity is O(n^2). Later, I got another algorithm whose time complexity is O(n lg(ai)). It just needs a dp(dynamic programming) array. dp[i] keeps the length of the longest subsequence whose last integer's i-th digit is not 0 in binary. So after read in each integer in sequence, I can update the dp array in an O(lg(ai)) algorithm. And that is Solution 2, which is accepted. </p>
+						<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is O(n<sup>2</sup>). Later, I got another algorithm whose time complexity is O(n lg(a[i])). It just needs a <abbr title="dynamic planning">dp</abbr> array. dp[i] keeps the length of the longest subsequence whose last integer's i-th digit is not 0 in binary. So after read in each integer in sequence, I can update the dp array in an O(lg(a[i])) algorithm. And that is Solution 2, which is accepted. </p>
 					</section>
 					<h3>Code</h3>
 					<section>
 						<p>Solution 1 C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							long a[100000],len[100000];<br/>
 							int main()<br/>
@@ -51,9 +49,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 						<p>Solution 2 C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							long a[100000],dp[32];<br/>
 							long max(long a,long b)<br/>
@@ -84,11 +82,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

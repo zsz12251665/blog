@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>NOIp 2005 PJT3 - &copy;zsz12251665's Blog</title>
+		<title>NOIp 2005 PJT3 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>NOIp 2005 PJT3</h2>
-						<var>2017-05-31 21:17 by zsz12251665</var>
-					</center>
+					<h2 align="center">NOIp 2005 PJT3</h2>
+					<time>2017-05-31 21:17 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1048">Luogu</a>
@@ -25,13 +23,13 @@
 					</section>
 					<h3>Solution</h3>
 					<section>
-						<p>The problem is a 01 knapsack problem. So we can solve it by a DP(Dynamic Planning) algorithm. </p>
-						<p>Usually, a DP algorithm is made up of a dp array and the state transition formula. For a knapsack problem, the formula is dp=max(dp[i-cost]+price). The use of it will be shown in the code below. </p>
+						<p>The problem is a 01 knapsack problem. So we can solve it by a <abbr title="dynamic planning">dp</abbr> algorithm. </p>
+						<p>Usually, a dp algorithm is made up of a dp array and the state transition formula. For a knapsack problem, the formula is dp=max(dp[i-cost]+price). The use of it will be shown in the code below. </p>
 					</section>
 					<h3>Code</h3>
 					<section>
 						<p>Pascal</p>
-						<div class="codebox">
+						<code>
 							var<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;dp:array[0..1000]of longint;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;t,m,cost,price,i,j:integer;<br/>
@@ -48,9 +46,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;write(dp[t]);<br/>
 							end.<br/>
-						</div>
+						</code>
 						<p>C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							long dp[1001];<br/>
 							int main()<br/>
@@ -70,11 +68,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",dp[t]);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

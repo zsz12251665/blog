@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>HDU 2094 - &copy;zsz12251665's Blog</title>
+		<title>HDU 2094 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>HDU 2094</h2>
-						<var>2017-02-11 16:40 by zsz12251665</var>
-					</center>
+					<h2 align="center">HDU 2094</h2>
+					<time>2017-02-11 16:40 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://vjudge.net/problem/HDU-2094">vjudge</a>
@@ -25,13 +23,13 @@
 					</section>
 					<h3>Solution</h3>
 					<section>
-						<p>It is not a easy problem unless you find the connection between the champion and the losers. Yes, the champion won't be someone who used to lose a match. He/She must win all matches that he/she played. So we can read the winner list and the loser list. Then delete the winner who used to lose from the list. Then check if there is only one person in the list. It is an O(n^2) algorithm. But n is lower than 1000. So it is enough. </p>
-						<p>While keeping the name in the list, I found that it is more difficult to keep a string than a integer. So I turn the name string into integers in a way like hash. Luckily, it earns an AC(Accepted). But I have to admit that this algorithm may be hacked while processing some data. By the way, the code in Pascal haven't got an AC. But it always gives me the right answer when I debug it because I just translated it completely from the code in C++. That's odd! If there is some one who read this blog can solve this problem, I'll very appreciate it. </p>
+						<p>It is not a easy problem unless you find the connection between the champion and the losers. Yes, the champion won't be someone who used to lose a match. He/She must win all matches that he/she played. So we can read the winner list and the loser list. Then delete the winner who used to lose from the list. Then check if there is only one person in the list. It is an O(n<sup>2</sup>) algorithm. But n is lower than 1000. So it is enough. </p>
+						<p>While keeping the name in the list, I found that it is more difficult to keep a string than a integer. So I turn the name string into integers in a way like hash. Luckily, it earns an <abbr title="Accepted">AC</abbr>. But I have to admit that this algorithm may be hacked while processing some data. By the way, the code in Pascal haven't got an <abbr title="Accepted">AC</abbr>. But it always gives me the right answer when I debug it because I just translated it completely from the code in C++. That's odd! If there is some one who read this blog can solve this problem, I'll very appreciate it. </p>
 					</section>
 					<h3>Code</h3>
 					<section>
 						<p>Pascal</p>
-						<div class="codebox">
+						<code>
 							var<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;win,lose:array[1..1000]of longint;<strong>//the array win keeps the winner list and the array lose keeps the loser list</strong><br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;n,i,j,champion:longint;<strong>//champion keeps the champion of the game</strong><br/>
@@ -84,9 +82,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(n);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 							end.<br/>
-						</div>
+						</code>
 						<p>C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							#include&lt;cstring&gt;<strong>//We need to use the strlen function in cstring</strong><br/>
 							long win[1000],lose[1000];<strong>//the array win keeps the winner list and the array lose keeps the loser list</strong><br/>
@@ -137,11 +135,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

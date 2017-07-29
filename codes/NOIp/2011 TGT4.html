@@ -2,7 +2,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<link rel="shortcut icon" href="/blog.png"/>
-		<title>NOIp 2011 TGT4 - &copy;zsz12251665's Blog</title>
+		<title>NOIp 2011 TGT4 - zsz12251665's Blog</title>
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
@@ -13,10 +13,8 @@
 			<table width="100%">
 				<td valign="top" id="bar"><div id="menu"></div></td>
 				<td valign="top" id="text">
-					<center>
-						<h2>NOIp 2011 TGT4</h2>
-						<var>2017-06-27 20:05 by zsz12251665</var>
-					</center>
+					<h2 align="center">NOIp 2011 TGT4</h2>
+					<time>2017-06-27 20:05 by zsz12251665</time>
 					<h3>Problem</h3>
 					<section>
 						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1313">Luogu</a>
@@ -25,14 +23,14 @@
 					</section>
 					<h3>Solution</h3>
 					<section>
-						<p>There are two solutions to solve this problem. The first one is to use Pascal's triangle. The second one is DP(Dynamic Planning). The code below is based on the second solution. </p>
-						<p>First, we set up an coe array that coe[i][j] is used to keep the coefficient of (x^i)*(y^j). And the state transition formula is coe[i][j]=a*coe[i-1][j]+b*[i][j-1]. And it is also very easy to verify. So it won't be given here. In this way, we can solve the problem with a time complexity of O(n m). </p>
-						<p>P. S. The i and j in coe[i][j] may not conform i+j=k, but it is the coefficient of (x^i)*(y^i) in the polynomial (a*x+b*y)^(i+j). </p>
+						<p>There are two solutions to solve this problem. The first one is to use Pascal's triangle. The second one is <abbr title="dynamic planning">dp</abbr> algorithm. The code below is based on the second solution. </p>
+						<p>First, we set up an coe array that coe[i][j] is used to keep the coefficient of x<sup>i</sup>y<sup>j</sup>. And the state transition formula is coe[i][j]=a*coe[i-1][j]+b*coe[i][j-1]. And it is also very easy to verify. So it won't be given here. In this way, we can solve the problem with a time complexity of O(n*m). </p>
+						<p>P. S. The i and j in coe[i][j] may not conform i+j=k, but it is the coefficient of x<sup>i</sup></sup>y<sup>i</sup> in the polynomial (a*x+b*y)<sup>i+j</sup>. </p>
 					</section>
 					<h3>Code</h3>
 					<section>
 						<p>Pascal</p>
-						<div class="codebox">
+						<code>
 							var<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;coe:array[0..1000,0..1000]of longint;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;a,b,k,n,m,i,j:longint;<br/>
@@ -54,9 +52,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;write(coe[n,m]);<br/>
 							end.<br/>
-						</div>
+						</code>
 						<p>C++</p>
-						<div class="codebox">
+						<code>
 							#include&lt;cstdio&gt;<br/>
 							long coe[1000][1000];<br/>
 							int main()<br/>
@@ -80,11 +78,11 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",coe[n][m]);<br/>
 							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 							}<br/>
-						</div>
+						</code>
 					</section>
 				</td>
 			</table>
-			<center><var>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </var></center>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
 		</div>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>

@@ -9,6 +9,15 @@ a
 	font-family: "Segoe Print";
 	text-decoration: none;
 }
+address,time
+{
+	color: #FFFFFF;
+	display: block;
+	font-family: "Segoe Print";
+	font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
 body
 {
 	background-color: #600007;
@@ -18,12 +27,6 @@ h1,h2,h3,h4,h5,h6,li,p
 {
 	color: #FFFFFF;
 	font-family: "Segoe Print";
-}
-var
-{
-	color: #FFFFFF;
-	font-family: "Segoe Print";
-	font-size: 10px;
 }
 #bar
 {
