@@ -28,6 +28,11 @@ h1,h2,h3,h4,h5,h6,li,p
     color: #B5E853;
     font-family: "Jokerman";
 }
+hr
+{
+	background-color: #B0E2FF;
+	border-color: #B0E2FF;
+}
 section
 {
 	margin-left: 20px;

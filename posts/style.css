@@ -28,6 +28,11 @@ h1,h2,h3,h4,h5,h6,li,p
 	color: #FFFFFF;
 	font-family: "Segoe Print";
 }
+hr
+{
+	background-color: #FFFF00;
+	border-color: #FFFF00;
+}
 #bar
 {
     height: 700px;

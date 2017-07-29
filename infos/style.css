@@ -1,0 +1,80 @@
+@font-face
+{
+    font-family: "Source Serif Pro Light";
+    src: url("/Font/Source Serif Pro Light.woff");
+}
+a
+{
+    color: #F19C27;
+    font-family: "Source Serif Pro Light";
+    text-decoration: none;
+}
+address,time
+{
+    color: #FFF6D9;
+	display: block;
+    font-family: "Source Serif Pro Light";
+    font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
+body
+{
+	background-color: #884A31;
+    background-image: url("/infos/bg.jpg");
+}
+h1,h2,h3,h4,h5,h6,li,p
+{
+    color: #FFF6D9;
+    font-family: "Source Serif Pro Light";
+}
+hr
+{
+	background-color: #F19C27;
+	border-color: #F19C27;
+}
+section
+{
+	margin-left: 20px;
+}
+#bar
+{
+    height: 700px;
+    outline-color: #F19C27;
+    outline-style: dotted;
+}
+#mainframe
+{
+	background-color: #884A31;
+    color: #FFF6D9;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 80%;
+}
+#menu
+{
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+#text
+{
+    padding: 10px;
+    width: 80%;
+}
+.sheet
+{
+	border-color: #FFF6D9;
+	border-style: solid;
+	border-width: 3px;
+}
+.sheet th,.sheet td
+{
+	border-color: #FFF6D9;
+	border-style: solid;
+	border-width: 1px;
+    color: #FFF6D9;
+    font-family: "Source Serif Pro Light";
+}

@@ -52,6 +52,11 @@ h1,h2,h3,h4,h5,h6,li,p
 	color: #00FF00;
 	font-family: "Cambria";
 }
+hr
+{
+	background-color: #FF0000;
+	border-color: #FF0000;
+}
 section
 {
 	margin-left: 20px;
