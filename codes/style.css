@@ -47,7 +47,7 @@ code strong
 	font-family: "Source Code Pro";
 	word-break: normal;
 }
-h1,h2,h3,h4,h5,h6,li,p
+h1,h2,h3,h4,h5,h6,li,p,td,th
 {
 	color: #00FF00;
 	font-family: "Cambria";
@@ -103,6 +103,4 @@ section
 	border-color: #00FF00;
 	border-style: solid;
 	border-width: 1px;
-	color: #00FF00;
-	font-family: "Cambria";
 }
