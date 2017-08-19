@@ -1,3 +1,13 @@
+document.getElementsByTagName('h1')[0].addEventListener('click',hidebar);
+var visibile=true;
+function hidebar()
+{
+	visibile=!visibile;
+	if(visibile)
+		document.getElementById('bar').style.display='table-cell';
+	else
+		document.getElementById('bar').style.display='none';
+}
 var menu='';
 menu+='<a target="_parent" href="/"><h3>Home</h3></a>';
 menu+='<a target="_parent" href="/posts/"><h3>Post List</h3></a>';
