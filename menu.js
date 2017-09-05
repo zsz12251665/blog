@@ -60,6 +60,7 @@ menu+='	<li><a target="_parent" href="/codes/POJ/2000.html">POJ 2000</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/2506.html">POJ 2506</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/2965.html">POJ 2965</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/3278.html">POJ 3278</a></li>';
+menu+='	<li><a target="_parent" href="/codes/POJ/3292.html">POJ 3292</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/3295.html">POJ 3295</a></li>';
 menu+='</ul>';
 menu+='<h3>Friendly Link</h3>';
