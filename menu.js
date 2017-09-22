@@ -51,6 +51,7 @@ menu+='	<li><a target="_parent" href="/codes/NOIp/2016 PJT2.html">NOIp 2016 PJT2
 menu+='	<li><a target="_parent" href="/codes/NOIp/2016 PJT3.html">NOIp 2016 PJT3</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2016 TGT1.html">NOIp 2016 TGT1</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2016 TGT4.html">NOIp 2016 TGT4</a></li>';
+menu+='	<li><a target="_parent" href="/codes/NOIp/2016 TGT5.html">NOIp 2016 TGT5</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/1003.html">POJ 1003</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/1004.html">POJ 1004</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/1006.html">POJ 1006</a></li>';
