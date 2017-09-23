@@ -45,6 +45,7 @@ code strong
 {
 	color: #FF0000;
 	font-family: "Source Code Pro";
+	font-style: italic;
 	word-break: normal;
 }
 h1,h2,h3,h4,h5,h6,li,p,td,th
