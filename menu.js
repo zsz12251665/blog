@@ -28,6 +28,7 @@ menu+='	<li><a target="_parent" href="/codes/HDU/1052.html">HDU 1052</a></li>';
 menu+='	<li><a target="_parent" href="/codes/HDU/2089.html">HDU 2089</a></li>';
 menu+='	<li><a target="_parent" href="/codes/HDU/2092.html">HDU 2092</a></li>';
 menu+='	<li><a target="_parent" href="/codes/HDU/2094.html">HDU 2094</a></li>';
+menu+='	<li><a target="_parent" href="/codes/HDU/2547.html">HDU 2547</a></li>';
 menu+='	<li><a target="_parent" href="/codes/HDU/2548.html">HDU 2548</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2004 PJT1.html">NOIp 2004 PJT1</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/2004 PJT2.html">NOIp 2004 PJT2</a></li>';
