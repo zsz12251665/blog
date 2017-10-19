@@ -14,7 +14,7 @@ menu+='<a target="_parent" href="/posts/"><h3>Post List</h3></a>';
 menu+='<ul>';
 menu+='	<li><a target="_parent" href="/posts/A Trip of Konjac/">A Trip of Konjac</a></li>';
 menu+='	<li><a target="_parent" href="/posts/About Me/">About Me</a></li>';
-menu+='	<li><a target="_parent" href="/posts/Preface/">Preface</a></li>';
+menu+='	<li><a target="_parent" href="/posts/Preface Founding/">Preface: Founding</a></li>';
 menu+='	<li><a target="_parent" href="/posts/The Story of the Chorus (1)/">The Story of the Chorus (1)</a></li>';
 menu+='	<li><a target="_parent" href="/posts/The Story of the Chorus (2)/">The Story of the Chorus (2)</a></li>';
 menu+='	<li><a target="_parent" href="/posts/The Story of the Chorus (3)/">The Story of the Chorus (3)</a></li>';
