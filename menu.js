@@ -22,6 +22,7 @@ menu+='</ul>';
 menu+='<a target="_parent" href="/codes/"><h3>Code List</h3></a>';
 menu+='<ul>';
 menu+='	<li><a target="_parent" href="/codes/BZOJ/">BZOJ Problems</a></li>';
+menu+='	<li><a target="_parent" href="/codes/CF/">CF Problems</a></li>';
 menu+='	<li><a target="_parent" href="/codes/HDU/">HDU Problems</a></li>';
 menu+='	<li><a target="_parent" href="/codes/NOIp/">NOIp Problems</a></li>';
 menu+='	<li><a target="_parent" href="/codes/POJ/">POJ Problems</a></li>';
