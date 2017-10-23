@@ -1,12 +1,12 @@
-document.getElementsByTagName('h1')[0].addEventListener('click',hidebar);
+document.getElementsByTagName('header')[0].addEventListener('click',hidebar);
 var visibile=true;
 function hidebar()
 {
 	visibile=!visibile;
 	if(visibile)
-		document.getElementById('bar').style.display='table-cell';
+		document.getElementById('menu').style.display='block';
 	else
-		document.getElementById('bar').style.display='none';
+		document.getElementById('menu').style.display='none';
 }
 var menu='';
 menu+='<a target="_parent" href="/"><h3>Home</h3></a>';
@@ -37,4 +37,4 @@ menu+='	<li>_|￣|○ <a target="_parent" href="http://blog.csdn.net/wendavidoi/
 menu+='	<li>_|￣|○ <a target="_parent" href="http://snakes.moe/">HFer_YZW</a></li>';
 menu+='	<li>_|￣|○ <a target="_parent" href="https://code.del.moe/">HFer_ZFR</a></li>';
 menu+='</ul>';
-document.getElementById('menu').innerHTML=menu;
+document.getElementsByTagName('aside')[0].innerHTML=menu;

@@ -1,77 +1,103 @@
-@font-face
-{
-    font-family: "Jokerman";
-    src: url("/Font/Jokerman.woff");
-}
 a
 {
     color: #B0E2FF;
-    font-family: "Jokerman";
+    font-family: serif;
     text-decoration: none;
 }
-address,time
+article
 {
-    color: #B5E853;
-	display: block;
-    font-family: "Jokerman";
-    font-size: 10px;
-	font-style: italic;
-	text-align: center;
+    padding: 10px;
+}
+nav
+{
+	background-color: #4F4F4F;
+	border-right-color: #B0E2FF;
+	border-right-style: solid;
+	border-right-width: thick;
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+    height: 100%;
+	width: 20%;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 body
 {
 	background-color: #4F4F4F;
-    background-image: url("/bg.jpg");
+    color: #B5E853;
+    padding: 10px;
 }
-h1,h2,h3,h4,h5,h6,li,p,td,th
+footer,time
 {
     color: #B5E853;
-    font-family: "Jokerman";
+	display: block;
+    font-family: serif;
+    font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
+h1,h2,h3,h4,h5,h6
+{
+    color: #B5E853;
+    font-family: sans-serif;
+}
+header
+{
+	background-color: #4F4F4F;
+	border-bottom-width: thick;
+	border-bottom-color: #B0E2FF;
+	border-bottom-style: solid;
+    font-family: sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	height: auto;
+	left: 0px;
+	position: fixed;
+	text-align: center;
+	top: 0px;
+	width: 100%;
 }
 hr
 {
 	background-color: #B0E2FF;
 	border-color: #B0E2FF;
 }
-section
+li,p,td,th
 {
-	margin-left: 20px;
+    color: #B5E853;
+    font-family: serif;
 }
-#bar
-{
-    height: 700px;
-    outline-color: #B0E2FF;
-    outline-style: dotted;
-}
-#mainframe
+nav
 {
 	background-color: #4F4F4F;
-    color: #B5E853;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    width: 80%;
-}
-#menu
-{
+	border-right-color: #B0E2FF;
+	border-right-style: solid;
+	border-right-width: thick;
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
     height: 100%;
+	width: 20%;
     overflow-y: auto;
     padding-left: 5px;
     padding-right: 10px;
 }
+section
+{
+	margin-left: 20px;
+}
 #num1, #num2, #num3
 {
     color: #B0E2FF;
-    font-family: "Jokerman";
+    font-family: serif;
 	font-size: 120px;
 	font-weight: 900;
 	margin-left: 30px;
 	margin-right: 30px;
-}
-#text
-{
-    padding: 10px;
-    width: 80%;
 }
 .sheet
 {
