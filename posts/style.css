@@ -1,59 +1,96 @@
-@font-face
-{
-	font-family: "Segoe Print";
-	src: url("/Font/Segoe Print.woff");
-}
 a
 {
 	color: #FFFF00;
-	font-family: "Segoe Print";
+	font-family: serif;
 	text-decoration: none;
 }
-address,time
+article
 {
-	color: #FFFFFF;
-	display: block;
-	font-family: "Segoe Print";
-	font-size: 10px;
-	font-style: italic;
-	text-align: center;
+	margin: auto;
+    padding: 10px;
+	padding-top: 50px;
+	width: 90%;
 }
 body
 {
 	background-color: #600007;
-	background-image: url("/posts/bg.jpg");
+	color: #FFFFFF;
+    padding: 10px;
 }
-h1,h2,h3,h4,h5,h6,li,p,td,th
+footer,time
 {
 	color: #FFFFFF;
-	font-family: "Segoe Print";
+	display: block;
+	font-family: serif;
+	font-size: 10px;
+	font-style: italic; 
+	text-align: center;
+}
+h1,h2,h3,h4,h5,h6
+{
+	color: #FFFFFF;
+	font-family: sans-serif;
+}
+header
+{
+	background-color: #600007;
+	border-bottom-color: #FFFF00;
+	border-bottom-width: thick;
+	border-bottom-style: solid;
+    font-family: sans-serif;
+	font-size: 50px;
+	font-weight: bold;
+	height: auto;
+	left: 0px;
+	padding: 10px;
+	position: fixed;
+	text-align: center;
+	top: 0px;
+	width: 100%;
 }
 hr
 {
 	background-color: #FFFF00;
 	border-color: #FFFF00;
 }
-#bar
-{
-    height: 700px;
-    outline-color: #FFFF00;
-    outline-style: dotted;
-}
-#mainframe
+nav
 {
 	background-color: #600007;
-	color: #FFFFFF;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 10px;
-	width: 80%;
-}
-#menu
-{
+	border-right-color: #FFFF00;
+	border-right-style: solid;
+	border-right-width: thick;
+	display: none;
     height: 100%;
+	left: 0px;
     overflow-y: auto;
     padding-left: 5px;
     padding-right: 10px;
+	position: fixed;
+	top: 0px;
+	width: 20%;
+}
+li,p
+{
+	color: #FFFFFF;
+	font-family: serif;
+}
+section
+{
+	margin-left: 20px;
+}
+table
+{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 3px;
+}
+td,th
+{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	color: #FFFFFF;
+	font-family: serif;
 }
 #music
 {
@@ -78,7 +115,7 @@ hr
 #music span
 {
 	color: #600007;
-	font-family: "Segoe Print";
+	font-family: serif;
 	font-size: 15px;
 	margin-left: 5px;
 	margin-right: 5px;
@@ -94,21 +131,4 @@ hr
 	text-align: center;
 	top: -25px;
 	width: 40px;
-}
-#text
-{
-	padding: 10px;
-	width: 80%;
-}
-.sheet
-{
-	border-color: #FFFFFF;
-	border-style: solid;
-	border-width: 3px;
-}
-.sheet th,.sheet td
-{
-	border-color: #FFFFFF;
-	border-style: solid;
-	border-width: 1px;
 }
