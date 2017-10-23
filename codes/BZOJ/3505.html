@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>BZOJ 3505 - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<div id="mainframe">
+			<h1>zsz12251665's blog</h1>
+			<p>Hello, welcome to zsz12251665's blog. </p>
+			<hr/>
+			<table width="100%">
+				<td valign="top" id="bar"><div id="menu"></div></td>
+				<td valign="top" id="text">
+					<h2 align="center">BZOJ 3505</h2>
+					<time>2017-10-23 15:53 by zsz12251665</time>
+					<h3>Problem</h3>
+					<section>
+						<a target="_blank" href="https://vjudge.net/problem/HYSBZ-3505">vjudge</a>
+						<br/>
+						<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=3505">BZOJ</a>
+					</section>
+					<h3>Solution</h3>
+					<section>
+						<p>First of all, I have to remind you that an <var>n</var>*<var>m</var> matrix have <var>n</var>+1 coloums and <var>m</var>+1 rows. So we make <var>n</var> equal <var>n</var>+1, <var>m</var> equal <var>m</var>+1 in the following solution. </p>
+						<p>Now we know that there are <var>n</var><var>m</var> points on the matrix. And they can make <var>n</var><var>m</var>(<var>n</var><var>m</var>-1)(<var>n</var><var>m</var>-2)/6 combinations of 3 points in total. But some of the combinations have a kind of situations that the 3 points are on a single line. That can't form a triangle! So we need to pick them up. </p>
+						<p>As we all know, there are (gcd(|<var>a</var>-<var>c</var>|,|<var>b</var>-<var>d</var>|)-1) points between the points (<var>a</var>,<var>b</var>) and (<var>c</var>,<var>d</var>). So we can enumerate every point, calculate the points between it and (0,0) and then pick up these combinations and the combinations that are moved but in the same shape and size. In this way we will get every illegal combinations away. </p>
+					</section>
+					<h3>Code</h3>
+					<section>
+						<p>Pascal</p>
+						<code>
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,j:integer;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;ans:int64;<br/>
+							function gcd(a,b:integer):integer;<strong>//Calculate the greatest common division of a and b</strong><br/>
+							var<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;tmp:integer;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if a&lt;b then<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=a;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a:=b;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:=tmp;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if a mod b=0 then<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(b)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(gcd(b,a mod b));<br/>
+							end;<br/>
+							begin<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;inc(n);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;inc(m);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;ans:=int64(n*m)*(n*m-1)*(n*m-2) div 6;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n-1 do<strong>//Pick up the combinations on the same row</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans-(n-i)*m*(i-1);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to m-1 do<strong>//Pick up the combinations on the same coloum</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans-n*(m-j)*(j-1);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n-1 do<strong>//Pick up the other combinations on the same line</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to m-1 do<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans-2*(n-i)*(m-j)*(gcd(i,j)-1);<strong>//There are two directions: (0,0) to (i,j) and (i,0) to (0,j)</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
+							end.<br/>
+						</code>
+						<p>C++</p>
+						<code>
+							#include&lt;cstdio&gt;<br/>
+							int gcd(int a,int b)<strong>//Calculate the greatest common division of a and b</strong><br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if(a&lt;b)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int tmp=a;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a=b;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b=tmp;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;if(a%b==0)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return b;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return gcd(b,a%b);<br/>
+							}<br/>
+							int main()<br/>
+							{<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;int n,m;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;n,&amp;m);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;n++;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;m++;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;long long ans=(long long)n*m*(n*m-1)*(n*m-2)/6;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;n;i++)<strong>//Pick up the combinations on the same row</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans-=(n-i)*m*(i-1);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int j=1;j&lt;m;j++)<strong>//Pick up the combinations on the same coloum</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans-=n*(m-j)*(j-1);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1;i&lt;n;i++)<strong>//Pick up the other combinations on the same line</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=1;j&lt;m;j++)<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans-=2*(n-i)*(m-j)*(gcd(i,j)-1);<strong>//There are two directions: (0,0) to (i,j) and (i,0) to (0,j)</strong><br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld",ans);<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+							}<br/>
+						</code>
+					</section>
+				</td>
+			</table>
+			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
+		</div>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>
