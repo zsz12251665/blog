@@ -6,7 +6,9 @@ a
 }
 article
 {
+	margin: auto;
     padding: 10px;
+	width: 90%;
 }
 nav
 {
@@ -65,7 +67,7 @@ hr
 	background-color: #B0E2FF;
 	border-color: #B0E2FF;
 }
-li,p,td,th
+li,p
 {
     color: #B5E853;
     font-family: serif;
@@ -90,6 +92,20 @@ section
 {
 	margin-left: 20px;
 }
+table
+{
+	border-color: #B5E853;
+	border-style: solid;
+	border-width: 3px;
+}
+td,th
+{
+	border-color: #B5E853;
+	border-style: solid;
+	border-width: 1px;
+    color: #B5E853;
+    font-family: serif;
+}
 #num1, #num2, #num3
 {
     color: #B0E2FF;
@@ -98,16 +114,4 @@ section
 	font-weight: 900;
 	margin-left: 30px;
 	margin-right: 30px;
-}
-.sheet
-{
-	border-color: #B5E853;
-	border-style: solid;
-	border-width: 3px;
-}
-.sheet th,.sheet td
-{
-	border-color: #B5E853;
-	border-style: solid;
-	border-width: 1px;
 }

@@ -4,9 +4,9 @@ function hidebar()
 {
 	visibile=!visibile;
 	if(visibile)
-		document.getElementById('menu').style.display='block';
+		document.getElementsByTagName('nav')[0].style.display='block';
 	else
-		document.getElementById('menu').style.display='none';
+		document.getElementsByTagName('nav')[0].style.display='none';
 }
 var menu='';
 menu+='<a target="_parent" href="/"><h3>Home</h3></a>';
@@ -37,4 +37,4 @@ menu+='	<li>_|￣|○ <a target="_parent" href="http://blog.csdn.net/wendavidoi/
 menu+='	<li>_|￣|○ <a target="_parent" href="http://snakes.moe/">HFer_YZW</a></li>';
 menu+='	<li>_|￣|○ <a target="_parent" href="https://code.del.moe/">HFer_ZFR</a></li>';
 menu+='</ul>';
-document.getElementsByTagName('aside')[0].innerHTML=menu;
+document.getElementsByTagName('nav')[0].innerHTML=menu;
