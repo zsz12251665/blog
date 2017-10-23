@@ -33,6 +33,7 @@ menu+='	<li>_|￣|○ <a target="_parent" href="http://blog.oceaneye.moe/">HFer_
 menu+='	<li>_|￣|○ <a target="_parent" href="https://www.cnblogs.com/yohanlong/">HFer_LHZ</a></li>';
 menu+='	<li>_|￣|○ <a target="_parent" href="http://blog.csdn.net/haarmony/">HFer_MHX</a></li>';
 menu+='	<li>_|￣|○ <a target="_parent" href="http://blog.eleele.gq/">HFer_WHJ</a></li>';
+menu+='	<li>_|￣|○ <a target="_parent" href="http://blog.csdn.net/wendavidoi/">HFer_WJW</a></li>';
 menu+='	<li>_|￣|○ <a target="_parent" href="http://snakes.moe/">HFer_YZW</a></li>';
 menu+='	<li>_|￣|○ <a target="_parent" href="https://code.del.moe/">HFer_ZFR</a></li>';
 menu+='</ul>';
