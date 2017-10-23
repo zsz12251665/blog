@@ -11,8 +11,6 @@ var value=100;
 document.getElementById('play').addEventListener('click',play);
 document.getElementById('muted').addEventListener('click',mute);
 document.getElementById('repeat').addEventListener('click',repeat);
-document.getElementById('volume').addEventListener('mouseout',function(){document.getElementById('value').style.display='none';});
-document.getElementById('volume').addEventListener('mouseover',function(){document.getElementById('value').style.display='block';});
 volume.max=volume.value=100;
 volume.min=0;
 volume.step=1;
@@ -26,6 +24,7 @@ function ChangeVolume()
 {
 	audio.volume=Number(volume.value)/100;
 	document.getElementById('value').innerHTML=Number(volume.value);
+	
 	if(volume.value==0)
 		document.getElementById('muted').src='/posts/music/muted.svg';
 	else

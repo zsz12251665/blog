@@ -6,6 +6,8 @@ a
 }
 article
 {
+	background-color: #600007;
+	border-radius: 5px;
 	margin: auto;
     padding: 10px;
 	padding-top: 50px;
@@ -14,6 +16,7 @@ article
 body
 {
 	background-color: #600007;
+	background-image: url("/posts/bg.jpg");
 	color: #FFFFFF;
     padding: 10px;
 }
@@ -98,7 +101,6 @@ td,th
 	border-radius: 5px;
 	display: inline-block;
 	padding: 5px;
-	position: relative;
 }
 #music img
 {
@@ -120,15 +122,4 @@ td,th
 	margin-left: 5px;
 	margin-right: 5px;
 	vertical-align: middle;
-}
-#music #value
-{
-	background-color: #FFFFFF;
-	border-radius: 1px;
-	display: none;
-	left: 200px;
-    position: absolute;
-	text-align: center;
-	top: -25px;
-	width: 40px;
 }
