@@ -1,89 +1,104 @@
-@font-face
-{
-    font-family: "Source Serif Pro Light";
-    src: url("/Font/Source Serif Pro Light.woff");
-}
-@font-face
-{
-	font-family: "KaiTi";
-	src: url("/Font/KaiTi.woff");
-}
 a
 {
     color: #F19C27;
-    font-family: "Source Serif Pro Light","KaiTi";
+    font-family: serif;
     text-decoration: none;
 }
-address,time
+article
 {
-    color: #FFF6D9;
-	display: block;
-    font-family: "Source Serif Pro Light","KaiTi";
-    font-size: 10px;
-	font-style: italic;
-	text-align: center;
+	background-color: #884A31;
+	border-radius: 5px;
+	margin: auto;
+	min-height: 100%;
+    padding: 10px;
+	padding-top: 50px;
+	width: 90%;
 }
 body
 {
 	background-color: #884A31;
     background-image: url("/infos/bg.jpg");
+    color: #FFF6D9;
+    padding: 10px;
 }
-h1,h2,h3,h4,h5,h6,li,p,td,th
+footer,time
 {
     color: #FFF6D9;
-    font-family: "Source Serif Pro Light","KaiTi";
+	display: block;
+    font-family: serif;
+    font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
+h1,h2,h3,h4,h5,h6
+{
+    color: #FFF6D9;
+    font-family: sans-serif;
+}
+header
+{
+	background-color: #884A31;
+	border-bottom-color: #F19C27;
+	border-bottom-width: thick;
+	border-bottom-style: solid;
+    font-family: sans-serif;
+	font-size: 50px;
+	font-weight: bold;
+	height: auto;
+	left: 0px;
+	padding: 10px;
+	position: fixed;
+	text-align: center;
+	top: 0px;
+	width: 100%;
 }
 hr
 {
 	background-color: #F19C27;
 	border-color: #F19C27;
 }
-#bar
+li,p
 {
-    height: 700px;
-    outline-color: #F19C27;
-    outline-style: dotted;
+    color: #FFF6D9;
+    font-family: serif;
+}
+nav
+{
+	background-color: #884A31;
+	border-right-color: #F19C27;
+	border-right-style: solid;
+	border-right-width: thick;
+	display: none;
+    height: 100%;
+	left: 0px;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 10px;
+	position: fixed;
+	top: 0px;
+	width: 20%;
+}
+table
+{
+	border-color: #FFF6D9;
+	border-style: solid;
+	border-width: 3px;
+}
+td,th
+{
+	border-color: #FFF6D9;
+	border-style: solid;
+	border-width: 1px;
+    color: #FFF6D9;
+    font-family: serif;
 }
 #cityindex td
 {
 	width: 30px;
 	word-break: break-all;
 }
-#mainframe
-{
-	background-color: #884A31;
-    color: #FFF6D9;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    width: 80%;
-}
-#menu
-{
-    height: 100%;
-    overflow-y: auto;
-    padding-left: 5px;
-    padding-right: 10px;
-}
-#text
-{
-    padding: 10px;
-    width: 80%;
-}
 .capital
 {
     color: #F19C27;
 	font-weight: bold;
-}
-.sheet
-{
-	border-color: #FFF6D9;
-	border-style: solid;
-	border-width: 3px;
-}
-.sheet th,.sheet td
-{
-	border-color: #FFF6D9;
-	border-style: solid;
-	border-width: 1px;
 }
