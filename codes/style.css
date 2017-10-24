@@ -1,39 +1,36 @@
-@font-face
-{
-	font-family: "Cambria";
-	src: url("/Font/Cambria.woff");
-}
-@font-face
-{
-	font-family: "Source Code Pro";
-	src: url("/Font/Source Code Pro.woff");
-}
 a
 {
 	color: #FF0000;
-	font-family: "Cambria";
+	font-family: serif;
 	text-decoration: none;
 }
-address,time
+article
 {
-	color: #00FF00;
-	display: block;
-	font-family: "Cambria";
-	font-size: 10px;
-	font-style: italic;
-	text-align: center;
+	background-color: #000000;
+	border-radius: 5px;
+	margin: auto;
+	min-height: 100%;
+    padding: 10px;
+	padding-top: 50px;
+	width: 90%;
+}
+article a
+{
+	display: inline-block;
 }
 body
 {
 	background-color: #000000;
 	background-image: url("/codes/bg.jpg");
+	color: #00FF00;
+	padding: 10px;
 }
 code
 {
 	background-color: #00FF00;
 	color: #000000;
 	display: block;
-	font-family: "Source Code Pro";
+	font-family: monospace;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
@@ -44,69 +41,87 @@ code
 code strong
 {
 	color: #FF0000;
-	font-family: "Source Code Pro";
+	font-family: monospace;
 	font-style: italic;
 	word-break: normal;
 }
-h1,h2,h3,h4,h5,h6,li,p,td,th
+footer,time
 {
 	color: #00FF00;
-	font-family: "Cambria";
+	display: block;
+	font-family: serif;
+	font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
+h1,h2,h3,h4,h5,h6
+{
+	color: #00FF00;
+	font-family: sans-serif;
+}
+header
+{
+	background-color: #000000;
+	border-bottom-color: #FF0000;
+	border-bottom-width: thick;
+	border-bottom-style: solid;
+    font-family: sans-serif;
+	font-size: 50px;
+	font-weight: bold;
+	height: auto;
+	left: 0px;
+	padding: 10px;
+	position: fixed;
+	text-align: center;
+	top: 0px;
+	width: 100%;
 }
 hr
 {
 	background-color: #FF0000;
 	border-color: #FF0000;
 }
+li,p
+{
+	color: #00FF00;
+	font-family: serif;
+}
+nav
+{
+	background-color: #000000;
+	border-right-color: #FF0000;
+	border-right-style: solid;
+	border-right-width: thick;
+	display: none;
+    height: 100%;
+	left: 0px;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 10px;
+	position: fixed;
+	top: 0px;
+	width: 20%;
+}
 section
 {
 	margin-left: 20px;
 }
-var
-{
-	margin-left: 2px;
-	margin-right: 2px;
-}
-#bar
-{
-    height: 700px;
-    outline-color: #FF0000;
-    outline-style: dotted;
-}
-#mainframe
-{
-	background-color: #000000;
-	color: #00FF00;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 10px;
-	width: 80%;
-}
-#menu
-{
-    height: 100%;
-    overflow-y: auto;
-    padding-left: 5px;
-    padding-right: 10px;
-}
-#text
-{
-	padding: 10px;
-	width: 80%;
-}
-#text a
-{
-	display: inline-block;
-}
-.sheet
+table
 {
 	border-color: #00FF00;
 	border-style: solid;
 	border-width: 3px;
 }
-.sheet th,.sheet td
+td,th
 {
 	border-color: #00FF00;
 	border-style: solid;
 	border-width: 1px;
+	color: #00FF00;
+	font-family: serif;
+}
+var
+{
+	margin-left: 2px;
+	margin-right: 2px;
 }

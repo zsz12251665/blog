@@ -6,158 +6,147 @@
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
-		<div id="mainframe">
-			<h1>zsz12251665's blog</h1>
-			<p>Hello, welcome to zsz12251665's blog. </p>
-			<hr/>
-			<table width="100%">
-				<td valign="top" id="bar"><div id="menu"></div></td>
-				<td valign="top" id="text">
-					<h2 align="center">CF 853A</h2>
-					<time>2017-10-20 10:41 by zsz12251665</time>
-					<h3>Problem</h3>
-					<section>
-						<a target="_blank" href="https://vjudge.net/problem/CodeForces-853A">vjudge</a>
-						<br/>
-						<a target="_blank" href="http://codeforces.com/problemset/problem/853/A">Codeforces</a>
-					</section>
-					<h3>Solution</h3>
-					<section>
-						<p>We use the greedy algorithm to solve the problem. We pick up the plane which cost most while delaying and let it depart as soon as possible. Then the second one, the third one, until the last one. But remember that no flight is allowed to depart earlier than it was supposed to depart in the initial schedule. So remember to set a timeline array to record the moments that there is a plane which is going to depart. </p>
-					</section>
-					<h3>Code</h3>
-					<section>
-						<p>Pascal</p>
-						<code>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;c,rank:array[1..300000]of longint;<strong>//rank[i] keeps the order of c[i]</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;timeline:array[1..600000]of boolean;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;n,k,i,mt:longint;<strong>//mt is the minimum time that a plane can depart now</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;sum:int64;<br/>
-							procedure qsort(l,r:longint);<br/>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;x,y,tmp,std:longint;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;x:=l;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;y:=r;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;std:=c[rank[(l+r) div 2]];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while x&lt;y do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while c[rank[x]]&gt;std do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while c[rank[y]]&lt;std do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if x&lt;=y then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=rank[x];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[x]:=rank[y];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[y]:=tmp;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if l&lt;y then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if r&gt;x then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
-							end;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;read(n,k);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(c[i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[i]:=i;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[i]:=false;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;qsort(1,n);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;sum:=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;mt:=1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if rank[i]&gt;=mt+k then<strong>//Check if it is still able to depart as the initial schedule planned</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[rank[i]-k]:=true;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]:=rank[i];<strong>//The c array is now scrolled to keep the moment to depart</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum:=sum+int64(c[rank[i]])*(mt+k-rank[i]);<strong>//If you do not change into long long, it may overlimit</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[mt]:=true;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]:=mt+k;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while timeline[mt] do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(mt);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;writeln(sum);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(c[i],' ');<br/>
-							end.<br/>
-						</code>
-						<p>C++</p>
-						<code>
-							#include&lt;cstdio&gt;<br/>
-							long c[300000],rank[300000];<strong>//rank[i] keeps the order of c[i]</strong><br/>
-							int timeline[600000];<br/>
-							void qsort(long l,long r)<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long x=l,y=r,std=c[rank[(l+r)/2]];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while(x&lt;y)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(c[rank[x]]&gt;std)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(c[rank[y]]&lt;std)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y--;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;=y)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long tmp=rank[x];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[x++]=rank[y];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[y--]=tmp;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if(l&lt;y)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;r)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
-							}<br/>
-							int main()<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long n,k;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;k);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;c[i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[i]=i;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[i]=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;qsort(0,n-1);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long long sum=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0,mt=0;i&lt;n;i++)<strong>//mt is the minimum time that a plane can depart now</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(rank[i]&gt;mt+k)<strong>//Check if it is still able to depart as the initial schedule planned</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[rank[i]-k]=1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]=rank[i];<strong>//The c array is now scrolled to keep the moment to depart</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum+=(long long)c[rank[i]]*(mt+k-rank[i]);<strong>//If you do not change into long long, it may overlimit</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[mt]=1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]=mt+k;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(timeline[mt]==1)<strong>//Refresh the minimum time</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mt++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld\n",sum);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld ",c[i]+1);<strong>//C++ starts the array from 0, so do not forget to add 1</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-						</code>
-					</section>
-				</td>
-			</table>
-			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
-		</div>
+		<h2 align="center">CF 853A</h2>
+		<time>2017-10-20 10:41 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://vjudge.net/problem/CodeForces-853A">vjudge</a>
+			<br/>
+			<a target="_blank" href="http://codeforces.com/problemset/problem/853/A">Codeforces</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>We use the greedy algorithm to solve the problem. We pick up the plane which cost most while delaying and let it depart as soon as possible. Then the second one, the third one, until the last one. But remember that no flight is allowed to depart earlier than it was supposed to depart in the initial schedule. So remember to set a timeline array to record the moments that there is a plane which is going to depart. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;c,rank:array[1..300000]of longint;<strong>//rank[i] keeps the order of c[i]</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;timeline:array[1..600000]of boolean;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,k,i,mt:longint;<strong>//mt is the minimum time that a plane can depart now</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;sum:int64;<br/>
+				procedure qsort(l,r:longint);<br/>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;x,y,tmp,std:longint;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;x:=l;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;y:=r;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;std:=c[rank[(l+r) div 2]];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while x&lt;y do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while c[rank[x]]&gt;std do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while c[rank[y]]&lt;std do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if x&lt;=y then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=rank[x];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[x]:=rank[y];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[y]:=tmp;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if l&lt;y then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if r&gt;x then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
+				end;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n,k);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(c[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[i]:=i;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[i]:=false;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;qsort(1,n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;sum:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;mt:=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if rank[i]&gt;=mt+k then<strong>//Check if it is still able to depart as the initial schedule planned</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[rank[i]-k]:=true;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]:=rank[i];<strong>//The c array is now scrolled to keep the moment to depart</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum:=sum+int64(c[rank[i]])*(mt+k-rank[i]);<strong>//If you do not change into long long, it may overlimit</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[mt]:=true;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]:=mt+k;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while timeline[mt] do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(mt);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;writeln(sum);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(c[i],' ');<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				long c[300000],rank[300000];<strong>//rank[i] keeps the order of c[i]</strong><br/>
+				int timeline[600000];<br/>
+				void qsort(long l,long r)<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long x=l,y=r,std=c[rank[(l+r)/2]];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while(x&lt;y)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(c[rank[x]]&gt;std)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(c[rank[y]]&lt;std)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y--;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;=y)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long tmp=rank[x];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[x++]=rank[y];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[y--]=tmp;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if(l&lt;y)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;r)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,k;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;k);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;c[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank[i]=i;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[i]=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;qsort(0,n-1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long long sum=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0,mt=0;i&lt;n;i++)<strong>//mt is the minimum time that a plane can depart now</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(rank[i]&gt;mt+k)<strong>//Check if it is still able to depart as the initial schedule planned</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[rank[i]-k]=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]=rank[i];<strong>//The c array is now scrolled to keep the moment to depart</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum+=(long long)c[rank[i]]*(mt+k-rank[i]);<strong>//If you do not change into long long, it may overlimit</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeline[mt]=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[rank[i]]=mt+k;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(timeline[mt]==1)<strong>//Refresh the minimum time</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mt++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld\n",sum);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld ",c[i]+1);<strong>//C++ starts the array from 0, so do not forget to add 1</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>
 </html>
