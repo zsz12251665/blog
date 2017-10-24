@@ -6,187 +6,176 @@
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
-		<div id="mainframe">
-			<h1>zsz12251665's blog</h1>
-			<p>Hello, welcome to zsz12251665's blog. </p>
-			<hr/>
-			<table width="100%">
-				<td valign="top" id="bar"><div id="menu"></div></td>
-				<td valign="top" id="text">
-					<h2 align="center">NOIp 2016 TGT5</h2>
-					<time>2017-09-22 21:54 by zsz12251665</time>
-					<h3>Problem</h3>
-					<section>
-						<a target="_blank" href="https://www.luogu.org/problem/show?pid=2827">Luogu</a>
-						<br/>
-						<a target="_blank" href="https://www.vijos.org/p/2007">Vijos</a>
-					</section>
-					<h3>Solution</h3>
-					<section>
-						<p>Most people used heap to solve the problem because it does seems like a problem of that kind. But when the <abbr title="National Olympiad in Informatics in provinces">NOIp</abbr> mark came out, the heap didn't earn an <abbr title="Accepted">AC</abbr>. </p>
-						<p>To my surprise, the problem requires 3 queues with an O(n+m) time complexity. The numbers in the queue are decreasing. That is beause the worm you choose to cut is always the longest among all. So the pieces is also getting shorter and shorter. You said that the length of the other worms are increasing every second? But the length of the pieces of worm are getting longer and longer as well. That makes the queues monotonic. So at first, put all the worms in the first queue and sort it. Then in every moment of 1~m, choose the longest worm from the heads of the 3 queues, cut it into two pieces and put them into the second queue and the third queue. How about the increasing length? We can delay it. Only after getting the longest worm do we add the increased length of it. In order to keep it still suitable for the pieces, subtract the increased length from each piece after cutting. That can reduce the a cutting operator into O(1). </p>
-					</section>
-					<h3>Code</h3>
-					<section>
-						<p>Pascal</p>
-						<code>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;queue:array[1..3,1..8000000]of longint;<strong>//Don't worry about the memory because you are given 512 MB in this problem</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;head,foot:array[1..3]of longint;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;n,m,u,v,i:longint;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;q,t,j,mx:integer;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;worm:int64;<br/>
-							procedure qsort(l,r:longint);<br/>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;x,y,tmp,std:longint;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;x:=l;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;y:=r;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;std:=queue[1,(l+r) div 2];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while x&lt;y do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while queue[1,x]&gt;std do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while queue[1,y]&lt;std do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if x&lt;=y then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=queue[1,x];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[1,x]:=queue[1,y];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[1,y]:=tmp;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if l&lt;y then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if r&gt;x then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
-							end;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;read(n,m,q,u,v,t);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(queue[1,i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;qsort(1,n);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;head[1]:=1;<strong>//Format the queues</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;head[2]:=1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;head[3]:=1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;foot[1]:=n;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;foot[2]:=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;foot[3]:=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to m do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=-maxlongint;<strong>//Find the longest worm</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 3 do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (head[j]&lt;=foot[j])and(worm&lt;queue[j,head[j]]) then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx:=j;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=queue[j,head[j]];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(head[mx]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=worm+i*q-q;<strong>//Don't forget to add the length while not being cut</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i mod t=0 then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(worm,' ');<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(foot[2]);<strong>//Push the two pieces into the queue</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(foot[3]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[2,foot[2]]:=worm*u div v-i*q;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[3,foot[3]]:=worm-queue[2,foot[2]]-2*i*q;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;writeln;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n+m do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=-maxlongint;<strong>//Find the longest worm</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 3 do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (head[j]&lt;=foot[j])and(worm&lt;queue[j,head[j]]) then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx:=j;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=queue[j,head[j]];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(head[mx]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=worm+m*q;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i mod t=0 then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(worm,' ');<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							end.<br/>
-						</code>
-						<p>C++</p>
-						<code>
-							#include&lt;cstdio&gt;<br/>
-							long queue[3][8000000],foot[3],head[3];<strong>//Don't worry about the memory because you are given 512 MB in this problem</strong><br/>
-							void qsort(long l,long r)<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long x=l,y=r,std=queue[0][(l+r)/2];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while(x&lt;y)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(queue[0][x]&gt;std)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(queue[0][y]&lt;std)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y--;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;=y)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long tmp=queue[0][x];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[0][x++]=queue[0][y];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[0][y--]=tmp;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if(l&lt;y)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;r)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
-							}<br/>
-							int main()<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long n,m,u,v;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;int q,t;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld%d%ld%ld%d",&amp;n,&amp;m,&amp;q,&amp;u,&amp;v,&amp;t);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;queue[0][i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;qsort(0,n-1);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;head[0]=head[1]=head[2]=foot[1]=foot[2]=0;<strong>//Format the queues</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;foot[0]=n;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;m;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int mx;<strong>//Find the longest worm</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long long worm=-2147483647;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;3;j++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((head[j]&lt;foot[j])&amp;&amp;(queue[j][head[j]]&gt;worm))<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx=j;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm=queue[j][head[j]];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm+=i*q;<strong>//Don't forget to add the length while not being cut</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((i+1)%t==0)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld ",worm);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[1][foot[1]]=worm*u/v-q*(i+1);<strong>//Push the two pieces into the queue</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[2][foot[2]]=worm-queue[1][foot[1]]-2*q*(i+1);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head[mx]++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foot[1]++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foot[2]++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;putchar('\n');<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n+m;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int mx;<strong>//Find the longest worm</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long long worm=-2147483647;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;3;j++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((head[j]&lt;foot[j])&amp;&amp;(queue[j][head[j]]&gt;worm))<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx=j;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm=queue[j][head[j]];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm+=m*q;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((i+1)%t==0)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld ",worm);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head[mx]++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-						</code>
-					</section>
-				</td>
-			</table>
-			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
-		</div>
+		<h2 align="center">NOIp 2016 TGT5</h2>
+		<time>2017-09-22 21:54 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=2827">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/2007">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Most people used heap to solve the problem because it does seems like a problem of that kind. But when the <abbr title="National Olympiad in Informatics in provinces">NOIp</abbr> mark came out, the heap didn't earn an <abbr title="Accepted">AC</abbr>. </p>
+			<p>To my surprise, the problem requires 3 queues with an O(n+m) time complexity. The numbers in the queue are decreasing. That is beause the worm you choose to cut is always the longest among all. So the pieces is also getting shorter and shorter. You said that the length of the other worms are increasing every second? But the length of the pieces of worm are getting longer and longer as well. That makes the queues monotonic. So at first, put all the worms in the first queue and sort it. Then in every moment of 1~m, choose the longest worm from the heads of the 3 queues, cut it into two pieces and put them into the second queue and the third queue. How about the increasing length? We can delay it. Only after getting the longest worm do we add the increased length of it. In order to keep it still suitable for the pieces, subtract the increased length from each piece after cutting. That can reduce the a cutting operator into O(1). </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;queue:array[1..3,1..8000000]of longint;<strong>//Don't worry about the memory because you are given 512 MB in this problem</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;head,foot:array[1..3]of longint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,m,u,v,i:longint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;q,t,j,mx:integer;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;worm:int64;<br/>
+				procedure qsort(l,r:longint);<br/>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;x,y,tmp,std:longint;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;x:=l;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;y:=r;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;std:=queue[1,(l+r) div 2];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while x&lt;y do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while queue[1,x]&gt;std do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while queue[1,y]&lt;std do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if x&lt;=y then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=queue[1,x];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[1,x]:=queue[1,y];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[1,y]:=tmp;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(x);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dec(y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if l&lt;y then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if r&gt;x then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
+				end;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n,m,q,u,v,t);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(queue[1,i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;qsort(1,n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;head[1]:=1;<strong>//Format the queues</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;head[2]:=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;head[3]:=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;foot[1]:=n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;foot[2]:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;foot[3]:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to m do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=-maxlongint;<strong>//Find the longest worm</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 3 do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (head[j]&lt;=foot[j])and(worm&lt;queue[j,head[j]]) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx:=j;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=queue[j,head[j]];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(head[mx]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=worm+i*q-q;<strong>//Don't forget to add the length while not being cut</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i mod t=0 then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(worm,' ');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(foot[2]);<strong>//Push the two pieces into the queue</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(foot[3]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[2,foot[2]]:=worm*u div v-i*q;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[3,foot[3]]:=worm-queue[2,foot[2]]-2*i*q;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;writeln;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n+m do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=-maxlongint;<strong>//Find the longest worm</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=1 to 3 do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (head[j]&lt;=foot[j])and(worm&lt;queue[j,head[j]]) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx:=j;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=queue[j,head[j]];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(head[mx]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm:=worm+m*q;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i mod t=0 then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write(worm,' ');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				long queue[3][8000000],foot[3],head[3];<strong>//Don't worry about the memory because you are given 512 MB in this problem</strong><br/>
+				void qsort(long l,long r)<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long x=l,y=r,std=queue[0][(l+r)/2];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while(x&lt;y)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(queue[0][x]&gt;std)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(queue[0][y]&lt;std)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y--;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;=y)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long tmp=queue[0][x];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[0][x++]=queue[0][y];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[0][y--]=tmp;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if(l&lt;y)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(l,y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if(x&lt;r)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qsort(x,r);<br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,m,u,v;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;int q,t;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld%d%ld%ld%d",&amp;n,&amp;m,&amp;q,&amp;u,&amp;v,&amp;t);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;queue[0][i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;qsort(0,n-1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;head[0]=head[1]=head[2]=foot[1]=foot[2]=0;<strong>//Format the queues</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;foot[0]=n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;m;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int mx;<strong>//Find the longest worm</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long long worm=-2147483647;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;3;j++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((head[j]&lt;foot[j])&amp;&amp;(queue[j][head[j]]&gt;worm))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx=j;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm=queue[j][head[j]];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm+=i*q;<strong>//Don't forget to add the length while not being cut</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((i+1)%t==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld ",worm);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[1][foot[1]]=worm*u/v-q*(i+1);<strong>//Push the two pieces into the queue</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[2][foot[2]]=worm-queue[1][foot[1]]-2*q*(i+1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head[mx]++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foot[1]++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foot[2]++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;putchar('\n');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n+m;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int mx;<strong>//Find the longest worm</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long long worm=-2147483647;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;3;j++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((head[j]&lt;foot[j])&amp;&amp;(queue[j][head[j]]&gt;worm))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mx=j;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm=queue[j][head[j]];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;worm+=m*q;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((i+1)%t==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld ",worm);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head[mx]++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>
 </html>

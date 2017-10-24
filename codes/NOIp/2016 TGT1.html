@@ -6,80 +6,69 @@
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
-		<div id="mainframe">
-			<h1>zsz12251665's blog</h1>
-			<p>Hello, welcome to zsz12251665's blog. </p>
-			<hr/>
-			<table width="100%">
-				<td valign="top" id="bar"><div id="menu"></div></td>
-				<td valign="top" id="text">
-					<h2 align="center">NOIp 2016 TGT1</h2>
-					<time>2016-12-19 17:04 by zsz12251665</time>
-					<h3>Problem</h3>
-					<section>
-						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1563">Luogu</a>
-						<br/>
-						<a target="_blank" href="https://www.vijos.org/p/2003">Vijos</a>
-					</section>
-					<h3>Solution</h3>
-					<section>
-						<p>To solve this problem, we just need to simulate the scene, and decide if Xiao Nan should move clockwise or counterclockwise. </p>
-					</section>
-					<h3>Code</h3>
-					<section>
-						<p>Pascal</p>
-						<code>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;face:array[1..100000]of integer;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;job:array[1..100000]of string;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,p,d,s:longint;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;readln(n,m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(face[i],job[i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;p:=1;<strong>//Start from the 1st toy</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to m do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(d,s);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if face[p]=d then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+n-s-1) mod n+1<strong>//Move clockwise</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+s-1) mod n+1;<strong>//Move counterclockwise</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;writeln(copy(job[p],2,20));<br/>
-							end.<br/>
-						</code>
-						<p>C++</p>
-						<code>
-							#include&lt;cstdio&gt;<br/>
-							int face[100000];<br/>
-							char job[100000][20];<br/>
-							int main()<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long n,m;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%s",&amp;face[i],&amp;job[i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long p=0;<strong>//Start from the 1st toy</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;m;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long d,s;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;d,&amp;s);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(face[p]==d)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p+=n-s;<strong>//Move clockwise</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p+=s;<strong>//Move counterclockwise</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p%=n;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;printf("%s",job[p]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-						</code>
-					</section>
-				</td>
-			</table>
-			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
-		</div>
+		<h2 align="center">NOIp 2016 TGT1</h2>
+		<time>2016-12-19 17:04 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1563">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/2003">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>To solve this problem, we just need to simulate the scene, and decide if Xiao Nan should move clockwise or counterclockwise. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;face:array[1..100000]of integer;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;job:array[1..100000]of string;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,p,d,s:longint;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;readln(n,m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(face[i],job[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;p:=1;<strong>//Start from the 1st toy</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to m do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readln(d,s);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if face[p]=d then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+n-s-1) mod n+1<strong>//Move clockwise</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:=(p+s-1) mod n+1;<strong>//Move counterclockwise</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;writeln(copy(job[p],2,20));<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				int face[100000];<br/>
+				char job[100000][20];<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,m;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%s",&amp;face[i],&amp;job[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long p=0;<strong>//Start from the 1st toy</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;m;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long d,s;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;d,&amp;s);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(face[p]==d)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p+=n-s;<strong>//Move clockwise</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p+=s;<strong>//Move counterclockwise</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p%=n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%s",job[p]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>
 </html>

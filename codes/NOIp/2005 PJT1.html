@@ -6,65 +6,54 @@
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
-		<div id="mainframe">
-			<h1>zsz12251665's blog</h1>
-			<p>Hello, welcome to zsz12251665's blog. </p>
-			<hr/>
-			<table width="100%">
-				<td valign="top" id="bar"><div id="menu"></div></td>
-				<td valign="top" id="text">
-					<h2 align="center">NOIp 2005 PJT1</h2>
-					<time>2017-10-19 21:34 by zsz12251665</time>
-					<h3>Problem</h3>
-					<section>
-						<a target="_blank" href="https://www.luogu.org/problem/show?pid=1046">Luogu</a>
-						<br/>
-						<a target="_blank" href="https://www.vijos.org/p/1102">Vijos</a>
-					</section>
-					<h3>Solution</h3>
-					<section>
-						<p>Well, we should ignore the bench and make Tao Tao 30 centimetres higher. Then count the number of the apples which she is able to pick. </p>
-					</section>
-					<h3>Code</h3>
-					<section>
-						<p>Pascal</p>
-						<code>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;apple:array[1..10]of integer;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;h,i,ans:integer;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 10 do<strong>//Get the apples</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(apple[i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;read(h);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 10 do<strong>//Count the apples</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if h+30>=apple[i] then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(ans);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
-							end.<br/>
-						</code>
-						<p>C++</p>
-						<code>
-							#include&lt;cstdio&gt;<br/>
-							int apple[10];<br/>
-							int main()<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;int h,ans=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;10;i++)<strong>//Get the apples</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;apple[i]);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;h);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;10;i++)<strong>//Count the apples</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(h+30>=apple[i])<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-						</code>
-					</section>
-				</td>
-			</table>
-			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
-		</div>
+		<h2 align="center">NOIp 2005 PJT1</h2>
+		<time>2017-10-19 21:34 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1046">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1102">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Well, we should ignore the bench and make Tao Tao 30 centimetres higher. Then count the number of the apples which she is able to pick. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;apple:array[1..10]of integer;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;h,i,ans:integer;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 10 do<strong>//Get the apples</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(apple[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(h);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 10 do<strong>//Count the apples</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if h+30>=apple[i] then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(ans);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				int apple[10];<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;int h,ans=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;10;i++)<strong>//Get the apples</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;apple[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;h);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;10;i++)<strong>//Count the apples</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(h+30>=apple[i])<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%d",ans);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>
 </html>

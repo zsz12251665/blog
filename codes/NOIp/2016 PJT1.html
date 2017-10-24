@@ -6,75 +6,64 @@
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
-		<div id="mainframe">
-			<h1>zsz12251665's blog</h1>
-			<p>Hello, welcome to zsz12251665's blog. </p>
-			<hr/>
-			<table width="100%">
-				<td valign="top" id="bar"><div id="menu"></div></td>
-				<td valign="top" id="text">
-					<h2 align="center">NOIp 2016 PJT1</h2>
-					<time>2017-04-05 17:02 by zsz12251665</time>
-					<h3>Problem</h3>
-					<section>
-						<a target="_blank" href="http://www.luogu.org/problem/show?pid=1909">Luogu</a>
-						<br/>
-						<a target="_blank" href="https://www.vijos.org/p/2009">Vijos</a>
-					</section>
-					<h3>Solution</h3>
-					<section>
-						<p>Calculate the cost of each kinds of pencil and compare them. Pick the smallest one as the answer. But pay attention that you may buy one pack more if n mod amount=0. </p>
-					</section>
-					<h3>Code</h3>
-					<section>
-						<p>Pascal</p>
-						<code>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;n,i,j,ans,tmp,prc,amt:longint;<strong>//Remember to make the ans as large as possible to make sure that you can get the cost of each kind</strong><br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;read(n);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;ans:=maxlongint;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 3 do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(amt,prc);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j:=n;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while j&gt;0 do<strong>//In oreder to avoid count one more pack, I pick the packs one after one</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j:=j-amt;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=tmp+prc;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if tmp&lt;ans then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=tmp;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
-							end.<br/>
-						</code>
-						<p>C++</p>
-						<code>
-							#include&lt;cstdio&gt;<br/>
-							int main()<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=2147483647,tmp,prc,amt;<strong>//Remember to make the ans as large as possible to make sure that you can get the cost of each kind</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;3;i++)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;amt,&amp;prc);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=n;j&gt;0;j-=amt)<strong>//In oreder to avoid count one more pack, I pick the packs one after one</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp+=prc;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(tmp&lt;ans)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=tmp;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-						</code>
-					</section>
-				</td>
-			</table>
-			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
-		</div>
+		<h2 align="center">NOIp 2016 PJT1</h2>
+		<time>2017-04-05 17:02 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="http://www.luogu.org/problem/show?pid=1909">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/2009">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Calculate the cost of each kinds of pencil and compare them. Pick the smallest one as the answer. But pay attention that you may buy one pack more if n mod amount=0. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,i,j,ans,tmp,prc,amt:longint;<strong>//Remember to make the ans as large as possible to make sure that you can get the cost of each kind</strong><br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;ans:=maxlongint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 3 do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(amt,prc);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j:=n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while j&gt;0 do<strong>//In oreder to avoid count one more pack, I pick the packs one after one</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j:=j-amt;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp:=tmp+prc;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if tmp&lt;ans then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=tmp;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=2147483647,tmp,prc,amt;<strong>//Remember to make the ans as large as possible to make sure that you can get the cost of each kind</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;3;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;amt,&amp;prc);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long j=n;j&gt;0;j-=amt)<strong>//In oreder to avoid count one more pack, I pick the packs one after one</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp+=prc;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(tmp&lt;ans)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=tmp;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>
 </html>
