@@ -6,150 +6,139 @@
 		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
 	</head>
 	<body>
-		<div id="mainframe">
-			<h1>zsz12251665's blog</h1>
-			<p>Hello, welcome to zsz12251665's blog. </p>
-			<hr/>
-			<table width="100%">
-				<td valign="top" id="bar"><div id="menu"></div></td>
-				<td valign="top" id="text">
-					<h2 align="center">HDU 2089</h2>
-					<time>2017-02-10 19:19 by zsz12251665</time>
-					<h3>Problem</h3>
-					<section>
-						<a target="_blank" href="https://vjudge.net/problem/HDU-2089">vjudge</a>
-						<br/>
-						<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">HDU</a>
-					</section>
-					<h3>Solution</h3>
-					<section>
-						<p>Well, I don't know why I made 3 <abbr title="Time Limit Exceed">TLE</abbr> and 1 <abbr title="Wrong Answer">WA</abbr> before the <abbr title="Accepted">AC</abbr> arrived, but anyway it is not a difficult problem in fact. At the very beginning, I just search the interval between <var>n</var> and <var>m</var> and count the number. And that's the solution 1. However, it takes too much time to search the interval when it is asked. So we can use a way just like prefix sum that we'll preprocess an array with the number of the lucky numbers(just like the array count in the Solution 2). When we read each pair of <var>n</var> and <var>m</var>, all we need to do is to subtract the number of the lucky numbers from 0 to <var>n</var>-1 from the one from 0 to <var>m</var>. Although it takes much time in preprocessing, but it can reduce the time of searching from O(<var>n</var>) to O(1). So I get the <abbr title="Accepted">AC</abbr> with the code given as Solution 2 in the code part. </p>
-					</section>
-					<h3>Code</h3>
-					<section>
-						<p>Solution 1 Pascal</p>
-						<code>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,count:longint;<br/>
-							function lucky(a:longint):boolean;<br/>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;i:longint;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;i:=1;<strong>//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while i&lt;a do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ((a div i) mod 100=62)or((a div i) mod 10=4) then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(false);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i:=i*10;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;exit(true);<br/>
-							end;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while (n&lt;&gt;0)or(m&lt;&gt;0) do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count:=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i:=n to m do<strong>//Search the interval</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if lucky(i) then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(count);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(count);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							end.<br/>
-						</code>
-						<p>Solution 1 C++</p>
-						<code>
-							#include&lt;cstdio&gt;<br/>
-							int lucky(long a)<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=1;i&lt;a;i*=10)<strong>//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(((a/i)%100==62)||((a/i)%10==4))<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-							int main()<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long n,m,count;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while((n!=0)||(m!=0))<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count=0;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long i=n;i&lt;=m;i++)<strong>//Search the interval</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(lucky(i)==0)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count++;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld\n",count);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-						</code>
-						<p>Solution 2 Pascal</p>
-						<code>
-							var<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;count:array[0..1000000]of longint;<strong>//count[i] keeps the number of the lucky numbers from 0 to i</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;n,m,i:longint;<br/>
-							function lucky(a:longint):boolean;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while a>0 do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a mod 100=62)or(a mod 10=4) then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(false);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a:=a div 10;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;exit(true);<br/>
-							end;<br/>
-							begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;count[0]:=1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 1000000 do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if lucky(i) then<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]:=count[i-1]+1<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]:=count[i-1];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while (n&lt;&gt;0)or(m&lt;&gt;0) do<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(count[m]-count[n-1]);<strong>//Don't forget to use the one before n, or you may lose the number n</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
-							end.<br/>
-						</code>
-						<p>Solution 2 C++</p>
-						<code>
-							#include&lt;cstdio&gt;<br/>
-							long count[1000001];<strong>//count[i] keeps the number of the lucky numbers from 0 to i</strong><br/>
-							int lucky(long a)<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while(a>0)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a%100==62)||(a%10==4))<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a/=10;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-							int main()<br/>
-							{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;count[0]=1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;for(long i=1;i&lt;1000001;i++)<strong>//Fill the count[i]</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(lucky(i)==0)<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]=count[i-1]+1;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]=count[i-1];<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;long n,m;<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;while((n!=0)||(m!=0))<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld\n",count[m]-count[n-1]);<strong>//Don't forget to use the one before n, or you may lose the number n</strong><br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-							&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
-							}<br/>
-						</code>
-					</section>
-				</td>
-			</table>
-			<address>&copy; 2017 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </address>
-		</div>
+		<h2 align="center">HDU 2089</h2>
+		<time>2017-02-10 19:19 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://vjudge.net/problem/HDU-2089">vjudge</a>
+			<br/>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Well, I don't know why I made 3 <abbr title="Time Limit Exceed">TLE</abbr> and 1 <abbr title="Wrong Answer">WA</abbr> before the <abbr title="Accepted">AC</abbr> arrived, but anyway it is not a difficult problem in fact. At the very beginning, I just search the interval between <var>n</var> and <var>m</var> and count the number. And that's the solution 1. However, it takes too much time to search the interval when it is asked. So we can use a way just like prefix sum that we'll preprocess an array with the number of the lucky numbers(just like the array count in the Solution 2). When we read each pair of <var>n</var> and <var>m</var>, all we need to do is to subtract the number of the lucky numbers from 0 to <var>n</var>-1 from the one from 0 to <var>m</var>. Although it takes much time in preprocessing, but it can reduce the time of searching from O(<var>n</var>) to O(1). So I get the <abbr title="Accepted">AC</abbr> with the code given as Solution 2 in the code part. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Solution 1 Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,m,i,count:longint;<br/>
+				function lucky(a:longint):boolean;<br/>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;i:longint;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;i:=1;<strong>//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while i&lt;a do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ((a div i) mod 100=62)or((a div i) mod 10=4) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(false);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i:=i*10;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;exit(true);<br/>
+				end;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while (n&lt;&gt;0)or(m&lt;&gt;0) do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i:=n to m do<strong>//Search the interval</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if lucky(i) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(count);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(count);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				end.<br/>
+			</code>
+			<p>Solution 1 C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				int lucky(long a)<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=1;i&lt;a;i*=10)<strong>//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(((a/i)%100==62)||((a/i)%10==4))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,m,count;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while((n!=0)||(m!=0))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(long i=n;i&lt;=m;i++)<strong>//Search the interval</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(lucky(i)==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld\n",count);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+			<p>Solution 2 Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;count:array[0..1000000]of longint;<strong>//count[i] keeps the number of the lucky numbers from 0 to i</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,m,i:longint;<br/>
+				function lucky(a:longint):boolean;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while a>0 do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a mod 100=62)or(a mod 10=4) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(false);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a:=a div 10;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;exit(true);<br/>
+				end;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;count[0]:=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to 1000000 do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if lucky(i) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]:=count[i-1]+1<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]:=count[i-1];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while (n&lt;&gt;0)or(m&lt;&gt;0) do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(count[m]-count[n-1]);<strong>//Don't forget to use the one before n, or you may lose the number n</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				end.<br/>
+			</code>
+			<p>Solution 2 C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				long count[1000001];<strong>//count[i] keeps the number of the lucky numbers from 0 to i</strong><br/>
+				int lucky(long a)<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while(a>0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a%100==62)||(a%10==4))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a/=10;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;count[0]=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=1;i&lt;1000001;i++)<strong>//Fill the count[i]</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(lucky(i)==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]=count[i-1]+1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count[i]=count[i-1];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,m;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while((n!=0)||(m!=0))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld\n",count[m]-count[n-1]);<strong>//Don't forget to use the one before n, or you may lose the number n</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;n,&amp;m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
 		<script type="text/javascript" src="/menu.js"></script>
 	</body>
 </html>
