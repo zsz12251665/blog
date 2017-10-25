@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>CF 679B - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<h2 align="center">CF 679B</h2>
+		<time>2017-10-25 18:41 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://vjudge.net/problem/CodeForces-679B">vjudge</a>
+			<br/>
+			<a target="_blank" href="http://codeforces.com/problemset/problem/679/B">Codeforces</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>First of all, we find the maximum <var>a</var> that <var>a</var><sup>3</sup> is not greater than <var>m</var>. And the first block must have side <var>a</var> or(<var>a</var>-1). That is because if we use (<var>a</var>-2) or smaller integers. It must be smaller than using (<var>a</var>-1) because the first block can be replaced by a block with side (<var>a</var>-1). But why (<var>a</var>-1) cannot be replaced by <var>a</var>? Fox example, if we've an <var>m</var>=9, then <var>a</var> would be 2. But we know that the maximum number of the blocks is 7, with 1<sup>3</sup>+1<sup>3</sup>+1<sup>3</sup>+1<sup>3</sup>+1<sup>3</sup>+1<sup>3</sup>+1<sup>3</sup>. So we may have more volumes to make a higher tower when we use the block with side (<var>a</var>-1). </p>
+			<p>Secondly, I have to remind you that when you pick up a block of with side <var>a</var>, the total volume of rest part should not be greater than ((<var>a</var>+1)<sup>3</sup>-<var>a</var><sup>3</sup>), or this block is a illegal block because it is not the biggest block that can be taken. So when we choose to take the block with side <var>a</var> or (<var>a</var>-1), the volume remained are very important. The more volume remained, the higher tower we can build. So we should pick up the larger one. </p>
+			<p>After getting to know which block should we choose, we get the answer. After getting <var>m</var>, repeat choosing the most suitable block and remove it from the maximum volume or reset <var>m</var> until it is reduced to 0. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;h:integer;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;a:longint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;m,x:int64;<br/>
+				function cube(a:longint):int64;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;exit(int64(a)*a*a);<br/>
+				end;<br/>
+				function count(m:int64):integer;<strong>//Count how many blocks can be added at most</strong><br/>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;a:longint;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if m&lt;8 then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;a:=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while cube(a+1)&lt;=m do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(a);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if cube(a)-1-cube(a-1)&gt;m-cube(a) then<strong>//Choose the situation with the maximum volume remained</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(1+count(cube(a)-1-cube(a-1)));<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(1+count(m-cube(a)))<br/>
+				end;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;h:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;x:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while m&gt;0 do<strong>//m is the volume remained</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(h);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a:=1;<strong>//find the biggest cube</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while cube(a+1)&lt;=m do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(a);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if count(cube(a)-1-cube(a-1))&gt;count(m-cube(a)) then<strong>//Choose the tallest solution</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m:=cube(a)-1-cube(a-1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:=x+cube(a-1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m:=m-cube(a);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:=x+cube(a);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write(h,' ',x);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				long long cube(long a)<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return (long long)a*a*a;<br/>
+				}<br/>
+				int count(long long m)<strong>//Count how many blocks can be added at most</strong><br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if(m&lt;8)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return m;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long a=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while(cube(a+1)&lt;=m)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if(cube(a)-1-cube(a-1)&gt;m-cube(a))<strong>//Choose the situation with the maximum volume remained</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1+count(cube(a)-1-cube(a-1));<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1+count(m-cube(a));<br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long long m;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%lld",&amp;m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;int h=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long long x=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while(m&gt;0)<strong>//m is the volume remained</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long a=1;<strong>//find the biggest cube</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(cube(a+1)&lt;=m)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(count(cube(a)-1-cube(a-1))&gt;count(m-cube(a)))<strong>//Choose the tallest solution</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m=cube(a)-1-cube(a-1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x+=cube(a-1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-=cube(a);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x+=cube(a);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%d %lld\n",h,x);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>
