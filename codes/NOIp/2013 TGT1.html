@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2013 TGT1 - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<h2 align="center">NOIp 2013 TGT1</h2>
+		<time>2017-10-26 11:01 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1965">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1841">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is testing our fast power algorithm because of the 10<sup><var>k</var></sup>. </p>
+			<p>First, we should transform the index into binary. For example, we have 10<sup>23</sup>=10<sup>(10111)<sub>2</sub></sup>=10<sup>16</sup>*10<sup>4</sup>*10<sup>2</sup>*10<sup>1</sup>. It is not difficult to find it we can square the base for times to get 10<sup>1</sup>, 10<sup>2</sup>, 10<sup>4</sup> and 10<sup>16</sup>. That can reduce the time complexity to O(lg(<var>n</var>)). </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,m,k,x:longint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;power,base:int64;<strong>//To avoid overlimit, we use int64 here</strong><br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n,m,k,x);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;power:=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;base:=10;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while k&gt;0 do<strong>//The fast power algorithm</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if k mod 2=1 then<strong>//Divide k into binary</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power:=(power*base) mod n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base:=(base*base) mod n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k:=k div 2;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write((power*m+x) mod n);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,m,k,x;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld%ld%ld",&amp;n,&amp;m,&amp;k,&amp;x);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long long power=1,base=10;<strong>//To avoid overlimit, we use long long here</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;while(k&gt;0)<strong>//The fast power algorithm</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(k%2==1)<strong>//Divide k into binary</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;power=(power*base)%n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base=(base*base)%n;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k/=2;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%lld",(power*m+x)%n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>

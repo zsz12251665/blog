@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2013 TGT4 - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<h2 align="center">NOIp 2013 TGT4</h2>
+		<time>2017-10-26 11:43 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1969">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1844">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>NOIp 2013 is such a high qualified competition that no problems in TG group can be solved with the simulation or enumeration. But this problem is not difficult as it is the first problem on Day 2. </p>
+			<p>Here are two pieces of important information: </p>
+			<ul>
+				<li>We don't need any more operations if this brick is not so tall as the one beside it because the previous operation can completely cover it. </li>
+				<li>We'll need more operations to reach the height if this brick is taller than the one beside it, and the added number will be the height difference. </li>
+			</ul>
+			<p>With these information, we can easily find out the solution, compare it with the last brick we read, and added the height differece onto our answer just like the code written. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,ans,i:longint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;h,last:integer;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;last:=0;<strong>//For the first brick, all height should be added, so last will be 0</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(h);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if h&gt;last then<strong>//If h&gt;last, we need to add more operation to reach it</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=ans+h-last;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last:=h;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write(ans);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long n,ans=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;int h,last=0;<strong>//For the first brick, all height should be added, so last will be 0</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(long i=0;i&lt;n;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;h);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(h&gt;last)<strong>//If h&gt;last, we need to add more operation to reach it</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans+=h-last;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last=h;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",ans);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>
