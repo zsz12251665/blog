@@ -17,8 +17,8 @@
 		<h3>Solution</h3>
 		<section>
 			<p>This problem is very simple. You just need to find the small prime, and you'll get the big prime. So the solution will talk about how to check whether the integer is a prime. </p>
-			<p>We need to try all the integers from 2 to floor(sqrt(n)). Why sqrt(n)? That is because if there is a division called d which is bigger than sqrt(n), then n/d must be an integer, and it must be smaller than sqrt(n). If both n/d and d are bigger than sqrt(n), then (n/d)*d, which equals n, must be bigger than sqrt(n)<sup>2</sup>, which equals n too. That is impossible. So you can check whether the integer n is a prime by trying all the integers from 2 to floor(sqrt(n)). </p>
-			<p>P. S. In fact, we don't need to check whether the number is a prime. Because the problem says n will always be the product of two primes. So we just need to find the small number, and output their quotient. </p>
+			<p>We need to try all the integers from 2 to ⌊√(<var>n</var>)⌋. Why √(<var>n</var>)? That is because if there is a division <var>d</var> which is bigger than √(<var>n</var>), then <var>n</var>/<var>d</var> must be an integer, and it must be smaller than √(<var>n</var>). If both <var>n</var>/<var>d</var> and <var>d</var> are bigger than √(<var>n</var>), then <var>d</var>(<var>n</var>/<var>d</var>), which equals <var>n</var>, must be bigger than √(<var>n</var>)<sup>2</sup>, which equals <var>n</var> too. That is impossible. So you can check whether the integer <var>n</var> is a prime by trying all the integers from 2 to ⌊√(<var>n</var>)⌋. </p>
+			<p>P. S. In fact, we don't need to check whether the number is a prime. Because the problem have promised that <var>n</var> will always be the product of two primes. So we just need to find the small number, and output their quotient. </p>
 		</section>
 		<h3>Code</h3>
 		<section>
@@ -30,7 +30,7 @@
 				var<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;i:longint;<br/>
 				begin<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;for i:=2 to trunc(sqrt(n)) do<strong>//Attention that the loop is from 2 because 2 is the smallest prime</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=2 to trunc(√(n)) do<strong>//Attention that the loop is from 2 because 2 is the smallest prime</strong><br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if n mod i=0 then<strong>//If there is a division, exit false</strong><br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(false);<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;exit(true);<br/>

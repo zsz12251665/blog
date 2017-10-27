@@ -17,8 +17,8 @@
 		<h3>Solution</h3>
 		<section>
 			<p>There are two solutions to solve this problem. The first one is to use Pascal's triangle. The second one is <abbr title="dynamic planning">dp</abbr> algorithm. The code below is based on the second solution. </p>
-			<p>First, we set up an coe array that coe[i][j] is used to keep the coefficient of x<sup>i</sup>y<sup>j</sup>. And the state transition formula is coe[i][j]=a*coe[i-1][j]+b*coe[i][j-1]. And it is also very easy to verify. So it won't be given here. In this way, we can solve the problem with a time complexity of O(n*m). </p>
-			<p>P. S. The i and j in coe[i][j] may not conform i+j=k, but it is the coefficient of x<sup>i</sup></sup>y<sup>i</sup> in the polynomial (a*x+b*y)<sup>i+j</sup>. </p>
+			<p>First, we set up an <var>coe</var> array that <var>coe</var>[<var>i</var>,<var>j</var>] is used to keep the coefficient of <var>x</var><sup><var>i</var></sup><var>y</var><sup><var>j</var></sup>. And the state transition formula is <var>coe</var>[<var>i</var>,<var>j</var>]=<var>a</var><var>coe</var>[<var>i</var>-1,<var>j</var>]+<var>b</var><var>coe</var>[<var>i</var>,<var>j</var>-1]. And it is also very easy to verify. So it won't be given here. In this way, we can solve the problem with a time complexity of O(<var>n</var><var>m</var>). </p>
+			<p>P. S. The (<var>i</var>,<var>j</var>) in <var>coe</var>[<var>i</var>,<var>j</var>] may not conform <var>i</var>+<var>j</var>=<var>k</var>, but it is the coefficient of <var>x</var><sup><var>i</var></sup><var>y</var><sup><var>j</var></sup> in the polynomial (<var>a</var><var>x</var>+<var>b</var><var>y</var>)<sup><var>i</var>+<var>j</var></sup>. </p>
 		</section>
 		<h3>Code</h3>
 		<section>

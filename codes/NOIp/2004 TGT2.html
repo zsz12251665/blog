@@ -16,8 +16,8 @@
 		</section>
 		<h3>Solution</h3>
 		<section>
-			<p>Well, let's define that the bunches of fruits are fruit[1] to fruit[n]. And for very i in [1,n-1], fruit[i] is smaller than fruit[i+1]. When we need to combine two bunches of fruits, choose fruit[1] and fruit[2] can keep the least cost since they are the smallest ones. And then we add the new bunch which is fruit[1]+fruit[2] back to the fruit array. Now we have n-1 bunches now. Repeat these steps, we can finally have a single bunch with least cost. </p>
-			<p>What's important is that we can use a heap to keep the fruit array. The heap is a data structure with an O(lg(n)) insert and O(lg(n)) extract. With the heap to keep the fruit array, we can reduce the time complexity to O(n lg(n)), which is fast enough to solve the problem. </p>
+			<p>Well, let's define that the bunches of fruits are <var>fruit</var>[1] to <var>fruit</var>[<var>n</var>]. And for every <var>i</var> in [1,<var>n</var>-1], <var>fruit</var>[<var>i</var>] is smaller than <Var>fruit</var>[<var>i</var>+1]. When we need to combine two bunches of fruits, choose <var>fruit</var>[1] and <var>fruit</var>[2] can keep the least cost since they are the smallest ones. And then we add the new bunch which is (<var>fruit</var>[1]+<var>fruit</var>[2]) back to the fruit array. Now we have (<var>n</var>-1) bunches now. Repeat these steps, we can finally have a single bunch with least cost. </p>
+			<p>What's important is that we can use a heap to keep the fruit array. The heap is a data structure with an O(lg(<var>n</var>)) insert and an O(lg(<var>n</var>)) extract. With the heap to keep the fruit array, we can reduce the time complexity to O(<var>n</var>lg(<var>n</var>)), which is fast enough to solve the problem. </p>
 			<p>While building up the heap, I found a way to make fewer mistakes when extracting. That is fill the null part with maxlongint. That means if a point has no child, it has a child or two children with maxlongint. That can be very helpful because I don't need to judge if the point has child or not by the size of the heap. </p>
 		</section>
 		<h3>Code</h3>

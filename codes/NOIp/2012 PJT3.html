@@ -16,7 +16,7 @@
 		</section>
 		<h3>Solution</h3>
 		<section>
-			<p>This problem is a <abbr title="dynamic planning">dp</abbr> problem. We make the <abbr title="dynamic planning">dp</abbr> array that <var>dp</var>[<var>i</var>,<var>j</var>] means after choosing <var>i</var> kinds of flower we know have <var>j</var> pots of flower. And the state transition formula will be <var>dp</var>[<var>i</var>,<var>j</var>]=Σ<sub><var>k</var>=0</sub><sup>min(<var>a</var>[<var>i</var>],<var>j</var>)</sup>(<var>dp</var>[<var>i</var>-1,<var>j</var>-<var>k</var>]), that <var>k</var> means to the number of the pots of the <var>i</var>-th flower. And the answer, of course, will be <var>dp</var>[<var>n</var>,<var>m</var>]. </p>
+			<p>This problem is a <abbr title="dynamic planning">dp</abbr> problem. We make the <var><abbr title="dynamic planning">dp</abbr></var> array that <var>dp</var>[<var>i</var>,<var>j</var>] means after choosing <var>i</var> kinds of flowers we know have <var>j</var> pots of flowers. And the state transition formula will be <var>dp</var>[<var>i</var>,<var>j</var>]=Σ<sub><var>k</var>=0</sub><sup>min(<var>a</var>[<var>i</var>],<var>j</var>)</sup>(<var>dp</var>[<var>i</var>-1,<var>j</var>-<var>k</var>]), that <var>k</var> means to the number of the pots of the <var>i</var>-th flowers. And the answer, of course, will be <var>dp</var>[<var>n</var>,<var>m</var>]. </p>
 		</section>
 		<h3>Code</h3>
 		<section>
