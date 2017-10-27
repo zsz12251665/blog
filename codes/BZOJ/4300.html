@@ -17,7 +17,7 @@
 		<h3>Solution</h3>
 		<section>
 			<p>When I read the problem the first time, I thought out a way like solving the longest increasing subsequence problem, which means I just need an array to keep the longest subsequence until this integer. The code is given as Solution 1 in the code part. </p>
-			<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is O(<var>n</var><sup>2</sup>). Later, I got another algorithm whose time complexity is O(<var>n</var>lg(a[i])). It just needs a <abbr title="dynamic planning">dp</abbr> array. dp[i] keeps the length of the longest subsequence whose last integer's <var>i</var>-th digit is not 0 in binary. So after read in each integer in sequence, I can update the dp array in an O(lg(a[i])) algorithm. And that is Solution 2, which is accepted. </p>
+			<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is O(<var>n</var><sup>2</sup>). Later, I got another algorithm whose time complexity is O(<var>n</var>lg(<var>a</var>[<var>i</var>])). It just needs a <abbr title="dynamic planning">dp</abbr> array. <var>dp</var>[<var>i</var>] keeps the length of the longest subsequence whose last integer's <var>i</var>-th digit is not 0 in binary. So after read in each integer in sequence, I can update the dp array in an O(lg(<var>a</var>[<var>i</var>])) algorithm. And that is Solution 2, which is accepted. </p>
 		</section>
 		<h3>Code</h3>
 		<section>

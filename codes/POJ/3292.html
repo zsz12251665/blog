@@ -17,8 +17,8 @@
 		<h3>Solution</h3>
 		<section>
 			<p>Sorry for the couple of no-update months. This is a problem about prime numbers. However, I spent a lot of time to avoid <abbr title="Time Limit Exceeded">TLE</abbr> until I found the correct solution. </p>
-			<p>First of all, I thought of the Sieve of Eratosthenes, such a efficient sieve of prime with an O(n lg lg n) time complexity. Then after getting a number n, try every pair of H-primes that fix it. That is obviously not fast enough. So later I used the Sieve of Euler, an O(n) sieve, to filter the prime numbers. It didn't make any sence. That is the Soultion 1. </p>
-			<p>Later, I found that if I coulf preprocess the H-primes, why not preprocess the H-semi-primes at the same time? So that is the Solution 2 with <abbr title="Accepted">AC</abbr>. </p>
+			<p>First of all, I thought of the Sieve of Eratosthenes, such a efficient sieve of prime with an O(<var>n</var>lg<sup>2</sup>(<var>n</var>)) time complexity. Then after getting a number <var>n</var>, try every pair of H-primes that fix it. That is obviously not fast enough. So later I used the Sieve of Euler, an O(<var>n</var>) sieve, to filter the prime numbers. It didn't make any sence. That is the Soultion 1. </p>
+			<p>Later, I found that if I could preprocess the H-primes, why not preprocess the H-semi-primes at the same time? So that is the Solution 2 with <abbr title="Accepted">AC</abbr>. </p>
 			<p>P. S. : As same as POJ 1007, the <abbr title="Free Pascal Compiler">FPC</abbr> of POJ didn't work well when I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
 		</section>
 		<h3>Code</h3>

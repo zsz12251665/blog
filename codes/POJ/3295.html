@@ -16,7 +16,7 @@
 		</section>
 		<h3>Solution</h3>
 		<section>
-			<p>Since there are many different groups of p,q,r,s,t. We need to enumerate them one by one. Luckily, all of them are 0 or 1, so there are just 32 groups. I got confused on how to know the expression. Later, I found that it is a prefix expression. So I can scan it from end to start and solve it like the suffix expression. You'll need a stack to keep the number you've get. When you get a number, put it into the stack. When you get an operator, push the top numbers, and put the answer into the stack. In this way, the last number left in the stack would be the answer of the whole expression. </p>
+			<p>Since there are many different groups of (<var>p</var>,<var>q</var>,<var>r</var>,<var>s</var>,<var>t</var>). We need to enumerate them one by one. Luckily, all of them are 0 or 1, so there are just 32 groups. I got confused on how to know the expression. Later, I found that it is a prefix expression. So I can scan it from end to start and solve it like the suffix expression. You'll need a stack to keep the number you've get. When you get a number, put it into the stack. When you get an operator, push the top numbers, and put the answer into the stack. In this way, the last number left in the stack would be the answer of the whole expression. </p>
 		</section>
 		<h3>Code</h3>
 		<section>
@@ -29,7 +29,7 @@
 				var<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;p,q,r,s,t,top,i:integer;<br/>
 				begin<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;for p:=0 to 1 do<strong>//Enumerate every possible group of p,q,r,s,t</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for p:=0 to 1 do<strong>//Enumerate every possible group of (p,q,r,s,t)</strong><br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for q:=0 to 1 do<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for r:=0 to 1 do <br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for s:=0 to 1 do<br/>
@@ -117,7 +117,7 @@
 				char wff[100];<br/>
 				void solve()<br/>
 				{<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;for(int p=0;p&lt;2;p++)<strong>//Enumerate every possible group of p,q,r,s,t</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int p=0;p&lt;2;p++)<strong>//Enumerate every possible group of (p,q,r,s,t)</strong><br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int q=0;q&lt;2;q++)<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int r=0;r&lt;2;r++)<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int s=0;s&lt;2;s++)<br/>

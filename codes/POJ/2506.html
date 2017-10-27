@@ -16,7 +16,7 @@
 		</section>
 		<h3>Solution</h3>
 		<section>
-			<p>Let's solve the problem step by step. It is obvious that there is only one method to tile a 2*0 rectangle(use no tiles) and a 2*1 rectangle(use a 2*1 tile). How about the number of methods for longer rectangles? Well, a method for a 2*i rectangle must have a standing 2*1 tile, a 2*2 tile or two lying 2*1 tiles, right? If there is a standing 2*1 tile, the number of methods will be the number of methods for a 2*(i-1) rectangle. If there is a 2*2 tile or two lying 2*1 tiles, the number of methods will be the number of methods for a 2*(i-2) rectangle. So the number of methods will be the number of methods for a 2*(i-1) rectangle plus twice the number of methods for a 2*(i-2) rectangle in total. The data range is lower than 250, so we can pretreat the numbers for every i. </p>
+			<p>Let's solve the problem step by step. It is obvious that there is only one method to tile a 2*0 rectangle(use no tiles) and a 2*1 rectangle(use a 2*1 tile). How about the number of methods for longer rectangles? Well, a method for a 2*<var>i</var> rectangle must have a standing 2*1 tile, a 2*2 tile or two lying 2*1 tiles, right? If there is a standing 2*1 tile, the number of methods will be the number of methods for a 2*(<var>i</var>-1) rectangle. If there is a 2*2 tile or two lying 2*1 tiles, the number of methods will be the number of methods for a 2*(<var>i</var>-2) rectangle. So the number of methods will be the number of methods for a 2*(<var>i</var>-1) rectangle plus twice the number of methods for a 2*(<var>i</var>-2) rectangle in total. The data range is lower than 250, so we can pretreat the numbers for every <var>i</var>. </p>
 		</section>
 		<h3>Code</h3>
 		<section>

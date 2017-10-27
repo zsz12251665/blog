@@ -16,7 +16,7 @@
 		</section>
 		<h3>Solution</h3>
 		<section>
-			<p>Similar to HDU 2548, this problem is a mathmatical problem too. f(<var>x</var>,<var>y</var>,<var>m</var>,<var>n</var>)=sqrt(<var>x</var><sup>2</sup>+<var>y</var><sup>2</sup>+<var>m</var><sup>2</sup>+<var>n</var><sup>2</sup>-2<var>m</var><var>x</var>-2<var>n</var><var>y</var>)=sqrt((<var>x</var>-<var>m</var>)<sup>2</sup>+(<var>y</var>-<var>n</var>)<sup>2</sup>), which refers to the distance between (<var>x</var>,<var>y</var>) and (<var>m</var>,<var>n</var>). So when the hurt is reduced to mininum, the sum of the distances is reduced to minium too. It equals the distance between (<var>a</var>,<var>b</var>) and (<var>c</var>,<var>d</var>), which will be sqrt((<var>a</var>-<var>c</var>)<sup>2</sup>+(<var>b</var>-<var>d</var>)<sup>2</sup>). </p>
+			<p>Similar to HDU 2548, this problem is a mathmatical problem too. f(<var>x</var>,<var>y</var>,<var>m</var>,<var>n</var>)=√(<var>x</var><sup>2</sup>+<var>y</var><sup>2</sup>+<var>m</var><sup>2</sup>+<var>n</var><sup>2</sup>-2<var>m</var><var>x</var>-2<var>n</var><var>y</var>)=√((<var>x</var>-<var>m</var>)<sup>2</sup>+(<var>y</var>-<var>n</var>)<sup>2</sup>), which refers to the distance between (<var>x</var>,<var>y</var>) and (<var>m</var>,<var>n</var>). So when the hurt is reduced to mininum, the sum of the distances is reduced to minium too. It equals the distance between (<var>a</var>,<var>b</var>) and (<var>c</var>,<var>d</var>), which will be √((<var>a</var>-<var>c</var>)<sup>2</sup>+(<var>b</var>-<var>d</var>)<sup>2</sup>). </p>
 		</section>
 		<h3>Code</h3>
 		<section>
@@ -30,7 +30,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to t do<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(a,b,c,d);<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(sqrt((a-c)*(a-c)+(b-d)*(b-d)):0:1);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeln(√((a-c)*(a-c)+(b-d)*(b-d)):0:1);<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
 				end.<br/>
 			</code>
@@ -46,7 +46,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double a,b,c,d;<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%lf%lf%lf%lf",&amp;a,&amp;b,&amp;c,&amp;d);<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%.1lf\n",sqrt((a-c)*(a-c)+(b-d)*(b-d)));<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%.1lf\n",√((a-c)*(a-c)+(b-d)*(b-d)));<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
 				}<br/>
