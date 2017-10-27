@@ -1,0 +1,72 @@
+﻿<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2012 PJT3 - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<h2 align="center">NOIp 2012 PJT3</h2>
+		<time>2017-10-27 09:11 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1077">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1792">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is a <abbr title="dynamic planning">dp</abbr> problem. We make the <abbr title="dynamic planning">dp</abbr> array that <var>dp</var>[<var>i</var>,<var>j</var>] means after choosing <var>i</var> kinds of flower we know have <var>j</var> pots of flower. And the state transition formula will be <var>dp</var>[<var>i</var>,<var>j</var>]=Σ<sub><var>k</var>=0</sub><sup>min(<var>a</var>[<var>i</var>],<var>j</var>)</sup>(<var>dp</var>[<var>i</var>-1,<var>j</var>-<var>k</var>]), that <var>k</var> means to the number of the pots of the <var>i</var>-th flower. And the answer, of course, will be <var>dp</var>[<var>n</var>,<var>m</var>]. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;dp:array[0..100,0..100]of longint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,m,a,i,j,k:integer;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n,m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;dp[0,0]:=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(a);<strong>//We can scroll a because we just need it once</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=0 to m do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if a&gt;j then<strong>//Without this, the array may be overlimited</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k:=0 to j do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i,j]:=(dp[i,j]+dp[i-1,j-k]) mod 1000007<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k:=0 to a do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i,j]:=(dp[i,j]+dp[i-1,j-k]) mod 1000007;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write(dp[n,m]);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				long dp[101][101];<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;int n,m;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;n,&amp;m);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;dp[0][0]=1;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1,a;i&lt;=n;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a);<strong>//We can scroll a because we just need it once</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;=m;j++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(a&gt;j)<strong>//Without this,  the array may be overlimited</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int k=0;k&lt;=j;k++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i][j]=(dp[i][j]+dp[i-1][j-k])%1000007;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int k=0;k&lt;=a;k++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i][j]=(dp[i][j]+dp[i-1][j-k])%1000007;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",dp[n][m]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>
