@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2012 TGT4 - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<h2 align="center">NOIp 2012 TGT4</h2>
+		<time>2017-10-31 11:57 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1082">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1781">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is completely a mathmatical problem that asked the number-theoretic reciprocal. We can calculate it with the extended Euclidean algorithm, which is also called <abbr title="the extended Greatest Common Division algorithm">exGCD</abbr>. </p>
+			<p><abbr title="the extended Greatest Common Division algorithm">exGCD</abbr> is an algorithm which is able to find a pair of (<var>x</var>,<var>y</var>) that satisfies the Bézout's identity <var>a</var><var>x</var>+<var>b</var><var>y</var>=gcd(<var>a</var>,<var>b</var>). Obviously, we have <var>a</var><var>x</var>≡1(mod <var>b</var>) ⇔ <var>a</var><var>x</var>+<var>b</var><var>y</var>=1. Because the problem promised that it must have an answer, so gcd(<var>a</var>,<var>b</var>)=1, or there will be no number-theoretic reciprocal for this pair of (<var>a</var>,<var>b</var>). So the equation is a Bézout's identity. </p>
+			<p>The standard Euclidean algorithm proceeds by a succession of Euclidean divisions whose quotients are not used, only the remainders are kept. However, for the extended algorithm, the successive quotients are used. We keep the quotients and put it back into the equation, we will have <var>x</var> and <var>y</var>. But attention! <var>x</var> and <var>y</var> may be negative numbers. So you need to change it into the minimum positive number, that is in [1,<var>b</var>-1]. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;a,b,x,y:longint;<br/>
+				procedure exgcd(a,b:longint;var x,y:longint);<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if b=0 then<strong>//The recursion border</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:=1;<strong>//Keep the quotients</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;exgcd(b,a mod b,y,x);<strong>//Recur gcd</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;y:=y-a div b*x;<strong>//Update the quotients</strong><br/>
+				end;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(a,b);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;exgcd(a,b,x,y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write((x mod b+b) mod b);<strong>//Output the minimum positive integer</strong><br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				void exgcd(long a,long b,long &amp;x,long &amp;y)<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;if(b==0)<strong>//The recursion border</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x=1;<strong>//Keep the quotients</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;exgcd(b,a%b,y,x);<strong>//Recur gcd</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;y-=a/b*x;<strong>//Update the quotients</strong><br/>
+				}<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long a,b,x,y;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld%ld",&amp;a,&amp;b);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;exgcd(a,b,x,y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%ld",(x%b+b)%b);<strong>//Output the minimum positive integer</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
+		<script type="text/javascript" src="/menu.js"></script>
+	</body>
+</html>
