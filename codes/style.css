@@ -13,10 +13,6 @@ article
 	padding-top: 50px;
 	width: 90%;
 }
-article a
-{
-	display: inline-block;
-}
 body
 {
 	background-color: #000000;
@@ -97,6 +93,12 @@ nav
 section
 {
 	margin-left: 20px;
+}
+span
+{
+	display: inline-block;
+	text-align: left;
+	width: 150px;
 }
 table
 {
