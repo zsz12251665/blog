@@ -1,7 +1,6 @@
 a
 {
     color: #F19C27;
-    font-family: serif;
     text-decoration: none;
 }
 article
@@ -19,20 +18,18 @@ body
 	background-color: #884A31;
     background-image: url("/infos/bg.jpg");
     color: #FFF6D9;
+	font-family: serif;
     padding: 10px;
 }
 footer,time
 {
-    color: #FFF6D9;
 	display: block;
-    font-family: serif;
     font-size: 10px;
 	font-style: italic;
 	text-align: center;
 }
 h1,h2,h3,h4,h5,h6
 {
-    color: #FFF6D9;
     font-family: sans-serif;
 }
 header
@@ -56,11 +53,6 @@ hr
 {
 	background-color: #F19C27;
 	border-color: #F19C27;
-}
-li,p
-{
-    color: #FFF6D9;
-    font-family: serif;
 }
 nav
 {
@@ -89,8 +81,6 @@ td,th
 	border-color: #FFF6D9;
 	border-style: solid;
 	border-width: 1px;
-    color: #FFF6D9;
-    font-family: serif;
 }
 #cityindex td
 {

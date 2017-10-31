@@ -1,7 +1,6 @@
 a
 {
 	color: #FF0000;
-	font-family: serif;
 	text-decoration: none;
 }
 article
@@ -10,7 +9,7 @@ article
 	border-radius: 5px;
 	margin: auto;
 	min-height: 100%;
-    padding: 10px;
+	padding: 10px;
 	padding-top: 50px;
 	width: 90%;
 }
@@ -42,15 +41,12 @@ code
 code strong
 {
 	color: #FF0000;
-	font-family: monospace;
 	font-style: italic;
 	word-break: normal;
 }
 footer,time
 {
-	color: #00FF00;
 	display: block;
-	font-family: serif;
 	font-size: 10px;
 	font-style: italic;
 	text-align: center;
@@ -65,7 +61,7 @@ header
 	border-bottom-color: #FF0000;
 	border-bottom-width: thick;
 	border-bottom-style: solid;
-    font-family: sans-serif;
+	font-family: sans-serif;
 	font-size: 50px;
 	font-weight: bold;
 	height: auto;
@@ -88,11 +84,11 @@ nav
 	border-right-style: solid;
 	border-right-width: thick;
 	display: none;
-    height: 100%;
+	height: 100%;
 	left: 0px;
-    overflow-y: auto;
-    padding-left: 5px;
-    padding-right: 10px;
+	overflow-y: auto;
+	padding-left: 5px;
+	padding-right: 10px;
 	position: fixed;
 	top: 0px;
 	width: 20%;
@@ -120,3 +116,4 @@ var
 	margin-left: 1px;
 	margin-right: 1px;
 }
+
