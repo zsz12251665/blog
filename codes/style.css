@@ -53,6 +53,7 @@ footer,time
 }
 h1,h2,h3,h4,h5,h6
 {
+	color: #00FF00;
 	font-family: sans-serif;
 }
 header
@@ -116,4 +117,3 @@ var
 	margin-left: 1px;
 	margin-right: 1px;
 }
-
