@@ -47,10 +47,6 @@ function hidebar()
 document.getElementsByTagName('header')[0].addEventListener('click',hidebar);
 function parse(source)
 {
-	source=source.replace(/&amp;/g,"&");
-	source=source.replace(/&lt;/g,"<");
-	source=source.replace(/&gt;/g,">");
-	source=source.replace(/&nbsp;/g," ");
 	var p=new Array(),t=new Array();
 	var flag=0,temp=String(""),tempflag=0,ptop=0;
 	var result=String("");
