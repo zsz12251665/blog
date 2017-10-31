@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2014 TGT1 - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+	</head>
+	<body>
+		<h2 align="center">NOIp 2014 TGT1</h2>
+		<time>2017-10-31 21:35 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1328">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1905">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is a simulation problem. No more explaination, read the code and you will know everything. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;n,i,na,nb,pa,pb:integer;<strong>//pa counts the number of the times that Little A wins, pb counts the number of the times that Little B wins</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;a,b:array[1..200]of integer;<br/>
+				begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;pa:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;pb:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(n,na,nb);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to na do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(a[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to nb do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(b[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<strong>//Simulate the rounds</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a[(i-1) mod na+1]=0)and(b[(i-1) mod nb+1]=2)<strong>//Judge if Little A wins</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=0)and(b[(i-1) mod nb+1]=3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=1)and(b[(i-1) mod nb+1]=0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=1)and(b[(i-1) mod nb+1]=3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=2)and(b[(i-1) mod nb+1]=1)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=2)and(b[(i-1) mod nb+1]=4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=3)and(b[(i-1) mod nb+1]=2)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=3)and(b[(i-1) mod nb+1]=4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=4)and(b[(i-1) mod nb+1]=0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(a[(i-1) mod na+1]=4)and(b[(i-1) mod nb+1]=1) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(pa);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (b[(i-1) mod nb+1]=0)and(a[(i-1) mod na+1]=2)<strong>//Judge if Little B wins</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=0)and(a[(i-1) mod na+1]=3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=1)and(a[(i-1) mod na+1]=0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=1)and(a[(i-1) mod na+1]=3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=2)and(a[(i-1) mod na+1]=1)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=2)and(a[(i-1) mod na+1]=4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=3)and(a[(i-1) mod na+1]=2)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=3)and(a[(i-1) mod na+1]=4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=4)and(a[(i-1) mod na+1]=0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or(b[(i-1) mod nb+1]=4)and(a[(i-1) mod na+1]=1) then<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(pb);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write(pa,' ',pb);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				int a[200],b[200];<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;int n,na,nb,pa=0,pb=0;<strong>//pa counts the number of the times that Little A wins, pb counts the number of the times that Little B wins</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d%d",&amp;n,&amp;na,&amp;nb);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;na;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;a[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;nb;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;b[i]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;n;i++)<strong>//Simulate the rounds</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((a[i%na]==0)&amp;&amp;(b[i%nb]==2)<strong>//Judge if Little A wins</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==0)&amp;&amp;(b[i%nb]==3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==1)&amp;&amp;(b[i%nb]==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==1)&amp;&amp;(b[i%nb]==3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==2)&amp;&amp;(b[i%nb]==1)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==2)&amp;&amp;(b[i%nb]==4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==3)&amp;&amp;(b[i%nb]==2)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==3)&amp;&amp;(b[i%nb]==4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==4)&amp;&amp;(b[i%nb]==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(a[i%na]==4)&amp;&amp;(b[i%nb]==1))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pa++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((b[i%nb]==0)&amp;&amp;(a[i%na]==2)<strong>//Judge if Little B wins</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==0)&amp;&amp;(a[i%na]==3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==1)&amp;&amp;(a[i%na]==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==1)&amp;&amp;(a[i%na]==3)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==2)&amp;&amp;(a[i%na]==1)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==2)&amp;&amp;(a[i%na]==4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==3)&amp;&amp;(a[i%na]==2)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==3)&amp;&amp;(a[i%na]==4)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==4)&amp;&amp;(a[i%na]==0)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||(b[i%nb]==4)&amp;&amp;(a[i%na]==1))<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pb++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%d %d",pa,pb);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
+		<script type="text/javascript" src="/script.js"></script>
+	</body>
+</html>
