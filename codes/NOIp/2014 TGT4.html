@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<link rel="shortcut icon" href="/blog.png"/>
+		<title>NOIp 2014 TGT4 - zsz12251665's Blog</title>
+		<link rel="stylesheet" type="text/css" href="/codes/style.css"/>
+		<base target="_parent"/>
+	</head>
+	<body>
+		<h2 align="center">NOIp 2014 TGT4</h2>
+		<time>2017-11-01 16:16 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section>
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=2038">Luogu</a>
+			<br/>
+			<a target="_blank" href="https://www.vijos.org/p/1908">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is a enumeration problem because we are required to count the number of the best solutions as soon as we find the best solution. As it is not a big city, we can enumerate every points as the transmitter and check if it is one of the best solutions. But do not forget to avoid overlimit while counting the public places! </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				uses math;<strong>//We need to use the max function and the min function in math</strong><br/>
+				var<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;k:array[0..128,0..128]of longint;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;d,n,i,j,x,y,cnt:integer;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;ans,sum:int64;<br/>
+					begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;cnt:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;ans:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;read(d,n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=0 to 128 do<strong>//Format the k array</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=0 to 128 do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k[i,j]:=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for i:=1 to n do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(x,y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read(k[x,y]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for x:=0 to 128 do<strong>//Enumerate the transmitter</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for y:=0 to 128 do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum:=0;<strong>//Calculate the sum of the matrix with the center of (x,y)</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i:=max(0,x-d) to min(128,x+d) do<strong>//To avoid the array overlimited, we use the max function and the min function</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j:=max(0,y-d) to min(128,y+d) do<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum:=sum+k[i,j];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if sum=ans then<strong>//Count the number of the solution</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc(cnt);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if sum&gt;ans then<strong>//Update the best solution</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans:=sum;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnt:=1;<strong>//Reset the counter</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;write(cnt,' ',ans);<br/>
+				end.<br/>
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;<br/>
+				#include&lt;cmath&gt;<strong>//We need to use the fmax function and the fmin function in cmath</strong><br/>
+				long k[129][129];<br/>
+				int main()<br/>
+				{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;int d,n,cnt=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;long long ans=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;d,&amp;n);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;129;i++)<strong>//Format the k array</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=0;j&lt;129;j++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k[i][j]=0;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0,x,y;i&lt;n;i++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;x,&amp;y);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%ld",&amp;k[x][y]);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;for(int x=0;x&lt;129;x++)<strong>//Enumerate the center of the transmitter</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int y=0;y&lt;129;y++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long long sum=0;<strong>//Calculate the sum of the matrix with the center of (x,y)</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=fmax(0,x-d);i&lt;=fmin(128,x+d);i++)<strong>//To avoid the array overlimited, we use the fmax function and the fmin function</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int j=fmax(0,y-d);j&lt;=fmin(128,y+d);j++)<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum+=k[i][j];<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(sum==ans)<strong>//Count the number of the solution</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnt++;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(sum&gt;ans)<strong>//Update the best solution</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=sum;<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnt=1;<strong>//Reset the counter</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;printf("%d %lld",cnt,ans);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br/>
+				}<br/>
+			</code>
+		</section>
+		<script type="text/javascript" src="/script.js"></script>
+	</body>
+</html>
