@@ -26,7 +26,7 @@ HTMLCode+='		<li>_|￣|○ <a href="https://www.cnblogs.com/yohanlong/">HFer_LHZ
 HTMLCode+='		<li>_|￣|○ <a href="http://blog.csdn.net/haarmony/">HFer_MHX</a></li>';
 HTMLCode+='		<li>_|￣|○ <a href="http://blog.eleele.gq/">HFer_WHJ</a></li>';
 HTMLCode+='		<li>_|￣|○ <a href="http://blog.csdn.net/wendavidoi/">HFer_WJW</a></li>';
-HTMLCode+='		<li>_|￣|○ <a href="http://snakes.moe/">HFer_YZW</a></li>';
+HTMLCode+='		<li>_|￣|○ <a href="http://blog.snakes.moe/">HFer_YZW</a></li>';
 HTMLCode+='		<li>_|￣|○ <a href="https://code.del.moe/">HFer_ZFR</a></li>';
 HTMLCode+='	</ul>';
 HTMLCode+='</nav>';
