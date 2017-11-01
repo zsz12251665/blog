@@ -71,6 +71,14 @@ nav
 	top: 0px;
 	width: 20%;
 }
+section
+{
+	margin-left: 20px;
+}
+summary
+{
+	text-align: center;
+}
 table
 {
 	border-color: #FFF6D9;
