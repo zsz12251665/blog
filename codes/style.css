@@ -29,16 +29,16 @@ code
 	font-family: monospace;
 	margin-left: auto;
 	margin-right: auto;
+	overflow-x: auto;
 	padding: 10px;
 	text-align: left;
+	white-space: nowrap;
 	width: 85%;
-	word-break: break-all;
 }
 code strong
 {
 	color: #FF0000;
 	font-style: italic;
-	word-break: normal;
 }
 footer,time
 {
@@ -51,6 +51,7 @@ h1,h2,h3,h4,h5,h6
 {
 	color: #00FF00;
 	font-family: sans-serif;
+	font-weight: bold;
 }
 header
 {
