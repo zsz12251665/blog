@@ -1,0 +1,115 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2017S4 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2017S4</h2>
+		<time>2017-12-09 15:12 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=3958">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/2031">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem can be obviously solved with <abbr title="Depth-First Search">DFS</abbr>. The only thing to pay attention is the visit tag. When you reach a node, you should set the visit tag, or you may visit it again by a loop. This may lead to an endless program. It is a good habit to set up a visit tag. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`visit:array[1..1000]of boolean;//Remember to set up a visit array to prevent your dfs from falling into a loop
+				`x,y,z:array[1..1000]of int64;//To avoid overlimit or too many type conversions, I set the large integers as int64 directly
+				`h,r:int64;
+				`t,n,i,j:integer;
+				`getout:boolean;
+				function dfs(p:integer):boolean;
+				var
+				`i:integer;
+				begin
+				`visit[p]:=true;//Set the visit tag
+				`if z[p]&gt;=h-r then//Check if the mouse has got out
+				``exit(true);
+				`for i:=1 to n do//Find the way to go on
+				``if not(visit[i])and((x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])&lt;=4*r*r) then
+				```if dfs(i) then
+				````exit(true);
+				`exit(false);
+				end;
+				begin
+				`read(t);
+				`while t&gt;0 do
+				``begin
+				```read(n,h,r);
+				```for i:=1 to n do
+				````begin
+				`````visit[i]:=false;
+				`````read(x[i],y[i],z[i]);
+				````end;
+				```getout:=false;
+				```for i:=1 to n do//Enumerate the way to get in
+				````begin
+				`````if z[i]&lt;=r then
+				``````getout:=dfs(i);
+				`````if getout then
+				``````break;
+				````end;
+				```if getout then
+				````writeln('Yes')
+				```else
+				````writeln('No');
+				```dec(t);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int visit[1000],n;//Remember to set up a visit array to prevent your dfs from falling into a loop
+				long long x[1000],y[1000],z[1000],h,r;//To avoid overlimit or too many type conversions, I set the large integers as long long directly
+				int dfs(int p)
+				{
+				`visit[p]=1;//Set the visit tag
+				`if(z[p]&gt;=h-r)//Check if the mouse has got out
+				``return 1;
+				`for(int i=0;i&lt;n;i++)//Find the way to go on
+				``if((visit[i]==0)&amp;&amp;((x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])&lt;=4*r*r))
+				```if(dfs(i)==1)
+				````return 1;
+				`return 0;
+				}
+				int main()
+				{
+				`int t;
+				`scanf("%d",&amp;t);
+				`for(;t&gt;0;t--)
+				`{
+				``scanf("%d%lld%lld",&amp;n,&amp;h,&amp;r);
+				``for(int i=0;i&lt;n;i++)
+				``{
+				```visit[i]=0;
+				```scanf("%lld%lld%lld",&amp;x[i],&amp;y[i],&amp;z[i]);
+				``}
+				``int getout=0;
+				``for(int i=0;(i&lt;n)&amp;&amp;(getout==0);i++)//Enumerate the way to get in
+				```if(z[i]&lt;=r)
+				````getout=dfs(i);
+				``if(getout==1)
+				```printf("Yes\n");
+				``else
+				```printf("No\n");
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

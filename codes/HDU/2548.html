@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>HDU 2548 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">HDU 2548</h2>
+		<time>2017-05-13 09:21 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HDU-2548">vjudge</a>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2548">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is just a mathmatical problem. The speed how fast the two armies get close is <var>(#u#+#v#)</var>, the sum of their speeds. Then the time they meet will be <var>/#l#/#u#+#v#/</var>. The reporter is always running, so the time he runs is also <var>/#l#/#u#+#v#/</var>. And the distance he runs will equal the speed multiply the time that is <var>/#w##l#/#u#+#v#/</var>. So when you read a group of <var>(#u#,#v#,#w#,#l#)</var>, just output <var>/#w##l#/#u#+#v#/</var>. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`t,i:integer;
+				`u,v,w,l:double;
+				begin
+				`read(t);
+				`for i:=1 to t do
+				``begin
+				```read(u,v,w,l);
+				```writeln(l/(u+v)*w:0:3);//In Pascal, the programmer should pay attention that the / operator will give a real number answer, the div operator will give a integer answer. But the div operator can only calculate integers but not real numbers
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`int t;
+				`scanf("%d",&amp;t);
+				`for(int i=0;i&lt;t;i++)
+				`{
+				``double u,v,w,l;
+				``scanf("%lf%lf%lf%lf",&amp;u,&amp;v,&amp;w,&amp;l);
+				``printf("%.3lf\n",l/(u+v)*w);//In C/C++, the / operator will check the data type automatically. If both are integers it, it will give a integer answer(truncate the digits after the decimal point). Or It will give the real number answer
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

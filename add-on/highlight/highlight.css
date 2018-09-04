@@ -1,0 +1,47 @@
+@font-face
+{
+	font-family: "Source Code Pro";
+	src: url("/add-on/highlight/Source Code Pro.woff");
+}
+code
+{
+	background-color: var(--back-color);
+	border-radius: 0.25rem;
+	color: var(--code-color);
+	display: block;
+	font-family: "Source Code Pro", monospace;
+	font-size: smaller;
+	margin: auto;
+	overflow-x: auto;
+	padding: 0.5rem;
+	tab-size: 4;
+	white-space: pre;
+	width: 90%;
+}
+code .comma
+{
+	color: var(--comma-color);
+}
+code .comment
+{
+	color: var(--comment-color);
+	font-style: italic;
+}
+code .constant
+{
+	color: var(--constant-color);
+}
+code .function
+{
+	color: var(--function-color);
+}
+code .keyword
+{
+	color: var(--keyword-color);
+	font-weight: bold;
+}
+code .variable
+{
+	color: var(--variable-color);
+	font-weight: bold;
+}

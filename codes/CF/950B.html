@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>CF 950B - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">CF 950B</h2>
+		<time>2018-03-13 21:44 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/CodeForces-950B">vjudge</a>
+			<a target="_blank" href="http://codeforces.com/problemset/problem/950/B">Codeforces</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>It seems that the problem B is as difficult as the first problem in Senior Group, NOIp. The problem is asking how many consequent parts of the two arrays that are equal there are. So we can count the prefix sum of the two array and check if there are two numbers equal. What's more, as both <var>#x#(_#i#_)</var> and <var>#y#(_#i#_)</var> are bigger than zero, so the prefix must be raising up. So you can just add the number to the smaller prefix sum. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`x,y:array[1..100000]of longint;
+				`n,m,ans,totx,toty,i,j:longint;
+				begin
+				`read(n,m);
+				`for i:=1 to n do
+				``read(x[i]);
+				`for i:=1 to m do
+				``read(y[i]);
+				`ans:=0;
+				`totx:=0;
+				`toty:=0;
+				`i:=0;
+				`j:=0;
+				`while (i&lt;n)or(j&lt;m) do
+				``begin
+				```if totx&gt;toty then//Add the smaller one
+				````begin
+				`````inc(j);
+				`````toty:=toty+y[j];
+				````end
+				```else
+				````begin
+				`````inc(i);
+				`````totx:=totx+x[i];
+				````end;
+				```if totx=toty then//Add it to the counter
+				````inc(ans);
+				``end;
+				`write(ans);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long x[100000],y[100000];
+				int main()
+				{
+				`long n,m;
+				`scanf("%ld%ld",&amp;n,&amp;m);
+				`for(long i=0;i&lt;n;i++)
+				``scanf("%ld",&amp;x[i]);
+				`for(long i=0;i&lt;m;i++)
+				``scanf("%ld",&amp;y[i]);
+				`long ans=0,totx=0,toty=0,i=0,j=0;
+				`while((i&lt;n)||(j&lt;m))
+				`{
+				``if(totx&gt;toty)//Add the smaller one
+				```toty+=y[j++];
+				``else
+				```totx+=x[i++];
+				``if(totx==toty)//Add it to the counter
+				```ans++;
+				`}
+				`printf("%ld",ans);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

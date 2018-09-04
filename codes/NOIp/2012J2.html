@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2012J2 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2012J2</h2>
+		<time>2017-10-17 19:58 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1076">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1787">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem required not only a simulation but also more than a simulation. You'll find it <abbr title="Time Limit Exceed">TLE</abbr> without some optimizations. That is to reduce the time searching the room to the upper floor. It's not hard, just taking the remainder of every number on the board. You'll see that on the following codes. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`num:array[1..10000,0..100]of longint;
+				`floor:array[1..10000,0..100]of integer;
+				`count:array[1..10000]of integer;//The count array is used to record the rooms with stairs on this floor
+				`n,m,x,ans,i,j,t:integer;
+				begin
+				`read(n,m);
+				`for i:=1 to n do
+				``begin
+				```count[i]:=0;
+				```for j:=0 to m-1 do
+				````begin
+				`````read(floor[i,j],num[i,j]);
+				`````count[i]:=count[i]+floor[i][j];
+				````end;
+				``end;
+				`ans:=0;
+				`read(x);
+				`for i:=1 to n do//Searching the right stairs to the upper floor
+				``begin
+				```ans:=(ans+num[i][x]) mod 20123;
+				```t:=(num[i][x]-1) mod count[i]+1;//It's here where we reduce the time searching by taking the remainder
+				```while t-floor[i,x]&gt;0 do
+				````begin
+				`````t:=t-floor[i,x];
+				`````x:=(x+1) mod m;
+				````end;
+				``end;
+				`write(ans);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long num[10000][100];
+				int floor[10000][100],count[10000];//The count array is used to record the rooms with stairs on this floor
+				int main()
+				{
+				`int n,m,x,ans=0;
+				`scanf("%d%d",&amp;n,&amp;m);
+				`for(int i=0;i&lt;n;i++)
+				`{
+				``count[i]=0;
+				``for(int j=0;j&lt;m;j++)
+				``{
+				```scanf("%d%ld",&amp;floor[i][j],&amp;num[i][j]);
+				```count[i]+=floor[i][j];
+				``}
+				`}
+				`scanf("%d",&amp;x);
+				`for(int i=0;i&lt;n;i++)//Searching the right stairs to the upper floor
+				`{
+				``ans=(ans+num[i][x])%20123;
+				``int t=(num[i][x]-1)%count[i]+1;//It's here where we reduce the time searching by taking the remainder
+				``while(t-floor[i][x]&gt;0)
+				``{
+				```t-=floor[i][x];
+				```x=(x+1)%m;
+				``}
+				`}
+				`printf("%d",ans);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

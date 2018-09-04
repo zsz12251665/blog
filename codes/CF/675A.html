@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>CF 675A - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">CF 675A</h2>
+		<time>2018-06-11 21:18 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/CodeForces-675B">vjudge</a>
+			<a target="_blank" href="http://codeforces.com/problemset/problem/675/B">Codeforces</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>My brain must have been overheated for two months because I got 2 <abbr title="Wrong Answer">WA</abbr>. That's a extremely simple problem. As you can see in the Code, if <var>#a#</var> equals <var>#b#</var>, the answer will be "YES" with no doubts. Otherwise, if <var>#c#</var> equals <var>0</var>, there should be a "NO". Besides, if <var>|#a#-#b#|</var> is a multiple of <var>|#c#|</var>, and the sequence is incrasing (<var>#c#&gt;0</var> and <var>#a#&lt;#b#</var>) or decrasing (<var>#c#&lt;0</var> and <var>#a#&gt;#b#</var>), the answer will be "YES" too, or the answer will be "NO". We can use the <var>&oplus;</var> (xor) operator here, which calculates two boolean values like the table below: </p>
+			<table align="center">
+				<tr align="center">
+					<th><var>#a#</var></th>
+					<th><var>#b#</var></th>
+					<th><var>#a# &oplus; #b#</var></th>
+				</tr>
+				<tr align="center">
+					<td><var>True</var></td>
+					<td><var>True</var></td>
+					<td><var>False</var></td>
+				</tr>
+				<tr align="center">
+					<td><var>True</var></td>
+					<td><var>False</var></td>
+					<td><var>True</var></td>
+				</tr>
+				<tr align="center">
+					<td><var>False</var></td>
+					<td><var>True</var></td>
+					<td><var>True</var></td>
+				</tr>
+				<tr align="center">
+					<td><var>False</var></td>
+					<td><var>False</var></td>
+					<td><var>False</var></td>
+				</tr>
+			</table>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`a,b,c:longint;
+				begin
+				`read(a,b,c);
+				`if a=b then
+				``begin
+				```write('YES');
+				```halt;
+				``end;
+				`if c=0 then
+				``begin
+				```write('NO');
+				```halt;
+				``end;
+				`if ((b-a) mod c=0)and((a&gt;b)xor(c&gt;0)) then//Pay attention to the division you use! It mustn't be 0 or you will catch some errors
+				``write('YES')
+				`else
+				``write('NO');
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`long a,b,c;
+				`scanf("%ld%ld%ld",&amp;a,&amp;b,&amp;c);
+				`if(a==b)
+				`{
+				``printf("YES");
+				``return 0;
+				`}
+				`if(c==0)
+				`{
+				``printf("NO");
+				``return 0;
+				`}
+				`if(((b-a)%c==0)&amp;&amp;((a&gt;b)^(c&gt;0)))//Pay attention to the division you use! It mustn't be 0 or you will catch some errors
+				``printf("YES");
+				`else
+				``printf("NO");
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

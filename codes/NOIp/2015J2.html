@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2015J2 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2015J2</h2>
+		<time>2017-02-09 20:06 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=2670">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1975">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>As the data range is lower than 100, we can solve the problem by scanning. Scan each area in the minefield and count how many mines is beside it. But watch out that don't make your array subscript out of range! </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`field:array[0..101,0..101]of char;//Make the minefield a little larger to avoid the subscript out of range
+				`n,m,i,j,count:integer;
+				begin
+				`for i:=0 to 101 do//Initialize the minefield
+				``for j:=0 to 101 do
+				```field[i,j]:='?';
+				`readln(n,m);
+				`for i:=1 to n do
+				``for j:=1 to m do
+				```if j&lt;m then//This is to avoid the problem that the char enter and the char return might bring
+				````read(field[i,j])
+				```else
+				````readln(field[i,j]);
+				`for i:=1 to n do//Scan the minefield
+				``begin
+				```for j:=1 to m do
+				````if field[i,j]&lt;&gt;'*' then
+				`````begin
+				``````count:=0;
+				``````if field[i-1,j-1]='*' then
+				```````inc(count);
+				``````if field[i-1,j]='*' then
+				```````inc(count);
+				``````if field[i-1,j+1]='*' then
+				```````inc(count);
+				``````if field[i,j-1]='*' then
+				```````inc(count);
+				``````if field[i,j+1]='*' then
+				```````inc(count);
+				``````if field[i+1,j-1]='*' then
+				```````inc(count);
+				``````if field[i+1,j]='*' then
+				```````inc(count);
+				``````if field[i+1,j+1]='*' then
+				```````inc(count);
+				``````write(count)
+				`````end
+				````else
+				`````write('*');
+				```writeln;
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				char field[102][102];//Make the minefield a liitle larger to avoid the subscript out of range
+				int main()
+				{
+				`for(int i=0;i&lt;102;i++)//Initialize the minefield
+				``for(int j=0;j&lt;102;j++)
+				```field[i][j]='?';
+				`int n,m;
+				`scanf("%d%d",&amp;n,&amp;m);
+				`for(int i=1;i&lt;=n;i++)
+				`{
+				``scanf("%s",&amp;field[i]);//There may be some problems if we use scanf("%c",&amp;field[i][j]) or getchar() because of the char enter and the char return, so instead we use a different way here
+				``for(int j=101;j&gt;0;j--)
+				```field[i][j]=field[i][j-1];
+				``field[i][0]='?';
+				`}
+				`for(int i=1;i&lt;=n;i++)//Scan the minefield
+				`{
+				``for(int j=1;j&lt;=m;j++)
+				```if(field[i][j]!='*')
+				```{
+				````int count=0;
+				````if(field[i-1][j-1]=='*')
+				`````count++;
+				````if(field[i-1][j]=='*')
+				`````count++;
+				````if(field[i-1][j+1]=='*')
+				`````count++;
+				````if(field[i][j-1]=='*')
+				`````count++;
+				````if(field[i][j+1]=='*')
+				`````count++;
+				````if(field[i+1][j-1]=='*')
+				`````count++;
+				````if(field[i+1][j]=='*')
+				`````count++;
+				````if(field[i+1][j+1]=='*')
+				`````count++;
+				````printf("%d",count);
+				```}
+				```else
+				````printf("*");
+				``printf("\n");
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

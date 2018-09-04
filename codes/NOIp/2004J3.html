@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2004J3 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2004J3</h2>
+		<time>2017-02-23 16:53 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1087">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1114">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>You may have probably find it. Yes, the FBI tree is a full binary tree. Each leaf node is a char in the 01 string that if the char is 0, the leaf node is 'B' and if the char is 1, the leaf node is 'I'. What's more, if a non-leaf node has two childern nodes which are all 'B', the node itself must be 'B'. Opposite, the node will be 'I' if his childern node are all 'I'. However, if one of the child node is 'F' or they are 'B' and 'I', their parent node should be 'F'. Above all, the problem can be solved by a recursive algorithm. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`s:ansistring;
+				`n:integer;
+				function traversal(l,r:integer):char;//The function of recursion
+				var
+				`lc,rc:char;
+				begin
+				`if l=r then//If it is a leaf node, return it
+				``if s[l]='0' then
+				```begin
+				````write('B');
+				````exit('B');
+				```end
+				``else
+				```begin
+				````write('I');
+				````exit('I');
+				```end;
+				`lc:=traversal(l,(l+r-1) div 2);//Get the childern nodes by recursion
+				`rc:=traversal((l+r-1) div 2+1,r);
+				`if lc=rc then//Decide what the parent node should be
+				``begin
+				```write(lc);
+				```exit(lc);
+				``end
+				`else
+				``begin
+				```write('F');
+				```exit('F');
+				``end;
+				end;
+				function power(n:integer):integer;//Calculate 2<sup>n</sup>
+				begin
+				`power:=1;
+				`while n>0 do
+				``begin
+				```dec(n);
+				```power:=power*2;
+				``end;
+				end;
+				begin
+				`readln(n);
+				`readln(s);
+				`n:=ord(traversal(1,power(n)));//Though we don't need the return of the traversal function at last, it is better to collect the return in Pascal
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				char s[1024];
+				char traversal(int l,int r)//The function of recursion
+				{
+				`if(l==r)//If it is a leaf node, return it
+				``if(s[l]=='0')
+				``{
+				```putchar('B');
+				```return 'B';
+				``}
+				``else
+				``{
+				```putchar('I');
+				```return 'I';
+				``}
+				`char lc=traversal(l,(l+r+1)/2-1),rc=traversal((l+r+1)/2,r);//Get the childern nodes by recursion
+				`if(lc==rc)//Decide what the parent node should be
+				`{
+				``putchar(lc);
+				``return lc;
+				`}
+				`else
+				`{
+				``putchar('F');
+				``return 'F';
+				`}
+				}
+				int main()
+				{
+				`int n;
+				`scanf("%d%s",&amp;n,&amp;s);
+				`traversal(0,(1&lt;&lt;n)-1);//1&lt;&lt;n means 2<sup>n</sup>("&lt;&lt;" is a bit operator. It is the right shift that it is able to move 1 to the right for n bits)
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

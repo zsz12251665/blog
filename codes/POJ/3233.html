@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 3233 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 3233</h2>
+		<time>2017-03-23 20:36 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-3233">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=3233">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is about the matrix multiplication. For two <var>#n#*#n#</var> matrix <var>#A#</var> and <var>#B#</var>, their product <var>#P#</var> can be calculated according to <var>#P#(_#i#,#j#_)=&sum;(_#c#&isin;[1,#n#]_)(A(_#i#,#c#_)B(_#c#,#j#_))</var>. For example, the product of two matrix <var>[@#a#(_11_)@#a#(_21_)@ @#a#(_12_)@#a#(_22_)@]</var> and <var>[@#b#(_11_)@#b#(_21_)@ @#b#(_12_)@#b#(_22_)@]</var> is <var>[@#a#(_11_)#b#(_11_)+#a#(_12_)#b#(_21_)@#a#(_21_)#b#(_11_)+#a#(_22_)#b#(_21_)@ @#a#(_11_)#b#(_12_)+#a#(_12_)#b#(_22_)@#a#(_21_)#b#(_12_)+#a#(_22_)#b#(_22_)@]</var>. So we can calculate the product of two matrix in <var>O(#n#(^3^))</var>. But how should we calculate their sum? As we all know, the matrix multiplication has the associative property, so we'll have<var>#S#=&sum;(_#i#&isin;[1,#k#]_)(A(^#i#^))=/A(^#i#+1^)-#I#/#A#-#I#/-#I#</var>, which <var>#I#</var> is the identity matrix. However, it is difficult to calculate the matrix division. So we need to think another way. </p>
+			<p>The best method is, if we know <var>&sum;(_#i#&isin;[1,2(^#t#^)]_)(A(^#i#^))</var>, then <var>&sum;(_#i#&isin;[1,2(^#t#+1^)]_)(A(^#i#^))</var> would be <var>&sum;(_#i#&isin;[1,2(^#t#^)]_)(A(^#i#^))+#A#(^2(^#t#^)^)&sum;(_#i#&isin;[1,2(^#t#^)]_)(A(^#i#^))</var>. So we may be able to convert <var>#k#</var> into binary, and then add the sum according to the binary. That makes the solution. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`matrix,answer,multi,power,sum,temp:array[1..50,1..50]of int64;
+				`n,m,i,j,c:integer;
+				`k:longint;
+				begin
+				`read(n,k,m);
+				`for i:=1 to n do//Read the matrix A
+				``for j:=1 to n do
+				```begin
+				````read(matrix[i,j]);
+				````matrix[i,j]:=matrix[i,j] mod m;
+				```end;
+				`power:=matrix;//Format the 2^0 times of the matrix A, which is the matrix A
+				`sum:=matrix;//Format the sum of the first 2^0 times of the matrix A, which is the matrix A too
+				`fillchar(answer,sizeof(answer),0);//Format the answer matrix, which is the zero matrix
+				`fillchar(multi,sizeof(multi),0);//Format the multi matrix to the identity matrix
+				`for i:=1 to n do
+				``multi[i,i]:=1;
+				`while k&gt;0 do//Conver k into binary
+				``begin
+				```if k mod 2=1 then
+				````begin
+				`````for i:=1 to n do//Add the product of the sum and the multiplier to the answer
+				``````for j:=1 to n do
+				```````for c:=1 to n do
+				````````answer[i,j]:=(multi[i,c]*sum[c,j]+answer[i,j]) mod m;
+				`````fillchar(temp,sizeof(temp),0);//Update the multiplier
+				`````for i:=1 to n do
+				``````for j:=1 to n do
+				```````for c:=1 to n do
+				````````temp[i,j]:=(multi[i,c]*power[c,j]+temp[i,j]) mod m ;
+				`````multi:=temp;
+				````end;
+				```temp:=sum;//Update the sum
+				```for i:=1 to n do
+				````for j:=1 to n do
+				`````for c:=1 to n do
+				``````temp[i,j]:=(sum[i,c]*power[c,j]+temp[i,j]) mod m;
+				```sum:=temp;
+				```fillchar(temp,sizeof(temp),0);//Update the power
+				```for i:=1 to n do
+				````for j:=1 to n do
+				`````for c:=1 to n do
+				``````temp[i,j]:=(power[i,c]*power[c,j]+temp[i,j]) mod m;
+				```power:=temp;
+				```k:=k div 2;
+				``end;
+				`for i:=1 to n do
+				``begin
+				```for j:=1 to n do
+				````write(answer[i,j],' ');
+				```writeln;
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the memset function and the memcpy function in cstring
+				long long matrix[30][30],answer[30][30],multi[30][30],power[30][30],sum[30][30],temp[30][30];
+				int main()
+				{
+				`int n,m;
+				`long k;
+				`scanf("%d%ld%d",&amp;n,&amp;k,&amp;m);
+				`for(int i=0;i&lt;n;i++)//Read the matrix A
+				``for(int j=0;j&lt;n;j++)
+				``{
+				```scanf("%lld",&amp;matrix[i][j]);
+				```matrix[i][j]=matrix[i][j]%m;
+				``}
+				`memcpy(power,matrix,sizeof(power));//Format the 2^0 times of the matrix A, which is the matrix A
+				`memcpy(sum,matrix,sizeof(sum));//Format the sum of the first 2^0 times of the matrix A, which is the matrix A too
+				`memset(answer,0,sizeof(answer));//Format the answer matrix, which is the zero matrix
+				`memset(multi,0,sizeof(multi));//Format the multi matrix to the identity matrix
+				`for(int i=0;i&lt;n;i++)
+				``multi[i][i]=1;
+				`for(;k&gt;0;k/=2)//Conver k into binary
+				`{
+				``if(k%2==1)
+				``{
+				```for(int i=0;i&lt;n;i++)//Add the product of the sum and the multiplier to the answer
+				````for(int j=0;j&lt;n;j++)
+				`````for(int c=0;c&lt;n;c++)
+				``````answer[i][j]=(multi[i][c]*sum[c][j]+answer[i][j])%m;
+				```memset(temp,0,sizeof(temp));//Update the multiplier
+				```for(int i=0;i&lt;n;i++)
+				````for(int j=0;j&lt;n;j++)
+				`````for(int c=0;c&lt;n;c++)
+				``````temp[i][j]=(multi[i][c]*power[c][j]+temp[i][j])%m;
+				```memcpy(multi,temp,sizeof(multi));
+				``}
+				``memcpy(temp,sum,sizeof(temp));//Update the sum
+				``for(int i=0;i&lt;n;i++)
+				```for(int j=0;j&lt;n;j++)
+				````for(int c=0;c&lt;n;c++)
+				`````temp[i][j]=(sum[i][c]*power[c][j]+temp[i][j])%m;
+				``memcpy(sum,temp,sizeof(sum));
+				``memset(temp,0,sizeof(temp));//Update the power
+				``for(int i=0;i&lt;n;i++)
+				```for(int j=0;j&lt;n;j++)
+				````for(int c=0;c&lt;n;c++)
+				`````temp[i][j]=(power[i][c]*power[c][j]+temp[i][j])%m;
+				``memcpy(power,temp,sizeof(power));
+				`}
+				`for(int i=0;i&lt;n;i++)
+				`{
+				``for(int j=0;j&lt;n;j++)
+				```printf("%lld ",answer[i][j]);
+				``putchar('\n');
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

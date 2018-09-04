@@ -1,0 +1,136 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 3984 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 3984</h2>
+		<time>2017-10-10 20:49 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-3984">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=3984">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This Problem is easy to solve because of the <var>5*5</var> matrix. Here is a way using <abbr title="Breadth-First Search">BFS</abbr>. </p>
+			<p>We can make a parent array of every point who records its parent on the BFS tree from <var>(0,0)</var>. Then we can easily find the path from <var>(4,4)</var> to <var>(0,0)</var> with the tree, just asking his ansestors. </p>
+			<p>P. S. It seems that the <abbr title="Free Pascal Compiler">FPC</abbr> of POJ has broken since last month becuase all attempts after August 26, 2017 got the result <abbr title="Complie Error">CE</abbr> on vjudge. I'm sorry that the Pascal code could not be verified right now, just like <a href="/codes/POJ/1007.html">POJ 1007</a> and <a href="/codes/POJ/3292.html">POJ 3292</a>. </p>
+			<p>P. P. S. On 15:22, 10 November, 2017, the Pascal Code was submitted again and now it is proofed that the code is correct. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`field,parent,queue:array[0..24]of integer;//To make the queue smaller, we use one-dimensional array with (x,y)=field[5x+y]
+				`head,foot,i:integer;
+				procedure show(a:integer);//Print the answer in reverse order by the function stack
+				begin
+				`if a&lt;&gt;0 then
+				``show(parent[a]);
+				`writeln('(',a div 5,', ',a mod 5,')');
+				end;
+				begin
+				`for i:=0 to 24 do
+				``begin
+				```read(field[i]);
+				```if field[i]=1 then
+				````parent[i]:=-2
+				```else
+				````parent[i]:=-1;
+				``end;
+				`queue[0]:=0;
+				`parent[0]:=0;
+				`head:=0;
+				`foot:=1;
+				`while head&lt;foot do//Make the BFS tree
+				``begin
+				```if (queue[head] mod 5&gt;0)and(parent[queue[head]-1]=-1) then
+				````begin
+				`````queue[foot]:=queue[head]-1;
+				`````parent[queue[head]-1]:=queue[head];
+				`````inc(foot);
+				````end;
+				```if (queue[head] mod 5&lt;4)and(parent[queue[head]+1]=-1) then
+				````begin
+				`````queue[foot]:=queue[head]+1;
+				`````parent[queue[head]+1]:=queue[head];
+				`````inc(foot);
+				````end;
+				```if (queue[head] div 5&gt;0)and(parent[queue[head]-5]=-1) then
+				````begin
+				`````queue[foot]:=queue[head]-5;
+				`````parent[queue[head]-5]:=queue[head];
+				`````inc(foot);
+				````end;
+				```if (queue[head] div 5&lt;4)and(parent[queue[head]+5]=-1) then
+				````begin
+				`````queue[foot]:=queue[head]+5;
+				`````parent[queue[head]+5]:=queue[head];
+				`````inc(foot);
+				````end;
+				```inc(head);
+				``end;
+				`show(24);//Print the path
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int field[25],parent[25],queue[25],head=0,foot=1;//To make the queue smaller, we use one-dimensional array with (x,y)=field[5x+y]
+				void show(int a)//Print the answer in reverse order by the function stack
+				{
+				`if(a!=0)
+				``show(parent[a]);
+				`printf("(%d, %d)\n",a/5,a%5);
+				}
+				int main()
+				{
+				`for(int i=0;i&lt;25;i++)
+				`{
+				``scanf("%d",&amp;field[i]);
+				``if(field[i]==1)
+				```parent[i]=-2;
+				``else
+				```parent[i]=-1;
+				`}
+				`queue[0]=0;
+				`parent[0]=0;
+				`while(head&lt;foot)//Make the BFS tree
+				`{
+				``if((queue[head]%5&gt;0)&amp;&amp;(parent[queue[head]-1]==-1))
+				``{
+				```queue[foot++]=queue[head]-1;
+				```parent[queue[head]-1]=queue[head];
+				``}
+				``if((queue[head]%5&lt;4)&amp;&amp;(parent[queue[head]+1]==-1))
+				``{
+				```queue[foot++]=queue[head]+1;
+				```parent[queue[head]+1]=queue[head];
+				``}
+				``if((queue[head]/5&gt;0)&amp;&amp;(parent[queue[head]-5]==-1))
+				``{
+				```queue[foot++]=queue[head]-5;
+				```parent[queue[head]-5]=queue[head];
+				``}
+				``if((queue[head]/5&lt;4)&amp;&amp;(parent[queue[head]+5]==-1))
+				``{
+				```queue[foot++]=queue[head]+5;
+				```parent[queue[head]+5]=queue[head];
+				``}
+				``head++;
+				`}
+				`show(24);//Print the path
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

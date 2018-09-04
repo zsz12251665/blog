@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2017S1 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2017S1</h2>
+		<time>2017-11-17 21:26 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=3951">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/2028">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>I had no idea to solve a pair of <var>(#a#,#b#)</var> while they are as large as <var>10(^9^)</var> with <abbr title="the extended Greatest Common Division algorithm">exGCD</abbr>! </p>
+			<p>After getting out of the examination hall, someone told me that the correct answer is <var>(#a##b#-#a#-#b#)</var>. How can the problem be a mathmatical one with an <var>O(1)</var> time complexity? Oh Jesus it's just the first problem! It should be solved by simulation or <abbr title="Brute Force">BF</abbr>! But complaining can change nothing. In the following I will prove you why <var>(#a##b#-#a#-#b#)</var> is the correct answer. </p>
+			<p>We will use contradiction to prove it. If <var>(#a##b#-#a#-#b#)</var> is able to be formed by <var>#a#</var> and <var>#b#</var>, then we will have <var>#a##b#-#a#-#b#=#a##n#+#b##m# (#n#&isin;&#8469;, #m#&isin;&#8469;)</var>. Then it will be transformed into <var>#a##b#=#a#(#n#+1)+#b#(#m#+1)</var>. So that we'll have <var>#a#(#b#-#n#-1)=#b#(#m#+1)</var> and <var>#b#(#a#-#m#-1)=#a#(#n#+1)</var>, which means <var>#a#|#b#(#m#+1)</var> and <var>#b#|#a#(#n#+1)</var>. However, <var>#a#</var> and <var>#b#</var> are coprime, so <var>#a#|(#m#+1)</var> and <var>#b#|(#n#+1)</var>. Then we define <var>#m#+1=#x##a# (#x#&isin;&#8469;(_+_))</var>, <var>#n#+1=#y##b# (#y#&isin;&#8469;(_+_))</var> and put it back to the equation <var>#a##b#=#a#(#n#+1)+#b#(#m#+1)</var>, there will be <var>#a##b#=#a#(#n#+1)+#b#(#m#+1) &hArr; #a##b#=#a##b##x#+#a##b##y# &hArr; #x#+#y#=1</var>. Obviously that the sum of two positive integers cannot equal 1, so the hypothesis is wrong and the proposition is proved. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`a,b:int64;
+				begin//No comments available
+				`read(a,b);
+				`write(a*b-a-b);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{//No comments available
+				`long long a,b;
+				`scanf("%lld%lld",&amp;a,&amp;b);
+				`printf("%lld",a*b-a-b);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

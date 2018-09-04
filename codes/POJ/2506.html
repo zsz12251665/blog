@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 2506 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 2506</h2>
+		<time>2017-05-05 21:42 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-2506">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=2506">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Let's solve the problem step by step. It is obvious that there is only one method to tile a <var>2*0</var> rectangle(use no tiles) and a <var>2*1</var> rectangle(use a <var>2*1</var> tile). How about the number of methods for longer rectangles? Well, a method for a <var>2*#i#</var> rectangle must have a standing <var>2*1</var> tile, a <var>2*2</var> tile or two lying <var>2*1</var> tiles, right? If there is a standing <var>2*1</var> tile, the number of methods will be the number of methods for a <var>2*(#i#-1)</var> rectangle. If there is a <var>2*2</var> tile or two lying <var>2*1</var> tiles, the number of methods will be the number of methods for a <var>2*(#i#-2)</var> rectangle. So the number of methods will be the number of methods for a <var>2*(#i#-1)</var> rectangle plus twice the number of methods for a <var>2*(#i#-2)</var> rectangle in total. The data range is lower than 250, so we can pretreat the numbers for every <var>#i#</var>. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`ans:array[0..250,1..100]of integer;//ans[i,j] is the j-th bit of ans[i] from the right
+				`i,j,tmp:integer;
+				`start:boolean;
+				begin
+				`for i:=0 to 1 do//Format ans[0] and ans[1]
+				``for j:=1 to 100 do
+				```ans[i,j]:=0;
+				`ans[0,1]:=1;
+				`ans[1,1]:=1;
+				`for i:=2 to 250 do//Pretreat ans[2] to ans[250]
+				``begin
+				```tmp:=0;//High precision addition
+				```for j:=1 to 100 do
+				````begin
+				`````tmp:=tmp+2*ans[i-2,j]+ans[i-1,j];//ans[i]=2*ans[i-2]+ans[i-1]
+				`````ans[i,j]:=tmp mod 10;
+				`````tmp:=tmp div 10;
+				````end;
+				``end;
+				`while not(EOF) do
+				``begin
+				```readln(i);
+				```start:=false;
+				```for j:=100 downto 1 do
+				````begin
+				`````if not(start)and(ans[i,j]=0) then//Remove the prefix made up of 0
+				``````continue;
+				`````start:=true;
+				`````write(ans[i,j]);
+				````end;
+				```writeln;
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int ans[251][100];//ans[i][j] is the j-th bit of ans[i] from the right
+				int main()
+				{
+				`for(int i=0;i&lt;2;i++)//Format ans[0] and ans[1]
+				``for(int j=0;j&lt;100;j++)
+				```ans[i][j]=0;
+				`ans[0][0]=ans[1][0]=1;
+				`for(int i=2;i&lt;251;i++)//Pretreat ans[2] to ans[250]
+				``for(int j=0,tmp=0;j&lt;100;j++)//High precision addition
+				``{
+				```tmp+=2*ans[i-2][j]+ans[i-1][j];//ans[i]=2*ans[i-2]+ans[i-1]
+				```ans[i][j]=tmp%10;
+				```tmp/=10;
+				``}
+				`int i;
+				`while(scanf("%d",&amp;i)!=EOF)
+				`{
+				``for(int j=99,start=0;j&gt;=0;j--)
+				``{
+				```if((ans[i][j]==0)&amp;&amp;(start==0))//Remove the prefix made up of 0
+				````continue;
+				```start=1;
+				```printf("%d",ans[i][j]);
+				``}
+				``printf("\n");
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

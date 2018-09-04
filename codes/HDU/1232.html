@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>HDU 1232 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">HDU 1232</h2>
+		<time>2017-12-23 10:55 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HDU-1232">vjudge</a>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=1232">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is as same as <a href="/codes/HDU/1213.html">HDU 1213</a>, which required a merge-find set too. So I'm not going to write the solution here. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`uset:array[1..1000]of integer;//The uset array is the merge-find set
+				`count:array[1..1000]of boolean;
+				`n,m,sum,i,a,b:integer;
+				function find(a:integer):integer;
+				begin
+				`if uset[a]&lt;&gt;a then
+				``uset[a]:=find(uset[a]);
+				`exit(uset[a]);
+				end;
+				begin
+				`read(n);
+				`while n&lt;&gt;0 do
+				``begin
+				```read(m);
+				```sum:=0;
+				```for i:=1 to n do//Format the arrays
+				````begin
+				`````uset[i]:=i;
+				`````count[i]:=false;
+				````end;
+				```for i:=1 to m do
+				````begin
+				`````read(a,b);
+				`````uset[find(a)]:=find(b);//Union the sets
+				````end;
+				```for i:=1 to n do//Count the number of the tables
+				````if not count[find(i)] then
+				`````begin
+				``````count[find(i)]:=true;
+				``````inc(sum);
+				`````end;
+				```writeln(sum-1);
+				```read(n);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int uset[1000],count[1000];//The uset array is the merge-find set
+				int find(int a)
+				{
+				`if(uset[a]!=a)
+				``uset[a]=find(uset[a]);
+				`return uset[a];
+				}
+				int main()
+				{
+				`int n,m,sum;
+				`scanf("%d",&amp;n);
+				`while(n!=0)
+				`{
+				``scanf("%d",&amp;m);
+				``sum=0;
+				``for(int i=0;i&lt;n;i++)//Format the arrays
+				``{
+				```uset[i]=i;
+				```count[i]=0;
+				``}
+				``for(int i=0,a,b;i&lt;m;i++)
+				``{
+				```scanf("%d%d",&amp;a,&amp;b);
+				```uset[find(a-1)]=find(b-1);//Union the sets
+				``}
+				``for(int i=0;i&lt;n;i++)//Count the number of the tables
+				```if(count[find(i)]==0)
+				```{
+				````count[find(i)]=1;
+				````sum++;
+				```}
+				``printf("%d\n",sum-1);
+				``scanf("%d",&amp;n);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

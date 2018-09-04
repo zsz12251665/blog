@@ -1,0 +1,193 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 3292 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 3292</h2>
+		<time>2017-09-05 20:39 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-3292">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=3292">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Sorry for the couple of no-update months. This is a problem about prime numbers. However, I spent a lot of time to avoid <abbr title="Time Limit Exceeded">TLE</abbr> until I found the correct solution. </p>
+			<p>First of all, I thought of the Sieve of Eratosthenes, such a efficient sieve of prime with an <var>O(#n#lg(^2^)(#n#))</var> time complexity. Then after getting a number <var>#n#</var>, try every pair of H-primes that fix it. That is obviously not fast enough. So later I used the Sieve of Euler, an <var>O(#n#)</var> sieve, to filter the prime numbers. It didn't make any sence. That is the Soultion 1. </p>
+			<p>Later, I found that if I could preprocess the H-primes, why not preprocess the H-semi-primes at the same time? So that is the Solution 2 with <abbr title="Accepted">AC</abbr>. </p>
+			<p>P. S. As same as <a href="/codes/POJ/1007.html">POJ 1007</a>, the <abbr title="Free Pascal Compiler">FPC</abbr> of POJ didn't work well when I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
+			<p>P. P. S. On 15:19, 10 November, 2017, the Pascal Code was submitted again and now it is proofed that the code of Solution 2 is correct. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Solution 1 Pascal</p>
+			<code>
+				var
+				`isprime:array[1..1000001]of integer;//We Mark H-primes with 1, H-semi-primes with 2 and the others with 0
+				`prime,queue:array[1..1000001]of longint;
+				`primesize,n,ans,i,j:longint;
+				begin
+				`for i:=1 to 250000 do//Format the isprime array
+				``isprime[4*i+1]:=1;
+				`primesize:=0;
+				`for i:=1 to 250000 do//The Sieve of Euler
+				``begin
+				```if isprime[4*i+1]=1 then
+				````begin
+				`````prime[primesize]:=4*i+1;
+				`````inc(primesize);
+				````end;
+				```for j:=1 to primesize do
+				````begin
+				`````if (4*i+1)*prime[j]&gt;1000001 then
+				``````break;
+				`````isprime[(4*i+1)*prime[j]]:=0;
+				`````if (4*i+1) mod prime[j]=0 then
+				``````break;
+				````end;
+				``end;
+				`read(n);//Read n and find the H-semi-primes below n
+				`while n&lt;&gt;0 do
+				``begin
+				```ans:=0;
+				```for i:=1 to primesize do
+				````if prime[i]&gt;n/5 then
+				`````break
+				````else
+				`````for j:=1 to primesize do//Enumerate every pair of H-primes
+				``````if prime[i]*prime[j]&gt;n then
+				```````break
+				``````else
+				```````if isprime[prime[i]*prime[j]]&lt;&gt;2 then
+				````````begin
+				`````````isprime[prime[i]*prime[j]]:=2;
+				`````````inc(ans);
+				`````````queue[ans]:=prime[i]*prime[j];
+				````````end;
+				```writeln(n,' ',ans);
+				```for i:=1 to ans do//The mark of H-semi-primes in the queue needs to be removed to avoid being not counted
+				````isprime[queue[i]]:=0;
+				```read(n);
+				``end;
+				end.
+			</code>
+			<p>Solution 1 C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int isprime[1000002];//We Mark H-primes with 1, H-semi-primes with 2 and the others with 0
+				long prime[1000002],queue[1000002],primesize=0;
+				int main()
+				{
+				`for(long i=5;i&lt;1000002;i+=4)//Format the isprime array
+				``isprime[i]=1;
+				`for(long i=5;i&lt;1000002;i+=4)//The Sieve of Euler
+				`{
+				``if(isprime[i]==1)
+				```prime[primesize++]=i;
+				``for(long j=0;(j&lt;primesize)&amp;&amp;(i*prime[j]&lt;1000002);j++)
+				``{
+				```isprime[i*prime[j]]=0;
+				```if(i%prime[j]==0)
+				````break;
+				``}
+				`}
+				`long n;//Read n and find the H-semi-primes below n
+				`scanf("%ld",&amp;n);
+				`while(n!=0)
+				`{
+				``long ans=0;
+				``for(long i=0;(prime[i]&lt;=n/5)&amp;&amp;(i&lt;primesize);i++)//Enumerate every pair of H-primes
+				```for(long j=0;(prime[i]*prime[j]&lt;=n)&amp;&amp;(j&lt;primesize);j++)
+				````if(isprime[prime[i]*prime[j]]!=2)
+				````{
+				`````isprime[prime[i]*prime[j]]=2;
+				`````queue[ans++]=prime[i]*prime[j];
+				````}
+				``printf("%ld %ld\n",n,ans);
+				``for(long i=0;i&lt;ans;i++)//The mark of H-semi-primes in the queue needs to be removed to avoid being not counted
+				```isprime[queue[i]]=0;
+				``scanf("%ld",&amp;n);
+				`}
+				`return 0;
+				}
+			</code>
+			<p>Solution 2 Pascal</p>
+			<code>
+				var
+				`ans:array[1..250000]of longint;//We use n to show the H-number 4n+1 and the maxinum of n is 250000
+				`isprime:array[1..250000]of integer;//We Mark H-primes with 0, H-semi-primes with 1 and the others with -1
+				`n,i,j,k:longint;
+				begin
+				`for i:=1 to 250000 do//Format the isprime array
+				``isprime[i]:=0;
+				`for i:=1 to 250000 do//Enumerate every pair of H-numbers
+				``for j:=1 to 250000 do
+				```begin
+				````k:=4*i*j+i+j;//(4i+1)(4j+1)=4(4i*j+i+j)+1
+				````if k&gt;250000 then//To avoid overlimit
+				`````break;
+				````if (isprime[i]=0)and(isprime[j]=0) then//Judge if it is a H-semi-prime
+				`````isprime[k]:=1
+				````else
+				`````isprime[k]:=-1;
+				```end;
+				`ans[1]:=isprime[1];//Count the number of H-semi-primes from 5 to 4n+1
+				`for i:=2 to 250000 do
+				``if isprime[i]=1 then
+				```ans[i]:=ans[i-1]+1
+				``else
+				```ans[i]:=ans[i-1];
+				`read(n);//Read n and print the answer as feedback
+				`while n&lt;&gt;0 do
+				``begin
+				```writeln(n,' ',ans[(n-1) div 4]);
+				```read(n);
+				``end;
+				end.
+			</code>
+			<p>Solution 2 C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long ans[250001];//We use n to show the H-number 4n+1 and the maxinum of n is 250000
+				int isprime[250001];//We Mark H-primes with 0, H-semi-primes with 1 and the others with -1
+				int main()
+				{
+				`for(long i=1;i&lt;250001;i++)//Format the isprime array
+				``isprime[i]=0;
+				`for(long i=1;i&lt;250001;i++)//Enumerate every pair of H-numbers
+				``for(long j=1;j&lt;250001;j++)
+				``{
+				```long k=4*i*j+i+j;//(4i+1)(4j+1)=4(4i*j+i+j)+1
+				```if(k&gt;250000)//To avoid overlimit
+				````break;
+				```if((isprime[i]==0)&amp;&amp;(isprime[j]==0))//Judge if it is a H-semi-prime
+				````isprime[k]=1;
+				```else
+				````isprime[k]=-1;
+				``}
+				`ans[0]=0;//Count the number of H-semi-primes from 1 to 4n+1
+				`for(long i=1;i&lt;250001;i++)
+				``if(isprime[i]==1)
+				```ans[i]=ans[i-1]+1;
+				``else
+				```ans[i]=ans[i-1];
+				`long n;//Read n and print the answer as feedback
+				`scanf("%ld",&amp;n);
+				`while(n!=0)
+				`{
+				``printf("%ld %ld\n",n,ans[(n-1)/4]);
+				``scanf("%ld",&amp;n);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

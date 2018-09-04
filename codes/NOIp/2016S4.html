@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2016S4 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2016S4</h2>
+		<time>2017-04-17 15:24 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=2822">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/2006">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>When I saw the combination, I got some idea of the Pascal Triangle, which I can get <var>C@#n#@#m#@</var> in <var>O(#n##m#)</var>. Then we can preprocess the whole Pascal Triangle, and when I need them, I can get it in <var>O(1)</var>. So the whole time complexity would be <var>O(#n##m##t#)</var>. But it still seems too slow. Then I found that I can make a prefix sum to keep the numbers of fit combinations that I can search a line in <var>O(1)</var>. So the total time complexity would be <var>O(#n#(#m#+#t#))</var> this time. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`c,sum:array[1..2000,0..2000]of integer;
+				`t,k,n,m,i,j:integer;
+				`ans:longint;
+				begin
+				`read(t,k);
+				`for i:=1 to 2000 do//Make the Pascal Triangle and the prefix sum of the line
+				``begin
+				```c[i,0]:=1;
+				```c[i,i]:=1;
+				```sum[i,0]:=0;
+				```for j:=1 to i-1 do
+				````begin
+				`````c[i,j]:=(c[i-1,j]+c[i-1,j-1]) mod k;
+				`````sum[i,j]:=sum[i,j-1];
+				`````if c[i,j]=0 then
+				``````inc(sum[i,j]);
+				````end;
+				```sum[i,i]:=sum[i,i-1];
+				``end;
+				`while t&gt;0 do
+				``begin
+				```read(n,m);
+				```ans:=0;
+				```for i:=2 to n do//Add the prefix sum together to get the answer
+				````if i&gt;m then
+				`````ans:=ans+sum[i,m]
+				````else
+				`````ans:=ans+sum[i,i];
+				```writeln(ans);
+				```dec(t);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int c[2001][2001],sum[2001][2001];
+				int main()
+				{
+				`int t,k,n,m;
+				`long ans;
+				`scanf("%d%d",&amp;t,&amp;k);
+				`for(int i=1;i&lt;2001;i++)//Make the Pascal Triangle and the prefix sum of the line
+				`{
+				``c[i][0]=c[i][i]=1;
+				``sum[i][0]=0;
+				``for(int j=1;j&lt;i;j++)
+				``{
+				```c[i][j]=(c[i-1][j]+c[i-1][j-1])%k;
+				```sum[i][j]=sum[i][j-1];
+				```if(c[i][j]==0)
+				````sum[i][j]++;
+				``}
+				``sum[i][i]=sum[i][i-1];
+				`}
+				`while(t&gt;0)
+				`{
+				``scanf("%d%d",&amp;n,&amp;m);
+				``ans=0;
+				``for(int i=2;i&lt;=n;i++)//Add the prefix sum together to get the answer
+				```if(i&gt;m)
+				````ans+=sum[i][m];
+				```else
+				````ans+=sum[i][i];
+				``printf("%ld\n",ans);
+				``t--;
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

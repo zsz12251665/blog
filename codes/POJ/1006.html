@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 1006 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 1006</h2>
+		<time>2017-04-26 07:34 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-1006">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=1006">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>To solve this problem, you need to know a little about the Chinese remainder theorem. It explains how to solve congruent equations. </p>
+			<p>First of all, we need to find out the number-theoretic reciprocal of 23, 28 and 33 at first. They are 6, 19, and 2. And then according to the Chinese remainder theorem, the day which is <var>((6*28*33)#p#+(19*23*33)#e#+(2*23*28)#i#)</var> days from the first day of the year must be a triple peak occured day. And then we decuct the days that had passed, and take the remainer which devided with <var>23*28*33</var>, we'll get the next triple peak occured day. So keep it in one, the answer is <var>(5544#p#+14421#e#+1288#i#-#d#+21251) mod 21252+1</var>(to add 21252 is to keep the devided number is greater than 0 and to -1 and +1 is to keep the answer in [1,21252]). </p>
+			<p>If you have problem with some the number-theoretic reciprocal, here may give you some reference: To a pair of <var>(#a#,#m#) (#a#&isin;&#8469;(_+_), #m#&isin;&#8469;(_+_))</var>, if there is an integer <var>#n#</var> that <var>#a##n#&equiv;1(mod #m#)</var>, we call <var>#n#</var> the number-theoretic reciprocal of <var>(#a#,#m#)</var>. For example, because <var>6*28*33&equiv;1(mod 23)</var>, so 6 is the number-theoretic reciprocal of <var>(28*33,23)</var>. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`p,e,i,d,t:integer;
+				begin
+				`t:=0;
+				`read(p,e,i,d);
+				`while (p&lt;&gt;-1)or(e&lt;&gt;-1)or(i&lt;&gt;-1)or(d&lt;&gt;-1) do
+				``begin
+				```inc(t);
+				```writeln('Case ',t,': the next triple peak occurs in ',(5544*p+14421*e+1288*i-d+21251) mod 21252+1,' days.');//Pay attention to the format of the output
+				```read(p,e,i,d);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`int p,e,i,d,t=0;
+				`scanf("%d%d%d%d",&amp;p,&amp;e,&amp;i,&amp;d);
+				`while((p!=-1)||(e!=-1)||(i!=-1)||(d!=-1))
+				`{
+				``t++;
+				``printf("Case %d: the next triple peak occurs in %d days.\n",t,(5544*p+14421*e+1288*i-d+21251)%21252+1);//Pay attention to the format of the output
+				`scanf("%d%d%d%d",&amp;p,&amp;e,&amp;i,&amp;d);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

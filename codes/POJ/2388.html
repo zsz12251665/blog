@@ -1,0 +1,431 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 2388 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 2388</h2>
+		<time>2018-01-05 21:20 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-2388">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=2388">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is solved by sorting the array<var>#milk#</var> and out put the middle one. So in the Code I show you some popular sorting methods. </p>
+			<p><a href="javascript:void(0);" onclick="window.scrollTo(document.getElementById('insertion').offsetLeft,document.getElementById('insertion').offsetTop-document.getElementsByTagName('header')[0].offsetHeight);">Insertion sort</a>: This is an <var>O(#n#(^2^))</var> algorithm. It sorts the array like sorting poker cards. You pick up one card, then put it at the right place in your hand. Both Insertion sort and Bubble sort is simple, but not efficent. </p>
+			<p><a href="javascript:void(0);" onclick="window.scrollTo(document.getElementById('bubble').offsetLeft,document.getElementById('bubble').offsetTop-document.getElementsByTagName('header')[0].offsetHeight);">Bubble sort</a>: This is an <var>O(#n#(^2^))</var> algorithm too. You need to scan <var>#n#</var> times of your array according to the algorithm. Every time you scan it, you find the biggest element and put it at the end, just like the big bubbles come up at first. </p>
+			<p><a href="javascript:void(0);" onclick="window.scrollTo(document.getElementById('quick').offsetLeft,document.getElementById('quick').offsetTop-document.getElementsByTagName('header')[0].offsetHeight);">Quick sort</a>: This is an <var>O(#n#lg(#n#))</var> algorithm. It is efficent, but in the worst case, it makes <var>O(#n#(^2^))</var> comparisons, though this behavior is rare. Quick sort is a divide and conquer algorithm. Firstly, you divide the array into two smaller sub-arrays: the low elements and the high elements. Then you recursively sort the sub-arrays until the sizes of the sub-arrays are 0 or 1. </p>
+			<p><a href="javascript:void(0);" onclick="window.scrollTo(document.getElementById('merge').offsetLeft,document.getElementById('merge').offsetTop-document.getElementsByTagName('header')[0].offsetHeight);">Merge sort</a>: This is an <var>O(#n#lg(#n#))</var> algorithm too. The main difference between Quick sort and Merge Sort is that Merge sort is stable in order and time while Quick sort is not. It is also a divide and conquer algorithm. You first divide the array into two sub-arrays, then sort them unless their sizes are 0 or 1 and lastly merge the two sub-arrays up by the smaller head element into the big array until all of them are put. </p>
+			<p><a href="javascript:void(0);" onclick="window.scrollTo(document.getElementById('heap').offsetLeft,document.getElementById('heap').offsetTop-document.getElementsByTagName('header')[0].offsetHeight);">Heap sort</a>: As same as its name, Heap sort is a sorting algorithm with the data structure heap. As we all know that heap can add or pop an element in <var>O(lg(#n#))</var>, the time complexity of all is <var>O(#n#lg(#n#))</var>. </p>
+			<p><a href="javascript:void(0);" onclick="window.scrollTo(document.getElementById('counting').offsetLeft,document.getElementById('counting').offsetTop-document.getElementsByTagName('header')[0].offsetHeight);">Counting sort</a>: Counting sort is an algorithm for sorting a collection of small integers. The time complexity is <var>O(#n#+#k#)</var>(<var>#k#</var> is the data range). You need to set up another array <var>#counter#</var>. Then you scan the data array to count the numbers of every integers in the data range with a time complexity of <var>O(#n#)</var>. In the end scan the array <var>#counter#</var> and output the data. </p>
+			<p>P. S. All codes given here are in increase order. </p>
+		</section>
+		<h3>Code</h3>
+		<section id="insertion">
+			<p>Insertion sort Pascal Code</p>
+			<code>
+				var
+				`milk:array[1..10000]of longint;
+				`n,i,j:integer;
+				`tmp:longint;
+				begin
+				`read(n);
+				`for i:=1 to n do
+				``read(milk[i]);
+				`for i:=2 to n do
+				``for j:=1 to i-1 do
+				```if milk[i]&lt;milk[j] then//Replace this line with "if milk[i]&gt;milk[j] then" to sort in decrease order
+				````begin
+				`````tmp:=milk[j];
+				`````milk[j]:=milk[i];
+				`````milk[i]:=tmp;
+				````end;
+				`write(milk[n div 2+1]);
+				end.
+			</code>
+			<p>Insertion sort C++ Code</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long milk[10000];
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				``scanf("%ld",&amp;milk[i]);
+				`for(int i=1;i&lt;n;i++)
+				``for(int j=0;j&lt;i;j++)
+				```if(milk[i]&lt;milk[j])//Replace this line with "if(milk[i]&gt;milk[j])" to sort in decrease order
+				```{
+				````long tmp=milk[j];
+				````milk[j]=milk[i];
+				````milk[i]=tmp;
+				```}
+				`printf("%ld",milk[n/2]);
+				`return 0;
+				}
+			</code>
+		</section>
+		<section id="bubble">
+			<p>Bubble sort Pascal Code</p>
+			<code>
+				var
+				`milk:array[1..10000]of longint;
+				`n,i,j:integer;
+				`tmp:longint;
+				begin
+				`read(n);
+				`for i:=1 to n do
+				``read(milk[i]);
+				`for i:=1 to n-1 do
+				``for j:=1 to n-i do
+				```if milk[j]&gt;milk[j+1] then//Replace this line with "if milk[j]&lt;milk[j+1] then" to sort in decrease order
+				````begin
+				`````tmp:=milk[j];
+				`````milk[j]:=milk[j+1];
+				`````milk[j+1]:=tmp;
+				````end;
+				`write(milk[n div 2+1]);
+				end.
+			</code>
+			<p>Bubble sort C++ Code</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long milk[10000];
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				``scanf("%ld",&amp;milk[i]);
+				`for(int i=1;i&lt;n;i++)
+				``for(int j=0;j&lt;n-i;j++)
+				```if(milk[j]&gt;milk[j+1])//Replace this line with "if(milk[j]&lt;milk[j+1])" to sort in decrease order
+				```{
+				````long tmp=milk[j];
+				````milk[j]=milk[j+1];
+				````milk[j+1]=tmp;
+				```}
+				`printf("%ld",milk[n/2]);
+				`return 0;
+				}
+			</code>
+		</section>
+		<section id="quick">
+			<p>Quick sort Pascal Code</p>
+			<code>
+				var
+				`milk:array[1..10000]of longint;
+				`n,i:integer;
+				procedure qsort(l,r:integer);
+				var
+				`x,y:integer;
+				`tmp,std:longint;
+				begin
+				`x:=l;
+				`y:=r;
+				`std:=milk[(l+r) div 2];
+				`while x&lt;y do
+				``begin
+				```while milk[x]&lt;std do//Replace this line with "while milk[x]&gt;std do" to sort in decrease order
+				````inc(x);
+				```while milk[y]&gt;std do//Replace this line with "while milk[y]&lt;std do" to sort in decrease order
+				````dec(y);
+				```if x&lt;=y then
+				````begin
+				`````tmp:=milk[x];
+				`````milk[x]:=milk[y];
+				`````milk[y]:=tmp;
+				`````inc(x);
+				`````dec(y);
+				````end;
+				``end;
+				`if l&lt;y then
+				``qsort(l,y);
+				`if r&gt;x then
+				``qsort(x,r);
+				end;
+				begin
+				`read(n);
+				`for i:=1 to n do
+				``read(milk[i]);
+				`qsort(1,n);
+				`write(milk[n div 2+1]);
+				end.
+			</code>
+			<p>Quick sort C++ Code</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long milk[10000];
+				void qsort(int l,int r)
+				{
+				`int x=l,y=r;
+				`long std=milk[(l+r)/2];
+				`while(x&lt;y)
+				`{
+				``while(milk[x]&lt;std)//Replace this line with "while(milk[x]&gt;std)" to sort in decrease order
+				```x++;
+				``while(milk[y]&gt;std)//Replace this line with "while(milk[y]&lt;std)" to sort in decrease order
+				```y--;
+				``if(x&lt;=y)
+				``{
+				```long tmp=milk[x];
+				```milk[x++]=milk[y];
+				```milk[y--]=tmp;
+				``}
+				`}
+				`if(l&lt;y)
+				``qsort(l,y);
+				`if(x&lt;r)
+				``qsort(x,r);
+				}
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				``scanf("%ld",&amp;milk[i]);
+				`qsort(0,n-1);
+				`printf("%ld",milk[n/2]);
+				`return 0;
+				}
+			</code>
+		</section>
+		<section id="merge">
+			<p>Merge sort Pascal Code</p>
+			<code>
+				var
+				`milk,copy:array[1..10000]of longint;
+				`n,i:integer;
+				procedure msort(l,r:integer);
+				var
+				`x,y:integer;
+				begin
+				`if l>=r then
+				``exit;
+				`msort(l,(l+r) div 2);
+				`msort((l+r) div 2+1,r);
+				`copy:=milk;
+				`x:=l;
+				`y:=(l+r) div 2+1;
+				`for i:=l to r do
+				``begin
+				```if x&gt;(l+r) div 2 then
+				````begin
+				`````milk[i]:=copy[y];
+				`````inc(y);
+				`````continue;
+				````end;
+				```if y&gt;r then
+				````begin
+				`````milk[i]:=copy[x];
+				`````inc(x);
+				`````continue;
+				````end;
+				```if copy[x]&gt;copy[y] then//Replace this line with "if copy[x]&lt;copy[y] then" to sort in decrease order
+				````begin
+				`````milk[i]:=copy[y];
+				`````inc(y);
+				````end
+				```else
+				````begin
+				`````milk[i]:=copy[x];
+				`````inc(x);
+				````end;
+				``end;
+				end;
+				begin
+				`read(n);
+				`for i:=1 to n do
+				``read(milk[i]);
+				`msort(1,n);
+				`write(milk[n div 2+1]);
+				end.
+			</code>
+			<p>Merge sort C++ Code</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the memcpy function in cstring
+				long milk[10000],copy[10000];
+				void msort(int l,int r)
+				{
+				`if(l>=r)
+				``return;
+				`msort(l,(l+r)/2);
+				`msort((l+r)/2+1,r);
+				`memcpy(copy,milk,sizeof(milk));
+				`for(int i=l,x=l,y=(l+r)/2+1;i&lt;=r;i++)
+				`{
+				``if(x&gt;(l+r)/2)
+				``{
+				```milk[i]=copy[y++];
+				```continue;
+				``}
+				``if(y&gt;r)
+				``{
+				```milk[i]=copy[x++];
+				```continue;
+				``}
+				``if(copy[x]&gt;copy[y])//Replace this line with "if(copy[x]&lt;copy[y])" to sort in decrease order
+				```milk[i]=copy[y++];
+				``else
+				```milk[i]=copy[x++];
+				`}
+				}
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				``scanf("%ld",&amp;milk[i]);
+				`msort(0,n-1);
+				`printf("%ld",milk[n/2]);
+				`return 0;
+				}
+			</code>
+		</section>
+		<section id="heap">
+			<p>Heap sort Pascal Code</p>
+			<code>
+				var
+				`milk:array[1..10000]of longint;
+				`n,i,j:integer;
+				`tmp:longint;
+				begin
+				`read(n);
+				`for i:=1 to n do
+				``begin
+				```read(milk[i]);
+				```j:=i;
+				```while (j&gt;1)and(milk[j div 2]&gt;milk[j]) do//Replace this line with "while (j&gt;1)and(milk[j div 2]&lt;milk[j]) do" to sort in decrease order
+				````begin
+				`````tmp:=milk[j];
+				`````milk[j]:=milk[j div 2];
+				`````milk[j div 2]:=tmp;
+				`````j:=j div 2;
+				````end;
+				``end;
+				`for i:=1 to n div 2 do
+				``begin
+				```milk[1]:=milk[n-i+1];
+				```j:=1;
+				```while (2*j&lt;n-i+1)and(milk[j]&gt;milk[2*j])or(2*j+1&lt;n-i+1)and(milk[j]&gt;milk[2*j+1]) do//Replace this line with "while (2*j&lt;n-i+1)and(milk[j]&lt;milk[2*j])or(2*j+1&lt;n-i+1)and(milk[j]&lt;milk[2*j+1]) do" to sort in decrease order
+				````begin
+				`````if (2*j+1&lt;n-i+1)and(milk[2*j]&gt;milk[2*j+1]) then//Replace this line with "if (2*j+1&lt;n-i+1)and(milk[2*j]&lt;milk[2*j+1]) then" to sort in decrease order
+				``````j:=2*j+1
+				`````else
+				``````j:=2*j;
+				`````tmp:=milk[j];
+				`````milk[j]:=milk[j div 2];
+				`````milk[j div 2]:=tmp;
+				````end;
+				``end;
+				`write(milk[1]);
+				end.
+			</code>
+			<p>Heap sort C++ Code</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long milk[10000];
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				`{
+				``scanf("%ld",&amp;milk[i]);
+				``int j=i;
+				``while((j&gt;0)&amp;&amp;(milk[(j-1)/2]&gt;milk[j]))//Replace this line with "while((j&gt;0)&amp;&amp;(milk[(j-1)/2]&lt;milk[j]))" to sort in decrease order
+				``{
+				```long tmp=milk[j];
+				```milk[j]=milk[(j-1)/2];
+				```milk[(j-1)/2]=tmp;
+				```j=(j-1)/2;
+				``}
+				`}
+				`for(int i=0;i&lt;n/2;i++)
+				`{
+				``milk[0]=milk[n-1-i];
+				``int j=0;
+				``while((2*j+1&lt;n-1-i)&amp;&amp;(milk[j]&gt;milk[2*j+1])||(2*j+2&lt;n-1-i)&amp;&amp;(milk[j]&gt;milk[2*j+2]))//Replace this line with "while((2*j+1&lt;n-1-i)&amp;&amp;(milk[j]&lt;milk[2*j+1])||(2*j+2&lt;n-1-i)&amp;&amp;(milk[j]&lt;milk[2*j+2]))" to sort in decrease order
+				``{
+				```if((2*j+2&lt;n-1-i)&amp;&amp;(milk[2*j+1]&gt;milk[2*j+2]))//Replace this line with "if((2*j+2&lt;n-1-i)&amp;&amp;(milk[2*j+1]&lt;milk[2*j+2]))" to sort in decrease order
+				````j=2*j+2;
+				```else
+				````j=2*j+1;
+				```long tmp=milk[j];
+				```milk[j]=milk[(j-1)/2];
+				```milk[(j-1)/2]=tmp;
+				``}
+				`}
+				`printf("%ld",milk[0]);
+				`return 0;
+				}
+			</code>
+		</section>
+		<section id="counting">
+			<p>Couting sort Pascal Code</p>
+			<code>
+				var
+				`counter:array[1..1000000]of integer;
+				`milk:longint;
+				`n,i,tmp:integer;
+				begin
+				`for milk:=1 to 1000000 do
+				``counter[milk]:=0;
+				`read(n);
+				`for i:=1 to n do
+				``begin
+				```read(milk);
+				```inc(counter[milk]);
+				``end;
+				`tmp:=0;
+				`for milk:=1 to 1000000 do//Replace this line with "for milk:=1000000 downto 1 do" to sort in decrease order
+				``if tmp+counter[milk]&gt;n div 2 then
+				```begin
+				````write(milk);
+				````halt;
+				```end
+				``else
+				```tmp:=tmp+counter[milk];
+				end.
+			</code>
+			<p>Counting sort C++ Code</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int counter[1000001];
+				int main()
+				{
+				`for(long milk=1;milk&lt;1000001;milk++)
+				``counter[milk]=0;
+				`int n;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				`{
+				``long milk;
+				``scanf("%ld",&amp;milk);
+				``counter[milk]++;
+				`}
+				`int tmp=0;
+				`for(long milk=1;milk&lt;1000001;milk++)//Replace this line with "for(long milk=1000000;milk&gt;0;milk--)" to sort in decrease order
+				``if(tmp+counter[milk]&gt;n/2)
+				``{
+				```printf("%ld",milk);
+				```return 0;
+				``}
+				``else
+				```tmp+=counter[milk];
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

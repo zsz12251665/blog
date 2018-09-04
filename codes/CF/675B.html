@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>CF 675B - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">CF 675B</h2>
+		<time>2018-03-01 15:48 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/CodeForces-675B">vjudge</a>
+			<a target="_blank" href="http://codeforces.com/problemset/problem/675/B">Codeforces</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is interesting, but not difficult. First of all, there are only 4 squares <var>2*2</var> which all of them has covered the cell at the center. So it doesn't matter whatever the number in this cell is. As a result, there are <var>#n#</var> kinds of possible values at the center. Second, the four cells at the corner are just covered by one square <var>2*2</var>. So when we add a number to anyone of them, we neede to add the same number to the other three. That means there are <var>(#n#-#k#)</var> kinds of possible values at the corners, which <var>#k#</var> means the difference of the maximum one and the minimum one of the values at the corners in a valid square <var>3*3</var>. We can infer that <var>#k#</var> also equals the difference of the maximum value and the minimum value of <var>#a#+#b#</var>, <var>#a#+#c#</var>, <var>#b#+#d#</var> and <var>#c#+#d#</var>. Last of all, according to the rule of product, the number of distinct valid squares should be <var>#n#(#n#-#k#)</var>. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`n,a,b,c,d,max,min:longint;
+				begin
+				`read(n,a,b,c,d);
+				`max:=-2147483647;
+				`min:=2137483647;
+				`if max&lt;a+b then//Update maximum pair values
+				``max:=a+b;
+				`if max&lt;a+c then
+				``max:=a+c;
+				`if max&lt;b+d then
+				``max:=b+d;
+				`if max&lt;c+d then
+				``max:=c+d;
+				`if min&gt;a+b then//Update minimum pair values
+				``min:=a+b;
+				`if min&gt;a+c then
+				``min:=a+c;
+				`if min&gt;b+d then
+				``min:=b+d;
+				`if min&gt;c+d then
+				``min:=c+d;
+				`if max-min&gt;n then//Pay attention to this situation
+				``write(0)
+				`else
+				``write(int64(n-max+min)*n);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`long n,a,b,c,d;
+				`scanf("%ld%ld%ld%ld%ld",&amp;n,&amp;a,&amp;b,&amp;c,&amp;d);
+				`long max=-2147483647,min=2147483647;
+				`if(max&lt;a+b)//Update maximum pair values
+				``max=a+b;
+				`if(max&lt;a+c)
+				``max=a+c;
+				`if(max&lt;b+d)
+				``max=b+d;
+				`if(max&lt;c+d)
+				``max=c+d;
+				`if(min&gt;a+b)//Update minimum pair values
+				``min=a+b;
+				`if(min&gt;a+c)
+				``min=a+c;
+				`if(min&gt;b+d)
+				``min=b+d;
+				`if(min&gt;c+d)
+				``min=c+d;
+				`if(max-min&gt;n)//Pay attention to this situation
+				``putchar('0');
+				`else
+				``printf("%lld",(long long)(n-max+min)*n);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

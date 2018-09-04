@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>HDU 2089 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">HDU 2089</h2>
+		<time>2017-02-10 19:19 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HDU-2089">vjudge</a>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Well, I don't know why I made 3 <abbr title="Time Limit Exceed">TLE</abbr> and 1 <abbr title="Wrong Answer">WA</abbr> before the <abbr title="Accepted">AC</abbr> arrived, but anyway it is not a difficult problem in fact. At the very beginning, I just search the interval between <var>#n#</var> and <var>#m#</var> and count the number. And that's the solution 1. However, it takes too much time to search the interval when it is asked. So we can use a way just like prefix sum that we'll preprocess an array with the number of the lucky numbers(just like the array count in the Solution 2). After reading a pair of <var>(#n#,#m#)</var>, all we need to do is to subtract the number of the lucky numbers from 0 to <var>(#n#-1)</var> from the one from 0 to <var>#m#</var>. Although it takes much time in preprocessing, but it can reduce the time of searching from <var>O(#n#)</var> to <var>O(1)</var>. So I get the AC with the code given as Solution 2 in the code part. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Solution 1 Pascal</p>
+			<code>
+				var
+				`n,m,i,count:longint;
+				function lucky(a:longint):boolean;
+				var
+				`i:longint;
+				begin
+				`i:=1;//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
+				`while i&lt;a do
+				``begin
+				```if ((a div i) mod 100=62)or((a div i) mod 10=4) then
+				````exit(false);
+				```i:=i*10;
+				``end;
+				`exit(true);
+				end;
+				begin
+				`read(n,m);
+				`while (n&lt;&gt;0)or(m&lt;&gt;0) do
+				``begin
+				```count:=0;
+				```for i:=n to m do//Search the interval
+				````if lucky(i) then
+				`````inc(count);
+				```writeln(count);
+				```read(n,m);
+				``end;
+				end.
+			</code>
+			<p>Solution 1 C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int lucky(long a)
+				{
+				`for(long i=1;i&lt;a;i*=10)//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
+				``if(((a/i)%100==62)||((a/i)%10==4))
+				```return 1;
+				`return 0;
+				}
+				int main()
+				{
+				`long n,m,count;
+				`scanf("%ld%ld",&amp;n,&amp;m);
+				`while((n!=0)||(m!=0))
+				`{
+				``count=0;
+				``for(long i=n;i&lt;=m;i++)//Search the interval
+				```if(lucky(i)==0)
+				````count++;
+				``printf("%ld\n",count);
+				``scanf("%ld%ld",&amp;n,&amp;m);
+				`}
+				`return 0;
+				}
+			</code>
+			<p>Solution 2 Pascal</p>
+			<code>
+				var
+				`count:array[0..1000000]of longint;//count[i] keeps the number of the lucky numbers from 0 to i
+				`n,m,i:longint;
+				function lucky(a:longint):boolean;
+				begin
+				`while a>0 do
+				``begin
+				```if (a mod 100=62)or(a mod 10=4) then
+				````exit(false);
+				```a:=a div 10;
+				``end;
+				`exit(true);
+				end;
+				begin
+				`count[0]:=1;
+				`for i:=1 to 1000000 do
+				``if lucky(i) then
+				```count[i]:=count[i-1]+1
+				``else
+				```count[i]:=count[i-1];
+				`read(n,m);
+				`while (n&lt;&gt;0)or(m&lt;&gt;0) do
+				``begin
+				```writeln(count[m]-count[n-1]);//Don't forget to use the one before n, or you may lose the number n
+				```read(n,m);
+				``end;
+				end.
+			</code>
+			<p>Solution 2 C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long count[1000001];//count[i] keeps the number of the lucky numbers from 0 to i
+				int lucky(long a)
+				{
+				`while(a>0)
+				`{
+				``if((a%100==62)||(a%10==4))
+				```return 1;
+				``a/=10;
+				`}
+				`return 0;
+				}
+				int main()
+				{
+				`count[0]=1;
+				`for(long i=1;i&lt;1000001;i++)//Fill the count[i]
+				``if(lucky(i)==0)
+				```count[i]=count[i-1]+1;
+				``else
+				```count[i]=count[i-1];
+				`long n,m;
+				`scanf("%ld%ld",&amp;n,&amp;m);
+				`while((n!=0)||(m!=0))
+				`{
+				``printf("%ld\n",count[m]-count[n-1]);//Don't forget to use the one before n, or you may lose the number n
+				``scanf("%ld%ld",&amp;n,&amp;m);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

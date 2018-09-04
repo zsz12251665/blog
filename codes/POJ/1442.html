@@ -1,0 +1,245 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 1442 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 1442</h2>
+		<time>2018-01-08 22:03 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-1442">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=1442">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Well, this problem requires two heaps. One is the small-root heap and the other one is the big-root heap. Then we do it like this: When we have processed <var>#j#</var> GET requests, we keep the smallest <var>#j#</var> integers in the big-root array. When an ADD request is taken, we could know whether the new integer is one of the smallest <var>#j#</var> integers by comparing the root of the heap and the new element. If it is, replace the root with the new element and put the old root into the small-root heap. Otherwise, just put the new element into the small-root heap. So the <var>(#j#+1)</var>-th smallest element will be the root of the small-root heap. So we can process an ADD request within <var>O(lg(#n#))</var>. When a GET request is taken, all we need to do is moving the root of the small-root heap into the big-root heap. This can be finished in <var>O(lg(#n#))</var> too. So the total time complexity is <var>O(#n#lg(#n#))</var>. </p>
+			<p>At the same time, this solution is also going to tell you that how to make a heap. The heap is a complete binary tree structure which all nodes except the roots is smaller(or bigger) than its father. That's why we have the small-root heap and the big-root heap. If the nodes are smaller than their fathers, the root will be the smallest of all. That is called small-root heap. Similarly, we have the big-root heap. In the following we use the small-root heap as an example. When a new element is added to the heap, put it at the end of the tree and compare it with his father. If the father isn't so small as the child, swap them and continue comparing. Otherwise, stopped and quit. There are <var>&lceil;log(_2_)(#n#)&rceil;</var> levels in the heap, so the add request is <var>O(lg(#n#))</var>. When we need to pop the root out of the heap, we can replace it with the last element of the heap. Then we compare with its smallest child and if the father is bigger, swap them, or stopped and quit. So the time complexity of the pop request is also related to the number of the levels. So the pop request is <var>O(lg(#n#))</var> too. So with a heap, you can add or pop an element with a <var>O(lg(#n#))</var> time complexity and get the smallest element with a <var>O(1)</var> time complexity. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`add,small,big:array[1..30000]of longint;
+				`get:array[1..30000]of integer;
+				`m,n,i,j,k:integer;
+				`tmp:longint;
+				procedure qsort(l,r:integer);//The quick sort is used to make sure the get operation in increasing order, it isn't necessary
+				var
+				`x,y:integer;
+				`tmp,std:longint;
+				begin
+				`x:=l;
+				`y:=r;
+				`std:=get[(l+r) div 2];
+				`while x&lt;y do
+				``begin
+				```while get[x]&lt;std do
+				````inc(x);
+				```while get[y]&gt;std do
+				````dec(y);
+				```if x&lt;=y then
+				````begin
+				`````tmp:=get[x];
+				`````get[x]:=get[y];
+				`````get[y]:=tmp;
+				`````inc(x);
+				`````dec(y);
+				````end;
+				``end;
+				`if l&lt;y then
+				``qsort(l,y);
+				`if r&gt;x then
+				``qsort(x,r);
+				end;
+				begin
+				`read(m,n);
+				`for i:=1 to m do
+				``read(add[i]);
+				`for j:=1 to n do
+				``read(get[j]);
+				`qsort(1,n);//Sort the get array
+				`j:=1;
+				`for i:=1 to m do
+				``begin
+				```if (j&gt;1)and(add[i]&lt;big[1]) then//The ADD request which started with checking if the new element should be put into the big-root heap
+				````begin
+				`````small[i-j+1]:=big[1];//Put the root element of the big-root heap into the small-root heap
+				`````k:=i-j+1;
+				`````while (k&gt;1)and(small[k]&lt;small[k div 2]) do
+				``````begin
+				```````tmp:=small[k];
+				```````small[k]:=small[k div 2];
+				```````small[k div 2]:=tmp;
+				```````k:=k div 2;
+				``````end;
+				`````big[1]:=add[i];//Replace the root element of the big-root heap with the new element
+				`````k:=1;
+				`````while (2*k&lt;j)and(big[k]&lt;big[2*k])or(2*k+1&lt;j)and(big[k]&lt;big[2*k+1]) do
+				``````begin
+				```````if (2*k+1&lt;j)and(big[2*k]&lt;big[2*k+1]) then
+				````````k:=2*k+1
+				```````else
+				````````k:=2*k;
+				```````tmp:=big[k];
+				```````big[k]:=big[k div 2];
+				```````big[k div 2]:=tmp;
+				``````end;
+				````end
+				```else
+				````begin
+				`````small[i-j+1]:=add[i];//Simply add the new element into the small-root heap
+				`````k:=i-j+1;
+				`````while (k&gt;1)and(small[k]&lt;small[k div 2]) do
+				``````begin
+				```````tmp:=small[k];
+				```````small[k]:=small[k div 2];
+				```````small[k div 2]:=tmp;
+				```````k:=k div 2;
+				``````end;
+				````end;
+				```while i=get[j] do//The GET request
+				````begin
+				`````writeln(small[1]);//Output the asking element
+				`````big[j]:=small[1];//Put the root element of the small-root heap into the big-root heap
+				`````k:=j;
+				`````while (k&gt;1)and(big[k]&gt;big[k div 2]) do
+				``````begin
+				```````tmp:=big[k];
+				```````big[k]:=big[k div 2];
+				```````big[k div 2]:=tmp;
+				```````k:=k div 2;
+				``````end;
+				`````small[1]:=small[i-j+1];//Remove the root element of the small-root heap
+				`````k:=1;
+				`````while (2*k&lt;i-j+1)and(small[k]&gt;small[2*k])or(2*k+1&lt;i-j+1)and(small[k]&gt;small[2*k+1]) do
+				``````begin
+				```````if (2*k+1&lt;i-j+1)and(small[2*k]&gt;small[2*k+1]) then
+				````````k:=2*k+1
+				```````else
+				````````k:=2*k;
+				```````tmp:=small[k];
+				```````small[k]:=small[k div 2];
+				```````small[k div 2]:=tmp;
+				``````end;
+				`````inc(j);
+				````end;
+				```if j&gt;n then
+				````halt;
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long add[30000],small[30000],big[30000];
+				int get[30000];
+				void qsort(int l,int r)//The quick sort is used to make sure the get operation in increasing order, it isn't necessary
+				{
+				`int x=l,y=r;
+				`long std=get[(l+r)/2];
+				`while(x&lt;y)
+				`{
+				``while(get[x]&lt;std)
+				```x++;
+				``while(get[y]&gt;std)
+				```y--;
+				``if(x&lt;=y)
+				``{
+				```long tmp=get[x];
+				```get[x++]=get[y];
+				```get[y--]=tmp;
+				``}
+				`}
+				`if(l&lt;y)
+				``qsort(l,y);
+				`if(x&lt;r)
+				``qsort(x,r);
+				}
+				int main()
+				{
+				`int m,n;
+				`scanf("%d%d",&amp;m,&amp;n);
+				`for(int i=0;i&lt;m;i++)
+				``scanf("%ld",&amp;add[i]);
+				`for(int j=0;j&lt;n;j++)
+				``scanf("%d",&amp;get[j]);
+				`qsort(0,n-1);//Sort the get array
+				`for(int i=0,j=0,k;(i&lt;m)&amp;&amp;(j&lt;n);i++)
+				`{
+				``if((j&gt;0)&amp;&amp;(add[i]&lt;big[0]))//The ADD request which started with checking if the new element should be put into the big-root heap
+				``{
+				```small[i-j]=big[0];//Put the root element of the big-root heap into the small-root heap
+				```k=i-j;
+				```while((k&gt;0)&amp;&amp;(small[k]&lt;small[(k-1)/2]))
+				```{
+				````long tmp=small[k];
+				````small[k]=small[(k-1)/2];
+				````small[(k-1)/2]=tmp;
+				````k=(k-1)/2;
+				```}
+				```big[0]=add[i];//Replace the root element of the big-root heap with the new element
+				```k=0;
+				```while((2*k+1&lt;j)&amp;&amp;(big[k]&lt;big[2*k+1])||(2*k+2&lt;j)&amp;&amp;(big[k]&lt;big[2*k+2]))
+				```{
+				````if((2*k+2&lt;j)&amp;&amp;(big[2*k+1]&lt;big[2*k+2]))
+				`````k=2*k+2;
+				````else
+				`````k=2*k+1;
+				````long tmp=big[k];
+				````big[k]=big[(k-1)/2];
+				````big[(k-1)/2]=tmp;
+				```}
+				``}
+				``else
+				``{
+				```small[i-j]=add[i];//Simply add the new element into the small-root heap
+				```k=i-j;
+				```while((k&gt;0)&amp;&amp;(small[k]&lt;small[(k-1)/2]))
+				```{
+				````long tmp=small[k];
+				````small[k]=small[(k-1)/2];
+				````small[(k-1)/2]=tmp;
+				````k=(k-1)/2;
+				```}
+				``}
+				``while(i+1==get[j])//The GET request
+				``{
+				```printf("%ld\n",small[0]);//Output the asking element
+				```big[j]=small[0];//Put the root element of the small-root heap into the big-root heap
+				```k=j;
+				```while((k&gt;0)&amp;&amp;(big[k]&gt;big[(k-1)/2]))
+				```{
+				````long tmp=big[k];
+				````big[k]=big[(k-1)/2];
+				````big[(k-1)/2]=tmp;
+				````k=(k-1)/2;
+				```}
+				```small[0]=small[i-j];//Remove the root element of the small-root heap
+				```k=0;
+				```while((2*k+1&lt;i-j)&amp;&amp;(small[k]&gt;small[2*k+1])||(2*k+2&lt;i-j)&amp;&amp;(small[k]&gt;small[2*k+2]))
+				```{
+				````if((2*k+2&lt;i-j)&amp;&amp;(small[2*k+1]&gt;small[2*k+2]))
+				`````k=2*k+2;
+				````else
+				`````k=2*k+1;
+				````long tmp=small[k];
+				````small[k]=small[(k-1)/2];
+				````small[(k-1)/2]=tmp;
+				```}
+				```j++;
+				``}
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

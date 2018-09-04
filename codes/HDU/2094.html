@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>HDU 2094 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">HDU 2094</h2>
+		<time>2017-02-11 16:40 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HDU-2094">vjudge</a>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2094">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>It is not a easy problem unless you find the connection between the champion and the losers. Yes, the champion won't be someone who used to lose a match. He/She must win all matches that he/she played. So we can read the winner list and the loser list. Then delete the winner who used to lose from the list. Then check if there is only one person in the list. It is an <var>O(#n#(^2^))</var> algorithm. But <var>#n#</var> is lower than 1000. So it is enough. </p>
+			<p>While keeping the name in the list, I found that it is more difficult to keep a string than an integer. So I turn the name string into integers in a way like hash. Luckily, it earns an <abbr title="Accepted">AC</abbr>. But I have to admit that this algorithm may be hacked while processing some data. By the way, the code in Pascal haven't got an AC. But it always gives me the right answer when I debug it because I just translated it completely from the code in C++. That's odd! If there is some one who read this blog can solve this problem, I'll very appreciate it. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`win,lose:array[1..1000]of longint;//the array win keeps the winner list and the array lose keeps the loser list
+				`n,i,j,champion:longint;//champion keeps the champion of the game
+				procedure getname(a:longint);//A function that keeps the name strings in integers so that it can be easily compared
+				var
+				`s:string;
+				`i,power:longint;
+				begin
+				`win[a]:=0;
+				`lose[a]:=0;
+				`power:=1;
+				`readln(s);
+				`for i:=1 to pos(' ',s)-1 do//Turn name strings to integers
+				``begin
+				```win[a]:=win[a]+power*ord(s[i]);
+				```power:=power*128;
+				``end;
+				`s:=copy(s,pos(' ',s)+1,length(s));
+				`power:=1;
+				`for i:=1 to length(s) do
+				``begin
+				```lose[a]:=lose[a]+power*ord(s[i]);
+				```power:=power*128;
+				``end;
+				end;
+				begin
+				`readln(n);
+				`while n&lt;&gt;0 do
+				``begin
+				```for i:=1 to n do
+				````getname(i);
+				```for i:=1 to n do//Scan the array lose and array win to check if the winner used to lose a match
+				````for j:=1 to n do
+				`````if win[j]=lose[i] then
+				``````win[j]:=-1;
+				```champion:=-1;//If champion is -1, it means there is no champion
+				```for i:=1 to n do//Scan the array win to check if there are more than one champion or no champion
+				````if (win[i]&lt;&gt;-1)and(win[i]&lt;&gt;champion) then
+				`````if champion=-1 then
+				``````champion:=win[i]
+				`````else
+				``````begin
+				```````champion:=-1;
+				```````break;
+				``````end;
+				````if champion=-1 then
+				`````writeln('No')
+				````else
+				`````writeln('Yes');
+				```readln(n);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the strlen function in cstring
+				long win[1000],lose[1000];//the array win keeps the winner list and the array lose keeps the loser list
+				void getname(long a)//A function that keeps the name strings in integers so that it can be easily compared
+				{
+				`char s[256];
+				`win[a]=lose[a]=0;
+				`scanf("%s",&amp;s);
+				`for(int i=0,power=1;i&lt;strlen(s);i++)//Turn name strings to integers
+				`{
+				``win[a]+=power*s[i];
+				``power*=128;
+				`}
+				`scanf("%s",&amp;s);
+				`for(int i=0,power=1;i&lt;strlen(s);i++)
+				`{
+				``lose[a]+=power*s[i];
+				``power*=128;
+				`}
+				}
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`while(n!=0)
+				`{
+				``for(int i=0;i&lt;n;i++)
+				```getname(i);
+				``for(int i=0;i&lt;n;i++)//Scan the array lose and array win to check if the winner used to lose a match
+				```for(int j=0;j&lt;n;j++)
+				````if(win[j]==lose[i])
+				`````win[j]=-1;
+				``long champion=-1;//champion keeps the champion of the game and if it is -1, it means there is no champion
+				``for(int i=0;i&lt;n;i++)//Scan the array win to check if there are more than one champion or no champion
+				```if((win[i]!=-1)&amp;&amp;(champion!=win[i]))
+				````if(champion==-1)
+				`````champion=win[i];
+				````else
+				````{
+				`````champion=-1;
+				`````break;
+				````}
+				``if(champion==-1)
+				```printf("No\n");
+				``else
+				```printf("Yes\n");
+				``scanf("%d",&amp;n);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

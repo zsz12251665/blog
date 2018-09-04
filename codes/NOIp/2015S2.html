@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2015S2 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2015S2</h2>
+		<time>2017-10-25 21:40 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=2661">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1979">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>It is not difficult to find that we are required to find the minimum circle in the map that the outer degree of each point is 1. That makes any two circles cannot share an edge, or the shared edge will have a outer degree of 2. So we can search every point along the path until it come to a point we've visit, and we'll get the size of the round if we mark the time we arrive at the point. </p>
+			<p>We may also find that some points do not belong to any circles. And they may also reach some points that are visited. We can set an integer <var>#last#</var> to record the finish time of the last search, if the time mark is early than <var>#last#</var>, that means it was visited in a previous round and this path doesn't belong to any circles. That's how we solve the problem. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`next,visit:array[1..200000]of longint;
+				`n,min,i,t,last,p:longint;
+				begin
+				`min:=maxlongint;
+				`read(n);
+				`for i:=1 to n do
+				``begin
+				```read(next[i]);
+				```visit[i]:=-1;//Format the visit array
+				``end;
+				`t:=1;
+				`last:=0;//last is used check whether the path we found is a circle
+				`for i:=1 to n do
+				``if visit[i]=-1 then
+				```begin
+				````p:=i;
+				````while visit[p]=-1 do//When we reach a point visited, stop the loop
+				`````begin
+				``````visit[p]:=t;
+				``````p:=next[p];
+				``````inc(t);
+				`````end;
+				````if (visit[p]&gt;last)and(min&gt;t-visit[p]) then//visit[p]&lt;last means we've visited this point in a previous round
+				`````min:=t-visit[p];
+				````last:=t-1;
+				```end;
+				`write(min);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int next[200000],visit[200000];
+				int main()
+				{
+				`int n,min=2147483647;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				`{
+				``scanf("%d",&amp;next[i]);
+				``visit[i]=-1;//Format the visit array
+				`}
+				`for(int i=0,t=1,last=0;i&lt;n;i++)//last is used check whether the path we found is a circle
+				``if(visit[i]==-1)
+				``{
+				```int p=i;
+				```while(visit[p]==-1)//When we reach a point visited, stop the loop
+				```{
+				````visit[p]=t;
+				````p=next[p]-1;//C++ starts the array from 0, so do not forget to minus 1
+				````t++;
+				```}
+				```if((visit[p]&gt;last)&amp;&amp;(min&gt;t-visit[p]))//visit[p]&lt;last means we've visited this point in a previous round
+				````min=t-visit[p];
+				```last=t-1;
+				``}
+				`printf("%d",min);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

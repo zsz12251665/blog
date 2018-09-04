@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2011S2 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2011S2</h2>
+		<time>2017-05-19 16:30 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1311">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1737">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>We can think this problem in this way: we have known the number of the ways when there are <var>i</var> hotels. Now how should I change the answer when I add one hotel more? First of all, one of these two guys must stay in the new hotel because every plan that none of them stay in the hotel has all been counted. Second, If the new cafe is under the cost limit, the other guy can stay in any hotels in the same colour. Or he can stay in any hotels in the same colour except the ones which have no fit cafe on the way to the new hotel. Third, we can use a counter to count how many hotels the second guy can stay in. When you get a new hotel, if its cafe is under the limit, set it as same as the number of the hotels in the same colour. Or do nothing to the counter and just count the numbers of the hotels in the same colour. So that's the solution, which starts from no hotels and 0 ways to stay in. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`count,last:array[0..50]of longint;
+				`ans,n,i:longint;
+				`k,p,colour,cost:integer;
+				begin
+				`read(n,k,p);
+				`ans:=0;
+				`for colour:=0 to k-1 do//Format the arrays
+				``begin
+				```count[colour]:=0;
+				```last[colour]:=0;
+				``end;
+				`for i:=1 to n do
+				``begin
+				```read(colour,cost);
+				```inc(count[colour]);
+				```if cost&lt;=p then
+				````begin
+				`````last:=count;//Renew the last array
+				`````ans:=ans+count[colour]-1;//Remember to minus 1 becuase they would not stay in the same hotel
+				````end
+				```else
+				````ans:=ans+last[colour];
+				``end;
+				`writeln(ans);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the memcpy function in cstring
+				long count[50],last[50];
+				int main()
+				{
+				`long n,ans=0;
+				`int k,p;
+				`scanf("%ld%d%d",&amp;n,&amp;k,&amp;p);
+				`for(int colour=0;colour&lt;k;colour++)//Format the arrays
+				``count[colour]=last[colour]=0;
+				`for(long i=0;i&lt;n;i++)
+				`{
+				``int colour,cost;
+				``scanf("%d%d",&amp;colour,&amp;cost);
+				``count[colour]++;
+				``if(cost&lt;=p)
+				``{
+				```memcpy(last,count,sizeof(last));//Renew the last array
+				```ans+=count[colour]-1;//Remember to minus 1 becuase they would not stay in the same hotel
+				``}
+				``else
+				```ans+=last[colour];
+				`}
+				`printf("%ld",ans);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

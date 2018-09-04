@@ -1,0 +1,163 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2005S1 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2005S1</h2>
+		<time>2017-06-01 17:35 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1051">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1001">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>As the first problem of NOIp, the simulation can always solve the problem. Just pay attention to the input format. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				type
+				`student=
+				``record
+				```name:string;
+				```priz:integer;
+				``end;
+				var
+				`stu:array[1..100]of student;
+				`test,clas,mxi,mxp,i,n:integer;
+				`offl,west,arti:boolean;
+				`tot:longint;
+				`s:string;
+				begin
+				`readln(n);
+				`tot:=0;
+				`mxp:=-maxint;
+				`for i:=1 to n do
+				``begin
+				```readln(s);//Get the informaton of the student
+				```stu[i].name:=copy(s,1,pos(' ',s)-1);
+				```s:=copy(s,pos(' ',s)+1,255);
+				```val(copy(s,1,pos(' ',s)-1),test);
+				```s:=copy(s,pos(' ',s)+1,255);
+				```val(copy(s,1,pos(' ',s)-1),clas);
+				```s:=copy(s,pos(' ',s)+1,255);
+				```offl:=(s[1]='Y');
+				```west:=(s[3]='Y');
+				```arti:=(s[5]&lt;&gt;'0');
+				```stu[i].priz:=0;
+				```if (test&gt;80)and arti then//Check what prize the student can win
+				````begin
+				`````stu[i].priz:=stu[i].priz+8000;
+				`````tot:=tot+800;
+				````end;
+				```if (test&gt;85)and(clas&gt;80) then
+				````begin
+				`````stu[i].priz:=stu[i].priz+4000;
+				`````tot:=tot+400;
+				````end;
+				```if test&gt;90 then
+				````begin
+				`````stu[i].priz:=stu[i].priz+2000;
+				`````tot:=tot+200;
+				````end;
+				```if (test&gt;85)and west then
+				````begin
+				`````stu[i].priz:=stu[i].priz+1000;
+				`````tot:=tot+100;
+				````end;
+				```if (clas&gt;80)and offl then
+				````begin
+				`````stu[i].priz:=stu[i].priz+850;
+				`````tot:=tot+85;
+				````end;
+				```if mxp&lt;stu[i].priz then//Keep the student who win the most prizes
+				````begin
+				`````mxp:=stu[i].priz;
+				`````mxi:=i;
+				````end;
+				``end;
+				`writeln(stu[mxi].name);
+				`writeln(stu[mxi].priz);
+				`writeln(tot*10);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				struct student
+				{
+				`char name[20];
+				`int priz;
+				};//Do not forget the semicolon, or it may lead to some error
+				student stu[100];
+				char s[20];
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`long tot=0;
+				`int mxp=-65535,mxi;
+				`for(int i=0,test,clas,offl,west,arti;i&lt;n;i++)
+				`{
+				``scanf("%s%d%d",&amp;stu[i].name,&amp;test,&amp;clas);//Get the informaton of the student
+				``scanf("%s",&amp;s);
+				``if(s[0]=='Y')
+				```offl=1;
+				``else
+				```offl=0;
+				``scanf("%s",&amp;s);
+				``if(s[0]=='Y')
+				```west=1;
+				``else
+				```west=0;
+				``scanf("%d",&amp;arti);
+				``if(arti&gt;0)
+				```arti=1;
+				``stu[i].priz=0;
+				``if((test&gt;80)&amp;&amp;(arti==1))//Check what prize the student can win
+				``{
+				```stu[i].priz+=8000;
+				```tot+=800;
+				``}
+				``if((test&gt;85)&amp;&amp;(clas&gt;80))
+				``{
+				```stu[i].priz+=4000;
+				```tot+=400;
+				``}
+				``if(test&gt;90)
+				``{
+				```stu[i].priz+=2000;
+				```tot+=200;
+				``}
+				``if((test&gt;85)&amp;&amp;(west==1))
+				``{
+				```stu[i].priz+=1000;
+				```tot+=100;
+				``}
+				``if((clas&gt;80)&amp;&amp;(offl==1))
+				``{
+				```stu[i].priz+=850;
+				```tot+=85;
+				``}
+				``if(mxp&lt;stu[i].priz)//Keep the student who win the most prizes
+				``{
+				```mxp=stu[i].priz;
+				```mxi=i;
+				``}
+				`}
+				`printf("%s\n%d\n%ld",stu[mxi].name,stu[mxi].priz,tot*10);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

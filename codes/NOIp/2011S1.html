@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2011S1 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2011S1</h2>
+		<time>2017-05-18 16:30 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1003">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1736">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>When you read the input format, you may think: "Oh, if I can read the coordinate before the carpets, I can solve it quickly by checking if one of the carpets below has covered there. " However, We can keep the carpet information in an array and check them later. That's the solution. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`a,b,g,k:array[1..10000]of longint;
+				`n,i:integer;
+				`x,y:longint;
+				begin
+				`read(n);
+				`for i:=1 to n do
+				``read(a[i],b[i],g[i],k[i]);
+				`read(x,y);
+				`for i:=n downto 1 do//Remember that we need to output the top one
+				``if (a[i]&lt;=x)and(b[i]&lt;=y)and(a[i]+g[i]&gt;=x)and(b[i]+k[i]&gt;=y) then//If it has covered the coordinate, output it then exit
+				```begin
+				````write(i);
+				````halt;
+				```end;
+				`write(-1);//If no carpet has covered the coordinate, output -1
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long a[10000],b[10000],g[10000],k[10000];
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`for(int i=0;i&lt;n;i++)
+				``scanf("%ld%ld%ld%ld",&amp;a[i],&amp;b[i],&amp;g[i],&amp;k[i]);
+				`long x,y;
+				`scanf("%ld%ld",&amp;x,&amp;y);
+				`for(int i=n-1;i&gt;=0;i--)//Remember that we need to output the top one
+				``if((a[i]&lt;=x)&amp;&amp;(b[i]&lt;=y)&amp;&amp;(a[i]+g[i]&gt;=x)&amp;&amp;(b[i]+k[i]&gt;=y))//If it has covered the coordinate, output it then exit
+				``{
+				```printf("%d",i+1);//In C/C++, the array indexes are from 0 to n-1, so do not forget to add 1 when you output the index
+				```return 0;
+				``}
+				`printf("-1");//If no carpet has covered the coordinate, output -1
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

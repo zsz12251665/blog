@@ -1,0 +1,51 @@
+@font-face
+{
+	font-family: "STIX";
+	src: url("/add-on/math/STIX.woff");
+}
+var
+{
+	display: inline;
+	font-family: "STIX", serif;
+	font-style: normal;
+	line-height: 100%;
+}
+var span:empty
+{
+	display: block;
+	height: 0;
+}
+var .div
+{
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	width: auto;
+}
+var .div span:empty
+{
+	border-top-color: var(--text-color);
+	border-top-style: solid;
+	border-top-width: thin;
+}
+var .sqrt
+{
+	border-top-color: var(--text-color);
+	border-top-style: solid;
+	border-top-width: thin;
+	display: inline;
+}
+var .updown
+{
+	display: inline-block;
+	font-size: smaller;
+	text-align: center;
+	vertical-align: middle;
+	width: auto;
+}
+var .var
+{
+	display: inline-block;
+	margin-left: 0.1rem;
+	margin-right: 0.1rem;
+}

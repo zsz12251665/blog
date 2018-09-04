@@ -1,0 +1,152 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>HDU 3658 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">HDU 3658</h2>
+		<time>2018-04-09 20:55 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HDU-3658">vjudge</a>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=3658">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>In this problem, we will talk about how to use the power of the matrix to speed up <abbr title="dynamic planning">dp</abbr> algorithm. </p>
+			<p>The dp array will be like <var>#dp#(_#i#,#j#,#b#_)</var>, which means the number of the words when we have chosen the first <var>#i#</var> letters,  with <var>#j#</var> as the last one and <var>#c#</var> which shows if there has been a difference of a pair of neighbour letters which is exactly 32. Now we can write down the state transition formulas: </p>
+			<ul>
+				<li><var>#dp#(_#i#,#j#,#0#_)=&sum;(_#k#&isin;[#j#-31,#j#+31]_)#dp#(_#i-1#,#k#,#0#_)</var></li>
+				<li><var>#dp#(_#i#,#j#,#1#_)=#dp#(_#i-1#,#j&plusmn;32#,#0#_)+&sum;(_#k#&isin;[#j#-32,#j#+32]_)#dp#(_#i-1#,#k#,#0#_)</var></li>
+			</ul>
+			<p>If we roll the dp array, change the difference of 'Z' and 'a' into 1 and then combine <var>#j#</var> and <var>#c#</var> as <var>52#c#+#j#</var>, we'll have these formulas: </p>
+			<ul>
+				<li><var>#dp#(_#j#_)=&sum;(_#k#&isin;[#j#-25,#j#+25]_)#dp#(_#k#_)</var></li>
+				<li><var>#dp#(_#j#+52_)=#dp#(_#j&plusmn;26#_)+&sum;(_#k#&isin;[#j#-26,#j#+26]_)#dp#(_#k#+52_)</var></li>
+			</ul>
+			<p>Obviously, it took us <var>O(2*52)</var> to finish a transition. Though the total time complexity is just <var>O(#m#)</var>, the constant and the multitasks will not allow us to pass the problem. So we need the power of the matrix to speed up. But how can we do it? </p>
+			<p>We will construct a transition matrix. For a transition matrix <var> #M#</var>, <var>#M#(_#x#,#y#_)</var> is the coefficient of <var>#dp#(_#y#_)</var> in <var>#dp#(_#x#_)</var>. Let's take Fibonacci sequence as an example. The transition matrix is <var>[@1@1@ @1@0@]</var>. Here, <var>#dp#(_#i#,0_)</var> means <var>#F#(_#i#_)</var> and <var>#dp#(_#i#,1_)</var> means <var>#F#(_#i-1#_)</var>. So according to the transition matrix, the transition formulas are <var>#dp#(_#i#,0_)=1*#dp#(_#i#-1,0_)+1*#dp#(_#i#-1,1_)=#dp#(_#i#-1,0_)+#dp#(_#i#-1,1_)</var> and <var>#dp#(_#i#,1_)=1*#dp#(_#i#-1,0_)+0*#dp#(_#i#-1,1_)=#dp#(_#i#-1,0_)</var>. They just mean <var>#F#(_#i#_)=#F#(_#i#-1_)+#F#(_#i#-2_)</var> and <var>#F#(_#i#-1_)=#F#(_#i#-1_)</var>. </p>
+			<p>After constructing the transition matrix, we could know that if we multiply the matrix with the states array, we can finish the transition once. So we need to do it <var>#m#</var> times. According to the associative property, we can use the power of the matrix, which is just <var>O(lg(#m#))</var>, to speed it up. This is how we speed up dp algorithm with the power of matrix. </p>
+			<p>P. S. I'm sorry that the solution was still not fast enough for Pascal to pass it while C++ managed though I've sorted <var>#m#</var>. Please pay attenttion. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`matrix,answer,power,temp:array[1..104,1..104]of int64;
+				`t,i,j,c:integer;
+				`m,sum:longint;
+				begin
+				`fillchar(matrix,sizeof(matrix),0);//Construct the transition matrix
+				`for i:=1 to 52 do//The difference of their ASCII code must not be greater than 32
+				``for j:=1 to 52 do
+				```if (j&gt;i-26)and(j&lt;i+26) then
+				````begin
+				`````matrix[i,j]:=1;
+				`````matrix[i+52,j+52]:=1;
+				````end;
+				`for i:=1 to 26 do//The difference of their ASCII code is exactly 32
+				``begin
+				```matrix[78+i,i]:=1;
+				```matrix[52+i,26+i]:=1;
+				```matrix[78+i,52+i]:=1;
+				```matrix[52+i,78+i]:=1;
+				``end;
+				`read(t);
+				`while t&gt;0 do
+				``begin
+				```read(m);
+				```dec(m);
+				```fillchar(answer,sizeof(answer),0);//Format the answer matrix to the identity matrix
+				```for i:=1 to 104 do
+				````answer[i,i]:=1;
+				```power:=matrix;//Format the power matrix
+				```while m&gt;0 do//Calculate the power of matrix
+				````begin
+				`````if m mod 2=1 then
+				``````begin
+				```````fillchar(temp,sizeof(temp),0);
+				```````for i:=1 to 104 do
+				````````for j:=1 to 104 do
+				`````````for c:=1 to 104 do
+				``````````temp[i,j]:=(answer[i,c]*power[c,j]+temp[i,j]) mod 1000000007;
+				```````answer:=temp;
+				``````end;
+				`````fillchar(temp,sizeof(temp),0);
+				`````for i:=1 to 104 do
+				``````for j:=1 to 104 do
+				```````for c:=1 to 104 do
+				````````temp[i,j]:=(power[i,c]*power[c,j]+temp[i,j]) mod 1000000007;
+				`````power:=temp;
+				`````m:=m div 2;
+				````end;
+				```sum:=0;//Calculate the answer, which is the sum of a sub-matrix in the answer matrix
+				```for i:=53 to 104 do
+				````for j:=1 to 52 do
+				`````sum:=(sum+answer[i,j]) mod 1000000007;
+				```writeln(sum);
+				```dec(t);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the memset function and the memcpy function in cstring
+				long long matrix[104][104],answer[104][104],power[104][104],temp[104][104];
+				int main()
+				{
+				`memset(matrix,0,sizeof(matrix));//Construct the transition matrix
+				`for(int i=0;i&lt;52;i++)//The difference of their ASCII code must not be greater than 32
+				``for(int j=0;j&lt;52;j++)
+				```if((j&gt;i-26)&amp;&amp;(j&lt;i+26))
+				````matrix[i][j]=matrix[52+i][52+j]=1;
+				`for(int i=0;i&lt;26;i++)//The difference of their ASCII code is exactly 32
+				``matrix[78+i][i]=matrix[52+i][26+i]=matrix[78+i][52+i]=matrix[52+i][78+i]=1;
+				`int t;
+				`for(scanf("%d",&amp;t);t&gt;0;t--)
+				`{
+				``long m;
+				``scanf("%ld",&amp;m);
+				``m--;
+				``memset(answer,0,sizeof(answer));//Format the answer matrix to the identity matrix
+				``for(int i=0;i&lt;104;i++)
+				```answer[i][i]=1;
+				``memcpy(power,matrix,sizeof(power));//Format the power matrix
+				``for(;m&gt;0;m/=2)//Calculate the power of matrix
+				``{
+				```if(m%2==1)
+				```{
+				````memset(temp,0,sizeof(temp));
+				````for(int i=0;i&lt;104;i++)
+				`````for(int j=0;j&lt;104;j++)
+				``````for(int c=0;c&lt;104;c++)
+				```````temp[i][j]=(answer[i][c]*power[c][j]+temp[i][j])%1000000007;
+				````memcpy(answer,temp,sizeof(answer));
+				```}
+				```memset(temp,0,sizeof(temp));
+				```for(int i=0;i&lt;104;i++)
+				````for(int j=0;j&lt;104;j++)
+				`````for(int c=0;c&lt;104;c++)
+				``````temp[i][j]=(power[i][c]*power[c][j]+temp[i][j])%1000000007;
+				```memcpy(power,temp,sizeof(power));
+				``}
+				``long sum=0;//Calculate the answer, which is the sum of a sub-matrix in the answer matrix
+				``for(int i=52;i&lt;104;i++)
+				```for(int j=0;j&lt;52;j++)
+				````sum=(sum+answer[i][j])%1000000007;
+				``printf("%ld\n",sum);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

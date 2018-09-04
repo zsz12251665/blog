@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 2406 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 2406</h2>
+		<time>2018-04-14 11:42 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-2406">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=2406">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>At first, I wanted to learn about <abbr title="Knuth-Morris-Pratt string searching algorithm">KMP</abbr>. So I tried to solve this problem. But later I found that KMP is not necessary for this problem. </p>
+			<p>Let's mark a prefix of <var>#i#</var> chars of the string as <var>#pre#(_#i#_)</var>. If <var>#pre#(_#i#_)</var> is a period of the string, we must have <var>length(#s#) mod #i#=0</var>. So we can enumerate the length of the period <var>#i#</var>, and then scan the string to check whether the <var>#pre#(_#i#_)</var> is a period of the string. So the time complexity is about <var>O(length(#s#) &lowast; d(length(#s#)))</var>, which <var>d(#n#)</var> means the number of factors of <var>#n#</var>. </p>
+			<p>By the way, the time for scaning the string once will not be as large as <var>O(length(#s#))</var> while solving the problem. This is because when you find that a prefix is not a period, you abandon it immediately so that you don't need to scan to the end of the string. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`s:ansistring;
+				`i,j,len:longint;
+				`is_period:boolean;
+				begin
+				`readln(s);
+				`while s&lt;&gt;'.' do
+				``begin
+				```len:=length(s);
+				```for i:=1 to len do//Enumerate the length of a period
+				````if len mod i=0 then
+				`````begin
+				``````is_period:=true;
+				``````for j:=1 to len do//Scan the whole string to check if it is a period
+				```````if s[j]&lt;&gt;s[(j-1) mod i+1] then
+				````````begin
+				`````````is_period:=false;
+				`````````break;
+				````````end;
+				``````if is_period then//The shortest period makes the biggest power index
+				```````begin
+				````````writeln(len div i);
+				````````break;
+				```````end;
+				`````end;
+				```readln(s);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the strlen function in cstring
+				char s[1000001];
+				int main()
+				{
+				`for(scanf("%s",&amp;s);strcmp(s,".")!=0;scanf("%s",&amp;s))
+				`{
+				``long len=strlen(s);
+				``for(long i=1;i&lt;=len;i++)//Enumerate the length of a period
+				```if(len%i==0)
+				```{
+				````int is_period=1;
+				````for(long j=0;j&lt;len;j++)//Scan the whole string to check if it is a period
+				`````if(s[j]!=s[j%i])
+				`````{
+				``````is_period=0;
+				``````break;
+				`````}
+				````if(is_period==1)//The shortest period makes the biggest power index
+				````{
+				`````printf("%ld\n",len/i);
+				`````break;
+				````}
+				```}
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

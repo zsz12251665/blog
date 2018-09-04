@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>CF 950A - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">CF 950A</h2>
+		<time>2018-03-14 21:25 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/CodeForces-950A">vjudge</a>
+			<a target="_blank" href="http://codeforces.com/problemset/problem/950/A">Codeforces</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem is very simple. As you have seen <var>0&le;#l#, #r#, #a#&le;100</var>, you can even use a <abbr title="Brute Force">BF</abbr> to solve the problem. My solution is decide which hand each ambidexter should use to maximize the number of the players. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`l,r,a:integer;
+				begin
+				`read(l,r,a);
+				`while a&gt;0 do//Check which hand each ambidexter should use
+				``begin
+				```if l&gt;r then
+				````inc(r)
+				```else
+				````inc(l);
+				```dec(a);
+				``end;
+				`if l&gt;r then
+				``write(2*r)
+				`else
+				``write(2*l);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`int l,r,a;
+				`for(scanf("%d%d%d",&amp;l,&amp;r,&amp;a);a&gt;0;a--)//Check which hand each ambidexter should use
+				``if(l&gt;r)
+				```r++;
+				``else
+				```l++;
+				`printf("%d",2*((l&gt;r)?r:l));
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

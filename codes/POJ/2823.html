@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 2823 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 2823</h2>
+		<time>2017-12-09 17:17 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-2823">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=2823">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem requires a data structure called monotonous double-ended queue. The monotonous queue keeps the sequence of the maximum or minimum values of the array. That means they are not only monotonous in values, but also monotonous in indexes. When we move the window forward, we can pop the node on the head that has been got out of the range out, then pop out some nodes in the end to Pop out the nodes in the end to keep the queue monotonous and finnaly add the new node in. So the head node will be the maximum or the minimum value. </p>
+			<p>P. S. It is fantastic that the Pascal program can run faster then a C++ program. But in this problem, the Pascal Code won an <abbr title="Accepted">AC</abbr> when the C++ Code got an <abbr title="Time Limit Exceeded">TLE</abbr> unless you hand in the code by C++ but not G++. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`a,queue,index:array[1..1000000]of longint;
+				`head,foot,n,k,i:longint;
+				begin
+				`read(n,k);
+				`for i:=1 to n do
+				``read(a[i]);
+				`head:=1;
+				`foot:=1;
+				`for i:=1 to k-1 do
+				``begin
+				```while (foot&gt;head)and(a[i]&lt;queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+				````dec(foot);
+				```queue[foot]:=a[i];
+				```index[foot]:=i;
+				```inc(foot);
+				``end;
+				`for i:=k to n do
+				``begin
+				```while (foot&gt;head)and(a[i]&lt;queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+				````dec(foot);
+				```queue[foot]:=a[i];
+				```index[foot]:=i;
+				```inc(foot);
+				```if index[head]&lt;=i-k then//Pop out the node that has been out of the range
+				````inc(head);
+				```write(queue[head],' ');
+				``end;
+				`writeln;
+				`head:=1;
+				`foot:=1;
+				`for i:=1 to k-1 do
+				``begin
+				```while (foot&gt;head)and(a[i]&gt;queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+				````dec(foot);
+				```queue[foot]:=a[i];
+				```index[foot]:=i;
+				```inc(foot);
+				``end;
+				`for i:=k to n do
+				``begin
+				```while (foot&gt;head)and(a[i]&gt;queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+				````dec(foot);
+				```queue[foot]:=a[i];
+				```index[foot]:=i;
+				```inc(foot);
+				```if index[head]&lt;=i-k then//Pop out the node that has been out of the range
+				````inc(head);
+				```write(queue[head],' ');
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long a[1000000],queue[1000000],index[1000000];
+				int main()
+				{
+				`long n,k;
+				`scanf("%ld%ld",&amp;n,&amp;k);
+				`for(long i=0;i&lt;n;i++)
+				``scanf("%ld",&amp;a[i]);
+				`long head=0,foot=0;
+				`for(long i=0;i&lt;k-1;i++)
+				`{
+				``while((foot&gt;head)&amp;&amp;(a[i]&lt;queue[foot-1]))//Pop out the nodes in the end to keep the queue monotonous
+				```foot--;
+				``queue[foot]=a[i];
+				``index[foot]=i;
+				``foot++;
+				`}
+				`for(long i=k-1;i&lt;n;i++)
+				`{
+				``while((foot&gt;head)&amp;&amp;(a[i]&lt;queue[foot-1]))//Pop out the nodes in the end to keep the queue monotonous
+				```foot--;
+				``queue[foot]=a[i];
+				``index[foot]=i;
+				``foot++;
+				``if(index[head]&lt;=i-k)//Pop out the node that has been out of the range
+				```head++;
+				``printf("%ld ",queue[head]);
+				`}
+				`putchar('\n');
+				`head=foot=0;
+				`for(long i=0;i&lt;k-1;i++)
+				`{
+				``while((foot&gt;head)&amp;&amp;(a[i]&gt;queue[foot-1]))//Pop out the nodes in the end to keep the queue monotonous
+				```foot--;
+				``queue[foot]=a[i];
+				``index[foot]=i;
+				``foot++;
+				`}
+				`for(long i=k-1;i&lt;n;i++)
+				`{
+				``while((foot&gt;head)&amp;&amp;(a[i]&gt;queue[foot-1]))//Pop out the nodes in the end to keep the queue monotonous
+				```foot--;
+				``queue[foot]=a[i];
+				``index[foot]=i;
+				``foot++;
+				``if(index[head]&lt;=i-k)//Pop out the node that has been out of the range
+				```head++;
+				``printf("%ld ",queue[head]);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

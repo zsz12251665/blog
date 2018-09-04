@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2015S1 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2015S1</h2>
+		<time>2017-04-15 14:38 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=2615">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1978">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Er... The solution has been given in the question. So just follow it. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`field:array[1..39,1..39]of integer;
+				`n,i,j,t:integer;
+				begin
+				`read(n);
+				`for i:=1 to n do//Format the field array
+				``for j:=1 to n do
+				```field[i,j]:=0;
+				`i:=1;
+				`j:=n div 2+1;
+				`for t:=1 to n*n do//Put the numbers into the field array
+				``begin
+				```field[i,j]:=t;
+				```if (i=1)and(j&lt;&gt;n) then
+				````begin
+				`````i:=n;
+				`````inc(j);
+				`````continue;
+				````end;
+				```if (i&lt;&gt;1)and(j=n) then
+				````begin
+				`````dec(i);
+				`````j:=1;
+				`````continue;
+				````end;
+				```if (i=1)and(j=n)or(field[i-1,j+1]&lt;&gt;0) then
+				````inc(i)
+				```else
+				````begin
+				`````dec(i);
+				`````inc(j);
+				````end;
+				``end;
+				`for i:=1 to n do//Print the field array
+				``begin
+				```for j:=1 to n do
+				````write(field[i,j],' ');
+				```writeln;
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int field[39][39];
+				int main()
+				{
+				`int n,i,j;
+				`scanf("%d",&amp;n);
+				`for(i=0;i&lt;n;i++)//Format the field array
+				``for(j=0;j&lt;n;j++)
+				```field[i][j]=0;
+				`i=0;
+				`j=n/2;
+				`for(int t=1;t&lt;=n*n;t++)//Put the numbers into the field array
+				`{
+				``field[i][j]=t;
+				``if((i==0)&amp;&amp;(j!=n-1))
+				``{
+				```i=n-1;
+				```j++;
+				```continue;
+				``}
+				``if((i!=0)&amp;&amp;(j==n-1))
+				``{
+				```i--;
+				```j=0;
+				```continue;
+				``}
+				``if((i==0)&amp;&amp;(j==n-1)||(field[i-1][j+1]!=0))
+				```i++;
+				``else
+				``{
+				```i--;
+				```j++;
+				``}
+				`}
+				`for(i=0;i&lt;n;i++)//Print the field array
+				`{
+				``for(j=0;j&lt;n;j++)
+				```printf("%d ",field[i][j]);
+				``printf("\n");
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

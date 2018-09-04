@@ -1,0 +1,18 @@
+:root
+{
+	--back-color: #000000;
+	--back-image: url("/codes/bg.jpg");
+	--text-color: #00FF00;
+	--link-color: #FF0000;
+}
+code
+{
+	--back-color: #00FF00;
+	--code-color: #000000;
+	--comma-color: #007F00;
+	--comment-color: #7F7F7F;
+	--constant-color: #0000FF;
+	--function-color: #000000;
+	--keyword-color: #000000;
+	--variable-color: #000000;
+}

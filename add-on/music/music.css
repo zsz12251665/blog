@@ -1,0 +1,54 @@
+@font-face
+{
+	font-family: "Unicode";
+	src: url("/add-on/music/Unicode.woff");
+}
+#music
+{
+	background-color: var(--text-color);
+	border-radius: 2rem;
+	display: inline-block;
+	padding: 0.25rem;
+	text-align: center;
+}
+#music div
+{
+	border-color: var(--back-color);
+	border-width: medium;
+	border-style: solid;
+	border-radius: 1rem;
+	color: var(--back-color);
+	cursor: pointer;
+	display: inline-block;
+	font-family: "Unicode";
+	height: 1.2rem;
+	vertical-align: middle;
+	width: 1.2rem;
+}
+#time
+{
+	color: var(--back-color);
+	font-size: small;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	vertical-align: middle;
+}
+.range
+{
+	background-color: var(--link-color);
+	display: inline-block;
+	height: 0.5rem;
+	margin: 0.5rem;
+	vertical-align: middle;
+	width: 5rem;
+}
+.range span
+{
+	background-color: var(--back-color);
+	display: block;
+	height: 100%;
+	transition-duration: 0.05s;
+	transition-property: width;
+	transition-timing-function: ease;
+	width: 100%;
+}

@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 3070 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 3070</h2>
+		<time>2017-12-28 16:20 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-3070">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=3070">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The method of calculating the <var>#n#</var>-th number of the Fibonacci integer sequence has been given in the description of the problem. It is the power of matrix. But since <var>0&le;#n#&le;10(^9^)</var>, we need a fast power of matrix, which is like the fast power of integer of which time complexity is <var>O(lg(#n#))</var>. </p>
+			<p>For the beginners who don't know how the multiplication of matrix is calculated, here it is. For two matrix <var>[@#a#(_1_)@#a#(_3_)@ @#a#(_2_)@#a#(_4_)@]</var> and <var>[@#b#(_1_)@#b#(_3_)@ @#b#(_2_)@#b#(_4_)@]</var>, the product is <var>[@#a#(_1_)#b#(_1_)+#a#(_2_)#b#(_3_)@#a#(_3_)#b#(_1_)+#a#(_4_)#b#(_3_)@ @#a#(_1_)#b#(_2_)+#a#(_2_)#b#(_4_)@#a#(_3_)#b#(_2_)+#a#(_4_)#b#(_4_)@]</var>. Although it doesn't have the commutative property, the multiplication of matrix has the associative property, which means <var>([@#a#(_1_)@#a#(_3_)@ @#a#(_2_)@#a#(_4_)@]*[@#b#(_1_)@#b#(_3_)@ @#b#(_2_)@#b#(_4_)@])*[@#c#(_1_)@#c#(_3_)@ @#c#(_2_)@#c#(_4_)@]</var> equals <var>[@#a#(_1_)@#a#(_3_)@ @#a#(_2_)@#a#(_4_)@]*([@#b#(_1_)@#b#(_3_)@ @#b#(_2_)@#b#(_4_)@]*[@#c#(_1_)@#c#(_3_)@ @#c#(_2_)@#c#(_4_)@])</var>. So we can make the fast power of matrix as same as the fast power of integer which transforms the index into binary. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`matrix,power,tmp:array[1..4]of integer;
+				`n:longint;
+				begin
+				`read(n);
+				`while n&lt;&gt;-1 do
+				``begin
+				```matrix[1]:=1;//Format the matrixes
+				```matrix[2]:=1;
+				```matrix[3]:=1;
+				```matrix[4]:=0;
+				```power[1]:=1;
+				```power[2]:=0;
+				```power[3]:=0;
+				```power[4]:=1;
+				```while n&gt;0 do//The fast power of matrix
+				````begin
+				`````if n mod 2=1 then//Divide n into binary
+				``````begin
+				```````tmp[1]:=(power[1]*matrix[1]+power[2]*matrix[3]) mod 10000;//The multiplication of matrix
+				```````tmp[2]:=(power[1]*matrix[2]+power[2]*matrix[4]) mod 10000;
+				```````tmp[3]:=(power[3]*matrix[1]+power[4]*matrix[3]) mod 10000;
+				```````tmp[4]:=(power[3]*matrix[2]+power[4]*matrix[4]) mod 10000;
+				```````power[1]:=tmp[1];
+				```````power[2]:=tmp[2];
+				```````power[3]:=tmp[3];
+				```````power[4]:=tmp[4];
+				``````end;
+				`````tmp[1]:=(matrix[1]*matrix[1]+matrix[2]*matrix[3]) mod 10000;//Square the matrix
+				`````tmp[2]:=(matrix[1]*matrix[2]+matrix[2]*matrix[4]) mod 10000;
+				`````tmp[3]:=(matrix[3]*matrix[1]+matrix[4]*matrix[3]) mod 10000;
+				`````tmp[4]:=(matrix[3]*matrix[2]+matrix[4]*matrix[4]) mod 10000;
+				`````matrix[1]:=tmp[1];
+				`````matrix[2]:=tmp[2];
+				`````matrix[3]:=tmp[3];
+				`````matrix[4]:=tmp[4];
+				`````n:=n div 2;
+				````end;
+				```writeln(power[2]);
+				```read(n);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int matrix[4],power[4],tmp[4];
+				int main()
+				{
+				`long n;
+				`scanf("%ld",&amp;n);
+				`while(n!=-1)
+				`{
+				``matrix[3]=power[1]=power[2]=0;//Format the matrixes
+				``matrix[0]=matrix[1]=matrix[2]=power[0]=power[3]=1;
+				``for(;n&gt;0;n/=2)//The fast power of matrix
+				``{
+				```if(n%2==1)//Divide n into binary
+				```{
+				````tmp[0]=(power[0]*matrix[0]+power[1]*matrix[2])%10000;//The multiplication of matrix
+				````tmp[1]=(power[0]*matrix[1]+power[1]*matrix[3])%10000;
+				````tmp[2]=(power[2]*matrix[0]+power[3]*matrix[2])%10000;
+				````tmp[3]=(power[2]*matrix[1]+power[3]*matrix[3])%10000;
+				````power[0]=tmp[0];
+				````power[1]=tmp[1];
+				````power[2]=tmp[2];
+				````power[3]=tmp[3];
+				```}
+				```tmp[0]=(matrix[0]*matrix[0]+matrix[1]*matrix[2])%10000;//Square the matrix
+				```tmp[1]=(matrix[0]*matrix[1]+matrix[1]*matrix[3])%10000;
+				```tmp[2]=(matrix[2]*matrix[0]+matrix[3]*matrix[2])%10000;
+				```tmp[3]=(matrix[2]*matrix[1]+matrix[3]*matrix[3])%10000;
+				```matrix[0]=tmp[0];
+				```matrix[1]=tmp[1];
+				```matrix[2]=tmp[2];
+				```matrix[3]=tmp[3];
+				``}
+				``printf("%d\n",power[1]);
+				``scanf("%ld",&amp;n);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

@@ -1,0 +1,131 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>BZOJ 4300 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">BZOJ 4300</h2>
+		<time>2016-12-21 20:18 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HYSBZ-4300">vjudge</a>
+			<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=4300">BZOJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>When I read the problem the first time, I thought out a way like solving the longest increasing subsequence problem, which means I just need an array to keep the longest subsequence until this integer. The code is given as Solution 1 in the code part. </p>
+			<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is <var>O(#n#(^2^))</var>. Later, I got another algorithm whose time complexity is <var>O(#n#lg(#a#(_#i#_)))</var>. It just needs a <abbr title="dynamic planning">dp</abbr> algorithm. <var>#dp#(_#i#_)</var> keeps the length of the longest subsequence whose last integer's <var>#i#</var>-th digit is not 0 in binary. So after read in each integer in sequence, I can update the <var>#dp#</var> array in an <var>O(lg(#a#(_#i#_)))</var> algorithm. And that is Solution 2, which is accepted. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Solution 1 Pascal</p>
+			<code>
+				var
+				`a,len:array[1..100000]of longint;
+				`n,ans,i,j:longint;
+				begin
+				`ans:=0;
+				`read(n);
+				`for i:=1 to n do
+				``begin
+				```read(a[i]);
+				```len[i]:=1;
+				```for j:=1 to i-1 do//Update the array len
+				````if ((a[j] and a[i])&lt;&gt;0)and(len[j]+1&gt;len[i]) then//Judge if a[i] can be added after a[j] and if it's the best solution
+				`````len[i]:=len[j]+1;
+				```if ans&lt;len[i] then
+				````ans:=len[i];
+				``end;
+				`write(ans);
+				end.
+			</code>
+			<p>Solution 1 C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long a[100000],len[100000];
+				int main()
+				{
+				`long n,ans=0;
+				`scanf("%ld",&amp;n);
+				`for(long i=0;i&lt;n;i++)
+				`{
+				``scanf("%d",&amp;a[i]);
+				``len[i]=1;
+				``for(long j=0;j&lt;i;j++)//Update the array len
+				```if(((a[j]&amp;a[i])!=0)&amp;&amp;(len[j]+1&gt;len[i]))//Judge if a[i] can be added after a[j] and if it's the best solution
+				````len[i]=len[j]+1;
+				``if(ans&lt;len[i])
+				```ans=len[i];
+				`}
+				`printf("%ld",ans);
+				`return 0;
+				}
+			</code>
+			<p>Solution 2 Pascal</p>
+			<code>
+				var
+				`dp:array[0..31]of longint;
+				`n,ans,now,a,i,j:longint;
+				begin
+				`ans:=0;
+				`for j:=0 to 31 do
+				``dp[j]:=0;
+				`read(n);
+				`for i:=1 to n do
+				``begin
+				```now:=0;
+				```read(a);
+				```for j:=0 to 31 do
+				````if (a div (1 shl j) mod 2&lt;&gt;0)and(now&lt;dp[j]) then//Find the length of the longest subsequence that can be added by a[i]
+				`````now:=dp[j];
+				```inc(now);
+				```for j:=0 to 31 do
+				````if (a div (1 shl j) mod 2&lt;&gt;0)and(dp[j]&lt;now) then//Update the dp array
+				`````begin
+				``````dp[j]:=now;
+				``````if ans&lt;dp[j] then//Update the answer
+				```````ans:=dp[j];
+				`````end;
+				``end;
+				`write(ans);
+				end.
+			</code>
+			<p>Solution 2 C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long dp[32];
+				int main()
+				{
+				`long n,ans=0;
+				`for(long j=0;j&lt;32;j++)//Format the dp array
+				``dp[j]=0;
+				`scanf("%ld",&amp;n);
+				`for(long i=0;i&lt;n;i++)
+				`{
+				``long a,now=0;
+				``scanf("%ld",&amp;a);
+				``for(long j=0;j&lt;32;j++)
+				```if(((a&amp;(1&lt;&lt;j))!=0)&amp;&amp;(now&lt;dp[j]))//Find the length of the longest subsequence that can be added by a[i]
+				````now=dp[j];
+				``now++;
+				``for(long j=0;j&lt;32;j++)
+				```if(((a&amp;(1&lt;&lt;j))!=0)&amp;&amp;(dp[j]&lt;now))//Update the dp array
+				```{
+				````dp[j]=now;
+				````if(ans&lt;dp[j])//Update the answer
+				`````ans=dp[j];
+				```}
+				`}
+				`printf("%ld",ans);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

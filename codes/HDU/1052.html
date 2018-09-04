@@ -1,0 +1,245 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>HDU 1052 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">HDU 1052</h2>
+		<time>2017-01-22 11:28 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HDU-1052">vjudge</a>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=1052">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>We can use a greedy algorithm to solve this problem. First of all, we can sort all of Tian's horses all of the king's horses. Then we compare Tian's worst horse with the king's worst one. If it is better, than use this horse to defeat that one because it is the most useless one. If Tian's horse is worse than the king's, then use it to have a race with the king's best horse. Of course Tian will lose this race, but the king also waste his best horse on Tian's worst one. If they are equally bad, then we'll compare their best ones. If Tian's is better than the king's, let Tian's best horse defeat the king's best one. If Tian's isn't so good as the king's, then use Tian's worst horse to waste the king's best one because no horse can defeat it. Using the worst horse to waste it can reduce the cost. If the king's horse is as good as Tian's, Tian should also use his worst horse to waste the king's best one. But why? </p>
+			<p>Let's pick Tian's and the king's worst and best horses out, if they have no more horses, anyhow they choose, the result must be zero, which means both of them can't earn anything from each other. If they have more horses, Tian can use his second worst horses to beat the king's worst one and use his best horse to beat king's second best horse to free his second best horse. It is like Tian let his second worst horses defeat the king's second best one. What a worthy deal! Continue in this way, Tian can earn more money(or lose less money) than ever before. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`copy,king,tian:array[1..1000]of integer;//The array copy is used to save a copy while doing merge sort
+				`n,i,ans:integer;
+				`kingh,tianh,kingf,tianf:integer;//kingh and kingf are the numbers of the king's best and worst horse, tianh and tianf are the number of Tian's best and worst ones
+				procedure msort(l,r:integer);
+				var
+				`x,y:integer;
+				begin
+				`if l>=r then
+				``exit;
+				`msort(l,(l+r) div 2);
+				`msort((l+r) div 2+1,r);
+				`copy:=king;
+				`x:=l;
+				`y:=(l+r) div 2+1;
+				`for i:=l to r do
+				``begin
+				```if x&gt;(l+r) div 2 then
+				````begin
+				`````king[i]:=copy[y];
+				`````inc(y);
+				`````continue;
+				````end;
+				```if y&gt;r then
+				````begin
+				`````king[i]:=copy[x];
+				`````inc(x);
+				`````continue;
+				````end;
+				```if copy[x]&lt;copy[y] then
+				````begin
+				`````king[i]:=copy[y];
+				`````inc(y);
+				````end
+				```else
+				````begin
+				`````king[i]:=copy[x];
+				`````inc(x);
+				````end;
+				``end;
+				`copy:=tian;//In order to avoid using too many pointers, I sort the array king and array tian at the same time
+				`x:=l;
+				`y:=(l+r) div 2+1;
+				`for i:=l to r do
+				``begin
+				```if x&gt;(l+r) div 2 then
+				````begin
+				`````tian[i]:=copy[y];
+				`````inc(y);
+				`````continue;
+				````end;
+				```if y&gt;r then
+				````begin
+				`````tian[i]:=copy[x];
+				`````inc(x);
+				`````continue;
+				````end;
+				```if copy[x]&lt;copy[y] then
+				````begin
+				`````tian[i]:=copy[y];
+				`````inc(y);
+				````end
+				```else
+				````begin
+				`````tian[i]:=copy[x];
+				`````inc(x);
+				````end;
+				``end;
+				end;
+				begin
+				`read(n);
+				`while n&lt;&gt;0 do
+				``begin
+				```for i:=1 to n do
+				````read(tian[i]);
+				```for i:=1 to n do
+				````read(king[i]);
+				```msort(1,n);
+				```ans:=0;
+				```kingh:=1;
+				```tianh:=1;
+				```kingf:=n;
+				```tianf:=n;
+				```for i:=1 to n do//The greedy part
+				````begin
+				`````if tian[tianf]&gt;king[kingf] then
+				``````begin
+				```````inc(ans);
+				```````dec(tianf);
+				```````dec(kingf);
+				```````continue;
+				``````end;
+				`````if tian[tianf]&lt;king[kingf] then
+				``````begin
+				```````dec(ans);
+				```````dec(tianf);
+				```````inc(kingh);
+				```````continue;
+				``````end;
+				`````if tian[tianh]&gt;king[kingh] then
+				``````begin
+				```````inc(ans);
+				```````inc(tianh);
+				```````inc(kingh);
+				```````continue;
+				``````end;
+				`````if tian[tianf]&lt;king[kingh] then
+				``````dec(ans);
+				`````if tian[tianf]&gt;king[kingh] then
+				``````inc(ans);
+				`````dec(tianf);
+				`````inc(kingh);
+				````end;
+				```writeln(ans*200);
+				```read(n);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the memcpy function in cstring
+				int copy[1000],king[1000],tian[1000];//The array copy is used to save a copy while doing merge sort
+				void msort(int l,int r)
+				{
+				`if(l>=r)
+				``return;
+				`msort(l,(l+r)/2);
+				`msort((l+r)/2+1,r);
+				`memcpy(copy,king,sizeof(king));
+				`for(int i=l,x=l,y=(l+r)/2+1;i&lt;=r;i++)
+				`{
+				``if(x&gt;(l+r)/2)
+				``{
+				```king[i]=copy[y++];
+				```continue;
+				``}
+				``if(y&gt;r)
+				``{
+				```king[i]=copy[x++];
+				```continue;
+				``}
+				``if(copy[x]&lt;copy[y])
+				```king[i]=copy[y++];
+				``else
+				```king[i]=copy[x++];
+				`}
+				`memcpy(copy,tian,sizeof(tian));//In order to avoid using too many pointers, I sort the array king and array tian at the same time
+				`for(int i=l,x=l,y=(l+r)/2+1;i&lt;=r;i++)
+				`{
+				``if(x&gt;(l+r)/2)
+				``{
+				```tian[i]=copy[y++];
+				```continue;
+				``}
+				``if(y&gt;r)
+				``{
+				```tian[i]=copy[x++];
+				```continue;
+				``}
+				``if(copy[x]&lt;copy[y])
+				```tian[i]=copy[y++];
+				``else
+				```tian[i]=copy[x++];
+				`}
+				}
+				int main()
+				{
+				`int n;
+				`scanf("%d",&amp;n);
+				`while(n!=0)
+				`{
+				``for(int i=0;i&lt;n;i++)
+				```scanf("%d",&amp;tian[i]);
+				``for(int i=0;i&lt;n;i++)
+				```scanf("%d",&amp;king[i]);
+				``msort(0,n-1);
+				``int ans=0,kingh=0,tianh=0,kingf=n-1,tianf=n-1;//kingh and kingf are the numbers of the king's best and worst horse, tianh and tianf are the number of Tian's best and worst ones
+				``for(int i=0;i&lt;n;i++)//The greedy part
+				``{
+				```if(tian[tianf]&gt;king[kingf])
+				```{
+				````ans++;
+				````tianf--;
+				````kingf--;
+				````continue;
+				```}
+				```if(tian[tianf]&lt;king[kingf])
+				```{
+				````ans--;
+				````tianf--;
+				````kingh++;
+				````continue;
+				```}
+				```if(tian[tianh]&gt;king[kingh])
+				```{
+				````ans++;
+				````tianh++;
+				````kingh++;
+				````continue;
+				```}
+				```if(tian[tianf]&lt;king[kingh])
+				````ans--;
+				```if(tian[tianh]&gt;king[kingh])
+				````ans++;
+				```tianf--;
+				```kingh++;
+				``}
+				``printf("%d\n",ans*200);
+				``scanf("%d",&amp;n);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

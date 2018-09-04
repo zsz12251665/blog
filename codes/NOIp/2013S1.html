@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2013S1 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2013S1</h2>
+		<time>2017-10-26 11:01 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1965">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1841">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is testing our fast power algorithm because of the <var>10(^#k#^)</var>. </p>
+			<p>First, we should transform the index into binary. For example, we have <var>10(^23^)=10(^(10111)(_2_)^)=10(^16^)*10(^4^)*10(^2^)*10(^1^)</var>. It is not difficult to find it we can square the base for times to get <var>10(^1^)</var>, <var>10(^2^)</var>, <var>10(^4^)</var> and <var>10(^16^)</var>. That can reduce the time complexity to <var>O(lg(#n#))</var>. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`n,m,k,x:longint;
+				`power,base:int64;//To avoid overlimit, we use int64 here
+				begin
+				`read(n,m,k,x);
+				`power:=1;
+				`base:=10;
+				`while k&gt;0 do//The fast power algorithm
+				``begin
+				```if k mod 2=1 then//Divide k into binary
+				````power:=(power*base) mod n;
+				```base:=(base*base) mod n;
+				```k:=k div 2;
+				``end;
+				`write((power*m+x) mod n);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`long n,m,k,x;
+				`scanf("%ld%ld%ld%ld",&amp;n,&amp;m,&amp;k,&amp;x);
+				`long long power=1,base=10;//To avoid overlimit, we use long long here
+				`while(k&gt;0)//The fast power algorithm
+				`{
+				``if(k%2==1)//Divide k into binary
+				```power=(power*base)%n;
+				``base=(base*base)%n;
+				``k/=2;
+				`}
+				`printf("%lld",(power*m+x)%n);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

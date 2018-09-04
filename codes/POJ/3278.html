@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 3278 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 3278</h2>
+		<time>2017-05-08 21:27 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-3278">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=3278">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem needs a <abbr title="Breadth-First Search">BFS</abbr>. A queue can solve the problem. But you'd better to add mark to the points you've visited, or you may get a <abbr title="Time Limit Exceed">TLE</abbr>. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`time,queue:array[0..100000]of longint;//The time array is used to mark if it is visited and keep the time to reach
+				`head,foot,tmp,n,k,t:longint;
+				begin
+				`for t:=0 to 100000 do//Format the time array
+				``time[t]:=-1;
+				`read(n,k);
+				`t:=0;
+				`head:=0;
+				`foot:=1;
+				`time[n]:=0;
+				`queue[head]:=n;
+				`tmp:=foot;//tmp is used to keep the end of the queue of this minute
+				`while true do
+				``begin
+				```inc(t);
+				```while head&lt;&gt; tmp do
+				````begin
+				`````if queue[head]=k then//If FJ has come to k, print the time and halt
+				``````begin
+				```````write(time[queue[head]]);
+				```````halt;
+				``````end;
+				`````if (queue[head]&lt;100000)and(time[queue[head]+1]=-1) then
+				``````begin
+				```````time[queue[head]+1]:=t;
+				```````queue[foot]:=queue[head]+1;
+				```````foot:=(foot+1) mod 100000;//Don't forget to modulo 100000 to avoid getting over array limit
+				``````end;
+				`````if (queue[head]&gt;-1)and(time[queue[head]-1]=-1) then
+				``````begin
+				```````time[queue[head]-1]:=t;
+				```````queue[foot]:=queue[head]-1;
+				```````foot:=(foot+1) mod 100000;
+				``````end;
+				`````if (queue[head]&lt;50000)and(time[queue[head]*2]=-1) then
+				``````begin
+				```````time[queue[head]*2]:=t;
+				```````queue[foot]:=queue[head]*2;
+				```````foot:=(foot+1) mod 100000;
+				``````end;
+				`````head:=(head+1) mod 100000;
+				````end;
+				```tmp:=foot;
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long time[100000],queue[100000],head=0,foot=1;//The time array is used to mark if it is visited and keep the time to reach
+				int main()
+				{
+				`for(long t=0;t&lt;100000;i++)//Format the time array
+				``time[t]=-1;
+				`long n,k,t=0;
+				`scanf("%d%d",&amp;n,&amp;k);
+				`time[n]=0;
+				`queue[head]=n;
+				`long tmp=foot;//tmp is used to keep the end of the queue of this minute
+				`while(true)
+				`{
+				``t++;
+				``while(head!=tmp)
+				``{
+				```if(queue[head]==k)//If FJ has come to k, print the time and return
+				```{
+				````printf("%d",time[queue[head]]);
+				````return 0;
+				```}
+				```if((queue[head]&lt;100000)&amp;&amp;(time[queue[head]+1]==-1))
+				```{
+				````time[queue[head]+1]=t;
+				````queue[foot]=queue[head]+1;
+				````foot=(foot+1)%100000;//Don't forget to modulo 100000 to avoid getting over array limit
+				```}
+				```if((queue[head]&gt;-1)&amp;&amp;(time[queue[head]-1]==-1))
+				```{
+				````time[queue[head]-1]=t;
+				````queue[foot]=queue[head]-1;
+				````foot=(foot+1)%100000;
+				```}
+				```if(((queue[head]&lt;50000))&amp;&amp;(time[queue[head]*2]==-1))
+				```{
+				````time[queue[head]*2]=t;
+				````queue[foot]=queue[head]*2;
+				````foot=(foot+1)%100000;
+				```}
+				```head=(head+1)%100000;
+				``}
+				``tmp=foot;
+				`}
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

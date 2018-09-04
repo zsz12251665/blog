@@ -1,0 +1,191 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2017S2 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2017S2</h2>
+		<time>2017-12-16 10:57 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=3952">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/2029">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is not difficult, it can be solved by simulation. However, it tests the string functions you know. So you had better pay attention to it. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`v:array[1..100]of char;//The array v keeps the variable names
+				`s:string;
+				`c:array[1..100]of integer;
+				`t,l,complexity,depth,max,a,b,i,j:integer;//depth means the depth of the loops
+				`err:boolean;
+				begin
+				`read(t);
+				`while t&gt;0 do
+				``begin
+				```read(l);
+				```readln(s);
+				```if s=' O(1)' then//Read the time complexity
+				````complexity:=0
+				```else
+				````val(copy(s,6,length(s)-6),complexity);//val(s,n) is a procedure which turns a string s into a number and save it in n
+				```err:=false;
+				```depth:=1;
+				```max:=0;
+				```for i:=1 to l do
+				````begin
+				`````readln(s);
+				`````if err then
+				``````continue;
+				`````if s='E' then//Quit a loop
+				``````begin
+				```````dec(depth);
+				```````if depth&lt;0 then
+				````````err:=true;
+				```````continue;
+				``````end;
+				`````v[depth]:=s[3];//Read the variable name
+				`````for j:=1 to depth-1 do//Check if there are two same variable names
+				``````if v[j]=v[depth] then
+				```````begin
+				````````err:=true;
+				````````break;
+				```````end;
+				`````if err then
+				``````continue;
+				`````s:=copy(s,5,length(s));
+				`````if copy(s,1,pos(' ',s)-1)='n' then
+				``````a:=1000
+				`````else
+				``````val(copy(s,1,pos(' ',s)-1),a);
+				`````if copy(s,pos(' ',s)+1,length(s))='n' then
+				``````b:=1000
+				`````else
+				``````val(copy(s,pos(' ',s)+1,length(s)),b);
+				`````if depth=1 then
+				``````c[depth]:=0
+				`````else
+				``````c[depth]:=c[depth-1];
+				`````if (c[depth]&gt;-1)and(b=1000)and(a&lt;&gt;b) then//The loop increase the time complexity
+				``````inc(c[depth]);
+				`````if a&gt;b then//The loop won't run
+				``````c[depth]:=-1;
+				`````if c[depth]&gt;max then
+				``````max:=c[depth];
+				`````inc(depth);
+				````end;
+				```if (depth&lt;&gt;1) or err then
+				````writeln('ERR')
+				```else
+				````if max=complexity then
+				`````writeln('Yes')
+				````else
+				`````writeln('No');
+				```dec(t);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the strcmp function in cstring
+				char s[100],v[100];//The array v keeps the variable names
+				int c[100];
+				int main()
+				{
+				`int t;
+				`scanf("%d",&amp;t);
+				`for(;t&gt;0;t--)
+				`{
+				``int l,complexity;
+				``scanf("%d%s",&amp;l,&amp;s);
+				``if(strcmp("O(1)",s)==0)//Read the time complexity
+				```complexity=0;
+				``else
+				```sscanf(s,"O(n^%d)",&amp;complexity);//sscanf is similar to scanf, but it does not read values from your terminal but from a string 
+				``int err=0,depth=0,max=0;//depth means the depth of the loops
+				``for(int i=0;i&lt;l;i++)
+				``{
+				```if(err==1)
+				```{
+				````scanf("%s",&amp;s);
+				````if(s[0]=='E')
+				`````continue;
+				````scanf("%s",&amp;s);
+				````scanf("%s",&amp;s);
+				````scanf("%s",&amp;s);
+				````continue;
+				```}
+				```scanf("%s",&amp;s);
+				```if(s[0]=='E')//Quit a loop
+				```{
+				````depth--;
+				````if(depth&lt;0)
+				`````err=1;
+				````continue;
+				```}
+				```scanf("%s",&amp;s);//Read the variable name
+				```v[depth]=s[0];
+				```for(int j=0;j&lt;depth;j++)//Check if there are two same variable names
+				````if(v[j]==v[depth])
+				````{
+				`````err=1;
+				`````break;
+				````}
+				```if(err==1)
+				```{
+				````scanf("%s",&amp;s);
+				````scanf("%s",&amp;s);
+				````continue;
+				```}
+				```int a,b;
+				```scanf("%s",&amp;s);
+				```if(s[0]=='n')
+				````a=1000;
+				```else
+				````sscanf(s,"%d",&amp;a);
+				```scanf("%s",&amp;s);
+				```if(s[0]=='n')
+				````b=1000;
+				```else
+				````sscanf(s,"%d",&amp;b);
+				```if(depth==0)
+				````c[depth]=0;
+				```else
+				````c[depth]=c[depth-1];
+				```if((c[depth]&gt;-1)&amp;&amp;(b==1000)&amp;&amp;(a!=b))//The loop increase the time complexity
+				````c[depth]++;
+				```if(a&gt;b)//The loop won't run
+				````c[depth]=-1;
+				```if(c[depth]&gt;max)
+				````max=c[depth];
+				```depth++;
+				``}
+				``if((depth!=0)||(err==1))
+				``{
+				```printf("ERR\n");
+				```continue;
+				``}
+				``if(max==complexity)
+				```printf("Yes\n");
+				``else
+				```printf("No\n");
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

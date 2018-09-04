@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 1007 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 1007</h2>
+		<time>2017-06-12 15:34 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-1007">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=1007">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem is simple. Count the inversions as the problem tells you and then sort the strings and output them from the smallest inversion to the biggest one. By the way, you can combine the sort and output together by finding the smallest one without mark, marking it and then output it. </p>
+			<p>P. S. The <abbr title="Free Pascal Compiler">FPC</abbr> of POJ didn't work well when I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
+			<p>P. P. S. On 15:13, 10 November, 2017, the Pascal Code was submitted again and now it is proofed that the code is correct. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`s:array[1..100]of string;
+				`count:array[1..100]of integer;
+				`n,m,i,j,k,min:integer;
+				begin
+				`readln(n,m);
+				`for i:=1 to m do
+				``begin
+				```readln(s[i]);
+				```count[i]:=0;
+				```for j:=1 to n do//Count the inversions
+				````for k:=j+1 to n do
+				`````if s[i][j]&gt;s[i][k] then
+				``````inc(count[i]);
+				``end;
+				`for i:=1 to m do//Sort and output the strings
+				``begin
+				```min:=1;
+				```for j:=2 to m do
+				````if count[j]&lt;count[min] then
+				`````min:=j;
+				```count[min]:=maxint;//Set count[i] as maxint to mark that it is outputed
+				```writeln(s[min]);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				char s[100][51];//Make the string a little bigger, or you may got an OLE
+				int count[100];
+				int main()
+				{
+				`int n,m;
+				`scanf("%d%d",&amp;n,&amp;m);
+				`for(int i=0;i&lt;m;i++)
+				`{
+				``scanf("%s",&amp;s[i]);
+				``count[i]=0;
+				``for(int j=0;j&lt;n;j++)//Count the inversions
+				```for(int k=j+1;k&lt;n;k++)
+				````if(s[i][j]&gt;s[i][k])
+				`````count[i]++;
+				`}
+				`for(int i=0;i&lt;m;i++)//Sort and output the strings
+				`{
+				``int min=0;
+				``for(int j=1;j&lt;m;j++)
+				```if(count[j]&lt;count[min])
+				````min=j;
+				``count[min]=32767;//Set count[i] as maxint to mark that it is outputed
+				``printf("%s\n",s[min]);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

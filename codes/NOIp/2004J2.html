@@ -1,0 +1,119 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2004J2 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2004J2</h2>
+		<time>2016-12-23 13:02 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1086">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1120">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The algorithm of this problem is like simulation. First of all, we'll find the tree with most peanuts,  have the shortest way for a round trip. Then we'll check whether it is under the time constraint. If it isn't,just end the loop and print the answer, or pick the peanuts and find the new tree with most peanuts. And add it into the route, the length fo the route is the Manhattan distance between the last tree and the new one. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`p:array[1..20,1..20]of integer;
+				`n,m,k,i,j,sum,maxi,maxj,lasti,lastj:integer;
+				begin
+				`maxi:=1;//The coordinate of the tree with most peanuts
+				`maxj:=1;
+				`read(n,m,k);
+				`for i:=1 to n do
+				``for j:=1 to m do
+				```begin
+				````read(p[i,j]);
+				````if p[i,j]&gt;p[maxi,maxj] then//Find the tree with most peanuts
+				`````begin
+				``````maxi:=i;
+				``````maxj:=j;
+				`````end;
+				```end;
+				`lasti:=0;//Decide the start point, it is the coordinate of the last visited tree
+				`lastj:=maxj;
+				`sum:=0;
+				`k:=k-abs(maxj-lastj)-1;//Calculate the extra time
+				`if maxi&gt;lasti then//If max point isn't on the way back
+				``k:=k-(maxi-lasti)*2;
+				`while k&gt;=0 do//Check if it's in the time constraint
+				``begin
+				```sum:=sum+p[maxi,maxj];
+				```p[maxi,maxj]:=0;
+				```lasti:=maxi;
+				```lastj:=maxj;
+				```maxi:=1;
+				```maxj:=1;
+				```for i:=1 to n do
+				````for j:=1 to m do
+				`````if p[i,j]&gt;p[maxi,maxj] then//Find the tree with most peanuts
+				``````begin
+				```````maxi:=i;
+				```````maxj:=j;
+				``````end;
+				```k:=k-abs(maxj-lastj)-1;//Calculate the extra time
+				```if maxi&gt;lasti then//If max point isn't on the way back
+				````k:=k-(maxi-lasti)*2;
+				``end;
+				`write(sum);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int p[20][20];
+				int main()
+				{
+				`int n,m,k,maxi=0,maxj=0;//The coordinate of the tree with most peanuts
+				`scanf("%d%d%d",&amp;n,&amp;m,&amp;k);
+				`for(int i=0;i&lt;n;i++)
+				``for(int j=0;j&lt;m;j++)
+				``{
+				```scanf("%d",&amp;p[i][j]);
+				```if(p[i][j]>p[maxi][maxj])//Find the tree with most peanuts
+				```{
+				````maxi=i;
+				````maxj=j;
+				```}
+				``}
+				`int lasti=-1,lastj=maxj,sum=0;//Decide the start point, it is the coordinate of the last visited tree
+				`k-=((maxj>lastj)?(maxj-lastj):(lastj-maxj))+1;//Calculate the extra time
+				`if(maxi&gt;lasti)//If max point isn't on the way back
+				``k-=(maxi-lasti)*2;
+				`while(k&gt;=0)
+				`{
+				``sum+=p[maxi][maxj];
+				``p[maxi][maxj]=0;
+				``lasti=maxi;
+				``lastj=maxj;
+				``maxi=maxj=0;
+				``for(int i=0;i&lt;n;i++)
+				```for(int j=0;j&lt;m;j++)
+				````if(p[i][j]>p[maxi][maxj])//Find the tree with most peanuts
+				````{
+				`````maxi=i;
+				`````maxj=j;
+				````}
+				``k-=((maxj>lastj)?(maxj-lastj):(lastj-maxj))+1;//Calculate the extra time
+				``if(maxi&gt;lasti)//If max point isn't on the way back
+				```k-=(maxi-lasti)*2;
+				`}
+				`printf("%d",sum);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

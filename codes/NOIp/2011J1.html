@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2011J1 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2011J1</h2>
+		<time>2017-10-30 19:55 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=1307">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1756">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem is also a simluation one. So... What else should I said? </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`n:longint;
+				begin
+				`read(n);
+				`if n&lt;0 then//Check if n is a negative number
+				``begin
+				```write('-');
+				```n:=-n;
+				``end;
+				`if n=0 then//Check if n is zero
+				``begin
+				```write('0');
+				```halt;
+				``end;
+				`while n mod 10=0 do//Remove the prefix zero
+				``n:=n div 10;
+				`while n&gt;0 do//Reverse the number
+				``begin
+				```write(n mod 10);
+				```n:=n div 10;
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`long n;
+				`scanf("%ld",&amp;n);
+				`if(n&lt;0)//Check if n is a negative number
+				`{
+				``putchar('-');
+				``n=-n;
+				`}
+				`if(n==0)//Check if n is zero
+				`{
+				``putchar('0');
+				``return 0;
+				`}
+				`while(n%10==0)//Remove the prefix zero
+				``n/=10;
+				`while(n&gt;0)//Reverse the number
+				`{
+				``printf("%d",n%10);
+				``n/=10;
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

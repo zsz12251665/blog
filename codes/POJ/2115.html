@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 2115 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 2115</h2>
+		<time>2018-04-28 11:58 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-2115">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=2115">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Today is the Day 0 of <abbr title="Guangdong Olympiad in Informatics">GDOI</abbr> 2018. Here is a review of <abbr title="the extended Greatest Common Division algorithm">exGCD</abbr>. </p>
+			<p>As we've mentioned in <a href="/codes/NOIp/2012S4.html">NOIp 2012S4</a>, exGCD is used to find a pair of <var>(#x#,#y#)</var> which satsfies <var>#a##x#+#b##y#=gcd(#a#,#b#)</var>. It can be calculated with exGCD because <var>#a##x#+#b##y#=#b#(#a# div #b#)#x#+(#a# mod #b#)#x#+#b##y#=(#a# mod #b#)#x#+#b#(#y#+(#a# div #b#)#x#)=gcd(#a#,#b#)=gcd(#b#,#a# mod #b#)</var>. </p>
+			<p>Now we will focus on the problem. The problem is to calculate <var>#x#</var> in formula <var>#a#+#c##x#&equiv;#b# (mod 2(^#k#^))</var>, which equals to <var>#c##x#&equiv;#b#-#a# (mod 2(^#k#^))</var> and <var>#c##x#+2(^#k#^)#y#=#b#-#a#</var>. So whether <var>#x#</var> exists depends on if <var>gcd(#c#,2(^#k#^))|(#b#-#a#)</var>. Then the next step is to calculate <var>#c#(^-1^) (mod 2(^#k#^))</var> and the problem is solved. </p>
+			<p>By the way, you may probably notice that we need to module <var>/2(^#k#^)/gcd(#c#,2(^#k#^))/</var> but not <var>2(^#k#^)</var>. This is because we've divided <var>gcd(#c#,2(^#k#^))</var> to make sure <var>#c#(^-1^) (mod 2(^#k#^))</var> exists. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`a,b,c,power,ans,gcd:int64;
+				`i,k:integer;
+				function exgcd(a,b:int64;var x,y:int64):int64;//A combined version of exGCD and GCD
+				begin
+				`if b=0 then
+				``begin
+				```x:=1;
+				```y:=0;
+				```exit(a);
+				``end;
+				`exgcd:=exgcd(b,a mod b,y,x);
+				`y:=y-a div b*x;
+				end;
+				begin
+				`read(a,b,c,k);
+				`while (a&lt;&gt;0)or(b&lt;&gt;0)or(c&lt;&gt;0)or(k&lt;&gt;0) do
+				``begin
+				```power:=1;
+				```for i:=1 to k do
+				````power:=power*2;
+				```b:=b-a;
+				```if b&lt;0 then//Make sure the number is positive
+				````b:=b+power;
+				```gcd:=exgcd(c,power,ans,a);
+				```if b mod gcd&lt;&gt;0 then//There is no need to check if c is 0
+				````begin
+				`````writeln('FOREVER');
+				`````read(a,b,c,k);
+				`````continue;
+				````end;
+				```ans:=ans*(b div gcd) mod (power div gcd);
+				```if ans&lt;0 then//Make sure the number is positive
+				````ans:=ans+power div gcd;
+				```writeln(ans);
+				```read(a,b,c,k);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long long exgcd(long long a,long long b,long long &amp;x,long long &amp;y)//A combined version of exGCD and GCD
+				{
+				`if(b==0)
+				`{
+				``x=1;
+				``y=0;
+				``return a;
+				`}
+				`long long gcd=exgcd(b,a%b,y,x);
+				`y-=a/b*x;
+				`return gcd;
+				}
+				int main()
+				{
+				`long long a,b,c;
+				`int k;
+				`for(scanf("%lld%lld%lld%d",&amp;a,&amp;b,&amp;c,&amp;k);(a!=0)||(b!=0)||(c!=0)||(k!=0);scanf("%lld%lld%lld%d",&amp;a,&amp;b,&amp;c,&amp;k))
+				`{
+				``long long power=1,ans;
+				``for(int i=0;i&lt;k;i++)
+				```power*=2;
+				``b-=a;
+				``if(b&lt;0)//Make sure the number is positive
+				```b+=power;
+				``long long gcd=exgcd(c,power,ans,a);
+				``if(b%gcd!=0)//There is no need to check if c is 0
+				``{
+				```printf("FOREVER\n");
+				```continue;
+				``}
+				``ans=ans*(b/gcd)%(power/gcd);
+				``if(ans&lt;0)//Make sure the number is positive
+				```ans+=power/gcd;
+				``printf("%lld\n",ans);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

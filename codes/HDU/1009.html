@@ -1,0 +1,172 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>HDU 1009 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">HDU 1009</h2>
+		<time>2017-06-03 19:35 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HDU-1009">vjudge</a>
+			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=1009">HDU</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>The problem requires a greedy algorithm to solve. That can make each pound of cat food earn most JavaBeans. So As the first step, we should sort the rooms according to <var>/#j#(_#i#_)/#f#(_#i#_)/</var>. Then access room and took all JavaBeans we can take. In this way we can solve the problem. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`j,f,cj,cf:array[1..1000]of integer;//The array cf and cj are used to save a copy while doing merge sort
+				`m,n,i:integer;
+				`ans:longint;
+				procedure msort(l,r:integer);
+				var
+				`x,y:integer;
+				begin
+				`if l>=r then
+				``exit;
+				`msort(l,(l+r) div 2);
+				`msort((l+r) div 2+1,r);
+				`cj:=j;
+				`cf:=f;
+				`x:=l;
+				`y:=(l+r) div 2+1;
+				`for i:=l to r do
+				``begin
+				```if x&gt;(l+r) div 2 then
+				````begin
+				`````j[i]:=cj[y];
+				`````f[i]:=cf[y];
+				`````inc(y);
+				`````continue;
+				````end;
+				```if y&gt;r then
+				````begin
+				`````j[i]:=cj[x];
+				`````f[i]:=cf[x];
+				`````inc(x);
+				`````continue;
+				````end;
+				```if cj[x]*cf[y]&gt;cj[y]*cf[x] then//Not using (cj[x]/cf[x])&gt;(cj[y]/cj[y]) is to avoid deviding 0
+				````begin
+				`````j[i]:=cj[x];
+				`````f[i]:=cf[x];
+				`````inc(x);
+				`````continue;
+				````end
+				```else
+				````begin
+				`````j[i]:=cj[y];
+				`````f[i]:=cf[y];
+				`````inc(y);
+				`````continue;
+				````end;
+				``end;
+				end;
+				begin
+				`read(m,n);
+				`while (m&lt;&gt;-1)and(n&lt;&gt;-1) do
+				``begin
+				```for i:=1 to n do
+				````read(j[i],f[i]);
+				```msort(1,n);
+				```ans:=0;
+				```i:=1;
+				```while (m&gt;f[i])and(i&lt;n) do//Take the javabeans from high reward to low one
+				````begin
+				`````ans:=ans+j[i];
+				`````m:=m-f[i];
+				`````inc(i);
+				````end;
+				```if i&lt;=n then
+				````writeln(ans+m/f[i]*j[i]:0:3)
+				```else
+				````writeln(ans,'.000');//Do not forget the 3 numbers after the digit
+				```read(m,n);
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				#include&lt;cstring&gt;//We need to use the memcpy function in cstring
+				int j[1000],f[1000],cj[1000],cf[1000];//The array cf and cj are used to save a copy while doing merge sort
+				void msort(int l,int r)
+				{
+				`if(l&gt;=r)
+				``return;
+				`msort(l,(l+r)/2);
+				`msort((l+r)/2+1,r);
+				`memcpy(cj,j,sizeof(j));
+				`memcpy(cf,f,sizeof(f));
+				`for(int i=l,x=l,y=(l+r)/2+1;i&lt;=r;i++)
+				`{
+				``if(x&gt;(l+r)/2)
+				``{
+				```j[i]=cj[y];
+				```f[i]=cf[y];
+				```y++;
+				```continue;
+				``}
+				``if(y&gt;r)
+				``{
+				```j[i]=cj[x];
+				```f[i]=cf[x];
+				```x++;
+				```continue;
+				``}
+				``if(cj[x]*cf[y]&gt;cj[y]*cf[x])//Not using (cj[x]/cf[x])&gt;(cj[y]/cj[y]) is to avoid deviding 0
+				``{
+				```j[i]=cj[x];
+				```f[i]=cf[x];
+				```x++;
+				```continue;
+				``}
+				``else
+				``{
+				```j[i]=cj[y];
+				```f[i]=cf[y];
+				```y++;
+				```continue;
+				``}
+				`}
+				}
+				int main()
+				{
+				`int m,n;
+				`scanf("%d%d",&amp;m,&amp;n);
+				`while((m!=-1)&amp;&amp;(n!=-1))
+				`{
+				``for(int i=0;i&lt;n;i++)
+				```scanf("%d%d",&amp;j[i],&amp;f[i]);
+				``msort(0,n-1);
+				``long ans=0;
+				``int i=0;
+				``while((m&gt;f[i])&amp;&amp;(i&lt;n))//Take the javabeans from high reward to low one
+				``{
+				```ans+=j[i];
+				```m-=f[i];
+				```i++;
+				``}
+				``if(i&lt;n)
+				```printf("%.3lf\n",ans+m*1.0/f[i]*j[i]);
+				``else
+				```printf("%ld.000\n",ans);//Do not forget the 3 numbers after the digit
+				``scanf("%d%d",&amp;m,&amp;n);
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

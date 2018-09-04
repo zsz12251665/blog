@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>POJ 1004 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">POJ 1004</h2>
+		<time>2017-04-27 09:17 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/POJ-1004">vjudge</a>
+			<a target="_blank" href="http://poj.org/problem?id=1004">POJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>I spent 15 minutes reading the description, getting confused of what it asked for. Then I found it totally a piece of cake for any programmer when I saw the input and output. It just asks me to print the average of 12 real numbers. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`sum,tmp:double;
+				`i:integer;
+				begin
+				`sum:=0;
+				`for i:=1 to 12 do
+				``begin
+				```read(tmp);
+				```sum:=sum+tmp;
+				``end;
+				`write('$',sum/12:0:2);//In pascal write(sum:0:2); prints the sum with 2 digits and take the place of 0 chars. But if the length is over 0, this part makes no sence
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`double sum=0.0,tmp;
+				`for(int i=0;i&lt;12;i++)
+				`{
+				``scanf("%lf",&amp;tmp);
+				``sum+=tmp;
+				`}
+				`printf("$%.2lf",sum/12.0);//In C/C++, the %.2lf in the format string of printf() function means to print the real number with 2 digits
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

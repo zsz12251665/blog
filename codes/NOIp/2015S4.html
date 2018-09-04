@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2015S4 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2015S4</h2>
+		<time>2017-11-08 21:29 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://www.luogu.org/problem/show?pid=2678">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/1981">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>I spent a large amount of time thinking how to solve the problem with greedy algorithm or <abbr title="dynamic planning">dp</abbr> algorithm until I knew that the correct solution is halving searching algorithm since the answer is monotonical. Greedy algorithm requires an <var>O(#n#(^2^))</var> time complexity and dp algorithm is completely wrong. </p>
+			<p>The halving searching algorithm is acceptable because it provides an <var>O(#n#lg(#l#))</var> time complexity. First of all, we set the range as <var>[0,#l#]</var>. Then we try if making the minimum distance between two rocks as the middle value of the range is acceptable. Then we can reduce the searching range as half of the last range. Continue to take these steps until the range is empty. So we will only try <var>lg(#l#)</var> times. For each try, we can finish it by scanning the rocks once, which is <var>O(#n#)</var>. So we solve the problem. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`d:array[1..50001]of longint;
+				`l,n,m,i,left,right,ans,mid,tmp,cnt:longint;
+				begin
+				`read(l,n,m);
+				`for i:=1 to n do
+				``read(d[i]);
+				`d[n+1]:=l;
+				`left:=0;//Format the halving range
+				`right:=l;
+				`while left&lt;=right do
+				``begin
+				```mid:=(left+right) div 2;
+				```tmp:=0;//tmp is the last rock that is not removed
+				```cnt:=0;//cnt counts the number of the rocks that has been removed
+				```for i:=1 to n+1 do
+				````if d[i]-tmp&lt;mid then//Check if the distance is far enough
+				`````inc(cnt)
+				````else
+				`````tmp:=d[i];
+				```if cnt&gt;m then//Check whether too many rocks are removed
+				````right:=mid-1
+				```else
+				````begin
+				`````ans:=mid;//Update the answer
+				`````left:=mid+1;
+				````end;
+				``end;
+				`write(ans);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long d[50001];
+				int main()
+				{
+				`long l,n,m;
+				`scanf("%ld%ld%ld",&amp;l,&amp;n,&amp;m);
+				`for(long i=0;i&lt;n;i++)
+				``scanf("%ld",&amp;d[i]);
+				`d[n]=l;
+				`long left=0,right=l,ans;//Format the halving range
+				`while(left&lt;=right)
+				`{
+				``long mid=(left+right)/2,tmp=0,cnt=0;//tmp is the last rock that is not removed, cnt counts the number of the rocks that has been removed
+				``for(long i=0;i&lt;=n;i++)
+				```if(d[i]-tmp&lt;mid)//Check if the distance is far enough
+				````cnt++;
+				```else
+				````tmp=d[i];
+				``if(cnt&gt;m)//Check whether too many rocks are removed
+				```right=mid-1;
+				``else
+				``{
+				```ans=mid;//Update the answer
+				```left=mid+1;
+				``}
+				`}
+				`printf("%ld",ans);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

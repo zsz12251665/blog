@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>BZOJ 5136 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">BZOJ 5136</h2>
+		<time>2018-03-24 15:13 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="https://vjudge.net/problem/HYSBZ-5136">vjudge</a>
+			<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=5136">BZOJ</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>This problem is not difficult. If you observe carefully, you'll find that the numbers in the same row have the same difference in the same line, which means <var>#M#(_#i#,#j#_)-#M#(_#i#+#a#,#j#_)=#M#(_#i#,#j#+#b#_)-#M#(_#i#+#a#,#j#+#b#_)</var>. That is the way to solve the problem. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`matrix:array[1..500,1..500]of longint;
+				`n,m,x,y,k,i,j:integer;
+				`t,ti:longint;
+				`not_clever:boolean;
+				begin
+				`read(n,m,t);
+				`for i:=1 to n do
+				``for j:=1 to m do
+				```read(matrix[i,j]);
+				`for ti:=1 to t do
+				``begin
+				```not_clever:=false;
+				```read(x,y,k);
+				```for i:=1 to k-1 do//Check each pair of lines
+				````begin
+				`````for j:=1 to k-1 do
+				``````if matrix[x+i][y]-matrix[x+i-1][y]&lt;&gt;matrix[x+i][y+j]-matrix[x+i-1][y+j] then
+				```````begin
+				````````not_clever:=true;
+				````````break;
+				```````end;
+				`````if not_clever then
+				``````break;
+				````end;
+				```if not_clever then
+				````writeln('N')
+				```else
+				````writeln('Y');
+				``end;
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				long matrix[500][500];
+				int main()
+				{
+				`int n,m;
+				`long t;
+				`scanf("%d%d%ld",&amp;n,&amp;m,&amp;t);
+				`for(int i=0;i&lt;n;i++)
+				``for(int j=0;j&lt;m;j++)
+				```scanf("%ld",&amp;matrix[i][j]);
+				`for(;t&gt;0;t--)
+				`{
+				``int x,y,k,not_clever=0;
+				``scanf("%d%d%d",&amp;x,&amp;y,&amp;k);
+				``x--;
+				``y--;
+				``for(int i=1;(i&lt;k)&amp;&amp;(not_clever==0);i++)//Check each pair of lines
+				```for(int j=1;(j&lt;k)&amp;&amp;(not_clever==0);j++)
+				````if(matrix[x+i][y]-matrix[x+i-1][y]!=matrix[x+i][y+j]-matrix[x+i-1][y+j])
+				`````not_clever=1;
+				``if(not_clever==1)
+				```printf("N\n");
+				``else
+				```printf("Y\n");
+				`}
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>

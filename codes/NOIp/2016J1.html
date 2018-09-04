@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>NOIp 2016J1 - zsz12251665's Blog</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/codes/style.css" />
+	</head>
+	<body>
+		<h2 align="center">NOIp 2016J1</h2>
+		<time>2017-04-05 17:02 by zsz12251665</time>
+		<h3>Problem</h3>
+		<section class="btnfield">
+			<a target="_blank" href="http://www.luogu.org/problem/show?pid=1909">Luogu</a>
+			<a target="_blank" href="https://www.vijos.org/p/2009">Vijos</a>
+		</section>
+		<h3>Solution</h3>
+		<section>
+			<p>Calculate the cost of each kinds of pencil and compare them. Pick the smallest one as the answer. But pay attention that you may buy one pack more if <var>#n# mod #amount#=0</var>. </p>
+		</section>
+		<h3>Code</h3>
+		<section>
+			<p>Pascal</p>
+			<code>
+				var
+				`n,i,j,ans,tmp,prc,amt:longint;//Remember to make the ans as large as possible to make sure that you can get the cost of each kind
+				begin
+				`read(n);
+				`ans:=maxlongint;
+				`for i:=1 to 3 do
+				``begin
+				```read(amt,prc);
+				```tmp:=0;
+				```j:=n;
+				```while j&gt;0 do//In oreder to avoid count one more pack, I pick the packs one after one
+				````begin
+				`````j:=j-amt;
+				`````tmp:=tmp+prc;
+				````end;
+				```if tmp&lt;ans then
+				````ans:=tmp;
+				``end;
+				`write(ans);
+				end.
+			</code>
+			<p>C++</p>
+			<code>
+				#include&lt;cstdio&gt;
+				int main()
+				{
+				`long n,ans=2147483647,tmp,prc,amt;//Remember to make the ans as large as possible to make sure that you can get the cost of each kind
+				`scanf("%ld",&amp;n);
+				`for(long i=0;i&lt;3;i++)
+				`{
+				``scanf("%ld%ld",&amp;amt,&amp;prc);
+				``tmp=0;
+				``for(long j=n;j&gt;0;j-=amt)//In oreder to avoid count one more pack, I pick the packs one after one
+				```tmp+=prc;
+				``if(tmp&lt;ans)
+				```ans=tmp;
+				`}
+				`printf("%ld",ans);
+				`return 0;
+				}
+			</code>
+		</section>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
+		<script type="text/javascript" src="/add-on/math/math.js"></script>
+	</body>
+</html>
