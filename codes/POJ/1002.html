@@ -30,7 +30,7 @@
 				`j:integer;
 				`no_duplicates:boolean;
 				begin
-				`fillchar(count,sizeof(count),0);//Format the counter
+				`fillchar(count,sizeof(count),0);//Initialize the counter
 				`readln(n);
 				`for i:=1 to n do
 				``begin
@@ -80,7 +80,7 @@
 				char s[64];
 				int main()
 				{
-				`memset(count,0,sizeof(count));//Format the counter
+				`memset(count,0,sizeof(count));//Initialize the counter
 				`long n;
 				`scanf("%ld",&amp;n);
 				`for(long i=0;i&lt;n;i++)

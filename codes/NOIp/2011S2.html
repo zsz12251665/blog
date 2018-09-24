@@ -29,7 +29,7 @@
 				begin
 				`read(n,k,p);
 				`ans:=0;
-				`for colour:=0 to k-1 do//Format the arrays
+				`for colour:=0 to k-1 do//Initialize the arrays
 				``begin
 				```count[colour]:=0;
 				```last[colour]:=0;
@@ -59,7 +59,7 @@
 				`long n,ans=0;
 				`int k,p;
 				`scanf("%ld%d%d",&amp;n,&amp;k,&amp;p);
-				`for(int colour=0;colour&lt;k;colour++)//Format the arrays
+				`for(int colour=0;colour&lt;k;colour++)//Initialize the arrays
 				``count[colour]=last[colour]=0;
 				`for(long i=0;i&lt;n;i++)
 				`{

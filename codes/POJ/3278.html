@@ -26,7 +26,7 @@
 				`time,queue:array[0..100000]of longint;//The time array is used to mark if it is visited and keep the time to reach
 				`head,foot,tmp,n,k,t:longint;
 				begin
-				`for t:=0 to 100000 do//Format the time array
+				`for t:=0 to 100000 do//Initialize the time array
 				``time[t]:=-1;
 				`read(n,k);
 				`t:=0;
@@ -75,7 +75,7 @@
 				long time[100000],queue[100000],head=0,foot=1;//The time array is used to mark if it is visited and keep the time to reach
 				int main()
 				{
-				`for(long t=0;t&lt;100000;i++)//Format the time array
+				`for(long t=0;t&lt;100000;i++)//Initialize the time array
 				``time[t]=-1;
 				`long n,k,t=0;
 				`scanf("%d%d",&amp;n,&amp;k);

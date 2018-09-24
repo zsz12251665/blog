@@ -61,10 +61,10 @@
 				``begin
 				```read(m);
 				```dec(m);
-				```fillchar(answer,sizeof(answer),0);//Format the answer matrix to the identity matrix
+				```fillchar(answer,sizeof(answer),0);//Initialize the answer matrix to the identity matrix
 				```for i:=1 to 104 do
 				````answer[i,i]:=1;
-				```power:=matrix;//Format the power matrix
+				```power:=matrix;//Initialize the power matrix
 				```while m&gt;0 do//Calculate the power of matrix
 				````begin
 				`````if m mod 2=1 then
@@ -113,10 +113,10 @@
 				``long m;
 				``scanf("%ld",&amp;m);
 				``m--;
-				``memset(answer,0,sizeof(answer));//Format the answer matrix to the identity matrix
+				``memset(answer,0,sizeof(answer));//Initialize the answer matrix to the identity matrix
 				``for(int i=0;i&lt;104;i++)
 				```answer[i][i]=1;
-				``memcpy(power,matrix,sizeof(power));//Format the power matrix
+				``memcpy(power,matrix,sizeof(power));//Initialize the power matrix
 				``for(;m&gt;0;m/=2)//Calculate the power of matrix
 				``{
 				```if(m%2==1)

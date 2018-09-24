@@ -32,7 +32,7 @@
 				`for i:=1 to n do
 				``begin
 				```read(next[i]);
-				```visit[i]:=-1;//Format the visit array
+				```visit[i]:=-1;//Initialize the visit array
 				``end;
 				`t:=1;
 				`last:=0;//last is used check whether the path we found is a circle
@@ -64,7 +64,7 @@
 				`for(int i=0;i&lt;n;i++)
 				`{
 				``scanf("%d",&amp;next[i]);
-				``visit[i]=-1;//Format the visit array
+				``visit[i]=-1;//Initialize the visit array
 				`}
 				`for(int i=0,t=1,last=0;i&lt;n;i++)//last is used check whether the path we found is a circle
 				``if(visit[i]==-1)

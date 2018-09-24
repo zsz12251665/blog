@@ -35,10 +35,10 @@
 				````read(matrix[i,j]);
 				````matrix[i,j]:=matrix[i,j] mod m;
 				```end;
-				`power:=matrix;//Format the 2^0 times of the matrix A, which is the matrix A
-				`sum:=matrix;//Format the sum of the first 2^0 times of the matrix A, which is the matrix A too
-				`fillchar(answer,sizeof(answer),0);//Format the answer matrix, which is the zero matrix
-				`fillchar(multi,sizeof(multi),0);//Format the multi matrix to the identity matrix
+				`power:=matrix;//Initialize the 2^0 times of the matrix A, which is the matrix A
+				`sum:=matrix;//Initialize the sum of the first 2^0 times of the matrix A, which is the matrix A too
+				`fillchar(answer,sizeof(answer),0);//Initialize the answer matrix, which is the zero matrix
+				`fillchar(multi,sizeof(multi),0);//Initialize the multi matrix to the identity matrix
 				`for i:=1 to n do
 				``multi[i,i]:=1;
 				`while k&gt;0 do//Conver k into binary
@@ -94,10 +94,10 @@
 				```scanf("%lld",&amp;matrix[i][j]);
 				```matrix[i][j]=matrix[i][j]%m;
 				``}
-				`memcpy(power,matrix,sizeof(power));//Format the 2^0 times of the matrix A, which is the matrix A
-				`memcpy(sum,matrix,sizeof(sum));//Format the sum of the first 2^0 times of the matrix A, which is the matrix A too
-				`memset(answer,0,sizeof(answer));//Format the answer matrix, which is the zero matrix
-				`memset(multi,0,sizeof(multi));//Format the multi matrix to the identity matrix
+				`memcpy(power,matrix,sizeof(power));//Initialize the 2^0 times of the matrix A, which is the matrix A
+				`memcpy(sum,matrix,sizeof(sum));//Initialize the sum of the first 2^0 times of the matrix A, which is the matrix A too
+				`memset(answer,0,sizeof(answer));//Initialize the answer matrix, which is the zero matrix
+				`memset(multi,0,sizeof(multi));//Initialize the multi matrix to the identity matrix
 				`for(int i=0;i&lt;n;i++)
 				``multi[i][i]=1;
 				`for(;k&gt;0;k/=2)//Conver k into binary

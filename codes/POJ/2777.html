@@ -17,7 +17,7 @@
 		<h3>Solution</h3>
 		<section>
 			<p>This problem needs a segment tree to solve. A segment tree is used to solve problems based on ranges. For example, this problem requires us to provide two kinds of operation, which are setting values on a range and asking number of the colours on a range. </p>
-			<p>The first step is to build and format the segment tree. As we all know, the segment tree is a tree of which the nodes keeps the information of the range <var>[#l#,#r#]</var> and its two children keep the information of the range <var>[#l#,/#l#+#r#/2/]</var> and <var>[/#l#+#r#/2/+1,#r#]</var>. So we can use a <abbr title="Depth-First Search">DFS</abbr> to format it. By the way, we will also need to use the state compression to keep the states of thirty colours in an integer. Then we can read the operations. For each setting operation, we can finish it in <var>O(lg(#n#))</var>. This is because when the operation come to a node, we can check if the range of the node is in the range of the operation. If it is, set the lazytag up and return, or pass down the lazytag, send the operation to its children and update colour state. For each asking operation, it can also be finished in <var>O(lg(#n#))</var>. It is similar to the setting operation but we just need to return the the compressed state and then count the number of colours. So the time complexity of the whole algorithm is <var>O(#n#lg(#n#))</var>. </p>
+			<p>The first step is to build and initialize the segment tree. As we all know, the segment tree is a tree of which the nodes keeps the information of the range <var>[#l#,#r#]</var> and its two children keep the information of the range <var>[#l#,/#l#+#r#/2/]</var> and <var>[/#l#+#r#/2/+1,#r#]</var>. So we can use a <abbr title="Depth-First Search">DFS</abbr> to format it. By the way, we will also need to use the state compression to keep the states of thirty colours in an integer. Then we can read the operations. For each setting operation, we can finish it in <var>O(lg(#n#))</var>. This is because when the operation come to a node, we can check if the range of the node is in the range of the operation. If it is, set the lazytag up and return, or pass down the lazytag, send the operation to its children and update colour state. For each asking operation, it can also be finished in <var>O(lg(#n#))</var>. It is similar to the setting operation but we just need to return the the compressed state and then count the number of colours. So the time complexity of the whole algorithm is <var>O(#n#lg(#n#))</var>. </p>
 		</section>
 		<h3>Code</h3>
 		<section>
@@ -29,7 +29,7 @@
 				`l,o,i,a,b,cset:longint;
 				`t:integer;
 				`s:char;
-				procedure format(p,l,r:longint);//Build and format the segment tree
+				procedure init(p,l,r:longint);//Build and initialize the segment tree
 				begin
 				`left[p]:=l;
 				`right[p]:=r;
@@ -37,8 +37,8 @@
 				`lazytag[p]:=0;
 				`if l=r then
 				``exit;
-				`format(2*p,l,(l+r) div 2);
-				`format(2*p+1,(l+r) div 2+1,r);
+				`init(2*p,l,(l+r) div 2);
+				`init(2*p+1,(l+r) div 2+1,r);
 				end;
 				procedure change(p,l,r:longint;c:integer);//The setting operation
 				var
@@ -85,7 +85,7 @@
 				end;
 				begin
 				`read(l,t,o);
-				`format(1,1,l);//Build and format the segment tree
+				`init(1,1,l);//Build and initialize the segment tree
 				`for i:=1 to o do
 				``begin
 				```read(s);
@@ -116,7 +116,7 @@
 				#include&lt;cstdio&gt;
 				long left[262144],right[262144],colour[262144];
 				int lazytag[262144];
-				void format(long p,long l,long r)//Build and format the segment tree
+				void init(long p,long l,long r)//Build and initialize the segment tree
 				{
 				`left[p]=l;
 				`right[p]=r;
@@ -124,8 +124,8 @@
 				`lazytag[p]=0;
 				`if(l==r)
 				``return;
-				`format(2*p+1,l,(l+r)/2);
-				`format(2*p+2,(l+r)/2+1,r);
+				`init(2*p+1,l,(l+r)/2);
+				`init(2*p+2,(l+r)/2+1,r);
 				}
 				void change(long p,long l,long r,int c)//The setting operation
 				{
@@ -171,7 +171,7 @@
 				`long l,o;
 				`int t;
 				`scanf("%ld%d%ld",&amp;l,&amp;t,&amp;o);
-				`format(0,1,l);//Build and format the segment tree
+				`init(0,1,l);//Build and init the segment tree
 				`for(long i=0,a,b;i&lt;o;i++)
 				`{
 				``char s=getchar();

@@ -33,7 +33,7 @@
 				`first,second,linear,square:integer;//first keeps the first biggest weight and second keeps the second one
 				begin
 				`read(n);
-				`for i:=1 to n do//Format the adjacency table
+				`for i:=1 to n do//Initialize the adjacency table
 				``h[i]:=-1;
 				`for i:=1 to n-1 do
 				``begin
@@ -86,7 +86,7 @@
 				{
 				`long n;
 				`scanf("%ld",&amp;n);
-				`for(long i=0;i&lt;n;i++)//Format the adjacency table
+				`for(long i=0;i&lt;n;i++)//Initialize the adjacency table
 				``h[i]=-1;
 				`for(long i=1,u,v;i&lt;n;i++)
 				`{

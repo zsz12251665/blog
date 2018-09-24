@@ -27,7 +27,7 @@
 				`i,j,tmp:integer;
 				`start:boolean;
 				begin
-				`for i:=0 to 1 do//Format ans[0] and ans[1]
+				`for i:=0 to 1 do//Initialize ans[0] and ans[1]
 				``for j:=1 to 100 do
 				```ans[i,j]:=0;
 				`ans[0,1]:=1;
@@ -63,7 +63,7 @@
 				int ans[251][100];//ans[i][j] is the j-th bit of ans[i] from the right
 				int main()
 				{
-				`for(int i=0;i&lt;2;i++)//Format ans[0] and ans[1]
+				`for(int i=0;i&lt;2;i++)//Initialize ans[0] and ans[1]
 				``for(int j=0;j&lt;100;j++)
 				```ans[i][j]=0;
 				`ans[0][0]=ans[1][0]=1;
