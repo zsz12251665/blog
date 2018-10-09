@@ -3,11 +3,11 @@ function LoadMusic()
 {
 	//Insert the innerHTML of user interface
 	document.getElementById('music').innerHTML+='<audio id="audio" src="music.mp3" preload="auto"></audio>';
-	document.getElementById('music').innerHTML+='<div id="play">&#9205;</div>';
+	document.getElementById('music').innerHTML+='<span id="play" class="button">&#9205;</span>';
 	document.getElementById('music').innerHTML+='<span id="time">00:00/00:00</span>';
-	document.getElementById('music').innerHTML+='<div id="repeat">&#128257;</div>';
+	document.getElementById('music').innerHTML+='<span id="repeat" class="button">&#128257;</span>';
 	document.getElementById('music').innerHTML+='<span class="range"><span id="volume"></span></span>';
-	document.getElementById('music').innerHTML+='<div id="mute">&#128266;</div>';
+	document.getElementById('music').innerHTML+='<span id="mute" class="button">&#128266;</span>';
 	//Set up the stylesheet
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css"/>';
 	//Format values

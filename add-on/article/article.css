@@ -5,7 +5,8 @@
 }
 @font-face
 {
-	font-family: "Century Italic";
+	font-family: "Century Schoolbook";
+	font-style: italic;
 	src: url("/add-on/article/Century Italic.woff");
 }
 @font-face
@@ -61,19 +62,17 @@ figure img
 	border-style: solid;
 	border-width: thin;
 }
-footer,time
+footer, time
 {
 	display: block;
-	font-family: "Century Italic", serif;
 	font-size: x-small;
 	font-style: italic;
 	text-align: center;
 }
-h1,h2,h3,h4,h5,h6
+h1, h2, h3, h4, h5, h6
 {
 	color: var(--text-color);
 	font-family: "Century Gothic", sans-serif;
-	font-weight: bold;
 	margin-bottom: 0.5rem;
 	margin-top: 0.5rem;
 }
@@ -101,10 +100,6 @@ hr
 {
 	background-color: var(--link-color);
 	border-color: var(--link-color);
-}
-i
-{
-	font-family: "Century Italic", serif;
 }
 img
 {
@@ -136,7 +131,7 @@ table
 	margin-bottom: 0.1rem;
 	margin-top: 0.1rem;
 }
-td,th
+td, th
 {
 	border-color: var(--text-color);
 	border-style: solid;
@@ -156,7 +151,7 @@ td,th
 	transition-property: background-color, color;
 	transition-timing-function: ease;
 }
-.btnfield a:focus,.btnfield a:hover
+.btnfield a:focus, .btnfield a:hover
 {
 	background-color: var(--link-color);
 	color: var(--back-color);
@@ -173,7 +168,7 @@ td,th
 	overflow-x: auto;
 	width: 100%;
 }
-.tblscroll th,.tblscroll td
+.tblscroll th, .tblscroll td
 {
 	white-space: nowrap;
 }
