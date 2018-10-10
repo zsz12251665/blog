@@ -6,6 +6,9 @@
 code
 {
 	background-color: var(--back-color);
+	border-color: var(--text-color);
+	border-style: solid;
+	border-width: thin;
 	border-radius: 0.25rem;
 	color: var(--code-color);
 	display: block;

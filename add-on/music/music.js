@@ -9,7 +9,7 @@ function LoadMusic()
 	document.getElementById('music').innerHTML+='<span class="range"><span id="volume"></span></span>';
 	document.getElementById('music').innerHTML+='<span id="mute" class="button">&#128266;</span>';
 	//Set up the stylesheet
-	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css"/>';
+	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
 	//Format values
 	var audio=document.getElementById('audio');
 	var play=document.getElementById('play');

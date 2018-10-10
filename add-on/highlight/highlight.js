@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded',LoadHighlight);
 function LoadHighlight()
 {
 	//Load the stylesheet of highlight
-	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css"/>';
+	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	//Highlight the code
 	var code=document.getElementsByTagName('code');
 	for(t=0;t<code.length;t++)

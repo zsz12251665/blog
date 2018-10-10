@@ -2,7 +2,8 @@ window.addEventListener('DOMContentLoaded',LoadArticle);
 function LoadArticle()
 {
 	//Load the stylesheet of the article
-	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/article/article.css"/>';
+	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/article/article.css" />';
+	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/theme/'+document.body.className+'.css" />';
 	//Fill the body and load the frame
 	var HTMLCode='';
 	HTMLCode+='<main>';
