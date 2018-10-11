@@ -5,3 +5,13 @@
 	--text-color: #FFFFFF;
 	--link-color: #FFFF00;
 }
+code
+{
+	--code-color: #DADD98;
+	--comma-color: #FA8072;
+	--comment-color: #960018;
+	--constant-color: #15F4EE;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
