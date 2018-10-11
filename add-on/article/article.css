@@ -51,9 +51,6 @@ figure
 	color: var(--back-color);
 	display: inline-block;
 	padding: 0.25rem;
-}
-figure figcaption
-{
 	text-align: start;
 }
 figure img
@@ -88,9 +85,8 @@ header
 	font-size: xx-large;
 	font-weight: bold;
 	left: 0;
-	margin-top: -0.25rem;
 	padding: 0.1rem;
-	position: sticky;
+	position: fixed;
 	right: 0;
 	text-align: center;
 	top: 0;

@@ -12,6 +12,7 @@ function LoadArticle()
 	else
 		HTMLCode+='<a href="/"><header>zsz12251665</header></a>';
 	HTMLCode+='<article>';
+	HTMLCode+='<div style="font-size: xx-large;opacity: 0;padding: 0.1rem;">Fake Header</div>';
 	HTMLCode+=document.getElementsByTagName('body')[0].innerHTML;
 	HTMLCode+='</article>';
 	HTMLCode+='<footer>&copy; 2016-2018 zsz12251665. Powered by zsz12251665. Theme by zsz12251665. </footer>';
