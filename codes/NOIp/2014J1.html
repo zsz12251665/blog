@@ -21,46 +21,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`a:array[1..100]of integer;
-				`n,cnt,i,j:integer;
-				begin
-				`cnt:=0;
-				`read(n);
-				`for i:=1 to n do
-				``read(a[i]);
-				`for i:=1 to n do//Enumerate the numbers
-				``for j:=0 to n*n-1 do//Enumerate the pairs in one loop by enumerating (j1-1)*n+(j2-1)
-				```if (j div n&lt;&gt;j mod n)and(a[i]=a[j div n+1]+a[j mod n+1]) then
-				````begin
-				`````inc(cnt);
-				`````break;//We are asked to count the number of the numbers, not the pairs
-				````end;
-				`write(cnt);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int a[100];
-				int main()
-				{
-				`int n,cnt=0;
-				`scanf("%d",&amp;n);
-				`for(int i=0;i&lt;n;i++)
-				``scanf("%d",&amp;a[i]);
-				`for(int i=0;i&lt;n;i++)//Enumerate the numbers
-				``for(int j=0;j&lt;n*n;j++)//Enumerate the pairs in one loop by enumerating j1*n+j2
-				```if((j/n!=j%n)&amp;&amp;(a[i]==a[j/n]+a[j%n]))
-				```{
-				````cnt++;
-				````break;//We are asked to count the number of the numbers, not the pairs
-				```}
-				`printf("%d",cnt);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

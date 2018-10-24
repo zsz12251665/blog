@@ -20,33 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`key,txt:ansistring;
-				`i:integer;
-				begin
-				`readln(key);//In Pascal, read a string means to read every char until a return or an enter, so you'd better to readln them string by string
-				`readln(txt);
-				`for i:=1 to length(txt) do
-				``txt[i]:=chr((ord(txt[i]) mod 32-ord(key[(i-1) mod length(key)+1]) mod 32+26) mod 26+ord(txt[i])-ord(txt[i]) mod 32+1);//In ASCII, 'A' ~ 'Z' are 65 to 90, 'a' ~ 'z' are 97 to 122. So a char which modulo 32 can show its order in the alphabet
-				`write(txt);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				#include&lt;cstring&gt;//We need to use the strlen function in cstring
-				int main()
-				{
-				`char key[100],txt[1000];
-				`scanf("%s%s",&amp;key,&amp;txt);
-				`int keylen=strlen(key),txtlen=strlen(txt);//In C/C++, the strlen() is not very fast, so I use two variable to keep them
-				`for(int i=0;i&lt;txtlen;i++)
-				``txt[i]=(txt[i]%32-key[i%keylen]%32+26)%26+txt[i]-txt[i]%32+1;//In ASCII, 'A' ~ 'Z' are 65 to 90, 'a' ~ 'z' are 97 to 122. So a char which modulo 32 can show its order in the alphabet
-				`printf("%s",txt);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

@@ -1,0 +1,130 @@
+type
+	student=
+		record
+			name:string;
+			priz:integer;
+		end;
+var
+	stu:array[1..100]of student;
+	test,clas,mxi,mxp,i,n:integer;
+	offl,west,arti:boolean;
+	tot:longint;
+	s:string;
+begin
+	readln(n);
+	tot:=0;
+	mxp:=-maxint;
+	for i:=1 to n do
+		begin
+			readln(s);//Get the informaton of the student
+			stu[i].name:=copy(s,1,pos(' ',s)-1);
+			s:=copy(s,pos(' ',s)+1,255);
+			val(copy(s,1,pos(' ',s)-1),test);
+			s:=copy(s,pos(' ',s)+1,255);
+			val(copy(s,1,pos(' ',s)-1),clas);
+			s:=copy(s,pos(' ',s)+1,255);
+			offl:=(s[1]='Y');
+			west:=(s[3]='Y');
+			arti:=(s[5]<>'0');
+			stu[i].priz:=0;
+			if (test>80)and arti then//Check what prize the student can win
+				begin
+					stu[i].priz:=stu[i].priz+8000;
+					tot:=tot+800;
+				end;
+			if (test>85)and(clas>80) then
+				begin
+					stu[i].priz:=stu[i].priz+4000;
+					tot:=tot+400;
+				end;
+			if test>90 then
+				begin
+					stu[i].priz:=stu[i].priz+2000;
+					tot:=tot+200;
+				end;
+			if (test>85)and west then
+				begin
+					stu[i].priz:=stu[i].priz+1000;
+					tot:=tot+100;
+				end;
+			if (clas>80)and offl then
+				begin
+					stu[i].priz:=stu[i].priz+850;
+					tot:=tot+85;
+				end;
+			if mxp<stu[i].priz then//Keep the student who win the most prizes
+				begin
+					mxp:=stu[i].priz;
+					mxi:=i;
+				end;
+		end;
+	writeln(stu[mxi].name);
+	writeln(stu[mxi].priz);
+	writeln(tot*10);
+end.
+
+#include<cstdio>
+struct student
+{
+	char name[20];
+	int priz;
+};//Do not forget the semicolon, or it may lead to some error
+student stu[100];
+char s[20];
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	long tot=0;
+	int mxp=-65535,mxi;
+	for(int i=0,test,clas,offl,west,arti;i<n;i++)
+	{
+		scanf("%s%d%d",&stu[i].name,&test,&clas);//Get the informaton of the student
+		scanf("%s",&s);
+		if(s[0]=='Y')
+			offl=1;
+		else
+			offl=0;
+		scanf("%s",&s);
+		if(s[0]=='Y')
+			west=1;
+		else
+			west=0;
+		scanf("%d",&arti);
+		if(arti>0)
+			arti=1;
+		stu[i].priz=0;
+		if((test>80)&&(arti==1))//Check what prize the student can win
+		{
+			stu[i].priz+=8000;
+			tot+=800;
+		}
+		if((test>85)&&(clas>80))
+		{
+			stu[i].priz+=4000;
+			tot+=400;
+		}
+		if(test>90)
+		{
+			stu[i].priz+=2000;
+			tot+=200;
+		}
+		if((test>85)&&(west==1))
+		{
+			stu[i].priz+=1000;
+			tot+=100;
+		}
+		if((clas>80)&&(offl==1))
+		{
+			stu[i].priz+=850;
+			tot+=85;
+		}
+		if(mxp<stu[i].priz)//Keep the student who win the most prizes
+		{
+			mxp=stu[i].priz;
+			mxi=i;
+		}
+	}
+	printf("%s\n%d\n%ld",stu[mxi].name,stu[mxi].priz,tot*10);
+	return 0;
+}

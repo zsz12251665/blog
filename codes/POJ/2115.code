@@ -1,0 +1,77 @@
+var
+	a,b,c,power,ans,gcd:int64;
+	i,k:integer;
+function exgcd(a,b:int64;var x,y:int64):int64;//A combined version of exGCD and GCD
+begin
+	if b=0 then
+		begin
+			x:=1;
+			y:=0;
+			exit(a);
+		end;
+	exgcd:=exgcd(b,a mod b,y,x);
+	y:=y-a div b*x;
+end;
+begin
+	read(a,b,c,k);
+	while (a<>0)or(b<>0)or(c<>0)or(k<>0) do
+		begin
+			power:=1;
+			for i:=1 to k do
+				power:=power*2;
+			b:=b-a;
+			if b<0 then//Make sure the number is positive
+				b:=b+power;
+			gcd:=exgcd(c,power,ans,a);
+			if b mod gcd<>0 then//There is no need to check if c is 0
+				begin
+					writeln('FOREVER');
+					read(a,b,c,k);
+					continue;
+				end;
+			ans:=ans*(b div gcd) mod (power div gcd);
+			if ans<0 then//Make sure the number is positive
+				ans:=ans+power div gcd;
+			writeln(ans);
+			read(a,b,c,k);
+		end;
+end.
+
+#include<cstdio>
+long long exgcd(long long a,long long b,long long &x,long long &y)//A combined version of exGCD and GCD
+{
+	if(b==0)
+	{
+		x=1;
+		y=0;
+		return a;
+	}
+	long long gcd=exgcd(b,a%b,y,x);
+	y-=a/b*x;
+	return gcd;
+}
+int main()
+{
+	long long a,b,c;
+	int k;
+	for(scanf("%lld%lld%lld%d",&a,&b,&c,&k);(a!=0)||(b!=0)||(c!=0)||(k!=0);scanf("%lld%lld%lld%d",&a,&b,&c,&k))
+	{
+		long long power=1,ans;
+		for(int i=0;i<k;i++)
+			power*=2;
+		b-=a;
+		if(b<0)//Make sure the number is positive
+			b+=power;
+		long long gcd=exgcd(c,power,ans,a);
+		if(b%gcd!=0)//There is no need to check if c is 0
+		{
+			printf("FOREVER\n");
+			continue;
+		}
+		ans=ans*(b/gcd)%(power/gcd);
+		if(ans<0)//Make sure the number is positive
+			ans+=power/gcd;
+		printf("%lld\n",ans);
+	}
+	return 0;
+}

@@ -1,0 +1,103 @@
+var
+	win,lose:array[1..1000]of longint;//the array win keeps the winner list and the array lose keeps the loser list
+	n,i,j,champion:longint;//champion keeps the champion of the game
+procedure getname(a:longint);//A function that keeps the name strings in integers so that it can be easily compared
+var
+	s:string;
+	i,power:longint;
+begin
+	win[a]:=0;
+	lose[a]:=0;
+	power:=1;
+	readln(s);
+	for i:=1 to pos(' ',s)-1 do//Turn name strings to integers
+		begin
+			win[a]:=win[a]+power*ord(s[i]);
+			power:=power*128;
+		end;
+	s:=copy(s,pos(' ',s)+1,length(s));
+	power:=1;
+	for i:=1 to length(s) do
+		begin
+			lose[a]:=lose[a]+power*ord(s[i]);
+			power:=power*128;
+		end;
+end;
+begin
+	readln(n);
+	while n<>0 do
+		begin
+			for i:=1 to n do
+				getname(i);
+			for i:=1 to n do//Scan the array lose and array win to check if the winner used to lose a match
+				for j:=1 to n do
+					if win[j]=lose[i] then
+						win[j]:=-1;
+			champion:=-1;//If champion is -1, it means there is no champion
+			for i:=1 to n do//Scan the array win to check if there are more than one champion or no champion
+				if (win[i]<>-1)and(win[i]<>champion) then
+					if champion=-1 then
+						champion:=win[i]
+					else
+						begin
+							champion:=-1;
+							break;
+						end;
+				if champion=-1 then
+					writeln('No')
+				else
+					writeln('Yes');
+			readln(n);
+		end;
+end.
+
+#include<cstdio>
+#include<cstring>//We need to use the strlen function in cstring
+long win[1000],lose[1000];//the array win keeps the winner list and the array lose keeps the loser list
+void getname(long a)//A function that keeps the name strings in integers so that it can be easily compared
+{
+	char s[256];
+	win[a]=lose[a]=0;
+	scanf("%s",&s);
+	for(int i=0,power=1;i<strlen(s);i++)//Turn name strings to integers
+	{
+		win[a]+=power*s[i];
+		power*=128;
+	}
+	scanf("%s",&s);
+	for(int i=0,power=1;i<strlen(s);i++)
+	{
+		lose[a]+=power*s[i];
+		power*=128;
+	}
+}
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	while(n!=0)
+	{
+		for(int i=0;i<n;i++)
+			getname(i);
+		for(int i=0;i<n;i++)//Scan the array lose and array win to check if the winner used to lose a match
+			for(int j=0;j<n;j++)
+				if(win[j]==lose[i])
+					win[j]=-1;
+		long champion=-1;//champion keeps the champion of the game and if it is -1, it means there is no champion
+		for(int i=0;i<n;i++)//Scan the array win to check if there are more than one champion or no champion
+			if((win[i]!=-1)&&(champion!=win[i]))
+				if(champion==-1)
+					champion=win[i];
+				else
+				{
+					champion=-1;
+					break;
+				}
+		if(champion==-1)
+			printf("No\n");
+		else
+			printf("Yes\n");
+		scanf("%d",&n);
+	}
+	return 0;
+}

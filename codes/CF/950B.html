@@ -20,65 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`x,y:array[1..100000]of longint;
-				`n,m,ans,totx,toty,i,j:longint;
-				begin
-				`read(n,m);
-				`for i:=1 to n do
-				``read(x[i]);
-				`for i:=1 to m do
-				``read(y[i]);
-				`ans:=0;
-				`totx:=0;
-				`toty:=0;
-				`i:=0;
-				`j:=0;
-				`while (i&lt;n)or(j&lt;m) do
-				``begin
-				```if totx&gt;toty then//Add the smaller one
-				````begin
-				`````inc(j);
-				`````toty:=toty+y[j];
-				````end
-				```else
-				````begin
-				`````inc(i);
-				`````totx:=totx+x[i];
-				````end;
-				```if totx=toty then//Add it to the counter
-				````inc(ans);
-				``end;
-				`write(ans);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				long x[100000],y[100000];
-				int main()
-				{
-				`long n,m;
-				`scanf("%ld%ld",&amp;n,&amp;m);
-				`for(long i=0;i&lt;n;i++)
-				``scanf("%ld",&amp;x[i]);
-				`for(long i=0;i&lt;m;i++)
-				``scanf("%ld",&amp;y[i]);
-				`long ans=0,totx=0,toty=0,i=0,j=0;
-				`while((i&lt;n)||(j&lt;m))
-				`{
-				``if(totx&gt;toty)//Add the smaller one
-				```toty+=y[j++];
-				``else
-				```totx+=x[i++];
-				``if(totx==toty)//Add it to the counter
-				```ans++;
-				`}
-				`printf("%ld",ans);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

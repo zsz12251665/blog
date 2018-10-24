@@ -20,74 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`book:array[1..1000]of longint;
-				`n,q,i,j,tmp:integer;
-				`reader,ans:longint;
-				function match(book,reader:longint):boolean;
-				begin
-				`while reader&gt;0 do
-				``begin
-				```if (book mod 10&lt;&gt;reader mod 10)or(book=0) then//If the index doesn't match or the length of the book index is too short
-				````exit(false);
-				```book:=book div 10;//Move a bit forward
-				```reader:=reader div 10;
-				``end;
-				`exit(true);
-				end;
-				begin
-				`read(n,q);
-				`for i:=1 to n do
-				``read(book[i]);
-				`for i:=1 to q do
-				``begin
-				```ans:=maxlongint;
-				```read(tmp,reader);
-				```for j:=1 to n do//Enumerate the books to find the right one
-				````if (match(book[j],reader))and(book[j]&lt;ans) then//If the index doesn't match or the length of the book index is too short
-				`````ans:=book[j];
-				````if ans=maxlongint then
-				`````ans:=-1;
-				````writeln(ans);
-				``end;
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				long book[1000];
-				int match(long book,long reader)
-				{
-				`while(reader&gt;0)
-				`{
-				``if((book%10!=reader%10)||(book==0))
-				```return 0;
-				``book/=10;//Move a bit forward
-				``reader/=10;
-				`}
-				`return 1;
-				}
-				int main()
-				{
-				`int n,q;
-				`scanf("%d%d",&amp;n,&amp;q);
-				`for(int i=0;i&lt;n;i++)
-				``scanf("%ld",&amp;book[i]);
-				`for(int i=0,tmp;i&lt;q;i++)
-				`{
-				``long reader,ans=2147483647;
-				``scanf("%d%ld",&amp;tmp,&amp;reader);
-				``for(int j=0;j&lt;n;j++)//Enumerate the books to find the right one
-				```if((match(book[j],reader)==1)&amp;&amp;(book[j]&lt;ans))
-				````ans=book[j];
-				``if(ans==2147483647)
-				```ans=-1;
-				``printf("%ld\n",ans);
-				`}
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

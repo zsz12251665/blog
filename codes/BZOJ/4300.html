@@ -21,107 +21,13 @@
 		<h3>Code</h3>
 		<section>
 			<p>Solution 1 Pascal</p>
-			<code>
-				var
-				`a,len:array[1..100000]of longint;
-				`n,ans,i,j:longint;
-				begin
-				`ans:=0;
-				`read(n);
-				`for i:=1 to n do
-				``begin
-				```read(a[i]);
-				```len[i]:=1;
-				```for j:=1 to i-1 do//Update the array len
-				````if ((a[j] and a[i])&lt;&gt;0)and(len[j]+1&gt;len[i]) then//Judge if a[i] can be added after a[j] and if it's the best solution
-				`````len[i]:=len[j]+1;
-				```if ans&lt;len[i] then
-				````ans:=len[i];
-				``end;
-				`write(ans);
-				end.
-			</code>
+			<code></code>
 			<p>Solution 1 C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				long a[100000],len[100000];
-				int main()
-				{
-				`long n,ans=0;
-				`scanf("%ld",&amp;n);
-				`for(long i=0;i&lt;n;i++)
-				`{
-				``scanf("%d",&amp;a[i]);
-				``len[i]=1;
-				``for(long j=0;j&lt;i;j++)//Update the array len
-				```if(((a[j]&amp;a[i])!=0)&amp;&amp;(len[j]+1&gt;len[i]))//Judge if a[i] can be added after a[j] and if it's the best solution
-				````len[i]=len[j]+1;
-				``if(ans&lt;len[i])
-				```ans=len[i];
-				`}
-				`printf("%ld",ans);
-				`return 0;
-				}
-			</code>
+			<code></code>
 			<p>Solution 2 Pascal</p>
-			<code>
-				var
-				`dp:array[0..31]of longint;
-				`n,ans,now,a,i,j:longint;
-				begin
-				`ans:=0;
-				`for j:=0 to 31 do
-				``dp[j]:=0;
-				`read(n);
-				`for i:=1 to n do
-				``begin
-				```now:=0;
-				```read(a);
-				```for j:=0 to 31 do
-				````if (a div (1 shl j) mod 2&lt;&gt;0)and(now&lt;dp[j]) then//Find the length of the longest subsequence that can be added by a[i]
-				`````now:=dp[j];
-				```inc(now);
-				```for j:=0 to 31 do
-				````if (a div (1 shl j) mod 2&lt;&gt;0)and(dp[j]&lt;now) then//Update the dp array
-				`````begin
-				``````dp[j]:=now;
-				``````if ans&lt;dp[j] then//Update the answer
-				```````ans:=dp[j];
-				`````end;
-				``end;
-				`write(ans);
-				end.
-			</code>
+			<code></code>
 			<p>Solution 2 C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				long dp[32];
-				int main()
-				{
-				`long n,ans=0;
-				`for(long j=0;j&lt;32;j++)//Initialize the dp array
-				``dp[j]=0;
-				`scanf("%ld",&amp;n);
-				`for(long i=0;i&lt;n;i++)
-				`{
-				``long a,now=0;
-				``scanf("%ld",&amp;a);
-				``for(long j=0;j&lt;32;j++)
-				```if(((a&amp;(1&lt;&lt;j))!=0)&amp;&amp;(now&lt;dp[j]))//Find the length of the longest subsequence that can be added by a[i]
-				````now=dp[j];
-				``now++;
-				``for(long j=0;j&lt;32;j++)
-				```if(((a&amp;(1&lt;&lt;j))!=0)&amp;&amp;(dp[j]&lt;now))//Update the dp array
-				```{
-				````dp[j]=now;
-				````if(ans&lt;dp[j])//Update the answer
-				`````ans=dp[j];
-				```}
-				`}
-				`printf("%ld",ans);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

@@ -1,0 +1,361 @@
+var
+	milk:array[1..10000]of longint;
+	n,i,j:integer;
+	tmp:longint;
+begin
+	read(n);
+	for i:=1 to n do
+		read(milk[i]);
+	for i:=2 to n do
+		for j:=1 to i-1 do
+			if milk[i]<milk[j] then//Replace this line with "if milk[i]>milk[j] then" to sort in decrease order
+				begin
+					tmp:=milk[j];
+					milk[j]:=milk[i];
+					milk[i]:=tmp;
+				end;
+	write(milk[n div 2+1]);
+end.
+
+#include<cstdio>
+long milk[10000];
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		scanf("%ld",&milk[i]);
+	for(int i=1;i<n;i++)
+		for(int j=0;j<i;j++)
+			if(milk[i]<milk[j])//Replace this line with "if(milk[i]>milk[j])" to sort in decrease order
+			{
+				long tmp=milk[j];
+				milk[j]=milk[i];
+				milk[i]=tmp;
+			}
+	printf("%ld",milk[n/2]);
+	return 0;
+}
+
+var
+	milk:array[1..10000]of longint;
+	n,i,j:integer;
+	tmp:longint;
+begin
+	read(n);
+	for i:=1 to n do
+		read(milk[i]);
+	for i:=1 to n-1 do
+		for j:=1 to n-i do
+			if milk[j]>milk[j+1] then//Replace this line with "if milk[j]<milk[j+1] then" to sort in decrease order
+				begin
+					tmp:=milk[j];
+					milk[j]:=milk[j+1];
+					milk[j+1]:=tmp;
+				end;
+	write(milk[n div 2+1]);
+end.
+
+#include<cstdio>
+long milk[10000];
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		scanf("%ld",&milk[i]);
+	for(int i=1;i<n;i++)
+		for(int j=0;j<n-i;j++)
+			if(milk[j]>milk[j+1])//Replace this line with "if(milk[j]<milk[j+1])" to sort in decrease order
+			{
+				long tmp=milk[j];
+				milk[j]=milk[j+1];
+				milk[j+1]=tmp;
+			}
+	printf("%ld",milk[n/2]);
+	return 0;
+}
+
+var
+	milk:array[1..10000]of longint;
+	n,i:integer;
+procedure qsort(l,r:integer);
+var
+	x,y:integer;
+	tmp,std:longint;
+begin
+	x:=l;
+	y:=r;
+	std:=milk[(l+r) div 2];
+	while x<y do
+		begin
+			while milk[x]<std do//Replace this line with "while milk[x]>std do" to sort in decrease order
+				inc(x);
+			while milk[y]>std do//Replace this line with "while milk[y]<std do" to sort in decrease order
+				dec(y);
+			if x<=y then
+				begin
+					tmp:=milk[x];
+					milk[x]:=milk[y];
+					milk[y]:=tmp;
+					inc(x);
+					dec(y);
+				end;
+		end;
+	if l<y then
+		qsort(l,y);
+	if r>x then
+		qsort(x,r);
+end;
+begin
+	read(n);
+	for i:=1 to n do
+		read(milk[i]);
+	qsort(1,n);
+	write(milk[n div 2+1]);
+end.
+
+#include<cstdio>
+long milk[10000];
+void qsort(int l,int r)
+{
+	int x=l,y=r;
+	long std=milk[(l+r)/2];
+	while(x<y)
+	{
+		while(milk[x]<std)//Replace this line with "while(milk[x]>std)" to sort in decrease order
+			x++;
+		while(milk[y]>std)//Replace this line with "while(milk[y]<std)" to sort in decrease order
+			y--;
+		if(x<=y)
+		{
+			long tmp=milk[x];
+			milk[x++]=milk[y];
+			milk[y--]=tmp;
+		}
+	}
+	if(l<y)
+		qsort(l,y);
+	if(x<r)
+		qsort(x,r);
+}
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		scanf("%ld",&milk[i]);
+	qsort(0,n-1);
+	printf("%ld",milk[n/2]);
+	return 0;
+}
+
+var
+	milk,copy:array[1..10000]of longint;
+	n,i:integer;
+procedure msort(l,r:integer);
+var
+	x,y:integer;
+begin
+	if l>=r then
+		exit;
+	msort(l,(l+r) div 2);
+	msort((l+r) div 2+1,r);
+	copy:=milk;
+	x:=l;
+	y:=(l+r) div 2+1;
+	for i:=l to r do
+		begin
+			if x>(l+r) div 2 then
+				begin
+					milk[i]:=copy[y];
+					inc(y);
+					continue;
+				end;
+			if y>r then
+				begin
+					milk[i]:=copy[x];
+					inc(x);
+					continue;
+				end;
+			if copy[x]>copy[y] then//Replace this line with "if copy[x]<copy[y] then" to sort in decrease order
+				begin
+					milk[i]:=copy[y];
+					inc(y);
+				end
+			else
+				begin
+					milk[i]:=copy[x];
+					inc(x);
+				end;
+		end;
+end;
+begin
+	read(n);
+	for i:=1 to n do
+		read(milk[i]);
+	msort(1,n);
+	write(milk[n div 2+1]);
+end.
+
+#include<cstdio>
+#include<cstring>//We need to use the memcpy function in cstring
+long milk[10000],copy[10000];
+void msort(int l,int r)
+{
+	if(l>=r)
+		return;
+	msort(l,(l+r)/2);
+	msort((l+r)/2+1,r);
+	memcpy(copy,milk,sizeof(milk));
+	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
+	{
+		if(x>(l+r)/2)
+		{
+			milk[i]=copy[y++];
+			continue;
+		}
+		if(y>r)
+		{
+			milk[i]=copy[x++];
+			continue;
+		}
+		if(copy[x]>copy[y])//Replace this line with "if(copy[x]<copy[y])" to sort in decrease order
+			milk[i]=copy[y++];
+		else
+			milk[i]=copy[x++];
+	}
+}
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		scanf("%ld",&milk[i]);
+	msort(0,n-1);
+	printf("%ld",milk[n/2]);
+	return 0;
+}
+
+var
+	milk:array[1..10000]of longint;
+	n,i,j:integer;
+	tmp:longint;
+begin
+	read(n);
+	for i:=1 to n do
+		begin
+			read(milk[i]);
+			j:=i;
+			while (j>1)and(milk[j div 2]>milk[j]) do//Replace this line with "while (j>1)and(milk[j div 2]<milk[j]) do" to sort in decrease order
+				begin
+					tmp:=milk[j];
+					milk[j]:=milk[j div 2];
+					milk[j div 2]:=tmp;
+					j:=j div 2;
+				end;
+		end;
+	for i:=1 to n div 2 do
+		begin
+			milk[1]:=milk[n-i+1];
+			j:=1;
+			while (2*j<n-i+1)and(milk[j]>milk[2*j])or(2*j+1<n-i+1)and(milk[j]>milk[2*j+1]) do//Replace this line with "while (2*j<n-i+1)and(milk[j]<milk[2*j])or(2*j+1<n-i+1)and(milk[j]<milk[2*j+1]) do" to sort in decrease order
+				begin
+					if (2*j+1<n-i+1)and(milk[2*j]>milk[2*j+1]) then//Replace this line with "if (2*j+1<n-i+1)and(milk[2*j]<milk[2*j+1]) then" to sort in decrease order
+						j:=2*j+1
+					else
+						j:=2*j;
+					tmp:=milk[j];
+					milk[j]:=milk[j div 2];
+					milk[j div 2]:=tmp;
+				end;
+		end;
+	write(milk[1]);
+end.
+
+#include<cstdio>
+long milk[10000];
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		scanf("%ld",&milk[i]);
+		int j=i;
+		while((j>0)&&(milk[(j-1)/2]>milk[j]))//Replace this line with "while((j>0)&&(milk[(j-1)/2]<milk[j]))" to sort in decrease order
+		{
+			long tmp=milk[j];
+			milk[j]=milk[(j-1)/2];
+			milk[(j-1)/2]=tmp;
+			j=(j-1)/2;
+		}
+	}
+	for(int i=0;i<n/2;i++)
+	{
+		milk[0]=milk[n-1-i];
+		int j=0;
+		while((2*j+1<n-1-i)&&(milk[j]>milk[2*j+1])||(2*j+2<n-1-i)&&(milk[j]>milk[2*j+2]))//Replace this line with "while((2*j+1<n-1-i)&&(milk[j]<milk[2*j+1])||(2*j+2<n-1-i)&&(milk[j]<milk[2*j+2]))" to sort in decrease order
+		{
+			if((2*j+2<n-1-i)&&(milk[2*j+1]>milk[2*j+2]))//Replace this line with "if((2*j+2<n-1-i)&&(milk[2*j+1]<milk[2*j+2]))" to sort in decrease order
+				j=2*j+2;
+			else
+				j=2*j+1;
+			long tmp=milk[j];
+			milk[j]=milk[(j-1)/2];
+			milk[(j-1)/2]=tmp;
+		}
+	}
+	printf("%ld",milk[0]);
+	return 0;
+}
+
+var
+	counter:array[1..1000000]of integer;
+	milk:longint;
+	n,i,tmp:integer;
+begin
+	for milk:=1 to 1000000 do
+		counter[milk]:=0;
+	read(n);
+	for i:=1 to n do
+		begin
+			read(milk);
+			inc(counter[milk]);
+		end;
+	tmp:=0;
+	for milk:=1 to 1000000 do//Replace this line with "for milk:=1000000 downto 1 do" to sort in decrease order
+		if tmp+counter[milk]>n div 2 then
+			begin
+				write(milk);
+				halt;
+			end
+		else
+			tmp:=tmp+counter[milk];
+end.
+
+#include<cstdio>
+int counter[1000001];
+int main()
+{
+	for(long milk=1;milk<1000001;milk++)
+		counter[milk]=0;
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		long milk;
+		scanf("%ld",&milk);
+		counter[milk]++;
+	}
+	int tmp=0;
+	for(long milk=1;milk<1000001;milk++)//Replace this line with "for(long milk=1000000;milk>0;milk--)" to sort in decrease order
+		if(tmp+counter[milk]>n/2)
+		{
+			printf("%ld",milk);
+			return 0;
+		}
+		else
+			tmp+=counter[milk];
+	return 0;
+}

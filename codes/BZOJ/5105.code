@@ -1,0 +1,33 @@
+var
+	a,b,c,ans:int64;
+function gcd(a,b:int64):int64;
+begin
+	if b=0 then
+		exit(a);
+	exit(gcd(b,a mod b));//Divides their difference
+end;
+begin
+	read(a,b,c);
+	ans:=a;
+	ans:=ans*b div gcd(ans,b);
+	ans:=ans*c div gcd(ans,c);
+	write(ans);
+end.
+
+#include<cstdio>
+long long gcd(long long a,long long b)
+{
+	if(b==0)
+		return a;
+	return gcd(b,a%b);//Divides their difference
+}
+int main()
+{
+	long long a,b,c;
+	scanf("%lld%lld%lld",&a,&b,&c);
+	long long ans=a;
+	ans*=b/gcd(ans,b);
+	ans*=c/gcd(ans,c);
+	printf("%lld",ans);
+	return 0;
+}

@@ -20,84 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`finger:array[1..10000]of integer;
-				`used:array[1..10000]of boolean;
-				`n,m,i:integer;
-				function find(a:integer):integer;
-				var
-				`i:integer;
-				begin
-				`for i:=a+1 to n do
-				``if not(used[i]) then//If there is another finger that is not used
-				```exit(i);
-				`exit(-1);
-				end;
-				procedure add(a:integer);
-				begin
-				`used[finger[a]]:=false;
-				`if find(finger[a])=-1 then
-				``begin
-				```add(a-1);//Carry on the previous bit
-				```finger[a]:=find(0);//Find the smallest finger that is not used
-				``end
-				`else
-				``finger[a]:=find(finger[a]);
-				`used[finger[a]]:=true;
-				end;
-				begin
-				`read(n,m);
-				`for i:=1 to n do
-				``begin
-				```read(finger[i]);
-				```used[finger[i]]:=true;
-				``end;
-				`for i:=1 to m do//To add m, just add 1 for m times
-				``add(n);
-				`for i:=1 to n do
-				``write(finger[i],' ');
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int finger[10000],used[10001],n;
-				int find(int a)
-				{
-				`for(int i=a+1;i&lt;=n;i++)
-				``if(used[i]==0)//If there is another finger that is not used
-				```return i;
-				`return -1;
-				}
-				void add(int a)
-				{
-				`used[finger[a]]=0;
-				`if(find(finger[a])==-1)
-				`{
-				``add(a-1);//Carry on the previous bit
-				``finger[a]=find(0);//Find the smallest finger that is not used
-				`}
-				`else
-				``finger[a]=find(finger[a]);
-				`used[finger[a]]=1;
-				}
-				int main()
-				{
-				`int m;
-				`scanf("%d%d",&amp;n,&amp;m);
-				`for(int i=0;i&lt;n;i++)
-				`{
-				``scanf("%d",&amp;finger[i]);
-				``used[finger[i]]=1;
-				`}
-				`for(int i=0;i&lt;m;i++)//To add m, just add 1 for m times
-				``add(n-1);
-				`for(int i=0;i&lt;n;i++)
-				``printf("%d ",finger[i]);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

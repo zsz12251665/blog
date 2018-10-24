@@ -1,0 +1,59 @@
+var
+	matrix:array[1..500,1..500]of longint;
+	n,m,x,y,k,i,j:integer;
+	t,ti:longint;
+	not_clever:boolean;
+begin
+	read(n,m,t);
+	for i:=1 to n do
+		for j:=1 to m do
+			read(matrix[i,j]);
+	for ti:=1 to t do
+		begin
+			not_clever:=false;
+			read(x,y,k);
+			for i:=1 to k-1 do//Check each pair of lines
+				begin
+					for j:=1 to k-1 do
+						if matrix[x+i][y]-matrix[x+i-1][y]<>matrix[x+i][y+j]-matrix[x+i-1][y+j] then
+							begin
+								not_clever:=true;
+								break;
+							end;
+					if not_clever then
+						break;
+				end;
+			if not_clever then
+				writeln('N')
+			else
+				writeln('Y');
+		end;
+end.
+
+#include<cstdio>
+long matrix[500][500];
+int main()
+{
+	int n,m;
+	long t;
+	scanf("%d%d%ld",&n,&m,&t);
+	for(int i=0;i<n;i++)
+		for(int j=0;j<m;j++)
+			scanf("%ld",&matrix[i][j]);
+	for(;t>0;t--)
+	{
+		int x,y,k,not_clever=0;
+		scanf("%d%d%d",&x,&y,&k);
+		x--;
+		y--;
+		for(int i=1;(i<k)&&(not_clever==0);i++)//Check each pair of lines
+			for(int j=1;(j<k)&&(not_clever==0);j++)
+				if(matrix[x+i][y]-matrix[x+i-1][y]!=matrix[x+i][y+j]-matrix[x+i-1][y+j])
+					not_clever=1;
+		if(not_clever==1)
+			printf("N\n");
+		else
+			printf("Y\n");
+	}
+	return 0;
+}

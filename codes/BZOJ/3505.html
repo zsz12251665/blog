@@ -22,58 +22,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`n,m,i,j:integer;
-				`ans:int64;
-				function gcd(a,b:integer):integer;//Calculate the greatest common division of a and b
-				begin
-				`if b=0 then
-				``exit(b);
-				`exit(gcd(b,a mod b));
-				end;
-				begin
-				`read(n,m);
-				`inc(n);
-				`inc(m);
-				`ans:=int64(n*m)*(n*m-1)*(n*m-2) div 6;
-				`for i:=1 to n-1 do//Pick up the combinations on the same row
-				``ans:=ans-(n-i)*m*(i-1);
-				`for j:=1 to m-1 do//Pick up the combinations on the same coloum
-				``ans:=ans-n*(m-j)*(j-1);
-				`for i:=1 to n-1 do//Pick up the other combinations on the same line
-				``for j:=1 to m-1 do
-				```ans:=ans-2*(n-i)*(m-j)*(gcd(i,j)-1);//There are two directions: (0,0) to (i,j) and (i,0) to (0,j)
-				`write(ans);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int gcd(int a,int b)//Calculate the greatest common division of a and b
-				{
-				`if(a%b==0)
-				``return b;
-				`return gcd(b,a%b);
-				}
-				int main()
-				{
-				`int n,m;
-				`scanf("%d%d",&amp;n,&amp;m);
-				`n++;
-				`m++;
-				`long long ans=(long long)n*m*(n*m-1)*(n*m-2)/6;
-				`for(int i=1;i&lt;n;i++)//Pick up the combinations on the same row
-				``ans-=(n-i)*m*(i-1);
-				`for(int j=1;j&lt;m;j++)//Pick up the combinations on the same coloum
-				``ans-=n*(m-j)*(j-1);
-				`for(int i=1;i&lt;n;i++)//Pick up the other combinations on the same line
-				``for(int j=1;j&lt;m;j++)
-				```ans-=2*(n-i)*(m-j)*(gcd(i,j)-1);//There are two directions: (0,0) to (i,j) and (i,0) to (0,j)
-				`printf("%lld",ans);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

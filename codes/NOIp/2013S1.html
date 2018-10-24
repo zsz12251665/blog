@@ -21,43 +21,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`n,m,k,x:longint;
-				`power,base:int64;//To avoid overlimit, we use int64 here
-				begin
-				`read(n,m,k,x);
-				`power:=1;
-				`base:=10;
-				`while k&gt;0 do//The fast power algorithm
-				``begin
-				```if k mod 2=1 then//Divide k into binary
-				````power:=(power*base) mod n;
-				```base:=(base*base) mod n;
-				```k:=k div 2;
-				``end;
-				`write((power*m+x) mod n);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int main()
-				{
-				`long n,m,k,x;
-				`scanf("%ld%ld%ld%ld",&amp;n,&amp;m,&amp;k,&amp;x);
-				`long long power=1,base=10;//To avoid overlimit, we use long long here
-				`while(k&gt;0)//The fast power algorithm
-				`{
-				``if(k%2==1)//Divide k into binary
-				```power=(power*base)%n;
-				``base=(base*base)%n;
-				``k/=2;
-				`}
-				`printf("%lld",(power*m+x)%n);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

@@ -1,0 +1,15 @@
+var
+	a,b:int64;
+begin//No comments available
+	read(a,b);
+	write(a*b-a-b);
+end.
+
+#include<cstdio>
+int main()
+{//No comments available
+	long long a,b;
+	scanf("%lld%lld",&a,&b);
+	printf("%lld",a*b-a-b);
+	return 0;
+}

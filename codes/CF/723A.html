@@ -24,61 +24,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`a,b,c,tmp:integer;
-				begin
-				`read(a,b,c);//We use a<sub>0</sub>, b<sub>0</sub>, c<sub>0</sub> to represent the original value of a, b, c
-				`if a&lt;b then//Using the third variable
-				``begin
-				```tmp:=a;//tmp=a<sub>0</sub>
-				```a:=b;//a=b<sub>0</sub>
-				```b:=tmp;//b=tmp=a<sub>0</sub>
-				``end;
-				`if b&lt;c then//Using the bit operator xor
-				``begin
-				```b:=b xor c;//b=b<sub>0</sub> xor c<sub>0</sub>
-				```c:=b xor c;//c=(b<sub>0</sub> xor c<sub>0</sub>) xor c<sub>0</sub>=b<sub>0</sub>
-				```b:=b xor c;//b=(b<sub>0</sub> xor c<sub>0</sub>) xor b<sub>0</sub>=c<sub>0</sub>
-				``end;
-				`if a&lt;b then//Using the sum
-				``begin
-				```a:=a+b;//a=a<sub>0</sub>+b<sub>0</sub>
-				```b:=a-b;//b=(a<sub>0</sub>+b<sub>0</sub>)-b<sub>0</sub>=a<sub>0</sub>
-				```a:=a-b;//a=(a<sub>0</sub>+b<sub>0</sub>)-a<sub>0</sub>=b<sub>0</sub>
-				``end;
-				`write(a-c);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int main()
-				{
-				`int a,b,c;
-				`scanf("%d%d%d",&amp;a,&amp;b,&amp;c);//We use a<sub>0</sub>, b<sub>0</sub>, c<sub>0</sub> to represent the original value of a, b, c
-				`if(a&lt;b)//Using the third variable
-				`{
-				``int tmp=a;//tmp=a<sub>0</sub>
-				``a=b;//a=b<sub>0</sub>
-				``b=tmp;//b=tmp=a<sub>0</sub>
-				`}
-				`if(b&lt;c)//Using the bit operator xor
-				`{
-				``b=b^c;//b=b<sub>0</sub>^c<sub>0</sub>
-				``c=b^c;//c=(b<sub>0</sub>^c<sub>0</sub>)^c<sub>0</sub>=b<sub>0</sub>
-				``b=b^c;//b=(b<sub>0</sub>^c<sub>0</sub>)^b<sub>0</sub>=c<sub>0</sub>
-				`}
-				`if(a&lt;b)//Using the sum
-				`{
-				``a=a+b;//a=a<sub>0</sub>+b<sub>0</sub>
-				``b=a-b;//b=(a<sub>0</sub>+b<sub>0</sub>)-b<sub>0</sub>=a<sub>0</sub>
-				``a=a-b;//a=(a<sub>0</sub>+b<sub>0</sub>)-a<sub>0</sub>=b<sub>0</sub>
-				`}
-				`printf("%ld",a-c);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

@@ -20,69 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`matrix:array[1..500,1..500]of longint;
-				`n,m,x,y,k,i,j:integer;
-				`t,ti:longint;
-				`not_clever:boolean;
-				begin
-				`read(n,m,t);
-				`for i:=1 to n do
-				``for j:=1 to m do
-				```read(matrix[i,j]);
-				`for ti:=1 to t do
-				``begin
-				```not_clever:=false;
-				```read(x,y,k);
-				```for i:=1 to k-1 do//Check each pair of lines
-				````begin
-				`````for j:=1 to k-1 do
-				``````if matrix[x+i][y]-matrix[x+i-1][y]&lt;&gt;matrix[x+i][y+j]-matrix[x+i-1][y+j] then
-				```````begin
-				````````not_clever:=true;
-				````````break;
-				```````end;
-				`````if not_clever then
-				``````break;
-				````end;
-				```if not_clever then
-				````writeln('N')
-				```else
-				````writeln('Y');
-				``end;
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				long matrix[500][500];
-				int main()
-				{
-				`int n,m;
-				`long t;
-				`scanf("%d%d%ld",&amp;n,&amp;m,&amp;t);
-				`for(int i=0;i&lt;n;i++)
-				``for(int j=0;j&lt;m;j++)
-				```scanf("%ld",&amp;matrix[i][j]);
-				`for(;t&gt;0;t--)
-				`{
-				``int x,y,k,not_clever=0;
-				``scanf("%d%d%d",&amp;x,&amp;y,&amp;k);
-				``x--;
-				``y--;
-				``for(int i=1;(i&lt;k)&amp;&amp;(not_clever==0);i++)//Check each pair of lines
-				```for(int j=1;(j&lt;k)&amp;&amp;(not_clever==0);j++)
-				````if(matrix[x+i][y]-matrix[x+i-1][y]!=matrix[x+i][y+j]-matrix[x+i-1][y+j])
-				`````not_clever=1;
-				``if(not_clever==1)
-				```printf("N\n");
-				``else
-				```printf("Y\n");
-				`}
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

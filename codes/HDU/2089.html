@@ -20,123 +20,13 @@
 		<h3>Code</h3>
 		<section>
 			<p>Solution 1 Pascal</p>
-			<code>
-				var
-				`n,m,i,count:longint;
-				function lucky(a:longint):boolean;
-				var
-				`i:longint;
-				begin
-				`i:=1;//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
-				`while i&lt;a do
-				``begin
-				```if ((a div i) mod 100=62)or((a div i) mod 10=4) then
-				````exit(false);
-				```i:=i*10;
-				``end;
-				`exit(true);
-				end;
-				begin
-				`read(n,m);
-				`while (n&lt;&gt;0)or(m&lt;&gt;0) do
-				``begin
-				```count:=0;
-				```for i:=n to m do//Search the interval
-				````if lucky(i) then
-				`````inc(count);
-				```writeln(count);
-				```read(n,m);
-				``end;
-				end.
-			</code>
+			<code></code>
 			<p>Solution 1 C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int lucky(long a)
-				{
-				`for(long i=1;i&lt;a;i*=10)//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
-				``if(((a/i)%100==62)||((a/i)%10==4))
-				```return 1;
-				`return 0;
-				}
-				int main()
-				{
-				`long n,m,count;
-				`scanf("%ld%ld",&amp;n,&amp;m);
-				`while((n!=0)||(m!=0))
-				`{
-				``count=0;
-				``for(long i=n;i&lt;=m;i++)//Search the interval
-				```if(lucky(i)==0)
-				````count++;
-				``printf("%ld\n",count);
-				``scanf("%ld%ld",&amp;n,&amp;m);
-				`}
-				`return 0;
-				}
-			</code>
+			<code></code>
 			<p>Solution 2 Pascal</p>
-			<code>
-				var
-				`count:array[0..1000000]of longint;//count[i] keeps the number of the lucky numbers from 0 to i
-				`n,m,i:longint;
-				function lucky(a:longint):boolean;
-				begin
-				`while a>0 do
-				``begin
-				```if (a mod 100=62)or(a mod 10=4) then
-				````exit(false);
-				```a:=a div 10;
-				``end;
-				`exit(true);
-				end;
-				begin
-				`count[0]:=1;
-				`for i:=1 to 1000000 do
-				``if lucky(i) then
-				```count[i]:=count[i-1]+1
-				``else
-				```count[i]:=count[i-1];
-				`read(n,m);
-				`while (n&lt;&gt;0)or(m&lt;&gt;0) do
-				``begin
-				```writeln(count[m]-count[n-1]);//Don't forget to use the one before n, or you may lose the number n
-				```read(n,m);
-				``end;
-				end.
-			</code>
+			<code></code>
 			<p>Solution 2 C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				long count[1000001];//count[i] keeps the number of the lucky numbers from 0 to i
-				int lucky(long a)
-				{
-				`while(a>0)
-				`{
-				``if((a%100==62)||(a%10==4))
-				```return 1;
-				``a/=10;
-				`}
-				`return 0;
-				}
-				int main()
-				{
-				`count[0]=1;
-				`for(long i=1;i&lt;1000001;i++)//Fill the count[i]
-				``if(lucky(i)==0)
-				```count[i]=count[i-1]+1;
-				``else
-				```count[i]=count[i-1];
-				`long n,m;
-				`scanf("%ld%ld",&amp;n,&amp;m);
-				`while((n!=0)||(m!=0))
-				`{
-				``printf("%ld\n",count[m]-count[n-1]);//Don't forget to use the one before n, or you may lose the number n
-				``scanf("%ld%ld",&amp;n,&amp;m);
-				`}
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

@@ -1,0 +1,93 @@
+var
+	a,len:array[1..100000]of longint;
+	n,ans,i,j:longint;
+begin
+	ans:=0;
+	read(n);
+	for i:=1 to n do
+		begin
+			read(a[i]);
+			len[i]:=1;
+			for j:=1 to i-1 do//Update the array len
+				if ((a[j] and a[i])<>0)and(len[j]+1>len[i]) then//Judge if a[i] can be added after a[j] and if it's the best solution
+					len[i]:=len[j]+1;
+			if ans<len[i] then
+				ans:=len[i];
+		end;
+	write(ans);
+end.
+
+#include<cstdio>
+long a[100000],len[100000];
+int main()
+{
+	long n,ans=0;
+	scanf("%ld",&n);
+	for(long i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+		len[i]=1;
+		for(long j=0;j<i;j++)//Update the array len
+			if(((a[j]&a[i])!=0)&&(len[j]+1>len[i]))//Judge if a[i] can be added after a[j] and if it's the best solution
+				len[i]=len[j]+1;
+		if(ans<len[i])
+			ans=len[i];
+	}
+	printf("%ld",ans);
+	return 0;
+}
+
+var
+	dp:array[0..31]of longint;
+	n,ans,now,a,i,j:longint;
+begin
+	ans:=0;
+	for j:=0 to 31 do
+		dp[j]:=0;
+	read(n);
+	for i:=1 to n do
+		begin
+			now:=0;
+			read(a);
+			for j:=0 to 31 do
+				if (a div (1 shl j) mod 2<>0)and(now<dp[j]) then//Find the length of the longest subsequence that can be added by a[i]
+					now:=dp[j];
+			inc(now);
+			for j:=0 to 31 do
+				if (a div (1 shl j) mod 2<>0)and(dp[j]<now) then//Update the dp array
+					begin
+						dp[j]:=now;
+						if ans<dp[j] then//Update the answer
+							ans:=dp[j];
+					end;
+		end;
+	write(ans);
+end.
+
+#include<cstdio>
+long dp[32];
+int main()
+{
+	long n,ans=0;
+	for(long j=0;j<32;j++)//Initialize the dp array
+		dp[j]=0;
+	scanf("%ld",&n);
+	for(long i=0;i<n;i++)
+	{
+		long a,now=0;
+		scanf("%ld",&a);
+		for(long j=0;j<32;j++)
+			if(((a&(1<<j))!=0)&&(now<dp[j]))//Find the length of the longest subsequence that can be added by a[i]
+				now=dp[j];
+		now++;
+		for(long j=0;j<32;j++)
+			if(((a&(1<<j))!=0)&&(dp[j]<now))//Update the dp array
+			{
+				dp[j]=now;
+				if(ans<dp[j])//Update the answer
+					ans=dp[j];
+			}
+	}
+	printf("%ld",ans);
+	return 0;
+}

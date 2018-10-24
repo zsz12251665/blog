@@ -1,0 +1,55 @@
+var
+	x,y:array[1..100000]of longint;
+	n,m,ans,totx,toty,i,j:longint;
+begin
+	read(n,m);
+	for i:=1 to n do
+		read(x[i]);
+	for i:=1 to m do
+		read(y[i]);
+	ans:=0;
+	totx:=0;
+	toty:=0;
+	i:=0;
+	j:=0;
+	while (i<n)or(j<m) do
+		begin
+			if totx>toty then//Add the smaller one
+				begin
+					inc(j);
+					toty:=toty+y[j];
+				end
+			else
+				begin
+					inc(i);
+					totx:=totx+x[i];
+				end;
+			if totx=toty then//Add it to the counter
+				inc(ans);
+		end;
+	write(ans);
+end.
+
+#include<cstdio>
+long x[100000],y[100000];
+int main()
+{
+	long n,m;
+	scanf("%ld%ld",&n,&m);
+	for(long i=0;i<n;i++)
+		scanf("%ld",&x[i]);
+	for(long i=0;i<m;i++)
+		scanf("%ld",&y[i]);
+	long ans=0,totx=0,toty=0,i=0,j=0;
+	while((i<n)||(j<m))
+	{
+		if(totx>toty)//Add the smaller one
+			toty+=y[j++];
+		else
+			totx+=x[i++];
+		if(totx==toty)//Add it to the counter
+			ans++;
+	}
+	printf("%ld",ans);
+	return 0;
+}

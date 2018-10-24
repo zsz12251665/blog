@@ -22,66 +22,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`s:ansistring;
-				`i,j,len:longint;
-				`is_period:boolean;
-				begin
-				`readln(s);
-				`while s&lt;&gt;'.' do
-				``begin
-				```len:=length(s);
-				```for i:=1 to len do//Enumerate the length of a period
-				````if len mod i=0 then
-				`````begin
-				``````is_period:=true;
-				``````for j:=1 to len do//Scan the whole string to check if it is a period
-				```````if s[j]&lt;&gt;s[(j-1) mod i+1] then
-				````````begin
-				`````````is_period:=false;
-				`````````break;
-				````````end;
-				``````if is_period then//The shortest period makes the biggest power index
-				```````begin
-				````````writeln(len div i);
-				````````break;
-				```````end;
-				`````end;
-				```readln(s);
-				``end;
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				#include&lt;cstring&gt;//We need to use the strlen function in cstring
-				char s[1000001];
-				int main()
-				{
-				`for(scanf("%s",&amp;s);strcmp(s,".")!=0;scanf("%s",&amp;s))
-				`{
-				``long len=strlen(s);
-				``for(long i=1;i&lt;=len;i++)//Enumerate the length of a period
-				```if(len%i==0)
-				```{
-				````int is_period=1;
-				````for(long j=0;j&lt;len;j++)//Scan the whole string to check if it is a period
-				`````if(s[j]!=s[j%i])
-				`````{
-				``````is_period=0;
-				``````break;
-				`````}
-				````if(is_period==1)//The shortest period makes the biggest power index
-				````{
-				`````printf("%ld\n",len/i);
-				`````break;
-				````}
-				```}
-				`}
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

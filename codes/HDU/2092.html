@@ -21,72 +21,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`p,q,i:integer;
-				`delta:longint;
-				begin
-				`read(p,q);
-				`while (p&lt;&gt;0)or(q&lt;&gt;0) do
-				``begin
-				```delta:=p*p-4*q;
-				```if delta&lt;0 then//If &Delta;&lt;0, it won't have a square root
-				````begin
-				`````writeln('No');
-				`````read(p,q);
-				`````continue;
-				````end;
-				```for i:=0 to 10002 do//10002*10002=100040004&gt;10000*10000+4*10000
-				````begin
-				`````if i*i=delta then
-				``````begin
-				```````writeln('Yes');
-				```````break;
-				``````end;
-				`````if i*i&gt;delta then
-				``````begin
-				```````writeln('No');
-				```````break;
-				``````end;
-				````end;
-				```read(p,q);
-				``end;
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int main()
-				{
-				`int p,q;
-				`scanf("%d%d",&amp;p,&amp;q);
-				`while((p!=0)||(q!=0))
-				`{
-				``long delta=p*p-4*q;
-				``if(delta&lt;0)//If &Delta;&lt;0, it won't have a square root
-				``{
-				```printf("No\n");
-				```scanf("%d%d",&amp;p,&amp;q);
-				```continue;
-				``}
-				``for(int i=0;i&lt;10003;i++)//10002*10002=100040004&gt;10000*10000+4*10000
-				``{
-				```if(i*i==delta)
-				```{
-				````printf("Yes\n");
-				````break;
-				```}
-				```if(i*i&gt;delta)
-				```{
-				````printf("No\n");
-				````break;
-				```}
-				``}
-				``scanf("%d%d",&amp;p,&amp;q);
-				`}
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

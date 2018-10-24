@@ -20,51 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`dp:array[0..100,0..100]of longint;
-				`n,m,a,i,j,k:integer;
-				begin
-				`read(n,m);
-				`dp[0,0]:=1;
-				`for i:=1 to n do
-				``begin
-				```read(a);//We can scroll a because we just need it once
-				```for j:=0 to m do
-				````if a&gt;j then//Without this, the array may be overlimited
-				`````for k:=0 to j do
-				``````dp[i,j]:=(dp[i,j]+dp[i-1,j-k]) mod 1000007
-				````else
-				`````for k:=0 to a do
-				``````dp[i,j]:=(dp[i,j]+dp[i-1,j-k]) mod 1000007;
-				``end;
-				`write(dp[n,m]);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				long dp[101][101];
-				int main()
-				{
-				`int n,m;
-				`scanf("%d%d",&amp;n,&amp;m);
-				`dp[0][0]=1;
-				`for(int i=1,a;i&lt;=n;i++)
-				`{
-				``scanf("%d",&amp;a);//We can scroll a because we just need it once
-				``for(int j=0;j&lt;=m;j++)
-				```if(a&gt;j)//Without this,  the array may be overlimited
-				````for(int k=0;k&lt;=j;k++)
-				`````dp[i][j]=(dp[i][j]+dp[i-1][j-k])%1000007;
-				```else
-				````for(int k=0;k&lt;=a;k++)
-				`````dp[i][j]=(dp[i][j]+dp[i-1][j-k])%1000007;
-				`}
-				`printf("%ld",dp[n][m]);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

@@ -20,71 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`a,b:longint;
-				`l,i,j,x,y:integer;
-				function gcd(a,b:integer):integer;//Check if a and b are co-prime to each other
-				var
-				`tmp:integer;
-				begin
-				`if a&lt;b then
-				``begin
-				```tmp:=a;
-				```a:=b;
-				```b:=tmp;
-				``end;
-				`if a mod b=0 then
-				``exit(b)
-				`else
-				``exit(gcd(b,a mod b));
-				end;
-				begin
-				`x:=maxint;//Maximum x and minimum y to make the ratio as big as possible
-				`y:=1;
-				`read(a,b,l);
-				`for i:=1 to l do//Enumerate every pair of (i,j) in [1..l]
-				``for j:=1 to l do
-				```if (gcd(i,j)=1)and(i*b&gt;=a*j)and(i*y&lt;x*j) then//i*b&gt;=a*j &hArr; i/j&gt;=a/b, i*y&lt;x*j &hArr; i/j&lt;x/y
-				````begin
-				`````x:=i;
-				`````y:=j;
-				````end;
-				`write(x,' ',y);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				int gcd(int a,int b)//Check if a and b are co-prime to each other
-				{
-				`if(a&lt;b)
-				`{
-				``int tmp=a;
-				``a=b;
-				``b=tmp;
-				`}
-				`if(a%b==0)
-				``return b;
-				`else
-				``return gcd(b,a%b);
-				}
-				int main()
-				{
-				`long a,b;
-				`int l,x=65535,y=1;//Maximum x and minimum y to make the ratio as big as possible
-				`scanf("%ld%ld%d",&amp;a,&amp;b,&amp;l);
-				`for(int i=1;i&lt;=l;i++)//Enumerate every pair of (i,j) in [1..l]
-				``for(int j=1;j&lt;=l;j++)
-				```if((gcd(i,j)==1)&amp;&amp;(i*b&gt;=a*j)&amp;&amp;(i*y&lt;x*j))//i*b&gt;=a*j &hArr; i/j&gt;=a/b, i*y&lt;x*j &hArr; i/j&lt;x/y
-				```{
-				````x=i;
-				````y=j;
-				```}
-				`printf("%d %d",x,y);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

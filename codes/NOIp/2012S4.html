@@ -22,49 +22,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`a,b,x,y:longint;
-				procedure exgcd(a,b:longint;var x,y:longint);
-				begin
-				`if b=0 then//The recursion border
-				``begin
-				```x:=1;//Keep the quotients
-				```y:=0;
-				```exit;
-				``end;
-				`exgcd(b,a mod b,y,x);//Recur gcd
-				`y:=y-a div b*x;//Update the quotients
-				end;
-				begin
-				`read(a,b);
-				`exgcd(a,b,x,y);
-				`write((x mod b+b) mod b);//Output the minimum positive integer
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				void exgcd(long a,long b,long &amp;x,long &amp;y)
-				{
-				`if(b==0)//The recursion border
-				`{
-				``x=1;//Keep the quotients
-				``y=0;
-				``return;
-				`}
-				`exgcd(b,a%b,y,x);//Recur gcd
-				`y-=a/b*x;//Update the quotients
-				}
-				int main()
-				{
-				`long a,b,x,y;
-				`scanf("%ld%ld",&amp;a,&amp;b);
-				`exgcd(a,b,x,y);
-				`printf("%ld",(x%b+b)%b);//Output the minimum positive integer
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

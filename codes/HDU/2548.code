@@ -1,0 +1,25 @@
+var
+	t,i:integer;
+	u,v,w,l:double;
+begin
+	read(t);
+	for i:=1 to t do
+		begin
+			read(u,v,w,l);
+			writeln(l/(u+v)*w:0:3);//In Pascal, the programmer should pay attention that the / operator will give a real number answer, the div operator will give a integer answer. But the div operator can only calculate integers but not real numbers
+		end;
+end.
+
+#include<cstdio>
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	for(int i=0;i<t;i++)
+	{
+		double u,v,w,l;
+		scanf("%lf%lf%lf%lf",&u,&v,&w,&l);
+		printf("%.3lf\n",l/(u+v)*w);//In C/C++, the / operator will check the data type automatically. If both are integers it, it will give a integer answer(truncate the digits after the decimal point). Or It will give the real number answer
+	}
+	return 0;
+}

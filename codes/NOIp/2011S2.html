@@ -20,63 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`count,last:array[0..50]of longint;
-				`ans,n,i:longint;
-				`k,p,colour,cost:integer;
-				begin
-				`read(n,k,p);
-				`ans:=0;
-				`for colour:=0 to k-1 do//Initialize the arrays
-				``begin
-				```count[colour]:=0;
-				```last[colour]:=0;
-				``end;
-				`for i:=1 to n do
-				``begin
-				```read(colour,cost);
-				```inc(count[colour]);
-				```if cost&lt;=p then
-				````begin
-				`````last:=count;//Renew the last array
-				`````ans:=ans+count[colour]-1;//Remember to minus 1 becuase they would not stay in the same hotel
-				````end
-				```else
-				````ans:=ans+last[colour];
-				``end;
-				`writeln(ans);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				#include&lt;cstring&gt;//We need to use the memcpy function in cstring
-				long count[50],last[50];
-				int main()
-				{
-				`long n,ans=0;
-				`int k,p;
-				`scanf("%ld%d%d",&amp;n,&amp;k,&amp;p);
-				`for(int colour=0;colour&lt;k;colour++)//Initialize the arrays
-				``count[colour]=last[colour]=0;
-				`for(long i=0;i&lt;n;i++)
-				`{
-				``int colour,cost;
-				``scanf("%d%d",&amp;colour,&amp;cost);
-				``count[colour]++;
-				``if(cost&lt;=p)
-				``{
-				```memcpy(last,count,sizeof(last));//Renew the last array
-				```ans+=count[colour]-1;//Remember to minus 1 becuase they would not stay in the same hotel
-				``}
-				``else
-				```ans+=last[colour];
-				`}
-				`printf("%ld",ans);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

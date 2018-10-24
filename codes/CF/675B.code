@@ -1,0 +1,56 @@
+var
+	n,a,b,c,d,max,min:longint;
+begin
+	read(n,a,b,c,d);
+	max:=-2147483647;
+	min:=2137483647;
+	if max<a+b then//Update maximum pair values
+		max:=a+b;
+	if max<a+c then
+		max:=a+c;
+	if max<b+d then
+		max:=b+d;
+	if max<c+d then
+		max:=c+d;
+	if min>a+b then//Update minimum pair values
+		min:=a+b;
+	if min>a+c then
+		min:=a+c;
+	if min>b+d then
+		min:=b+d;
+	if min>c+d then
+		min:=c+d;
+	if max-min>n then//Pay attention to this situation
+		write(0)
+	else
+		write(int64(n-max+min)*n);
+end.
+
+#include<cstdio>
+int main()
+{
+	long n,a,b,c,d;
+	scanf("%ld%ld%ld%ld%ld",&n,&a,&b,&c,&d);
+	long max=-2147483647,min=2147483647;
+	if(max<a+b)//Update maximum pair values
+		max=a+b;
+	if(max<a+c)
+		max=a+c;
+	if(max<b+d)
+		max=b+d;
+	if(max<c+d)
+		max=c+d;
+	if(min>a+b)//Update minimum pair values
+		min=a+b;
+	if(min>a+c)
+		min=a+c;
+	if(min>b+d)
+		min=b+d;
+	if(min>c+d)
+		min=c+d;
+	if(max-min>n)//Pay attention to this situation
+		putchar('0');
+	else
+		printf("%lld",(long long)(n-max+min)*n);
+	return 0;
+}

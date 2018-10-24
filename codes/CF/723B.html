@@ -20,95 +20,9 @@
 		<h3>Code</h3>
 		<section>
 			<p>Pascal</p>
-			<code>
-				var
-				`s:string;
-				`n,i,cnt,max,tmp:integer;
-				`in_parentheses:boolean;
-				begin
-				`cnt:=0;
-				`max:=0;
-				`tmp:=0;
-				`in_parentheses:=false;
-				`readln(n);//For Pascal coders, it is a good choice to use readln while processing strings
-				`readln(s);
-				`for i:=1 to n do
-				``begin
-				```if s[i]='(' then
-				````begin
-				`````if tmp>max then//Update the max length of words that is not in parentheses
-				``````max:=tmp;
-				`````tmp:=0;
-				`````in_parentheses:=true;
-				`````continue;
-				````end;
-				```if s[i]=')' then
-				````begin
-				`````if tmp>0 then//Count the number of words that is in parentheses
-				``````inc(cnt);
-				`````tmp:=0;
-				`````in_parentheses:=false;
-				`````continue;
-				````end;
-				```if s[i]='_' then
-				````begin
-				`````if not(in_parentheses) and(tmp>max) then//Update the max length of words that is not in parentheses
-				``````max:=tmp;
-				`````if in_parentheses and(tmp>0) then//Count the number of words that is in parentheses
-				``````inc(cnt);
-				`````tmp:=0;
-				`````continue;
-				````end;
-				```inc(tmp);
-				``end;
-				`if tmp>max then//Update the max length of words that is not in parentheses
-				``max:=tmp;
-				`write(max,' ',cnt);
-				end.
-			</code>
+			<code></code>
 			<p>C++</p>
-			<code>
-				#include&lt;cstdio&gt;
-				char s[256];
-				int main()
-				{
-				`int n,cnt=0,max=0,tmp=0,in_parentheses=0;
-				`scanf("%d%s",&amp;n,&amp;s);
-				`for(int i=0;i&lt;n;i++)
-				`{
-				``if(s[i]=='(')
-				``{
-				```if(tmp&gt;max)//Update the max length of words that is not in parentheses
-				````max=tmp;
-				```tmp=0;
-				```in_parentheses=1;
-				```continue;
-				``}
-				``if(s[i]==')')
-				``{
-				```if(tmp!=0)//Count the number of words that is in parentheses
-				````cnt++;
-				```tmp=0;
-				```in_parentheses=0;
-				```continue;
-				``}
-				``if(s[i]=='_')
-				``{
-				```if((in_parentheses==0)&amp;&amp;(tmp&gt;max))//Update the max length of words that is not in parentheses
-				````max=tmp;
-				```if((in_parentheses==1)&amp;&amp;(tmp!=0))//Count the number of words that is in parentheses
-				````cnt++;
-				```tmp=0;
-				```continue;
-				``}
-				``tmp++;
-				`}
-				`if(tmp&gt;max)//Update the max length of words that is not in parentheses
-				``max=tmp;
-				`printf("%d %d",max,cnt);
-				`return 0;
-				}
-			</code>
+			<code></code>
 		</section>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
