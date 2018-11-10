@@ -1,31 +1,18 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>CF 675B - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">CF 675B</h2>
-		<time>2018-03-01 15:48 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/CodeForces-675B">vjudge</a>
-			<a target="_blank" href="https://codeforces.com/problemset/problem/675/B">Codeforces</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem is interesting, but not difficult. First of all, there are only 4 squares <var>2*2</var> which all of them has covered the cell at the center. So it doesn't matter whatever the number in this cell is. As a result, there are <var>#n#</var> kinds of possible values at the center. Second, the four cells at the corner are just covered by one square <var>2*2</var>. So when we add a number to anyone of them, we neede to add the same number to the other three. That means there are <var>(#n#-#k#)</var> kinds of possible values at the corners, which <var>#k#</var> means the difference of the maximum one and the minimum one of the values at the corners in a valid square <var>3*3</var>. We can infer that <var>#k#</var> also equals the difference of the maximum value and the minimum value of <var>#a#+#b#</var>, <var>#a#+#c#</var>, <var>#b#+#d#</var> and <var>#c#+#d#</var>. Last of all, according to the rule of product, the number of distinct valid squares should be <var>#n#(#n#-#k#)</var>. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">CF 675B</h2>
+<time>2018-03-01 15:48 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/CodeForces-675B">vjudge</a>
+	<a target="_blank" href="https://codeforces.com/problemset/problem/675/B">Codeforces</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem is interesting, but not difficult. First of all, there are only 4 squares <math>c{2}o{&times;}c{2}</math> which all of them has covered the cell at the center. So it doesn't matter whatever the number in this cell is. As a result, there are <math>v{n}</math> kinds of possible values at the center. Second, the four cells at the corner are just covered by one square <math>c{2}o{&times;}c{2}</math>. So when we add a number to anyone of them, we neede to add the same number to the other three. That means there are <math>o{(}v{n}o{-}v{k}o{)}</math> kinds of possible values at the corners, which <math>v{k}</math> means the difference of the maximum one and the minimum one of the values at the corners in a valid square <math>c{3}o{&times;}c{3}</math>. We can infer that <math>v{k}</math> also equals the difference of the maximum value and the minimum value of <math>v{a}o{+}v{b}</math>, <math>v{a}o{+}v{c}</math>, <math>v{b}o{+}v{d}</math> and <math>v{b}o{+}v{d}</math>. Last of all, according to the rule of product, the number of distinct valid squares should be <math>v{n}o{(}v{n}o{-}v{k}o{)}</math>. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

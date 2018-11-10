@@ -1,33 +1,20 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>HDU 1213 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">HDU 1213</h2>
-		<time>2017-12-23 10:36 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/HDU-1213">vjudge</a>
-			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=1213">HDU</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem required a merge-find set. </p>
-			<p>The merge-find set is a data structure which can merge two disjoint sets and determine if two elements are in the same set. Each element has a pointer, which is its "father". So you can find the root of the set in <var>O(lg(#n#))</var>. At the same time, because it is a set, so we can put the pointer to the root after finding the root. It can reduce the time when you find the root of this element again. The time complexity of the merging is <var>O(1)</var>. You just need to set the pointer of the root of the first set to the root of the second set. </p>
-			<p>After merging, we just need to scan all the elements and count the number of the roots to solve the problem. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">HDU 1213</h2>
+<time>2017-12-23 10:36 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/HDU-1213">vjudge</a>
+	<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=1213">HDU</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem required a merge-find set. </p>
+	<p>The merge-find set is a data structure which can merge two disjoint sets and determine if two elements are in the same set. Each element has a pointer, which is its "father". So you can find the root of the set in <math>o{O}o{(}o{lg}v{n}o{)}</math>. At the same time, because it is a set, so we can put the pointer to the root after finding the root. It can reduce the time when you find the root of this element again. The time complexity of the merging is <math>o{O}o{(}c{1}o{)}</math>. You just need to set the pointer of the root of the first set to the root of the second set. </p>
+	<p>After merging, we just need to scan all the elements and count the number of the roots to solve the problem. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

@@ -1,32 +1,19 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>NOIp 2014S5 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">NOIp 2014S5</h2>
-		<time>2017-11-09 20:46 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://www.luogu.org/problemnew/show/P2296">Luogu</a>
-			<a target="_blank" href="https://www.vijos.org/p/1909">Vijos</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem is a shortest path problem. We can solved it with Dijkstra's algorithm, Bellman-Ford algorithm or <abbr title="Shortest Path Faster Algorithm">SPFA</abbr>. My solution uses SPFA, an improvement of the Bellman-Ford algorithm, but in the solution I won't talk much about it. We'll focus on the requirement of the path. </p>
-			<p>The problem asks us to find a path that is formed by the points that have no point not linked to the destination connected. So we can use a <abbr title="Depth-First Search">DFS</abbr> to find out all the points that is linked to the destination with the graph reversed. Then we can mark the points which are not allowed to be part of the path. Then we can run the SPFA. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">NOIp 2014S5</h2>
+<time>2017-11-09 20:46 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://www.luogu.org/problemnew/show/P2296">Luogu</a>
+	<a target="_blank" href="https://www.vijos.org/p/1909">Vijos</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem is a shortest path problem. We can solved it with Dijkstra's algorithm, Bellman-Ford algorithm or <abbr title="Shortest Path Faster Algorithm">SPFA</abbr>. My solution uses SPFA, an improvement of the Bellman-Ford algorithm, but in the solution I won't talk much about it. We'll focus on the requirement of the path. </p>
+	<p>The problem asks us to find a path that is formed by the points that have no point not linked to the destination connected. So we can use a <abbr title="Depth-First Search">DFS</abbr> to find out all the points that is linked to the destination with the graph reversed. Then we can mark the points which are not allowed to be part of the path. Then we can run the SPFA. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

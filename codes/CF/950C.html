@@ -1,38 +1,25 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>CF 950C - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">CF 950C</h2>
-		<time>2018-03-12 19:38 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/CodeForces-950C">vjudge</a>
-			<a target="_blank" href="https://codeforces.com/problemset/problem/950/C">Codeforces</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem is as difficult as the second problem in Senior Group, NOIp. It is not hard to understand the problem. What you are asked to do is to check if a 01 string can be divided into serval zebra sequences, which start and end with '0', and there is always a '0' between two '1', and an '1' between two '0'. </p>
-			<p>You can use an adjacency table to keep the zebra sequences. So you can add a char to a sequence in <var>O(1)</var>. Then you scan the string. When you find a char, put it at the end of a sequence ends with another char. When all the sequences end with '0' and you find another '0', just create another zebra sequence. But if you find all the sequences end with '1' and there is another '1' waiting, that means it is impossible to divide the 01 string into serval zebra sequences because there are too many '1'. As a result, you had to print -1. </p>
-			<p>Don't forget to check if all the sequences end with '0'. If any of them end with '1', the answer will be -1 too because there is an invalid zebra sequence. I got a <abbr title="Wrong Answer">WA</abbr> because of this. </p>
-			<p>By the way, if you just hand the code as the solution above just like Solution 1 in the code part, you'll receive a <abbr title="Time Limit Exceeded">TLE</abbr>. I received one too. You spent too much time finding the suitable sequence. The regular way is <var>O(length(#s#))</var>. You need two queues to put the sequences inside so that you can find the suitable sequences in <var>O(1)</var>. Solution 2 in the code part is an example of this. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Solution 1 Pascal</p>
-			<code></code>
-			<p>Solution 1 C++</p>
-			<code></code>
-			<p>Solution 2 Pascal</p>
-			<code></code>
-			<p>Solution 2 C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">CF 950C</h2>
+<time>2018-03-12 19:38 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/CodeForces-950C">vjudge</a>
+	<a target="_blank" href="https://codeforces.com/problemset/problem/950/C">Codeforces</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem is as difficult as the second problem in Senior Group, NOIp. It is not hard to understand the problem. What you are asked to do is to check if a 01 string can be divided into several zebra sequences, which start and end with '0', and there is always a '0' between two '1', and an '1' between two '0'. </p>
+	<p>You can use an adjacency table to keep the zebra sequences. So you can add a char to a sequence in <math>o{O}o{(}c{1}o{)}</math>. Then you scan the string. When you find a char, put it at the end of a sequence ends with another char. When all the sequences end with '0' and you find another '0', just create another zebra sequence. But if you find all the sequences end with '1' and there is another '1' waiting, that means it is impossible to divide the 01 string into several zebra sequences because there are too many '1'. As a result, you had to print a -1. </p>
+	<p>Don't forget to check if all the sequences end with '0'. If any of them end with '1', the answer will be -1 too because there is an invalid zebra sequence. I got a <abbr title="Wrong Answer">WA</abbr> because of this. </p>
+	<p>By the way, if you just hand the code as the solution above just like Solution 1 in the code part, you'll receive a <abbr title="Time Limit Exceeded">TLE</abbr>. I received one too. You spent too much time finding the suitable sequence. The regular way is <math>o{O}o{(}o{|}v{s}o{|}o{)}</math>, which <math>o{|}v{s}o{|}</math> is the length of the string <math>v{s}</math>. You need two queues to put the sequences inside so that you can find the suitable sequences in <math>o{O}o{(}c{1}o{)}</math>. Solution 2 in the code part is an example of this. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Solution 1 Pascal</p>
+	<code></code>
+	<p>Solution 1 C++</p>
+	<code></code>
+	<p>Solution 2 Pascal</p>
+	<code></code>
+	<p>Solution 2 C++</p>
+	<code></code>
+</section>

@@ -1,34 +1,21 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 2115 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 2115</h2>
-		<time>2018-04-28 11:58 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-2115">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=2115">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>Today is the Day 0 of <abbr title="Guangdong Olympiad in Informatics">GDOI</abbr> 2018. Here is a review of <abbr title="the extended Greatest Common Division algorithm">exGCD</abbr>. </p>
-			<p>As we've mentioned in <a href="/codes/NOIp/2012S4.html">NOIp 2012S4</a>, exGCD is used to find a pair of <var>(#x#,#y#)</var> which satsfies <var>#a##x#+#b##y#=gcd(#a#,#b#)</var>. It can be calculated with exGCD because <var>#a##x#+#b##y#=#b#(#a# div #b#)#x#+(#a# mod #b#)#x#+#b##y#=(#a# mod #b#)#x#+#b#(#y#+(#a# div #b#)#x#)=gcd(#a#,#b#)=gcd(#b#,#a# mod #b#)</var>. </p>
-			<p>Now we will focus on the problem. The problem is to calculate <var>#x#</var> in formula <var>#a#+#c##x#&equiv;#b# (mod 2(^#k#^))</var>, which equals to <var>#c##x#&equiv;#b#-#a# (mod 2(^#k#^))</var> and <var>#c##x#+2(^#k#^)#y#=#b#-#a#</var>. So whether <var>#x#</var> exists depends on if <var>gcd(#c#,2(^#k#^))|(#b#-#a#)</var>. Then the next step is to calculate <var>#c#(^-1^) (mod 2(^#k#^))</var> and the problem is solved. </p>
-			<p>By the way, you may probably notice that we need to module <var>/2(^#k#^)/gcd(#c#,2(^#k#^))/</var> but not <var>2(^#k#^)</var>. This is because we've divided <var>gcd(#c#,2(^#k#^))</var> to make sure <var>#c#(^-1^) (mod 2(^#k#^))</var> exists. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 2115</h2>
+<time>2018-04-28 11:58 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-2115">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=2115">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>Today is the Day 0 of <abbr title="Guangdong Olympiad in Informatics">GDOI</abbr> 2018. Here is a review of <abbr title="the extended Greatest Common Division algorithm">exGCD</abbr>. </p>
+	<p>As we've mentioned in <a href="/codes/?oj=NOIp&pid=2012S4">NOIp 2012S4</a>, exGCD is used to find a pair of <math>o{(}v{x}o{,}v{y}o{)}</math> which satisfies <math>v{a}o{}v{x}o{+}v{b}o{}v{y}o{=}o{gcd}o{(}v{a}o{,}v{b}o{)}</math>. It can be calculated with exGCD because <math>v{a}o{}v{x}o{+}v{b}o{}v{y}o{=}v{b}o{}o{(}v{a}o{div}v{b}o{)}o{}v{x}o{+}o{(}v{a}o{mod}v{b}o{)}o{}v{x}o{+}v{b}o{}v{y}o{=}o{(}v{a}o{mod}v{b}o{)}o{}v{x}o{+}v{b}o{}o{(}o{(}v{a}o{div}v{b}o{)}o{}v{x}o{+}v{y}o{)}o{=}o{gcd}o{(}v{a}o{,}v{b}o{)}o{=}o{gcd}o{(}v{b}o{,}v{a}o{mod}v{b}o{)}</math>. </p>
+	<p>Now we focus on the problem. The problem is to calculate <math>v{x}</math> in formula <math>v{a}o{+}v{c}o{}v{x}o{&equiv;}v{b}o{(}o{mod}c{2}p{v{k}}o{)}</math>, which equals to <math>v{c}o{}v{x}o{&equiv;}v{b}o{-}v{a}o{(}o{mod}c{2}p{v{k}}o{)}</math> and <math>v{c}o{}v{x}o{+}c{2}p{v{k}}o{}v{y}o{=}v{b}o{-}v{a}</math>. So whether <math>v{x}</math> exists depends on if <math>o{gcd}o{(}v{c}o{,}c{2}p{v{k}}o{)}o{|}o{(}v{b}o{-}v{a}o{)}</math>. Then the next step is to calculate <math>v{c}p{o{-}c{1}}o{(}o{mod}c{2}p{v{k}}o{)}</math> and the problem is solved. </p>
+	<p>By the way, you may probably notice that we need to module <math>f{c{2}p{v{k}}l{}o{gcd}o{(}v{c}o{,}c{2}p{v{k}}o{)}}</math> but not <math>c{2}p{v{k}}</math>. This is because we've divided <math>o{gcd}o{(}v{c}o{,}c{2}p{v{k}}o{)}</math> to make sure <math>v{c}p{o{-}c{1}}o{(}o{mod}c{2}p{v{k}}o{)}</math> exists. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

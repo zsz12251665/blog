@@ -1,32 +1,19 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 2777 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 2777</h2>
-		<time>2017-11-24 21:39 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-2777">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=2777">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem needs a segment tree to solve. A segment tree is used to solve problems based on ranges. For example, this problem requires us to provide two kinds of operation, which are setting values on a range and asking number of the colours on a range. </p>
-			<p>The first step is to build and initialize the segment tree. As we all know, the segment tree is a tree of which the nodes keeps the information of the range <var>[#l#,#r#]</var> and its two children keep the information of the range <var>[#l#,/#l#+#r#/2/]</var> and <var>[/#l#+#r#/2/+1,#r#]</var>. So we can use a <abbr title="Depth-First Search">DFS</abbr> to format it. By the way, we will also need to use the state compression to keep the states of thirty colours in an integer. Then we can read the operations. For each setting operation, we can finish it in <var>O(lg(#n#))</var>. This is because when the operation come to a node, we can check if the range of the node is in the range of the operation. If it is, set the lazytag up and return, or pass down the lazytag, send the operation to its children and update colour state. For each asking operation, it can also be finished in <var>O(lg(#n#))</var>. It is similar to the setting operation but we just need to return the the compressed state and then count the number of colours. So the time complexity of the whole algorithm is <var>O(#n#lg(#n#))</var>. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 2777</h2>
+<time>2017-11-24 21:39 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-2777">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=2777">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem needs a segment tree to solve. A segment tree is used to solve problems based on ranges. For example, this problem requires us to provide two kinds of operation, which are setting values on a range and asking number of the colours on a range. </p>
+	<p>The first step is to build and initialize the segment tree. As we all know, the segment tree is a tree of which the nodes keeps the information of the range <math>o{[}v{l}o{,}v{r}o{]}</math> and its two children keep the information of the range <math>o{[}v{l}o{,}f{v{l}o{+}o{r}l{}c{2}}o{]}</math> and <math>o{[}f{v{l}o{+}o{r}l{}c{2}}o{+}c{1}o{,}v{r}o{]}</math>. So we can use a <abbr title="Depth-First Search">DFS</abbr> to format it. By the way, we will also need to use the state compression to keep the states of thirty colours in an integer. Then we can read the operations. For each setting operation, we can finish it in <math>o{O}o{(}o{lg}v{n}o{)}</math>. This is because when the operation come to a node, we can check if the range of the node is in the range of the operation. If it is, set the lazytag up and return, or pass down the lazytag, send the operation to its children and update colour state. For each asking operation, it can also be finished in <math>o{O}o{(}o{lg}v{n}o{)}</math>. It is similar to the setting operation but we just need to return the the compressed state and then count the number of colours. So the time complexity of the whole algorithm is <math>o{O}o{(}v{n}o{}o{lg}v{n}o{)}</math>. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

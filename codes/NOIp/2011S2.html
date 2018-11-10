@@ -1,31 +1,18 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>NOIp 2011S2 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">NOIp 2011S2</h2>
-		<time>2017-05-19 16:30 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://www.luogu.org/problemnew/show/P1311">Luogu</a>
-			<a target="_blank" href="https://www.vijos.org/p/1737">Vijos</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>We can think this problem in this way: we have known the number of the ways when there are <var>i</var> hotels. Now how should I change the answer when I add one hotel more? First of all, one of these two guys must stay in the new hotel because every plan that none of them stay in the hotel has all been counted. Second, If the new cafe is under the cost limit, the other guy can stay in any hotels in the same colour. Or he can stay in any hotels in the same colour except the ones which have no fit cafe on the way to the new hotel. Third, we can use a counter to count how many hotels the second guy can stay in. When you get a new hotel, if its cafe is under the limit, set it as same as the number of the hotels in the same colour. Or do nothing to the counter and just count the numbers of the hotels in the same colour. So that's the solution, which starts from no hotels and 0 ways to stay in. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">NOIp 2011S2</h2>
+<time>2017-05-19 16:30 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://www.luogu.org/problemnew/show/P1311">Luogu</a>
+	<a target="_blank" href="https://www.vijos.org/p/1737">Vijos</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>We can think this problem in this way: we have known the number of the ways when there are <math>v{i}</math> hotels. Now how should I change the answer when I add one hotel more? First of all, one of these two guys must stay in the new hotel because every plan that none of them stay in the hotel has all been counted. Second, If the new cafe is under the cost limit, the other guy can stay in any hotels in the same colour. Or he can stay in any hotels in the same colour except the ones which have no fit cafe on the way to the new hotel. Third, we can use a counter to count how many hotels the second guy can stay in. When you get a new hotel, if its cafe is under the limit, set it as same as the number of the hotels in the same colour. Or do nothing to the counter and just count the numbers of the hotels in the same colour. So that's the solution, which starts from no hotels and 0 ways to stay in. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

@@ -1,33 +1,20 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>CF 679B - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">CF 679B</h2>
-		<time>2017-10-25 18:41 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/CodeForces-679B">vjudge</a>
-			<a target="_blank" href="https://codeforces.com/problemset/problem/679/B">Codeforces</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>First of all, we find the maximum <var>#a#</var> that <var>#a#(^3^)</var> is not greater than <var>#m#</var>. And the first block must have side <var>#a#</var> or <var>(#a#-1)</var>. That is because if we use <var>(#a#-2)</var> or smaller integers. It must be smaller than using <var>(#a#-1)</var> because the first block can be replaced by a block with side <var>(#a#-1)</var>. But why <var>(#a#-1)</var> cannot be replaced by <var>#a#</var>? Fox example, if we've an <var>#m#</var> which equals 9, then <var>#a#</var> would be 2. But we know that the maximum number of the blocks is 7, with <var>(1(^3^)+1(^3^)+1(^3^)+1(^3^)+1(^3^)+1(^3^)+1(^3^))</var>. So we may have more volumes to make a higher tower when we use the block with side <var>(#a#-1)</var>. </p>
-			<p>Secondly, I have to remind you that when you pick up a block of with side <var>#a#</var>, the total volume of rest part should not be greater than <var>((#a#+1)(^3^)-#a#(^3^))</var>, or this block is a illegal block because it is not the biggest block that can be taken. So when we choose to take the block with side <var>#a#</var> or <var>(#a#-1)</var>, the volume remained are very important. The more volume remained, the higher tower we can build. So we should pick up the larger one. </p>
-			<p>After getting to know which block should we choose, we get the answer. After getting <var>#m#</var>, repeat choosing the most suitable block and remove it from the maximum volume or reset <var>#m#</var> until it is reduced to 0. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">CF 679B</h2>
+<time>2017-10-25 18:41 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/CodeForces-679B">vjudge</a>
+	<a target="_blank" href="https://codeforces.com/problemset/problem/679/B">Codeforces</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>First of all, we find the maximum <math>v{a}</math> that <math>v{a}p{3}</math> is not greater than <math>v{m}</math>. And the first block must have side <math>v{a}</math> or <math>o{(}v{a}o{-}c{1}o{)}</math>. That is because if we use <math>o{(}v{a}o{-}c{2}o{)}</math> or smaller integers. It must be smaller than using <math>o{(}v{a}o{-}c{1}o{)}</math> because the first block can be replaced by a block with side <math>o{(}v{a}o{-}c{1}o{)}</math>. But why <math>o{(}v{a}o{-}c{1}o{)}</math> cannot be replaced by <math>v{a}</math>? Fox example, if we've an <math>v{m}</math> which equals <math>c{9}</math>, then <math>v{a}</math> would be <math>c{2}</math>. But we know that the maximum number of the blocks is <math>c{7}</math>, which is <math>o{(}c{1}p{3}o{+}c{1}p{3}o{+}c{1}p{3}o{+}c{1}p{3}o{+}c{1}p{3}o{+}c{1}p{3}o{+}c{1}p{3}o{)}</math>. So we may have more volumes to make a higher tower when we use the block with side <math>o{(}v{a}o{-}c{1}o{)}</math>. </p>
+	<p>Secondly, I have to remind you that when you pick up a block of with side <math>v{a}</math>, the total volume of rest part should not be greater than <math>o{(}o{(}v{a}o{-}c{1}o{)}p{3}o{-}v{a}p{3}o{)}</math>, or this block is a illegal block because it is not the biggest block that can be taken. So when we choose to take the block with side <math>v{a}</math> or <math>o{(}v{a}o{-}c{1}o{)}</math>, the volume remained are very important. The more volume remained, the higher tower we can build. So we should pick up the larger one. </p>
+	<p>After getting to know which block should we choose, we get the answer. After getting <math>v{m}</math>, repeat choosing the most suitable block and remove it from the maximum volume or reset <math>v{m}</math> until it is reduced to <math>c{0}</math>. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

@@ -3,39 +3,26 @@
 	font-family: "STIX";
 	src: url("/add-on/math/STIX.woff");
 }
-var
+math, var
 {
 	display: inline;
 	font-family: "STIX", serif;
 	font-style: normal;
 	line-height: 100%;
 }
-var span:empty
-{
-	display: block;
-	height: 0;
-}
-var .div
+math mb
 {
 	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	width: auto;
+	font-size: smaller;
+	vertical-align: sub;
 }
-var .div span:empty
+math mc, math mo, math mv, var .var
 {
-	border-top-color: var(--text-color);
-	border-top-style: solid;
-	border-top-width: thin;
+	display: inline-block;
+	padding-left: 0.05rem;
+	padding-right: 0.05rem;
 }
-var .sqrt
-{
-	border-top-color: var(--text-color);
-	border-top-style: solid;
-	border-top-width: thin;
-	display: inline;
-}
-var .updown
+math mf, var .div
 {
 	display: inline-block;
 	font-size: smaller;
@@ -43,9 +30,35 @@ var .updown
 	vertical-align: middle;
 	width: auto;
 }
-var .var
+math mf ml:empty, var .div span:empty
+{
+	border-top-color: var(--text-color);
+	border-top-style: solid;
+	border-top-width: thin;
+}
+math mi, var .updown
 {
 	display: inline-block;
-	margin-left: 0.1rem;
-	margin-right: 0.1rem;
+	font-size: smaller;
+	text-align: start;
+	vertical-align: middle;
+	width: auto;
+}
+math ml:empty, var span:empty
+{
+	display: block;
+	height: 0;
+}
+math mp
+{
+	display: inline-block;
+	font-size: smaller;
+	vertical-align: super;
+}
+math mt, var .sqrt
+{
+	border-top-color: var(--text-color);
+	border-top-style: solid;
+	border-top-width: thin;
+	display: inline;
 }

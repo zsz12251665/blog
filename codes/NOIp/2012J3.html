@@ -1,31 +1,18 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>NOIp 2012J3 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">NOIp 2012J3</h2>
-		<time>2017-10-27 09:11 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://www.luogu.org/problemnew/show/P1077">Luogu</a>
-			<a target="_blank" href="https://www.vijos.org/p/1792">Vijos</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem is a <abbr title="dynamic planning">dp</abbr> problem. We make the <var>#dp#</var> array that <var>#dp#(_#i#,#j#_)</var> means after choosing <var>#i#</var> kinds of flowers we know have <var>#j#</var> pots of flowers. And the state transition formula will be <var>#dp#(_#i#,#j#_)=&sum;(_#k#&isin;[0,min(#a#(_#i#_),#j#)]_)(#dp#(_#i#-1,#j#-#k#_))</var>, that <var>#k#</var> means to the number of the pots of the <var>#i#</var>-th flowers. And the answer, of course, will be <var>#dp#(_#n#,#m#_)</var>. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">NOIp 2012J3</h2>
+<time>2017-10-27 09:11 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://www.luogu.org/problemnew/show/P1077">Luogu</a>
+	<a target="_blank" href="https://www.vijos.org/p/1792">Vijos</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem is a <abbr title="dynamic planning">dp</abbr> problem. We make the <math>v{dp}</math> array that <math>v{dp}b{v{i}o{,}v{j}}</math> means after choosing <math>v{i}</math> kinds of flowers we know have <math>v{j}</math> pots of flowers. And the state transition formula will be <math>v{dp}b{v{i}o{,}v{j}}o{=}o{&sum;}i{o{min}o{(}v{a}b{v{i}}o{,}v{j}o{)}l{}v{k}o{=}c{0}}v{dp}b{v{i}o{-}c{1}o{,}v{j}o{-}v{k}}</math>, that <math>v{k}</math> means to the number of the pots of the <math>v{i}</math>-th flowers. And the answer, of course, will be <math>v{dp}b{v{n}o{,}v{m}}</math>. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

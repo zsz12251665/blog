@@ -1,36 +1,23 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>BZOJ 4300 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">BZOJ 4300</h2>
-		<time>2016-12-21 20:18 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/HYSBZ-4300">vjudge</a>
-			<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=4300">BZOJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>When I read the problem the first time, I thought out a way like solving the longest increasing subsequence problem, which means I just need an array to keep the longest subsequence until this integer. The code is given as Solution 1 in the code part. </p>
-			<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is <var>O(#n#(^2^))</var>. Later, I got another algorithm whose time complexity is <var>O(#n#lg(#a#(_#i#_)))</var>. It just needs a <abbr title="dynamic planning">dp</abbr> algorithm. <var>#dp#(_#i#_)</var> keeps the length of the longest subsequence whose last integer's <var>#i#</var>-th digit is not 0 in binary. So after read in each integer in sequence, I can update the <var>#dp#</var> array in an <var>O(lg(#a#(_#i#_)))</var> algorithm. And that is Solution 2, which is accepted. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Solution 1 Pascal</p>
-			<code></code>
-			<p>Solution 1 C++</p>
-			<code></code>
-			<p>Solution 2 Pascal</p>
-			<code></code>
-			<p>Solution 2 C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">BZOJ 4300</h2>
+<time>2016-12-21 20:18 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/HYSBZ-4300">vjudge</a>
+	<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=4300">BZOJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>When I read the problem the first time, I thought out a way like solving the longest increasing subsequence problem, which means I just need an array to keep the longest subsequence until this integer. The code is given as Solution 1 in the code part. </p>
+	<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is <math>o{O}o{(}v{n}p{2}o{)}</math>. Later, I got another algorithm whose time complexity is <math>o{O}o{(}v{n}o{}o{lg}v{a}b{v{i}}o{)}</math>. It just needs a <abbr title="dynamic planning">dp</abbr> algorithm. <math>v{dp}b{v{i}}</math> keeps the length of the longest subsequence whose last integer's <math>v{i}</math>-th digit is not 0 in binary. So after read in each integer in sequence, I can update the <math>v{dp}</math> array in an <math>o{O}o{(}o{lg}v{a}b{v{i}}o{)}</math> algorithm. And that is Solution 2, which is accepted. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Solution 1 Pascal</p>
+	<code></code>
+	<p>Solution 1 C++</p>
+	<code></code>
+	<p>Solution 2 Pascal</p>
+	<code></code>
+	<p>Solution 2 C++</p>
+	<code></code>
+</section>

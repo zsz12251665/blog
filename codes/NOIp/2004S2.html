@@ -1,33 +1,20 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>NOIp 2004S2 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">NOIp 2004S2</h2>
-		<time>2017-04-25 20:12 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://www.luogu.org/problemnew/show/P1090">Luogu</a>
-			<a target="_blank" href="https://www.vijos.org/p/1097">Vijos</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>Well, let's define that the bunches of fruits are <var>#fruit#(_1_)</var> to <var>#fruit#(_#n#_)</var>. And for every <var>#i#</var> in <var>[1,#n#-1]</var>, <var>#fruit#(_#i#_)</var> is smaller than <var>#fruit#(_#i#+1_)</var>. When we need to combine two bunches of fruits, choose <var>#fruit#(_1_)</var> and <var>#fruit#(_2_)</var> can keep the least cost since they are the smallest ones. And then we add the new bunch which is <var>(#fruit#(_1_)+#fruit#(_2_))</var> back to the <var>fruit</var> array. Now we have <var>(#n#-1)</var> bunches now. Repeat these steps, we can finally have a single bunch with least cost. </p>
-			<p>What's important is that we can use a heap to keep the fruit array. The heap is a data structure with an <var>O(lg(#n#))</var> insert and an <var>O(lg(#n#))</var> extract. With the heap to keep the <var>#fruit#</var> array, we can reduce the time complexity to <var>O(#n#lg(#n#))</var>, which is fast enough to solve the problem. </p>
-			<p>While building up the heap, I found a way to make fewer mistakes when extracting. That is fill the null part with maxlongint. That means if a point has no child, it has a child or two children with maxlongint. That can be very helpful because I don't need to judge if the point has child or not by the size of the heap. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">NOIp 2004S2</h2>
+<time>2017-04-25 20:12 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://www.luogu.org/problemnew/show/P1090">Luogu</a>
+	<a target="_blank" href="https://www.vijos.org/p/1097">Vijos</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>Well, let's define that the bunches of fruits are <math>v{fruit}b{c{1}}</math> to <math>v{fruit}b{v{n}}</math>. And for every <math>v{i}</math> in <math>o{[}c{1}o{,}v{n}o{-}c{1}o{]}</math>, <math>v{fruit}b{v{i}}</math> is smaller than <math>v{fruit}b{v{i}o{+}c{1}}</math>. When we need to combine two bunches of fruits, choose <math>v{fruit}b{c{1}}</math> and <math>v{fruit}b{c{2}}</math> can keep the least cost since they are the smallest ones. And then we add the new bunch which is <math>o{(}v{fruit}b{c{1}}o{+}v{fruit}b{c{2}}o{)}</math> back to the <math>v{fruit}</math> array. Now we have <math>o{(}v{n}o{-}c{1}o{)}</math> bunches now. Repeat these steps, we can finally have a single bunch with least cost. </p>
+	<p>What's important is that we can use a heap to keep the fruit array. The heap is a data structure with an <math>o{O}o{(}o{lg}v{n}o{)}</math> insert and an <math>o{O}o{(}o{lg}v{n}o{)}</math> extract. With the heap to keep the <math>v{fruit}</math> array, we can reduce the time complexity to <math>o{O}o{(}v{n}o{}o{lg}v{n}o{)}</math>, which is fast enough to solve the problem. </p>
+	<p>While building up the heap, I found a way to make fewer mistakes when extracting. That is fill the null part with <math>c{2147483647}</math>. That means if a point has no child, it has a child or two children with <math>c{2147483647}</math>. That can be very helpful because I don't need to judge if the point has child or not by the size of the heap. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

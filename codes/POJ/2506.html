@@ -1,31 +1,18 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 2506 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 2506</h2>
-		<time>2017-05-05 21:42 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-2506">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=2506">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>Let's solve the problem step by step. It is obvious that there is only one method to tile a <var>2*0</var> rectangle(use no tiles) and a <var>2*1</var> rectangle(use a <var>2*1</var> tile). How about the number of methods for longer rectangles? Well, a method for a <var>2*#i#</var> rectangle must have a standing <var>2*1</var> tile, a <var>2*2</var> tile or two lying <var>2*1</var> tiles, right? If there is a standing <var>2*1</var> tile, the number of methods will be the number of methods for a <var>2*(#i#-1)</var> rectangle. If there is a <var>2*2</var> tile or two lying <var>2*1</var> tiles, the number of methods will be the number of methods for a <var>2*(#i#-2)</var> rectangle. So the number of methods will be the number of methods for a <var>2*(#i#-1)</var> rectangle plus twice the number of methods for a <var>2*(#i#-2)</var> rectangle in total. The data range is lower than 250, so we can pretreat the numbers for every <var>#i#</var>. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 2506</h2>
+<time>2017-05-05 21:42 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-2506">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=2506">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>Let's solve the problem step by step. It is obvious that there is only one method to tile a <math>c{2}o{&times;}c{0}</math> rectangle(use no tiles) and a <math>c{2}o{&times;}c{1}</math> rectangle(use a <math>c{2}o{&times;}c{1}</math> tile). How about the number of methods for longer rectangles? Well, a method for a <math>c{2}o{&times;}v{i}</math> rectangle must have a standing <math>c{2}o{&times;}c{1}</math> tile, a <math>c{2}o{&times;}c{2}</math> tile or two lying <math>c{2}o{&times;}c{1}</math> tiles, right? If there is a standing <math>c{2}o{&times;}c{1}</math> tile, the number of methods will be the number of methods for a <math>c{2}o{&times;}o{(}v{i}o{-}c{1}o{)}</math> rectangle. If there is a <math>c{2}o{&times;}c{2}</math> tile or two lying <math>c{2}o{&times;}c{1}</math> tiles, the number of methods will be the number of methods for a <math>c{2}o{&times;}o{(}v{i}o{-}c{2}o{)}</math> rectangle. So the number of methods will be the number of methods for a <math>c{2}o{&times;}o{(}v{i}o{-}c{1}o{)}</math> rectangle plus twice the number of methods for a <math>c{2}o{&times;}o{(}v{i}o{-}c{2}o{)}</math> rectangle in total. The data range is lower than 250, so we can pretreat the numbers for every <math>v{i}</math>. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

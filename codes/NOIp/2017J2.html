@@ -1,31 +1,18 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>NOIp 2017J2 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">NOIp 2017J2</h2>
-		<time>2018-09-04 21:54 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://www.luogu.org/problemnew/show/P3955">Luogu</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>Well, it has been a long time since last practice. Now I am the senior of the school. So in the next year (until June, 2019), I'll be busy in my school work. I'm afraid that I don't have much spare time to solve problems. </p>
-			<p>This problem is vey simple. The <abbr title="Brute Force">BF</abbr> could solve it. But you will find it faster if you sort the book array. This means you can abort the rest when you find the first match. And a beeter optimization is to use a trie. This can reduce the time complexity from <var>O(#n##q#)</var> to <var>O(#n#+#q#)</var>. If you build the trie of the book indexes, you can spend <var>O(1)</var> to find the right book (But remember to reverse the order of the indexes). </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">NOIp 2017J2</h2>
+<time>2018-09-04 21:54 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://www.luogu.org/problemnew/show/P3955">Luogu</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>Well, it has been a long time since last practice. Now I am the senior of the school. So in the next year (until June, 2019), I'll be busy in my school work. I'm afraid that I don't have much spare time to solve problems. </p>
+	<p>This problem is very simple. The <abbr title="Brute Force">BF</abbr> could solve it. But you will find it faster if you sort the book array. This means you can abort the rest when you find the first match. And a better optimization is to use a trie. This can reduce the time complexity from <math>o{O}o{(}v{n}o{}v{q}o{)}</math> to <math>o{O}o{(}v{n}o{+}v{q}o{)}</math>. If you build the trie of the book indexes, you can spend <math>o{O}o{(}c{1}o{)}</math> to find the right book (But remember to reverse the order of the indexes). </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

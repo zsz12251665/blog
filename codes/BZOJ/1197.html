@@ -1,92 +1,79 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>BZOJ 1197 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">BZOJ 1197</h2>
-		<time>2017-03-30 16:20 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/HYSBZ-1197">vjudge</a>
-			<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=1197">BZOJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>The meeting with the problem was during an in-team competition, the problems of which are from <abbr title="Hunan Olympiad in Informatics">HNOI</abbr>. It was the only one which I had the idea on what the problem is. But I had no idea on the solution. After the competition, one of my friends advised me to write out every pair of <var>(#n#,#m#)</var>. And I did it. Then I had a sheet like this: </p>
-			<div class="tblscroll">
-				<table align="center">
-					<tr align="center">
-						<th><var>(#n#,#m#)</var></th>
-						<th><var>#m#=0</var></th>
-						<th><var>#m#=1</var></th>
-						<th><var>#m#=2</var></th>
-						<th><var>#m#=3</var></th>
-						<th><var>#m#=4</var></th>
-						<th><var>#m#=5</var></th>
-						<th><var>#m#=6</var></th>
-						<th><var>#m#=7</var></th>
-						<th><var>#m#=8</var></th>
-						<th><var>#m#=9</var></th>
-						<th><var>#m#=10</var></th>
-					</tr>
-					<tr align="center">
-						<th><var>#n#=1</var></th>
-						<td>1</td>
-						<td>2</td>
-						<td>4</td>
-						<td>6</td>
-						<td>8</td>
-						<td>10</td>
-						<td>12</td>
-						<td>14</td>
-						<td>16</td>
-						<td>18</td>
-						<td>20</td>
-					</tr>
-					<tr align="center">
-						<th><var>#n#=2</var></th>
-						<td>1</td>
-						<td>2</td>
-						<td>4</td>
-						<td>8</td>
-						<td>14</td>
-						<td>22</td>
-						<td>32</td>
-						<td>44</td>
-						<td>58</td>
-						<td>74</td>
-						<td>92</td>
-					</tr>
-					<tr align="center">
-						<th><var>#n#=3</var></th>
-						<td>1</td>
-						<td>2</td>
-						<td>4</td>
-						<td>8</td>
-						<td>16</td>
-						<td>30</td>
-						<td>52</td>
-						<td>84</td>
-						<td>128</td>
-						<td>186</td>
-						<td>260</td>
-					</tr>
-				</table>
-			</div>
-			<p>According to the limited data, we can find some interesting rules. First of all, it is obvious that the number of kinds of flowers equals 1 while <var>#m#</var> equals 0. Besides, when <var>#n#</var> equals 1 and <var>#m#</var> is greater than 0, the number of kinds of flowers is 2 times as large as <var>#m#</var>. What's more, when <var>#n#</var> is greater than 1 and <var>#m#</var> is greater than 0, the number of kinds of flowers equals the sum of the one with <var>(#n#-1,#m#-1)</var> and the one with <var>(#n#,#m#-1)</var>. And that's the solution! I don't know how to prove it, but the when I submitted the code with this solution, it did return an <abbr title="Accepted">AC</abbr>. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">BZOJ 1197</h2>
+<time>2017-03-30 16:20 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/HYSBZ-1197">vjudge</a>
+	<a target="_blank" href="http://www.lydsy.com/JudgeOnline/problem.php?id=1197">BZOJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>The meeting with the problem was during an in-team competition, the problems of which are from <abbr title="Hunan Olympiad in Informatics">HNOI</abbr>. It was the only one which I had the idea on what the problem is. But I had no idea on the solution. After the competition, one of my friends advised me to write out every pair of <math>o{(}v{n}o{,}v{m}o{)}</math>. And I did it. Then I had a sheet like this: </p>
+	<div class="tblscroll">
+		<table align="center">
+			<tr align="center">
+				<th><math>o{(}v{n}o{,}v{m}o{)}</math></th>
+				<th><math>v{m}o{=}c{0}</math></th>
+				<th><math>v{m}o{=}c{1}</math></th>
+				<th><math>v{m}o{=}c{2}</math></th>
+				<th><math>v{m}o{=}c{3}</math></th>
+				<th><math>v{m}o{=}c{4}</math></th>
+				<th><math>v{m}o{=}c{5}</math></th>
+				<th><math>v{m}o{=}c{6}</math></th>
+				<th><math>v{m}o{=}c{7}</math></th>
+				<th><math>v{m}o{=}c{8}</math></th>
+				<th><math>v{m}o{=}c{9}</math></th>
+				<th><math>v{m}o{=}c{10}</math></th>
+			</tr>
+			<tr align="center">
+				<th><math>v{n}o{=}c{1}</math></th>
+				<td><math>c{1}</math></td>
+				<td><math>c{2}</math></td>
+				<td><math>c{4}</math></td>
+				<td><math>c{6}</math></td>
+				<td><math>c{8}</math></td>
+				<td><math>c{10}</math></td>
+				<td><math>c{12}</math></td>
+				<td><math>c{14}</math></td>
+				<td><math>c{16}</math></td>
+				<td><math>c{18}</math></td>
+				<td><math>c{20}</math></td>
+			</tr>
+			<tr align="center">
+				<th><math>v{n}o{=}c{2}</math></th>
+				<td><math>c{1}</math></td>
+				<td><math>c{2}</math></td>
+				<td><math>c{4}</math></td>
+				<td><math>c{8}</math></td>
+				<td><math>c{14}</math></td>
+				<td><math>c{22}</math></td>
+				<td><math>c{32}</math></td>
+				<td><math>c{44}</math></td>
+				<td><math>c{58}</math></td>
+				<td><math>c{74}</math></td>
+				<td><math>c{92}</math></td>
+			</tr>
+			<tr align="center">
+				<th><math>v{n}o{=}c{3}</math></th>
+				<td><math>c{1}</math></td>
+				<td><math>c{2}</math></td>
+				<td><math>c{4}</math></td>
+				<td><math>c{8}</math></td>
+				<td><math>c{16}</math></td>
+				<td><math>c{30}</math></td>
+				<td><math>c{52}</math></td>
+				<td><math>c{84}</math></td>
+				<td><math>c{128}</math></td>
+				<td><math>c{186}</math></td>
+				<td><math>c{260}</math></td>
+			</tr>
+		</table>
+	</div>
+	<p>According to the limited data, we can find some interesting rules. First of all, it is obvious that the number of kinds of flowers always equals 1 when <math>v{m}o{=}c{0}</math>. Besides, if <math>v{n}o{=}c{1}</math> and <math>v{m}o{&ge;}c{1}</math>, the number of kinds of flowers is 2 times as large as <math>v{m}</math>. What's more, when <math>v{n}o{&ge;}c{2}</math> and <math>v{m}o{&ge;}c{1}</math>, the number of kinds of flowers equals the sum of the one with <math>o{(}v{n}o{-}c{1}o{,}v{m}o{-}c{1}o{)}</math> and the one with <math>o{(}v{n}o{,}v{m}o{-}c{1}o{)}</math>. And that's the solution! I don't know how to prove it, but the when I submitted the code with this solution, it did return an <abbr title="Accepted">AC</abbr>. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

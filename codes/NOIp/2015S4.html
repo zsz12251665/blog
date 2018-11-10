@@ -1,32 +1,19 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>NOIp 2015S4 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">NOIp 2015S4</h2>
-		<time>2017-11-08 21:29 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://www.luogu.org/problemnew/show/P2678">Luogu</a>
-			<a target="_blank" href="https://www.vijos.org/p/1981">Vijos</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>I spent a large amount of time thinking how to solve the problem with greedy algorithm or <abbr title="dynamic planning">dp</abbr> algorithm until I knew that the correct solution is halving searching algorithm since the answer is monotonical. Greedy algorithm requires an <var>O(#n#(^2^))</var> time complexity and dp algorithm is completely wrong. </p>
-			<p>The halving searching algorithm is acceptable because it provides an <var>O(#n#lg(#l#))</var> time complexity. First of all, we set the range as <var>[0,#l#]</var>. Then we try if making the minimum distance between two rocks as the middle value of the range is acceptable. Then we can reduce the searching range as half of the last range. Continue to take these steps until the range is empty. So we will only try <var>lg(#l#)</var> times. For each try, we can finish it by scanning the rocks once, which is <var>O(#n#)</var>. So we solve the problem. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">NOIp 2015S4</h2>
+<time>2017-11-08 21:29 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://www.luogu.org/problemnew/show/P2678">Luogu</a>
+	<a target="_blank" href="https://www.vijos.org/p/1981">Vijos</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>I spent a large amount of time thinking how to solve the problem with greedy algorithm or <abbr title="dynamic planning">dp</abbr> algorithm until I knew that the correct solution is halving searching algorithm since the answer is monotonical. Greedy algorithm requires an <math>o{O}o{(}v{n}p{2}o{)}</math> time complexity and dp algorithm is completely wrong. </p>
+	<p>The halving searching algorithm is acceptable because it provides an <math>o{O}o{(}v{n}o{}o{lg}v{l}o{)}</math> time complexity. First of all, we set the range as <math>o{[}c{0}o{,}v{l}o{]}</math>. Then we try if making the minimum distance between two rocks as the middle value of the range is acceptable. Then we can reduce the searching range as half of the last range. Continue to take these steps until the range is empty. So we will only try <math>o{lg}v{l}</math> times. For each try, we can finish it by scanning the rocks once, which is <math>o{O}o{(}v{n}o{)}</math>. So we solve the problem. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

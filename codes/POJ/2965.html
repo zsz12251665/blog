@@ -1,32 +1,19 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 2965 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 2965</h2>
-		<time>2017-04-27 16:59 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-2965">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=2965">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>Well, first of all, we can get some information from the description. Firstly, your action on a handle have two stages: do and not do. That is because every twice you do on the same handle, it is as same as what it is like when you haven't do. Secondly, if you do on all the handles on the row <var>#i#</var> and column <var>#j#</var>, it will just change the stage of <var>(#i#,#j#)</var>. That is because the handles which are not on row <var>#i#</var> or column <var>#j#</var> had been change twice. For example, <var>(#a#,#b#)</var> was change when doing on <var>(#i#,#b#)</var> and doing on <var>(#a#,#j#)</var>. And the handles on the row <var>#i#</var> or column <var>#j#</var>(not include <var>(#i#,#j#)</var>) had been change 4 times(when doing on <var>(#i#,1)</var>, <var>(#i#,2)</var>, <var>(#i#,3)</var>, <var>(#i#,4)</var> or when doing on <var>(1,#j#)</var>, <var>(2,#j#)</var>, <var>(3,#j#)</var>, <var>(4,#j#)</var>). <var>(#i#,#j#)</var> had been change for 7 times(every change has covered on <var>(#i#,#j#)</var>), which is the only one that was changed odd times. </p>
-			<p>With the information above, the solution is very clear. First of all, scan the handles. Whenever finding a '+' on <var>(#i#,#j#)</var>, do on every handle on the row <var>#i#</var> and column <var>#j#</var>. If it was done, then undo it. The information of whether it was done will be kept in the <var>#done#</var> array. After the scanning, count the number of the handles that are done. And then, print the number and the coordinates of the handles that are done. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 2965</h2>
+<time>2017-04-27 16:59 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-2965">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=2965">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>Well, first of all, we can get some information from the description. Firstly, your action on a handle have two stages: do and not do. That is because every twice you do on the same handle, it is as same as what it is like when you haven't do. Secondly, if you do on all the handles on the row <math>v{i}</math> and column <math>v{j}</math>, it will just change the stage of <math>o{(}v{i}o{,}v{j}o{)}</math>. That is because the handles which are not on row <math>v{i}</math> or column <math>v{j}</math> had been change twice. For example, <math>o{(}v{a}o{,}v{b}o{)}</math> was change when doing on <math>o{(}v{i}o{,}v{b}o{)}</math> and doing on <math>o{(}v{a}o{,}v{j}o{)}</math>. And the handles on the row <math>v{i}</math> or column <math>v{j}</math> (not include <math>o{(}v{i}o{,}v{j}o{)}</math>) had been change 4 times(when doing on <math>o{(}v{i}o{,}c{1}o{)}</math>, <math>o{(}v{i}o{,}c{2}o{)}</math>, <math>o{(}v{i}o{,}c{3}o{)}</math>, <math>o{(}v{i}o{,}c{4}o{)}</math> or when doing on <math>o{(}c{1}o{,}v{j}o{)}</math>, <math>o{(}c{2}o{,}v{j}o{)}</math>, <math>o{(}c{3}o{,}v{j}o{)}</math>, <math>o{(}c{4}o{,}v{j}o{)}</math>). <math>o{(}v{i}o{,}v{j}o{)}</math> had been change for 7 times (every change has covered on <math>o{(}v{i}o{,}v{j}o{)}</math>), which is the only one that was changed odd times. </p>
+	<p>With the information above, the solution is very clear. First of all, scan the handles. Whenever finding a '+' on <math>o{(}v{i}o{,}v{j}o{)}</math>, do on every handle on the row <math>v{i}</math> and column <math>v{j}</math>. If it was done, then undo it. The information of whether it was done will be kept in the <math>v{done}</math> array. After the scanning, count the number of the handles that are done. And then, print the number and the coordinates of the handles that are done. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

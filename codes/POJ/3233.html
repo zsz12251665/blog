@@ -1,32 +1,19 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 3233 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 3233</h2>
-		<time>2017-03-23 20:36 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-3233">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=3233">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem is about the matrix multiplication. For two <var>#n#*#n#</var> matrix <var>#A#</var> and <var>#B#</var>, their product <var>#P#</var> can be calculated according to <var>#P#(_#i#,#j#_)=&sum;(_#c#&isin;[1,#n#]_)(A(_#i#,#c#_)B(_#c#,#j#_))</var>. For example, the product of two matrix <var>[@#a#(_11_)@#a#(_21_)@ @#a#(_12_)@#a#(_22_)@]</var> and <var>[@#b#(_11_)@#b#(_21_)@ @#b#(_12_)@#b#(_22_)@]</var> is <var>[@#a#(_11_)#b#(_11_)+#a#(_12_)#b#(_21_)@#a#(_21_)#b#(_11_)+#a#(_22_)#b#(_21_)@ @#a#(_11_)#b#(_12_)+#a#(_12_)#b#(_22_)@#a#(_21_)#b#(_12_)+#a#(_22_)#b#(_22_)@]</var>. So we can calculate the product of two matrix in <var>O(#n#(^3^))</var>. But how should we calculate their sum? As we all know, the matrix multiplication has the associative property, so we'll have<var>#S#=&sum;(_#i#&isin;[1,#k#]_)(A(^#i#^))=/A(^#i#+1^)-#I#/#A#-#I#/-#I#</var>, which <var>#I#</var> is the identity matrix. However, it is difficult to calculate the matrix division. So we need to think another way. </p>
-			<p>The best method is, if we know <var>&sum;(_#i#&isin;[1,2(^#t#^)]_)(A(^#i#^))</var>, then <var>&sum;(_#i#&isin;[1,2(^#t#+1^)]_)(A(^#i#^))</var> would be <var>&sum;(_#i#&isin;[1,2(^#t#^)]_)(A(^#i#^))+#A#(^2(^#t#^)^)&sum;(_#i#&isin;[1,2(^#t#^)]_)(A(^#i#^))</var>. So we may be able to convert <var>#k#</var> into binary, and then add the sum according to the binary. That makes the solution. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 3233</h2>
+<time>2017-03-23 20:36 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-3233">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=3233">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem is about the matrix multiplication. For two <math>v{n}o{&times;}v{n}</math> matrices <math>v{A}</math> and <math>v{B}</math>, their product <math>v{P}</math> can be calculated according to <math>v{P}b{v{i}o{,}v{j}}o{=}o{&sum;}i{v{n}l{}v{c}o{=}c{1}}o{(}v{A}b{v{i}o{,}v{c}}o{}v{B}b{v{c}o{,}v{j}}o{)}</math>. For example, the product of two matrices <math>o{[}i{v{a}b{c{1}o{,}c{1}}l{}v{a}b{c{2}o{,}c{1}}}o{&nbsp;}i{v{a}b{c{1}o{,}c{2}}l{}v{a}b{c{2}o{,}c{2}}}o{]}</math> and <math>o{[}i{v{b}b{c{1}o{,}c{1}}l{}v{b}b{c{2}o{,}c{1}}}o{&nbsp;}i{v{b}b{c{1}o{,}c{2}}l{}v{b}b{c{2}o{,}c{2}}}o{]}</math> is <math>o{[}i{v{a}b{c{1}o{,}c{1}}o{}v{b}b{c{1}o{,}c{1}}o{+}v{a}b{c{1}o{,}c{2}}o{}v{b}b{c{2}o{,}c{1}}l{}v{a}b{c{2}o{,}c{1}}o{}v{b}b{c{1}o{,}c{1}}o{+}v{a}b{c{2}o{,}c{2}}o{}v{b}b{c{2}o{,}c{1}}}o{&nbsp;}i{v{a}b{c{1}o{,}c{1}}o{}v{b}b{c{1}o{,}c{2}}o{+}v{a}b{c{1}o{,}c{2}}o{}v{b}b{c{2}o{,}c{2}}l{}v{a}b{c{2}o{,}c{1}}o{}v{b}b{c{1}o{,}c{2}}o{+}v{a}b{c{2}o{,}c{2}}o{}v{b}b{c{2}o{,}c{2}}}o{]}</math>. So we can calculate the product of two matrices in <math>o{O}o{(}v{n}p{3}o{)}</math>. But how should we calculate their sum? As we all know, the matrix multiplication has the associative property, so we'll have <math>v{S}o{=}o{&sum;}i{v{k}l{}v{i}o{=}c{1}}v{A}p{v{i}}o{=}f{v{A}p{v{i}o{+}c{1}}o{-}v{I}l{}v{A}o{-}v{I}}o{-}v{I}</math>, which <math>v{I}</math> is the identity matrix. However, it is difficult to calculate the matrix division. So we need to think another way. </p>
+	<p>The best method is, if we know <math>o{&sum;}i{c{2}p{v{t}}l{}v{i}o{=}c{1}}v{A}p{v{i}}</math>, then <math>o{&sum;}i{c{2}p{v{t}o{+}c{1}}l{}v{i}o{=}c{1}}v{A}p{v{i}}</math> would be <math>o{&sum;}i{c{2}p{v{t}}l{}v{i}o{=}c{1}}v{A}p{v{i}}o{+}v{A}p{c{2}p{v{t}}}o{}o{&sum;}i{c{2}p{v{t}}l{}v{i}o{=}c{1}}v{A}p{v{i}}</math>. So we may be able to convert <math>v{k}</math> into binary, and then add the sum according to the binary. That makes the solution. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

@@ -1,32 +1,19 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>HDU 2092 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">HDU 2092</h2>
-		<time>2017-10-11 18:45 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/HDU-2092">vjudge</a>
-			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2092">HDU</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>This problem is a mathmatical problem. We can use the Vieta's formulas to solve the problem. </p>
-			<p>According to the Vieta's formulas, if a quadratic equartion which looks like <var>#x#(^2^)-#p##x#+#q#=0</var> has two solutions of <var>#x#</var>, which may be <var>#x#(_1_)</var> and <var>#x#(_2_)</var>, we'll have <var>#x#(_1_)+#x#(_2_)=#p#</var> and <var>#x#(_1_)#x#(_2_)=#q#</var>. So in the problem we're given <var>#p#</var> and <var>#q#</var>. According to the quadratic formula, a quadratic formula which looks like <var>#a##x#(^2^)+#b##x#+#c#=0</var> have two solutions of <var>#x#</var>, they equal <var>/-#b#&plusmn;(\#b#(^2^)-4#a##c#\)/2#a#/</var>. That means a quadratic equartion which looks like <var>#x#(^2^)-#p##x#+#q#=0</var> with two solutions of <var>#x#</var> will have the solutions <var>/#p#&plusmn;(\#p#(^2^)-4#q#\)/2/</var>. So we can know that if <var>(\#p#(^2^)-4#q#\)</var> is an integer, the two solutions will be integers too. You ask why? If <var>#p#</var> is a odd number, <var>(#p#(^2^)-4#q#)</var> and <var>(\#p#(^2^)-4#q#\)</var> must be odd numbers too. So <var>(#p#&plusmn;(\#p#(^2^)-4#q#\))</var> must be even numbers, and the solutions are integers. If <var>#p#</var> is an even number, then <var>(#p#(^2^)-4#q#)</var>, <var>(\#p#(^2^)-4#q#\)</var>, <var>(#p#&plusmn;(\#p#(^2^)-4#q#\))</var> must all be even numbers too. So the solutions are integers. In summary, we can solve the problem by judging if <var>(#p#(^2^)-4#q#)</var> is a square of an integer. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">HDU 2092</h2>
+<time>2017-10-11 18:45 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/HDU-2092">vjudge</a>
+	<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2092">HDU</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>This problem is a mathmatical problem. We can use the Vieta's formulas to solve the problem. </p>
+	<p>According to the Vieta's formulas, if a quadratic equartion which looks like <math>v{x}p{2}o{-}v{p}o{}v{x}o{+}v{q}o{=}c{0}</math> has two solutions of <math>v{x}</math>, which may be <math>v{x}b{1}</math> and <math>v{x}b{2}</math>, we'll have <math>v{x}b{1}o{+}v{x}b{2}o{=}v{p}</math> and <math>v{x}b{1}o{}v{x}b{2}o{=}v{q}</math>. So in the problem we're given <math>v{p}</math> and <math>v{q}</math>. According to the quadratic formula, a quadratic formula which looks like <math>v{a}o{}v{x}p{2}o{+}v{b}o{}v{x}o{+}v{c}o{=}c{0}</math> have two solutions of <math>v{x}</math>, they equal <math>f{o{-}v{b}o{&plusmn;}o{&radic;}t{v{b}p{2}o{-}c{4}o{}v{a}o{}v{c}}l{}c{2}o{}v{a}}</math>. That means a quadratic equartion which looks like <math>v{x}p{2}o{-}v{p}o{}v{x}o{+}v{q}o{=}c{0}</math> with two solutions of <math>v{x}</math> will have the solutions <math>f{v{p}o{&plusmn;}o{&radic;}t{v{p}p{2}o{-}c{4}o{}v{q}}l{}c{2}}</math>. So we can know that if <math>o{&radic;}t{v{p}p{2}o{-}c{4}o{}v{q}}</math> is an integer, the two solutions will be integers too. You ask why? If <math>v{p}</math> is a odd number, <math>o{(}v{p}p{2}o{-}c{4}o{}v{q}o{)}</math> and <math>o{&radic;}t{v{p}p{2}o{-}c{4}o{}v{q}}</math> must be odd numbers too. So <math>o{(}v{p}o{&plusmn;}o{&radic;}t{v{p}p{2}o{-}c{4}o{}v{q}}o{)}</math> must be even numbers, and the solutions are integers. If <math>v{p}</math> is an even number, then <math>o{(}v{p}p{2}o{-}c{4}o{}v{q}o{)}</math>, <math>o{&radic;}t{v{p}p{2}o{-}c{4}o{}v{q}}</math>, <math>o{(}v{p}o{&plusmn;}o{&radic;}t{v{p}p{2}o{-}c{4}o{}v{q}}o{)}</math> must all be even numbers too. So the solutions are integers. In summary, we can solve the problem by judging if <math>o{(}v{p}p{2}o{-}c{4}o{}v{q}o{)}</math> is a square of an integer. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

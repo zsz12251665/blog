@@ -1,34 +1,21 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>NOIp 2014S2 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">NOIp 2014S2</h2>
-		<time>2017-11-08 19:14 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://www.luogu.org/problemnew/show/P1351">Luogu</a>
-			<a target="_blank" href="https://www.vijos.org/p/1906">Vijos</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>I suppose that this is a mathmatical problem. Some people said in can also be solved with <abbr title="dynamic planning">dp</abbr> algorithm. But here I will just show the mathmatical solution. </p>
-			<p>From the defination, we know that the points which made up of a united weight should be next to a common point. So we can enumerate every point and the points besides them to make the united weight. However, this solution is absolutely unacceptable because the time complexity will be about <var>O(#n#(^2^))</var> or close to <var>O(#n#(^3^))</var> when there are two layers of loops while enumerating the common point. </p>
-			<p>Then I think of another way. For a set of <var>{#a#(_1_),#a#(_2_),#a#(_3_), ... ,#a#(_#n#_)}</var>, the sum of the product of every pair of <var>(#a#(_#i#_),#a#(_#j#_))</var> equals <var>(&sum;(_#k#&isin;[1,#n#]_)(#a#(_#k#_)))(^2^)</var>. This includes some situations look like <var>#a#(_#i#_)(^2^)</var>, so we can remove it by subtracting <var>&sum;(_#k#&isin;[1,#n#]_)(#a#(_#k#_)(^2^))</var>. That means while calculating the sum of all the united weights, we only need to enumerate the points beside the common point once. At the same time, we can find the maximum united weight by finding the maximum two weights. That means we can enumerate the common points with an <var>O(#d#(_#i#_))</var> process for each points, with which <var>#d#(_#i#_)</var> means the degree of the point <var>#i#</var>. So the total time complexity will be <var>O(#n#)</var> because there are <var>(#n#-1)</var> edges so the total degree will be <var>2(#n#-1)</var>. </p>
-			<p>P. S. In fact, you don't need to divide 2 when collecting the sum of the united weights. Becuase when you collect the united weight of the points pair <var>(#u#,#v#)</var>, you collect <var>(#v#,#u#)</var> at the same time by multiply the united weight with 2. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">NOIp 2014S2</h2>
+<time>2017-11-08 19:14 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://www.luogu.org/problemnew/show/P1351">Luogu</a>
+	<a target="_blank" href="https://www.vijos.org/p/1906">Vijos</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>I suppose that this is a mathematical problem. Some people said in can also be solved with <abbr title="dynamic planning">dp</abbr> algorithm. But here I will just show the mathematical solution. </p>
+	<p>From the definition, we know that the points which made up of a united weight should be next to a common point. So we can enumerate every point and the points besides them to make the united weight. However, this solution is absolutely unacceptable because the time complexity will be about <math>o{O}o{(}v{n}p{2}o{)}</math> or close to <math>o{O}o{(}v{n}p{3}o{)}</math> when there are two layers of loops while enumerating the common point. </p>
+	<p>Then I think of another way. For a set of <math>o{\{}v{a}b{v{k}}o{|}v{k}o{&isin;}o{[}c{1}o{,}v{n}o{]}o{,}v{k}o{&isin;}c{&#8469;}o{\}}</math>, the sum of the product of every pair of <math>o{(}v{a}b{v{i}}o{,}v{a}b{v{j}}o{)}</math> equals <math>o{(}o{&sum;}i{v{n}l{}v{k}o{=}c{1}}v{a}b{v{k}}o{)}p{2}</math>. This includes some situations look like <math>v{a}b{v{i}}p{2}</math>, so we can remove it by subtracting <math>o{&sum;}i{v{n}l{}v{k}o{=}c{1}}v{a}b{v{k}}p{2}</math>. That means while calculating the sum of all the united weights, we only need to enumerate the points beside the common point once. At the same time, we can find the maximum united weight by finding the maximum two weights. That means we can enumerate the common points with an <math>o{O}o{(}v{d}b{v{i}}o{)}</math> process for each points, with which <math>v{d}b{v{i}}</math> means the degree of the point <math>v{i}</math>. So the total time complexity will be <math>o{O}o{(}v{n}o{)}</math> because there are <math>o{(}v{n}o{-}c{1}o{)}</math> edges so the total degree will be <math>c{2}o{}o{(}v{n}o{-}c{1}o{)}</math>. </p>
+	<p>P. S. In fact, you don't need to divide 2 when collecting the sum of the united weights. Because when you collect the united weight of the points pair <math>o{(}v{u}o{,}v{v}o{)}</math>, you collect <math>o{(}v{v}o{,}v{u}o{)}</math> at the same time by multiply the united weight with 2. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

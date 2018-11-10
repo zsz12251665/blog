@@ -1,39 +1,26 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 3292 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 3292</h2>
-		<time>2017-09-05 20:39 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-3292">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=3292">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>Sorry for the couple of no-update months. This is a problem about prime numbers. However, I spent a lot of time to avoid <abbr title="Time Limit Exceeded">TLE</abbr> until I found the correct solution. </p>
-			<p>First of all, I thought of the Sieve of Eratosthenes, such a efficient sieve of prime with an <var>O(#n#lg(^2^)(#n#))</var> time complexity. Then after getting a number <var>#n#</var>, try every pair of H-primes that fix it. That is obviously not fast enough. So later I used the Sieve of Euler, an <var>O(#n#)</var> sieve, to filter the prime numbers. It didn't make any sence. That is the Soultion 1. </p>
-			<p>Later, I found that if I could preprocess the H-primes, why not preprocess the H-semi-primes at the same time? So that is the Solution 2 with <abbr title="Accepted">AC</abbr>. </p>
-			<p>P. S. As same as <a href="/codes/POJ/1007.html">POJ 1007</a>, the <abbr title="Free Pascal Compiler">FPC</abbr> of POJ didn't work well when I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
-			<p>P. P. S. On 15:19, 10 November, 2017, the Pascal Code was submitted again and now it is proofed that the code of Solution 2 is correct. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Solution 1 Pascal</p>
-			<code></code>
-			<p>Solution 1 C++</p>
-			<code></code>
-			<p>Solution 2 Pascal</p>
-			<code></code>
-			<p>Solution 2 C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 3292</h2>
+<time>2017-09-05 20:39 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-3292">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=3292">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>Sorry for the couple of no-update months. This is a problem about prime numbers. However, I spent a lot of time to avoid <abbr title="Time Limit Exceeded">TLE</abbr> until I found the correct solution. </p>
+	<p>First of all, I thought of the Sieve of Eratosthenes, such a efficient sieve of prime with an <math>o{O}o{(}v{n}o{}o{lg}p{2}v{n}o{)}</math> time complexity. Then after getting a number <math>v{n}</math>, try every pair of H-primes that fix it. That is obviously not fast enough. So later I used the Sieve of Euler, an <math>o{O}o{(}v{n}o{)}</math> sieve, to filter the prime numbers. It didn't make any sence. That is the Soultion 1. </p>
+	<p>Later, I found that if I could preprocess the H-primes, why not preprocess the H-semi-primes at the same time? So that is the Solution 2 with <abbr title="Accepted">AC</abbr>. </p>
+	<p>P. S. As same as <a href="/codes/?oj=POJ&pid=1007">POJ 1007</a>, the <abbr title="Free Pascal Compiler">FPC</abbr> of POJ didn't work well when I tried to verify that the Pascal Code is able to solve the problem, so the Pascal Code remains unverified. </p>
+	<p>P. P. S. On 15:19, 10 November, 2017, the Pascal Code was submitted again and now it is proofed that the code of Solution 2 is correct. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Solution 1 Pascal</p>
+	<code></code>
+	<p>Solution 1 C++</p>
+	<code></code>
+	<p>Solution 2 Pascal</p>
+	<code></code>
+	<p>Solution 2 C++</p>
+	<code></code>
+</section>

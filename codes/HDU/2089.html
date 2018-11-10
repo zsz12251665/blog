@@ -1,35 +1,22 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>HDU 2089 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">HDU 2089</h2>
-		<time>2017-02-10 19:19 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/HDU-2089">vjudge</a>
-			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">HDU</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>Well, I don't know why I made 3 <abbr title="Time Limit Exceed">TLE</abbr> and 1 <abbr title="Wrong Answer">WA</abbr> before the <abbr title="Accepted">AC</abbr> arrived, but anyway it is not a difficult problem in fact. At the very beginning, I just search the interval between <var>#n#</var> and <var>#m#</var> and count the number. And that's the solution 1. However, it takes too much time to search the interval when it is asked. So we can use a way just like prefix sum that we'll preprocess an array with the number of the lucky numbers(just like the array count in the Solution 2). After reading a pair of <var>(#n#,#m#)</var>, all we need to do is to subtract the number of the lucky numbers from 0 to <var>(#n#-1)</var> from the one from 0 to <var>#m#</var>. Although it takes much time in preprocessing, but it can reduce the time of searching from <var>O(#n#)</var> to <var>O(1)</var>. So I get the AC with the code given as Solution 2 in the code part. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Solution 1 Pascal</p>
-			<code></code>
-			<p>Solution 1 C++</p>
-			<code></code>
-			<p>Solution 2 Pascal</p>
-			<code></code>
-			<p>Solution 2 C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">HDU 2089</h2>
+<time>2017-02-10 19:19 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/HDU-2089">vjudge</a>
+	<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">HDU</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>Well, I don't know why I made 3 <abbr title="Time Limit Exceed">TLE</abbr> and 1 <abbr title="Wrong Answer">WA</abbr> before the <abbr title="Accepted">AC</abbr> arrived, but anyway it is not a difficult problem in fact. At the very beginning, I just search the interval between <math>v{n}</math> and <math>v{m}</math> and count the number. And that's the solution 1. However, it takes too much time to search the interval when it is asked. So we can use a way just like prefix sum that we'll preprocess an array with the number of the lucky numbers(just like the array count in the Solution 2). After reading a pair of <math>o{(}v{n}o{,}v{m}o{)}</math>, all we need to do is to subtract the number of the lucky numbers from <math>c{0}</math> to <math>o{(}v{n}o{-}c{1}o{)}</math> from the one from <math>c{0}</math> to <math>v{m}</math>. Although it takes much time in preprocessing, but it can reduce the time of searching from <math>o{O}o{(}v{n}o{)}</math> to <math>o{O}o{(}c{1}o{)}</math>. So I get the AC with the code given as Solution 2 in the code part. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Solution 1 Pascal</p>
+	<code></code>
+	<p>Solution 1 C++</p>
+	<code></code>
+	<p>Solution 2 Pascal</p>
+	<code></code>
+	<p>Solution 2 C++</p>
+	<code></code>
+</section>

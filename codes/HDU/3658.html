@@ -1,45 +1,32 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>HDU 3658 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">HDU 3658</h2>
-		<time>2018-04-09 20:55 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/HDU-3658">vjudge</a>
-			<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=3658">HDU</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>In this problem, we will talk about how to use the power of the matrix to speed up <abbr title="dynamic planning">dp</abbr> algorithm. </p>
-			<p>The dp array will be like <var>#dp#(_#i#,#j#,#b#_)</var>, which means the number of the words when we have chosen the first <var>#i#</var> letters,  with <var>#j#</var> as the last one and <var>#c#</var> which shows if there has been a difference of a pair of neighbour letters which is exactly 32. Now we can write down the state transition formulas: </p>
-			<ul>
-				<li><var>#dp#(_#i#,#j#,#0#_)=&sum;(_#k#&isin;[#j#-31,#j#+31]_)#dp#(_#i-1#,#k#,#0#_)</var></li>
-				<li><var>#dp#(_#i#,#j#,#1#_)=#dp#(_#i-1#,#j&plusmn;32#,#0#_)+&sum;(_#k#&isin;[#j#-32,#j#+32]_)#dp#(_#i-1#,#k#,#0#_)</var></li>
-			</ul>
-			<p>If we roll the dp array, change the difference of 'Z' and 'a' into 1 and then combine <var>#j#</var> and <var>#c#</var> as <var>52#c#+#j#</var>, we'll have these formulas: </p>
-			<ul>
-				<li><var>#dp#(_#j#_)=&sum;(_#k#&isin;[#j#-25,#j#+25]_)#dp#(_#k#_)</var></li>
-				<li><var>#dp#(_#j#+52_)=#dp#(_#j&plusmn;26#_)+&sum;(_#k#&isin;[#j#-26,#j#+26]_)#dp#(_#k#+52_)</var></li>
-			</ul>
-			<p>Obviously, it took us <var>O(2*52)</var> to finish a transition. Though the total time complexity is just <var>O(#m#)</var>, the constant and the multitasks will not allow us to pass the problem. So we need the power of the matrix to speed up. But how can we do it? </p>
-			<p>We will construct a transition matrix. For a transition matrix <var> #M#</var>, <var>#M#(_#x#,#y#_)</var> is the coefficient of <var>#dp#(_#y#_)</var> in <var>#dp#(_#x#_)</var>. Let's take Fibonacci sequence as an example. The transition matrix is <var>[@1@1@ @1@0@]</var>. Here, <var>#dp#(_#i#,0_)</var> means <var>#F#(_#i#_)</var> and <var>#dp#(_#i#,1_)</var> means <var>#F#(_#i-1#_)</var>. So according to the transition matrix, the transition formulas are <var>#dp#(_#i#,0_)=1*#dp#(_#i#-1,0_)+1*#dp#(_#i#-1,1_)=#dp#(_#i#-1,0_)+#dp#(_#i#-1,1_)</var> and <var>#dp#(_#i#,1_)=1*#dp#(_#i#-1,0_)+0*#dp#(_#i#-1,1_)=#dp#(_#i#-1,0_)</var>. They just mean <var>#F#(_#i#_)=#F#(_#i#-1_)+#F#(_#i#-2_)</var> and <var>#F#(_#i#-1_)=#F#(_#i#-1_)</var>. </p>
-			<p>After constructing the transition matrix, we could know that if we multiply the matrix with the states array, we can finish the transition once. So we need to do it <var>#m#</var> times. According to the associative property, we can use the power of the matrix, which is just <var>O(lg(#m#))</var>, to speed it up. This is how we speed up dp algorithm with the power of matrix. </p>
-			<p>P. S. I'm sorry that the solution was still not fast enough for Pascal to pass it while C++ managed though I've sorted <var>#m#</var>. Please pay attenttion. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">HDU 3658</h2>
+<time>2018-04-09 20:55 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/HDU-3658">vjudge</a>
+	<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=3658">HDU</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>In this problem, we will talk about how to use the power of the matrix to speed up <abbr title="dynamic planning">dp</abbr> algorithm. </p>
+	<p>The dp array will be like <math>v{dp}b{v{i}o{,}v{j}o{,}v{c}}</math>, which means the number of the words when we have chosen the first <math>v{i}</math> letters,  with <math>v{j}</math> as the last one and <math>v{c}</math> which shows if there has been a difference of a pair of neighbour letters which is exactly 32. Now we can write down the state transition formulas: </p>
+	<ul>
+		<li><math>v{dp}b{v{i}o{,}v{j}o{,}c{0}}o{=}o{&sum;}i{v{j}o{+}c{31}l{}v{k}o{=}v{j}o{-}c{31}}v{dp}b{v{i}o{-}c{1}o{,}v{k}o{,}c{0}}</math></li>
+		<li><math>v{dp}b{v{i}o{,}v{j}o{,}c{1}}o{=}v{dp}b{v{i}o{-}c{1}o{,}v{j}o{&plusmn;}c{32}o{,}c{0}}o{+}o{&sum;}i{v{j}o{+}c{32}l{}v{k}o{=}v{j}o{-}c{32}}v{dp}b{v{i}o{-}c{1}o{,}v{k}o{,}c{0}}</math></li>
+	</ul>
+	<p>If we roll the dp array, change the difference of 'Z' and 'a' into 1 and then combine <math>v{j}</math> and <math>v{c}</math> as <math>o{(}c{52}o{}v{c}o{+}v{j}o{)}</math>, we'll have these formulas: </p>
+	<ul>
+		<li><math>v{dp}b{v{j}}o{=}o{&sum;}i{v{j}o{+}c{25}l{}v{k}o{=}v{j}o{-}c{25}}v{dp}b{v{k}}</math></li>
+		<li><math>v{dp}b{v{j}o{+}c{52}}o{=}v{dp}b{v{j}o{&plusmn;}c{26}}o{+}o{&sum;}i{v{j}o{+}c{26}l{}v{k}o{=}v{j}o{-}c{26}}v{dp}b{v{k}o{+}c{52}}}</math></li>
+	</ul>
+	<p>Obviously, it took us <math>o{O}o{(}c{2}o{&times;}c{52}o{)}</math> to finish a transition. Though the total time complexity is just <math>o{O}o{(}v{m}o{)}</math>, the constant and the multitasks will not allow us to pass the problem. So we need the power of the matrix to speed up. But how can we do it? </p>
+	<p>We will construct a transition matrix. For a transition matrix <math>v{M}</math>, <math>v{M}b{v{x}o{,}v{y}}</math> is the coefficient of <math>v{dp}b{v{y}}</math> in <math>v{dp}b{v{x}}</math>. Let's take Fibonacci sequence as an example. The transition matrix is <math>o{[}i{c{1}l{}c{1}}o{&nbsp;}i{c{1}l{}c{0}}o{]}</math>. Here, <math>v{dp}b{v{i}o{,}c{0}}</math> means <math>v{F}b{v{i}}</math> while <math>v{dp}b{v{i}o{,}c{1}}</math> means <math>v{F}b{v{i}o{-}c{1}}</math>. So according to the transition matrix, the transition formulas are <math>v{dp}b{v{i}o{,}c{0}}o{=}c{1}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{0}}o{+}c{1}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{1}}o{=}v{dp}b{v{i}o{-}c{1}o{,}c{0}}o{+}v{dp}b{v{i}o{-}c{1}o{,}c{1}}</math> and <math>v{dp}b{v{i}o{,}c{1}}o{=}c{1}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{0}}o{+}c{0}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{1}}o{=}v{dp}b{v{i}o{-}c{1}o{,}c{0}}</math>. They just mean <math>v{F}b{v{i}}o{=}v{F}b{v{i}o{-}c{1}}o{+}v{F}b{v{i}o{-}c{2}}</math> and <math>v{F}b{v{i}o{-}c{1}}o{=}v{F}b{v{i}o{-}c{1}}</math>. </p>
+	<p>After constructing the transition matrix, we could know that if we multiply the matrix with the states array, we can finish the transition once. So we need to do it <math>v{m}</math> times. According to the associative property, we can use the power of the matrix, which is just <math>o{O}o{(}o{lg}v{m}o{)}</math>, to speed it up. This is how we speed up dp algorithm with the power of matrix. </p>
+	<p>P. S. I'm sorry that the solution was still not fast enough for Pascal to pass it while C++ managed though I've sorted <math>v{m}</math>. Please pay attenttion. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

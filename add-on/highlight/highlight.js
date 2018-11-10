@@ -5,8 +5,10 @@ function LoadHighlight()
 	//Load the stylesheet of highlight
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	//Highlight the code
+	if(document.getElementsByTagName('code').length==0)
+		return;
 	var ajax=new XMLHttpRequest();
-	ajax.open('GET',location.pathname.slice(0,-4)+'code',false);
+	ajax.open('GET','/codes/'+request.oj+'/'+request.pid+'.code',false);
 	ajax.onreadystatechange=function()
 	{
 		if((ajax.readyState!=4)||(ajax.status!=200))

@@ -1,33 +1,20 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 1006 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 1006</h2>
-		<time>2017-04-26 07:34 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-1006">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=1006">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>To solve this problem, you need to know a little about the Chinese remainder theorem. It explains how to solve congruent equations. </p>
-			<p>First of all, we need to find out the number-theoretic reciprocal of 23, 28 and 33 at first. They are 6, 19, and 2. And then according to the Chinese remainder theorem, the day which is <var>((6*28*33)#p#+(19*23*33)#e#+(2*23*28)#i#)</var> days from the first day of the year must be a triple peak occured day. And then we decuct the days that had passed, and take the remainer which devided with <var>23*28*33</var>, we'll get the next triple peak occured day. So keep it in one, the answer is <var>(5544#p#+14421#e#+1288#i#-#d#+21251) mod 21252+1</var>(to add 21252 is to keep the devided number is greater than 0 and to -1 and +1 is to keep the answer in [1,21252]). </p>
-			<p>If you have problem with some the number-theoretic reciprocal, here may give you some reference: To a pair of <var>(#a#,#m#) (#a#&isin;&#8469;(_+_), #m#&isin;&#8469;(_+_))</var>, if there is an integer <var>#n#</var> that <var>#a##n#&equiv;1(mod #m#)</var>, we call <var>#n#</var> the number-theoretic reciprocal of <var>(#a#,#m#)</var>. For example, because <var>6*28*33&equiv;1(mod 23)</var>, so 6 is the number-theoretic reciprocal of <var>(28*33,23)</var>. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 1006</h2>
+<time>2017-04-26 07:34 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-1006">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=1006">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>To solve this problem, you need to know a little about the Chinese remainder theorem. It explains how to solve congruent equations. </p>
+	<p>First of all, we need to find out the number-theoretic reciprocal of <math>c{23}</math>, <math>c{28}</math> and <math>c{33}</math> at first. They are <math>c{6}</math>, <math>c{19}</math> and <math>c{2}</math>. And then according to the Chinese remainder theorem, the day which is <math>o{(}o{(}c{6}o{&times;}c{28}o{&times;}c{33}o{)}o{}v{p}o{+}o{(}c{23}o{&times;}c{19}o{&times;}c{33}o{)}o{}v{e}o{+}o{(}c{23}o{&times;}c{28}o{&times;}c{2}o{)}o{}v{i}o{)}</math> days from the first day of the year must be a triple peak occurred day. And then we deduct the days that had passed, and take the remainder which is divided with <math>c{23}o{&times;}c{28}o{&times;}c{33}</math>, we'll get the next triple peak occurred day. So keep it in one, the answer is <math>o{(}c{5544}o{}v{p}o{+}c{14421}o{}v{e}o{+}c{1288}o{}v{i}o{-}v{d}o{+}c{21252}o{-}c{1}o{)}o{mod}c{21252}o{+}c{1}</math> (to add a <math>c{21252}</math> is to keep the answer greater than 0, to minus 1 and then plus 1 is to keep the answer in <math>o{[}c{1}o{,}c{21252}o{]}</math>). </p>
+	<p>If you have problem with some the number-theoretic reciprocal, here may give you some reference: To a pair of <math>o{(}v{a}o{,}v{n}o{)}o{(}v{a}o{,}v{m}o{&isin;}c{&#8469;}b{o{+}}o{)}</math>, if there is an integer <math>v{n}</math> which satisfies <math>v{a}o{}v{n}o{&equiv;}c{1}o{(}o{mod}v{m}o{)}</math>, we call <math>v{n}</math> the number-theoretic reciprocal of <math>o{(}v{a}o{,}v{m}o{)}</math>. For example, because <math>c{6}o{&times;}c{28}o{&times;}c{33}o{&equiv;}c{1}o{(}o{mod}c{23}o{)}</math>, so <math>c{6}</math> is the number-theoretic reciprocal of <math>o{(}c{28}o{&times;}c{33}o{,}c{23}o{)}</math>. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>

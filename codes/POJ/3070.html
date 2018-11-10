@@ -1,32 +1,19 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>POJ 3070 - zsz12251665's Blog</title>
-		<link rel="shortcut icon" href="/favicon.ico" />
-	</head>
-	<body class="matrix">
-		<h2 align="center">POJ 3070</h2>
-		<time>2017-12-28 16:20 by zsz12251665</time>
-		<h3>Problem</h3>
-		<section class="btnfield">
-			<a target="_blank" href="https://vjudge.net/problem/POJ-3070">vjudge</a>
-			<a target="_blank" href="http://poj.org/problem?id=3070">POJ</a>
-		</section>
-		<h3>Solution</h3>
-		<section>
-			<p>The method of calculating the <var>#n#</var>-th number of the Fibonacci integer sequence has been given in the description of the problem. It is the power of matrix. But since <var>0&le;#n#&le;10(^9^)</var>, we need a fast power of matrix, which is like the fast power of integer of which time complexity is <var>O(lg(#n#))</var>. </p>
-			<p>For the beginners who don't know how the multiplication of matrix is calculated, here it is. For two matrix <var>[@#a#(_1_)@#a#(_3_)@ @#a#(_2_)@#a#(_4_)@]</var> and <var>[@#b#(_1_)@#b#(_3_)@ @#b#(_2_)@#b#(_4_)@]</var>, the product is <var>[@#a#(_1_)#b#(_1_)+#a#(_2_)#b#(_3_)@#a#(_3_)#b#(_1_)+#a#(_4_)#b#(_3_)@ @#a#(_1_)#b#(_2_)+#a#(_2_)#b#(_4_)@#a#(_3_)#b#(_2_)+#a#(_4_)#b#(_4_)@]</var>. Although it doesn't have the commutative property, the multiplication of matrix has the associative property, which means <var>([@#a#(_1_)@#a#(_3_)@ @#a#(_2_)@#a#(_4_)@]*[@#b#(_1_)@#b#(_3_)@ @#b#(_2_)@#b#(_4_)@])*[@#c#(_1_)@#c#(_3_)@ @#c#(_2_)@#c#(_4_)@]</var> equals <var>[@#a#(_1_)@#a#(_3_)@ @#a#(_2_)@#a#(_4_)@]*([@#b#(_1_)@#b#(_3_)@ @#b#(_2_)@#b#(_4_)@]*[@#c#(_1_)@#c#(_3_)@ @#c#(_2_)@#c#(_4_)@])</var>. So we can make the fast power of matrix as same as the fast power of integer which transforms the index into binary. </p>
-		</section>
-		<h3>Code</h3>
-		<section>
-			<p>Pascal</p>
-			<code></code>
-			<p>C++</p>
-			<code></code>
-		</section>
-		<script type="text/javascript" src="/add-on/article/article.js"></script>
-		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>
-		<script type="text/javascript" src="/add-on/math/math.js"></script>
-	</body>
-</html>
+<h2 align="center">POJ 3070</h2>
+<time>2017-12-28 16:20 by zsz12251665</time>
+<h3>Problem</h3>
+<section class="btnfield">
+	<a target="_blank" href="https://vjudge.net/problem/POJ-3070">vjudge</a>
+	<a target="_blank" href="http://poj.org/problem?id=3070">POJ</a>
+</section>
+<h3>Solution</h3>
+<section>
+	<p>The method of calculating the <math>v{n}</math>-th number of the Fibonacci integer sequence has been given in the description of the problem. It is the power of matrix. But since <math>c{0}o{&le;}v{n}o{&le;}c{10}p{9}</math>, we need a fast power of matrix, which is like the fast power of integer of which time complexity is <math>o{O}o{(}o{lg}v{n}o{)}</math>. </p>
+	<p>For the beginners who don't know how the multiplication of matrix is calculated, here it is. For two matrices <math>o{[}i{v{a}b{1}l{}v{a}b{3}}o{&nbsp;}i{v{a}b{2}l{}v{a}b{4}}o{]}</math> and <math>o{[}i{v{b}b{1}l{}v{b}b{3}}o{&nbsp;}i{v{b}b{2}l{}v{b}b{4}}o{]}</math>, the product is <math>o{[}i{v{a}b{1}o{}v{b}b{1}o{+}v{a}b{2}o{}v{b}b{3}l{}v{a}b{3}o{}v{b}b{1}o{+}v{a}b{4}o{}v{b}b{3}}o{&nbsp;}i{v{a}b{1}o{}v{b}b{2}o{+}v{a}b{2}o{}v{b}b{4}l{}v{a}b{3}o{}v{b}b{2}o{+}v{a}b{4}o{}v{b}b{4}}o{]}</math>. Although it doesn't have the commutative property, the multiplication of matrix has the associative property, which means <math>o{(}o{[}i{v{a}b{1}l{}v{a}b{3}}o{&nbsp;}i{v{a}b{2}l{}v{a}b{4}}o{]}o{&times;}o{[}i{v{b}b{1}l{}v{b}b{3}}o{&nbsp;}i{v{b}b{2}l{}v{b}b{4}}o{]}o{)}o{&times;}o{[}i{v{c}b{1}l{}v{c}b{3}}o{&nbsp;}i{v{c}b{2}l{}v{c}b{4}}o{]}o{=}o{[}i{v{a}b{1}l{}v{a}b{3}}o{&nbsp;}i{v{a}b{2}l{}v{a}b{4}}o{]}o{&times;}o{(}o{[}i{v{b}b{1}l{}v{b}b{3}}o{&nbsp;}i{v{b}b{2}l{}v{b}b{4}}o{]}o{&times;}o{[}i{v{c}b{1}l{}v{c}b{3}}o{&nbsp;}i{v{c}b{2}l{}v{c}b{4}}o{]}o{)}</math>. So we can make the fast power of matrix as same as the fast power of integer which transforms the index into binary. </p>
+</section>
+<h3>Code</h3>
+<section>
+	<p>Pascal</p>
+	<code></code>
+	<p>C++</p>
+	<code></code>
+</section>
