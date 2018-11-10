@@ -1,28 +1,28 @@
 @font-face
 {
 	font-family: "STIX";
-	src: url("/add-on/math/STIX.woff");
+	src: url("/add-on/data/STIX.woff");
 }
-math, var
+data
 {
 	display: inline;
 	font-family: "STIX", serif;
 	font-style: normal;
 	line-height: 100%;
 }
-math mb
+data span.b
 {
 	display: inline-block;
 	font-size: smaller;
 	vertical-align: sub;
 }
-math mc, math mo, math mv, var .var
+data span.c, data span.o, data span.v
 {
 	display: inline-block;
 	padding-left: 0.05rem;
 	padding-right: 0.05rem;
 }
-math mf, var .div
+data span.f
 {
 	display: inline-block;
 	font-size: smaller;
@@ -30,13 +30,13 @@ math mf, var .div
 	vertical-align: middle;
 	width: auto;
 }
-math mf ml:empty, var .div span:empty
+data span.f span.l:empty
 {
 	border-top-color: var(--text-color);
 	border-top-style: solid;
 	border-top-width: thin;
 }
-math mi, var .updown
+data span.i
 {
 	display: inline-block;
 	font-size: smaller;
@@ -44,21 +44,26 @@ math mi, var .updown
 	vertical-align: middle;
 	width: auto;
 }
-math ml:empty, var span:empty
+data span.l:empty
 {
 	display: block;
 	height: 0;
 }
-math mp
+data span.o
+{
+	font-size: larger;
+}
+data span.p
 {
 	display: inline-block;
 	font-size: smaller;
 	vertical-align: super;
 }
-math mt, var .sqrt
+data span.t
 {
 	border-top-color: var(--text-color);
 	border-top-style: solid;
 	border-top-width: thin;
 	display: inline;
+	padding-top: 0.1rem;
 }

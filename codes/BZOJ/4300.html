@@ -8,7 +8,7 @@
 <h3>Solution</h3>
 <section>
 	<p>When I read the problem the first time, I thought out a way like solving the longest increasing subsequence problem, which means I just need an array to keep the longest subsequence until this integer. The code is given as Solution 1 in the code part. </p>
-	<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is <math>o{O}o{(}v{n}p{2}o{)}</math>. Later, I got another algorithm whose time complexity is <math>o{O}o{(}v{n}o{}o{lg}v{a}b{v{i}}o{)}</math>. It just needs a <abbr title="dynamic planning">dp</abbr> algorithm. <math>v{dp}b{v{i}}</math> keeps the length of the longest subsequence whose last integer's <math>v{i}</math>-th digit is not 0 in binary. So after read in each integer in sequence, I can update the <math>v{dp}</math> array in an <math>o{O}o{(}o{lg}v{a}b{v{i}}o{)}</math> algorithm. And that is Solution 2, which is accepted. </p>
+	<p>However, when I submitted it to the judge, the answer was <abbr title="Time Limit Exceed">TLE</abbr> because the time complexity is <data value="o{O}o{(}v{n}p{2}o{)}"></data>. Later, I got another algorithm whose time complexity is <data value="o{O}o{(}v{n}o{}o{lg}v{a}b{v{i}}o{)}"></data>. It just needs a <abbr title="dynamic planning">dp</abbr> algorithm. <data value="v{dp}b{v{i}}"></data> keeps the length of the longest subsequence whose last integer's <data value="v{i}"></data>-th digit is not 0 in binary. So after read in each integer in sequence, I can update the <data value="v{dp}"></data> array in an <data value="o{O}o{(}o{lg}v{a}b{v{i}}o{)}"></data> algorithm. And that is Solution 2, which is accepted. </p>
 </section>
 <h3>Code</h3>
 <section>
