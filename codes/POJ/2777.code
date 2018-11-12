@@ -19,7 +19,7 @@ procedure change(p,l,r:longint;c:integer);//The setting operation
 var
 	mid:longint;
 begin
-	if (l=left[p])and(r=right[p]) then//If the range is covered, set the lazytag(that's why the operation is O(lg(n)))
+	if (l=left[p])and(r=right[p]) then//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
 		begin
 			colour[p]:=1 shl c;
 			if l<>r then
@@ -102,7 +102,7 @@ void init(long p,long l,long r)//Build and initialize the segment tree
 }
 void change(long p,long l,long r,int c)//The setting operation
 {
-	if((l==left[p])&&(r==right[p]))//If the range is covered, set the lazytag(that's why the operation is O(lg(n)))
+	if((l==left[p])&&(r==right[p]))//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
 	{
 		colour[p]=1<<c;
 		if(l!=r)
