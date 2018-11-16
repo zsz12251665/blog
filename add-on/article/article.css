@@ -27,6 +27,16 @@ abbr:hover
 {
 	text-decoration: none;
 }
+article
+{
+	background-color: var(--back-color);
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	margin: auto;
+	min-height: 100%;
+	padding: 0.25rem;
+	width: 90%;
+}
 body
 {
 	background-attachment: fixed;
@@ -102,16 +112,6 @@ img
 	display: block;
 	margin: auto;
 	max-width: 100%;
-}
-main
-{
-	background-color: var(--back-color);
-	border-radius: 0.5rem;
-	box-sizing: border-box;
-	margin: auto;
-	min-height: 100%;
-	padding: 0.25rem;
-	width: 90%;
 }
 summary
 {

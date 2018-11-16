@@ -1,0 +1,106 @@
+var
+	a:array[1..100]of integer;
+	unable:array[1..25000]of boolean;
+	t,n,ans,i,j:integer;
+procedure qsort(l,r:integer);
+var
+	x,y:integer;
+	tmp,std:longint;
+begin
+	x:=l;
+	y:=r;
+	std:=a[(l+r) div 2];
+	while x<y do
+		begin
+			while a[x]<std do
+				inc(x);
+			while a[y]>std do
+				dec(y);
+			if x<=y then
+				begin
+					tmp:=a[x];
+					a[x]:=a[y];
+					a[y]:=tmp;
+					inc(x);
+					dec(y);
+				end;
+		end;
+	if l<y then
+		qsort(l,y);
+	if r>x then
+		qsort(x,r);
+end;
+begin
+	read(t);
+	while t>0 do
+		begin
+			for i:=1 to 25000 do//Initialize the unable array
+				unable[i]:=true;
+			read(n);
+			for i:=1 to n do
+				read(a[i]);
+			qsort(1,n);
+			ans:=0;
+			for i:=1 to n do
+				if unable[a[i]] then
+					begin
+						inc(ans);
+						unable[a[i]]:=false;
+						for j:=1 to 25000-a[i] do//Update the unable array
+							if not(unable[j]) then
+								unable[j+a[i]]:=false;
+					end;
+			writeln(ans);
+			dec(t);
+		end;
+end.
+
+#include<cstdio>
+int a[100],unable[25001];
+void qsort(int l,int r)
+{
+	int x=l,y=r;
+	long std=a[(l+r)/2];
+	while(x<y)
+	{
+		while(a[x]<std)
+			x++;
+		while(a[y]>std)
+			y--;
+		if(x<=y)
+		{
+			long tmp=a[x];
+			a[x++]=a[y];
+			a[y--]=tmp;
+		}
+	}
+	if(l<y)
+		qsort(l,y);
+	if(x<r)
+		qsort(x,r);
+}
+int main()
+{
+	int t,n;
+	for(scanf("%d",&t);t>0;t--)
+	{
+		for(int i=0;i<25001;i++)//Initialize the unable array
+			unable[i]=1;
+		scanf("%d",&n);
+		for(int i=0;i<n;i++)
+		scanf("%d",&a[i]);
+		qsort(0,n-1);
+		int ans=0;
+		for(int i=0;i<n;i++)
+			if(unable[a[i]]==1)
+			{
+				ans++;
+				unable[a[i]]=0;
+				for(int j=1;j+a[i]<25001;j++)//Update the unable array
+					if(unable[j]==0)
+						unable[j+a[i]]=0;
+			}
+		printf("%d\n",ans);
+	}
+	return 0;
+}
