@@ -4,8 +4,9 @@ function LoadHighlight()
 {
 	//Load the stylesheet of highlight
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
-	//Highlight the code
-	if(document.getElementsByTagName('code').length==0)
+	//Load and highlight the code
+	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
+	if((document.getElementsByTagName('code').length==0)||(!request.oj)||(!request.pid))
 		return;
 	var ajax=new XMLHttpRequest();
 	ajax.open('GET','/codes/'+request.oj+'/'+request.pid+'.code',false);

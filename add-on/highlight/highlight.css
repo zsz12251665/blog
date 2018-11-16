@@ -21,29 +21,29 @@ code
 	white-space: pre;
 	width: 90%;
 }
-code .comma
+code span.comma
 {
 	color: var(--comma-color);
 }
-code .comment
+code span.comment
 {
 	color: var(--comment-color);
 	font-style: italic;
 }
-code .constant
+code span.constant
 {
 	color: var(--constant-color);
 }
-code .function
+code span.function
 {
 	color: var(--function-color);
 }
-code .keyword
+code span.keyword
 {
 	color: var(--keyword-color);
 	font-weight: bold;
 }
-code .variable
+code span.variable
 {
 	color: var(--variable-color);
 	font-weight: bold;

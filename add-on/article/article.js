@@ -1,6 +1,10 @@
 window.addEventListener('DOMContentLoaded',LoadArticle);
 function LoadArticle()
 {
+	//Load the request and change the theme
+	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
+	if(request.theme)
+		document.body.className=request.theme;
 	//Load the stylesheet of the article
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/article/article.css" />';
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/theme/'+document.body.className+'.css" />';

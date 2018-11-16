@@ -11,7 +11,7 @@
 	padding: 0.25rem;
 	text-align: center;
 }
-#music #time
+#music span#time
 {
 	color: var(--back-color);
 	font-size: small;
@@ -19,7 +19,7 @@
 	margin-right: 0.5rem;
 	vertical-align: middle;
 }
-#music .button
+#music span.button
 {
 	border-color: var(--back-color);
 	border-width: medium;
@@ -33,7 +33,7 @@
 	vertical-align: middle;
 	width: 1.2rem;
 }
-#music .range
+#music span.range
 {
 	background-color: var(--link-color);
 	display: inline-block;
@@ -42,7 +42,7 @@
 	vertical-align: middle;
 	width: 5rem;
 }
-#music .range span
+#music span.range span
 {
 	background-color: var(--back-color);
 	display: block;

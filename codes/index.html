@@ -129,8 +129,6 @@
 		</section>
 		<script type="text/javascript">
 			var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
-			if(request.theme)
-				document.body.className=request.theme;
 			if(request.oj&&request.pid)
 			{
 				var ajax=new XMLHttpRequest();
