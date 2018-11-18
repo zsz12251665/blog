@@ -60,6 +60,7 @@ figure
 	background-color: var(--link-color);
 	color: var(--back-color);
 	display: inline-block;
+	margin: 1rem;
 	padding: 0.25rem;
 	text-align: start;
 }
