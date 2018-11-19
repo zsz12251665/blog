@@ -42,7 +42,7 @@ int main()
 		count[colour]++;
 		if(cost<=p)
 		{
-			memcpy(last,count,sizeof(last));//Renew the last array
+			memcpy(last,count,sizeof last);//Renew the last array
 			ans+=count[colour]-1;//Remember to minus 1 becuase they would not stay in the same hotel
 		}
 		else

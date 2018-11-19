@@ -60,7 +60,7 @@ end.
 long long matrix[104][104],answer[104][104],power[104][104],temp[104][104];
 int main()
 {
-	memset(matrix,0,sizeof(matrix));//Construct the transition matrix
+	memset(matrix,0,sizeof matrix);//Construct the transition matrix
 	for(int i=0;i<52;i++)//The difference of their ASCII code must not be greater than 32
 		for(int j=0;j<52;j++)
 			if((j>i-26)&&(j<i+26))
@@ -73,27 +73,27 @@ int main()
 		long m;
 		scanf("%ld",&m);
 		m--;
-		memset(answer,0,sizeof(answer));//Initialize the answer matrix to the identity matrix
+		memset(answer,0,sizeof answer);//Initialize the answer matrix to the identity matrix
 		for(int i=0;i<104;i++)
 			answer[i][i]=1;
-		memcpy(power,matrix,sizeof(power));//Initialize the power matrix
+		memcpy(power,matrix,sizeof power);//Initialize the power matrix
 		for(;m>0;m/=2)//Calculate the power of matrix
 		{
 			if(m%2==1)
 			{
-				memset(temp,0,sizeof(temp));
+				memset(temp,0,sizeof temp);
 				for(int i=0;i<104;i++)
 					for(int j=0;j<104;j++)
 						for(int c=0;c<104;c++)
 							temp[i][j]=(answer[i][c]*power[c][j]+temp[i][j])%1000000007;
-				memcpy(answer,temp,sizeof(answer));
+				memcpy(answer,temp,sizeof answer);
 			}
-			memset(temp,0,sizeof(temp));
+			memset(temp,0,sizeof temp);
 			for(int i=0;i<104;i++)
 				for(int j=0;j<104;j++)
 					for(int c=0;c<104;c++)
 						temp[i][j]=(power[i][c]*power[c][j]+temp[i][j])%1000000007;
-			memcpy(power,temp,sizeof(power));
+			memcpy(power,temp,sizeof power);
 		}
 		long sum=0;//Calculate the answer, which is the sum of a sub-matrix in the answer matrix
 		for(int i=52;i<104;i++)

@@ -131,13 +131,13 @@
 			var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
 			if(request.oj&&request.pid)
 			{
-				var ajax=new XMLHttpRequest();
-				ajax.open('GET','/codes/'+request.oj+'/'+request.pid+'.html',false);
-				ajax.send();
-				if(ajax.status==200)
+				var xhr=new XMLHttpRequest();
+				xhr.open('GET','/codes/'+request.oj+'/'+request.pid+'.html',false);
+				xhr.send();
+				if(xhr.status==200)
 				{
 					document.title=request.oj+' '+request.pid+' - zsz12251665\'s Blog';
-					document.body.innerHTML=ajax.responseText;
+					document.body.innerHTML=xhr.responseText;
 				}
 			}
 		</script>

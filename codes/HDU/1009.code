@@ -78,8 +78,8 @@ void msort(int l,int r)
 		return;
 	msort(l,(l+r)/2);
 	msort((l+r)/2+1,r);
-	memcpy(cj,j,sizeof(j));
-	memcpy(cf,f,sizeof(f));
+	memcpy(cj,j,sizeof j);
+	memcpy(cf,f,sizeof f);
 	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
 	{
 		if(x>(l+r)/2)

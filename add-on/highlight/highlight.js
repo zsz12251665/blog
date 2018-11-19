@@ -2,85 +2,33 @@
 window.addEventListener('DOMContentLoaded',LoadHighlight);
 function LoadHighlight()
 {
-	//Load the stylesheet of highlight
+	//Load the style sheet of highlight
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	//Load and highlight the code
 	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
 	if((document.getElementsByTagName('code').length==0)||(!request.oj)||(!request.pid))
 		return;
 	var ajax=new XMLHttpRequest();
-	ajax.open('GET','/codes/'+request.oj+'/'+request.pid+'.code',false);
+	ajax.open('GET','/codes/'+request.oj+'/'+request.pid+'.code',true);
 	ajax.onreadystatechange=function()
 	{
 		if((ajax.readyState!=4)||(ajax.status!=200))
 			return;
-		var codetext=ajax.responseText.split('\n\n');
-		for(var t=0,code=document.getElementsByTagName('code');t<code.length;t++)
+		for(var t=0,code=document.getElementsByTagName('code'),codetext=ajax.responseText.split('\n\n');t<code.length;t++)
 		{
 			//Load the code
 			var source=codetext[t].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-			//Highlight strings
-			source=source.replace(/(\"[^\n]*?\"|\'[^\n]*?\')/g,'<span class="constant">$1</span>');
-			//Highlight numbers
-			for(var i=0;i<2;i++)
-				source=source.replace(/([^_a-zA-Z0-9])([0-9][.0-9]*)([^_a-zA-Z0-9])/g,'$1<span class="constant">$2</span>$3');
-			//Highlight other special constant
-			for(var i=0;i<2;i++)
-				source=source.replace(/([^_a-zA-Z0-9])(maxint|maxlongint|true|false)([^_a-zA-Z0-9])/g,'$1<span class="constant">$2</span>$3');
+			//Highlight constants
+			source=source.replace(/(\"[^\n]*?\"|\'[^\n]*?\')/g,'<span class="constant">$1</span>').replace(/\b([0-9][.0-9]*|maxint|maxlongint|true|false)\b/g,'<span class="constant">$1</span>');
 			//Highlight comments
 			source=source.replace(/(\/\/[^\n]*)/g,'<span class="comment">$1</span>');
 			//Hightlight keywords
-			source=source.replace(/([^_a-zA-Z0-9])(and)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(ansistring)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(array)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(begin)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(boolean)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(break)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(case)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(char)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(cmath)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(const)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(continue)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(cstdio)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(cstdlib)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(cstring)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(div)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(do)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(double)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(downto)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(else)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(end)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(for)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(function)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(if)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(include)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(int)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(int64)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(integer)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(long long)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(long)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(longint)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(mod)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(not)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(of)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(or)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(procedure)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(record)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(repeat)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(return)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(set)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(string)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(struct)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(switch)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(then)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(to)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(type)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(until)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(uses)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(var)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(void)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(while)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
-			source=source.replace(/([^_a-zA-Z0-9])(xor)([^_a-zA-Z0-9])/g,'$1<span class="keyword">$2</span>$3');
+			if(code[t].lang=='cpp')
+				for(var i=0,keyword=['asm','auto','bool','break','case','catch','char','const','continue','default','define','delete','do','double','else','enum','explicit','extern','float','for','friend','goto','if','include','inline','int','long','mutable','namespace','new','null','operator','private','protected','public','register','return','short','signed','sizeof','static','struct','switch','template','this','throw','try','typedef','union','unsigned','using','virtual','void','volatile','while'];i<keyword.length;i++)
+					source=source.replace(RegExp('\\b('+keyword[i]+')\\b','g'),'<span class="keyword">$1</span>');
+			if(code[t].lang=='pas')
+				for(var i=0,keyword=['and','ansistring','array','asm','begin','break','case','char','const','continue','div','do','double','downto','else','end','file','float','for','function','goto','if','in','inline','int64','integer','label','longint','mod','nil','not','object','of','operator','or','procedure','program','record','repeat','set','shl','shr','single','string','then','to','type','unit','until','uses','var','while','with','xor'];i<keyword.length;i++)
+					source=source.replace(RegExp('\\b('+keyword[i]+')\\b','g'),'<span class="keyword">$1</span>');
 			//Highlight commas
 			for(var i=0;i<source.length;i++)
 			{
@@ -98,20 +46,14 @@ function LoadHighlight()
 					for(;(i<source.length)&&(source[i]!='>');i++);
 				}
 			}
-			source=source.replace(/&amp<span class="comma">;<\/span>/g,'<span class="comma">&amp;</span>');
-			source=source.replace(/&lt<span class="comma">;<\/span>/g,'<span class="comma">&lt;</span>');
-			source=source.replace(/&gt<span class="comma">;<\/span>/g,'<span class="comma">&gt;</span>');
+			source=source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g,'<span class="comma">&$1;</span>');
 			code[t].innerHTML=source;
 		}
-		//Clear other highlights in comment
+		//Clear other highlights in comment and constant
 		for(var i=0,comment=document.getElementsByClassName('comment');i<comment.length;i++)
-			comment[i].innerHTML=comment[i].innerHTML.replace(/<span class="[a-z]*">/g,'').replace(/<\/span>/g,'');
-		//Clear other highlights in constant
+			comment[i].innerHTML=comment[i].innerHTML.replace(/<\/?span( class="[a-z]*")?>/g,'');
 		for(var i=0,constant=document.getElementsByClassName('constant');i<constant.length;i++)
-			constant[i].innerHTML=constant[i].innerHTML.replace(/<span class="[a-z]*">/g,'').replace(/<\/span>/g,'');
-		//Clear other highlights in keyword
-		for(var i=0,keyword=document.getElementsByClassName('keyword');i<keyword.length;i++)
-			keyword[i].innerHTML=keyword[i].innerHTML.replace(/<span class="[a-z]*">/g,'').replace(/<\/span>/g,'');
+			constant[i].innerHTML=constant[i].innerHTML.replace(/<\/?span( class="[a-z]*")?>/g,'');
 	}
 	ajax.send();
 }

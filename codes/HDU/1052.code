@@ -125,7 +125,7 @@ void msort(int l,int r)
 		return;
 	msort(l,(l+r)/2);
 	msort((l+r)/2+1,r);
-	memcpy(copy,king,sizeof(king));
+	memcpy(copy,king,sizeof king);
 	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
 	{
 		if(x>(l+r)/2)
@@ -143,7 +143,7 @@ void msort(int l,int r)
 		else
 			king[i]=copy[x++];
 	}
-	memcpy(copy,tian,sizeof(tian));//In order to avoid using too many pointers, I sort the array king and array tian at the same time
+	memcpy(copy,tian,sizeof tian);//In order to avoid using too many pointers, I sort the array king and array tian at the same time
 	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
 	{
 		if(x>(l+r)/2)
