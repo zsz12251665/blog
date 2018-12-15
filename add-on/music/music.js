@@ -1,8 +1,10 @@
 window.addEventListener('load',LoadMusic);
 function LoadMusic()
 {
-	//Insert the innerHTML of user interface
-	document.getElementById('music').innerHTML+='<audio id="audio" src="music.mp3" preload="auto"></audio><span id="play" class="button">&#9205;</span><span id="time">00:00/00:00</span><span id="repeat" class="button">&#128257;</span><span class="range"><span id="volume"></span></span><span id="mute" class="button">&#128266;</span>';
+	//Load the request and insert the innerHTML of user interface
+	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
+	if(request.title)
+		document.getElementById('music').innerHTML+='<audio id="audio" src="/posts/'+request.title+'/music.mp3" preload="auto"></audio><span id="play" class="button">&#9205;</span><span id="time">00:00/00:00</span><span id="repeat" class="button">&#128257;</span><span class="range"><span id="volume"></span></span><span id="mute" class="button">&#128266;</span>';
 	//Set up the stylesheet
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
 	//Format values

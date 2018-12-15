@@ -134,6 +134,10 @@ td, th
 	border-style: solid;
 	border-width: thin;
 }
+#title
+{
+	text-align: center;
+}
 .btnfield a
 {
 	border-color: var(--link-color);

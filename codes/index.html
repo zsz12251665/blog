@@ -2,11 +2,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>Code List - zsz12251665's Blog</title>
 		<link rel="shortcut icon" href="/favicon.ico" />
 	</head>
 	<body class="matrix">
-		<h2 align="center">Code List</h2>
+		<h2 id="title">Code List</h2>
 		<a href="/codes/BZOJ/"><h3 align="center">BZOJ</h3></a>
 		<section class="btnfield">
 			<a href="/codes/?oj=BZOJ&pid=1197">BZOJ 1197</a>
@@ -135,10 +134,7 @@
 				xhr.open('GET','/codes/'+request.oj+'/'+request.pid+'.html',false);
 				xhr.send();
 				if(xhr.status==200)
-				{
-					document.title=request.oj+' '+request.pid+' - zsz12251665\'s Blog';
 					document.body.innerHTML=xhr.responseText;
-				}
 			}
 		</script>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
