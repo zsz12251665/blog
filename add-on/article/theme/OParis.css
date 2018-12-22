@@ -1,7 +1,7 @@
 :root
 {
 	--back-color: #F0F8FF;
-	--back-image: url("/theme/OParis.jpg");
+	--back-image: url("theme/OParis.jpg");
 	--text-color: #5F9EA0;
 	--link-color: #4F2F6A;
 }
