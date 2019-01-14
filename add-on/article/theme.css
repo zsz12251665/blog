@@ -1,0 +1,102 @@
+body.bricks
+{
+	--back-color: #600007;
+	--back-image: url("/add-on/article/bg/bricks.jpg");
+	--text-color: #FFFFFF;
+	--link-color: #FFFF00;
+}
+body.bricks code
+{
+	--code-color: #DADD98;
+	--comma-color: #FA8072;
+	--comment-color: #960018;
+	--constant-color: #15F4EE;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
+body.matrix
+{
+	--back-color: #000000;
+	--back-image: url("/add-on/article/bg/matrix.jpg");
+	--text-color: #00FF00;
+	--link-color: #FF0000;
+}
+body.matrix code
+{
+	--code-color: #BFBFBF;
+	--comma-color: #007F00;
+	--comment-color: #3F3F3F;
+	--constant-color: #7F7FFF;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
+body.mytale
+{
+	--back-color: #884A31;
+	--back-image: url("/add-on/article/bg/mytale.jpg");
+	--text-color: #FFF6D9;
+	--link-color: #F19C27;
+}
+body.mytale code
+{
+	--code-color: #FFE0EF;
+	--comma-color: #FFCC00;
+	--comment-color: #B87333;
+	--constant-color: #DC143C;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
+body.nights
+{
+	--back-color: #252321;
+	--back-image: url("/add-on/article/bg/nights.jpg");
+	--text-color: #E1BD29;
+	--link-color: #D2E9AF;
+}
+body.nights code
+{
+	--code-color: #F4C2C2;
+	--comma-color: #FFE165;
+	--comment-color: #64403F;
+	--constant-color: #A5D610;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
+body.OParis
+{
+	--back-color: #F0F8FF;
+	--back-image: url("/add-on/article/bg/OParis.jpg");
+	--text-color: #5F9EA0;
+	--link-color: #4F2F6A;
+}
+body.OParis code
+{
+	--code-color: #191970;
+	--comma-color: #76D7EA;
+	--comment-color: #B0C4DE;
+	--constant-color: #FFB366;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
+body.vector
+{
+	--back-color: #4F4F4F;
+	--back-image: url("/add-on/article/bg/vector.jpg");
+	--text-color: #B5E853;
+	--link-color: #B0E2FF;
+}
+body.vector code
+{
+	--code-color: #ACE1AF;
+	--comma-color: #859900;
+	--comment-color: #93A1A1;
+	--constant-color: #DC322F;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
