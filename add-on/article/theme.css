@@ -1,7 +1,7 @@
 body.bricks
 {
 	--back-color: #600007;
-	--back-image: url("/add-on/article/bg/bricks.jpg");
+	--back-image: url("/add-on/article/bg/bricks.svg");
 	--text-color: #FFFFFF;
 	--link-color: #FFFF00;
 }
@@ -35,7 +35,7 @@ body.matrix code
 body.mytale
 {
 	--back-color: #884A31;
-	--back-image: url("/add-on/article/bg/mytale.jpg");
+	--back-image: url("/add-on/article/bg/mytale.png");
 	--text-color: #FFF6D9;
 	--link-color: #F19C27;
 }
@@ -69,7 +69,7 @@ body.nights code
 body.OParis
 {
 	--back-color: #F0F8FF;
-	--back-image: url("/add-on/article/bg/OParis.jpg");
+	--back-image: url("/add-on/article/bg/OParis.png");
 	--text-color: #5F9EA0;
 	--link-color: #4F2F6A;
 }
@@ -86,7 +86,7 @@ body.OParis code
 body.vector
 {
 	--back-color: #4F4F4F;
-	--back-image: url("/add-on/article/bg/vector.jpg");
+	--back-image: url("/add-on/article/bg/vector.svg");
 	--text-color: #B5E853;
 	--link-color: #B0E2FF;
 }
