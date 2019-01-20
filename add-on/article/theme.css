@@ -15,6 +15,23 @@ body.bricks code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
+body.foxtal
+{
+	--back-color: #884A31;
+	--back-image: url("/add-on/article/bg/foxtal.png");
+	--text-color: #FFF6D9;
+	--link-color: #F19C27;
+}
+body.foxtal code
+{
+	--code-color: #FFE0EF;
+	--comma-color: #FFCC00;
+	--comment-color: #B87333;
+	--constant-color: #DC143C;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
 body.matrix
 {
 	--back-color: #000000;
@@ -32,40 +49,6 @@ body.matrix code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
-body.mytale
-{
-	--back-color: #884A31;
-	--back-image: url("/add-on/article/bg/mytale.png");
-	--text-color: #FFF6D9;
-	--link-color: #F19C27;
-}
-body.mytale code
-{
-	--code-color: #FFE0EF;
-	--comma-color: #FFCC00;
-	--comment-color: #B87333;
-	--constant-color: #DC143C;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
-}
-body.nights
-{
-	--back-color: #252321;
-	--back-image: url("/add-on/article/bg/nights.jpg");
-	--text-color: #E1BD29;
-	--link-color: #D2E9AF;
-}
-body.nights code
-{
-	--code-color: #F4C2C2;
-	--comma-color: #FFE165;
-	--comment-color: #64403F;
-	--constant-color: #A5D610;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
-}
 body.OParis
 {
 	--back-color: #F0F8FF;
@@ -79,6 +62,23 @@ body.OParis code
 	--comma-color: #76D7EA;
 	--comment-color: #B0C4DE;
 	--constant-color: #FFB366;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
+body.star9t
+{
+	--back-color: #252321;
+	--back-image: url("/add-on/article/bg/star9t.jpg");
+	--text-color: #E1BD29;
+	--link-color: #D2E9AF;
+}
+body.star9t code
+{
+	--code-color: #F4C2C2;
+	--comma-color: #FFE165;
+	--comment-color: #64403F;
+	--constant-color: #A5D610;
 	--function-color: var(--code-color);
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
