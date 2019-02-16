@@ -66,6 +66,23 @@ body.OParis code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
+body.sberry
+{
+	--back-color: #5E0010;
+	--back-image: url("/add-on/article/bg/sberry.png");
+	--text-color: #FFCCCB;
+	--link-color: #A3CE52;
+}
+body.sberry code
+{
+	--code-color: #FFFFFF;
+	--comma-color: #FED9BF;
+	--comment-color: #930013;
+	--constant-color: #AEF22F;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
 body.star9t
 {
 	--back-color: #252321;
@@ -75,10 +92,10 @@ body.star9t
 }
 body.star9t code
 {
-	--code-color: #F4C2C2;
-	--comma-color: #FFE165;
-	--comment-color: #64403F;
-	--constant-color: #A5D610;
+	--code-color: #7CB9E8;
+	--comma-color: #B284BE;
+	--comment-color: #333353;
+	--constant-color: #FFBF00;
 	--function-color: var(--code-color);
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);

@@ -24,21 +24,16 @@ function LoadHighlight()
 			source=source.replace(/(\/\/[^\n]*)/g,'<span class="comment">$1</span>');
 			//Hightlight keywords
 			if(code[t].lang=='cpp')
-				for(var i=0,keyword=['asm','auto','bool','break','case','catch','char','const','continue','default','define','delete','do','double','else','enum','explicit','extern','float','for','friend','goto','if','include','inline','int','long','mutable','namespace','new','null','operator','private','protected','public','register','return','short','signed','sizeof','static','struct','switch','template','this','throw','try','typedef','union','unsigned','using','virtual','void','volatile','while'];i<keyword.length;i++)
-					source=source.replace(RegExp('\\b('+keyword[i]+')\\b','g'),'<span class="keyword">$1</span>');
+				var keyword=['asm','auto','bool','break','case','catch','char','const','continue','default','define','delete','do','double','else','enum','explicit','extern','float','for','friend','goto','if','include','inline','int','long','mutable','namespace','new','null','operator','private','protected','public','register','return','short','signed','sizeof','static','struct','switch','template','this','throw','try','typedef','union','unsigned','using','virtual','void','volatile','while'];
 			if(code[t].lang=='pas')
-				for(var i=0,keyword=['and','ansistring','array','asm','begin','break','case','char','const','continue','div','do','double','downto','else','end','file','float','for','function','goto','if','in','inline','int64','integer','label','longint','mod','nil','not','object','of','operator','or','procedure','program','record','repeat','set','shl','shr','single','string','then','to','type','unit','until','uses','var','while','with','xor'];i<keyword.length;i++)
-					source=source.replace(RegExp('\\b('+keyword[i]+')\\b','g'),'<span class="keyword">$1</span>');
+				var keyword=['and','ansistring','array','asm','begin','break','case','char','const','continue','div','do','double','downto','else','end','file','float','for','function','goto','if','in','inline','int64','integer','label','longint','mod','nil','not','object','of','operator','or','procedure','program','record','repeat','set','shl','shr','single','string','then','to','type','unit','until','uses','var','while','with','xor'];
+			for(var i=0;i<keyword.length;i++)
+				source=source.replace(RegExp('\\b('+keyword[i]+')\\b','g'),'<span class="keyword">$1</span>');
 			//Highlight commas
 			for(var i=0;i<source.length;i++)
 			{
-				if((source[i]=='!')||(source[i]=='@')||(source[i]=='#')||(source[i]=='$')
-				||(source[i]=='%')||(source[i]=='^')||(source[i]=='+')||(source[i]=='-')
-				||(source[i]=='*')||(source[i]=='/')||(source[i]=='(')||(source[i]==')')
-				||(source[i]=='=')||(source[i]=='[')||(source[i]==']')||(source[i]=='{')
-				||(source[i]=='}')||(source[i]=='|')||(source[i]==',')||(source[i]=='.')
-				||(source[i]==';')||(source[i]==':')||(source[i]=='\\')||(source[i]=='?'))
-					source=source.slice(0,i)+'<span class="comma">'+source[i]+'</span>'+source.slice(i+1);
+				for(var j=0,comma=['!','@','#','$','%','^','+','-','*','/','(',')','=','[',']','{','}','|',',','.',';',':','\\','?'];j<comma.length;j++)
+					source=(source[i]==comma[j])?source.slice(0,i)+'<span class="comma">'+source[i]+'</span>'+source.slice(i+1):source;
 				if(source[i]=='<')
 				{
 					for(;(i<source.length)&&(source[i]!='>');i++);

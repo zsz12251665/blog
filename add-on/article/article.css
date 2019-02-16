@@ -1,3 +1,4 @@
+@import url("/add-on/article/theme.css");
 @font-face
 {
 	font-family: "Century Gothic";
@@ -33,7 +34,7 @@ article
 	border-radius: 0.5rem;
 	box-sizing: border-box;
 	margin: auto;
-	margin-top: 3em;
+	margin-top: 3rem;
 	min-height: 100%;
 	padding: 0.25rem;
 	width: 90%;
@@ -132,25 +133,36 @@ nav
 	transition-timing-function: ease;
 	z-index: 1;
 }
+option
+{
+	font-family: "Century Schoolbook", serif;
+}
+select
+{
+	background-color: var(--link-color);
+	border-radius: 1rem;
+	border-style: none;
+	color: var(--back-color);
+	font-family: "Century Gothic", sans-serif;
+	padding: 0.25rem;
+}
 summary
 {
 	font-family: "Century Gothic", sans-serif;
 	font-weight: bold;
 	text-align: center;
 }
-table
-{
-	border-color: var(--text-color);
-	border-style: solid;
-	border-width: medium;
-	margin-bottom: 0.1rem;
-	margin-top: 0.1rem;
-}
-td, th
+table, td, th
 {
 	border-color: var(--text-color);
 	border-style: solid;
 	border-width: thin;
+}
+table
+{
+	border-width: medium;
+	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
 }
 #title
 {
@@ -175,7 +187,7 @@ td, th
 	background-color: var(--link-color);
 	color: var(--back-color);
 }
-.flexcontainer
+.flexwrapper
 {
 	align-items:baseline;
 	display:flex;
