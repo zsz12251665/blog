@@ -26,5 +26,5 @@ function LoadArticle()
 		if(selector.options[i].value==sessionStorage.getItem('theme'))
 			selector.selectedIndex=i;
 	selector.options[selector.selectedIndex].style.fontStyle='italic';
-	selector.oninput=function(){sessionStorage.setItem('theme',selector.options[selector.selectedIndex].value);location.href=location.href.replace(/[?&]theme=[^&]*/g,'');};
+	selector.onchange=function(){sessionStorage.setItem('theme',selector.options[selector.selectedIndex].value);location.href=location.href.replace(/[?&]theme=[^&]*/g,'');};
 }

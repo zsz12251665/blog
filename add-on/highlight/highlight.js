@@ -6,6 +6,8 @@ function LoadHighlight()
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	//Load and highlight the code
 	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
+	if(request.softTab)
+		sessionStorage.setItem('softTab',request.softTab);
 	if((document.getElementsByTagName('code').length==0)||(!request.oj)||(!request.pid))
 		return;
 	var ajax=new XMLHttpRequest();
@@ -42,6 +44,7 @@ function LoadHighlight()
 				}
 			}
 			source=source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g,'<span class="comma">&$1;</span>');
+			source=(sessionStorage.getItem('softTab')=='true')?source.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;'):source.replace(/(&nbsp;){4}/g,'\t');
 			code[t].innerHTML=source;
 		}
 		//Clear other highlights in comment and constant

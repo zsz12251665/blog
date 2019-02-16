@@ -35,7 +35,7 @@ body.foxtal code
 body.matrix
 {
 	--back-color: #000000;
-	--back-image: url("/add-on/article/bg/matrix.jpg");
+	--back-image: url("/add-on/article/bg/matrix.png");
 	--text-color: #00FF00;
 	--link-color: #FF0000;
 }
@@ -86,7 +86,7 @@ body.sberry code
 body.star9t
 {
 	--back-color: #252321;
-	--back-image: url("/add-on/article/bg/star9t.jpg");
+	--back-image: url("/add-on/article/bg/star9t.png");
 	--text-color: #E1BD29;
 	--link-color: #D2E9AF;
 }

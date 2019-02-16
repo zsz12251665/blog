@@ -6,8 +6,15 @@
 		<style type="text/css">
 			#list
 			{
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+				display: flex;
+				flex-wrap:wrap;
+				justify-content: center;
+			}
+			#list a
+			{
+				flex-grow: 1;
+				max-width: 100%;
+				width: 30rem;
 			}
 			#list a section
 			{
