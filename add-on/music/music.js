@@ -1,20 +1,21 @@
 window.addEventListener('load',LoadMusic);
 function LoadMusic()
 {
-	//Load the request and insert the innerHTML of user interface
+	// Set up the stylesheet
+	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
+	// Load the request
 	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
 	if((!document.getElementById('music'))||(!request.title))
 		return;
-	document.getElementById('music').innerHTML+='<audio id="audio" src="/posts/'+request.title+'/music.mp3" preload="auto"></audio><span id="play" class="button">&#9205;</span><span id="time">00:00/00:00</span><span id="repeat" class="button">&#128257;</span><span class="range"><span id="volume"></span></span><span id="mute" class="button">&#128266;</span>';
-	//Set up the stylesheet
-	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
-	//Format values
+	// Set up the user interface
+	document.getElementById('music').innerHTML+='<audio id="audio" src="/posts/'+request.title+'/music.mp3" preload="auto"></audio><b id="play">&#9205;</b><span id="time">00:00/00:00</span><b id="repeat">&#128257;</b><span class="range"><span id="volume"></span></span><b id="mute">&#128266;</b>';
+	// Initialize values
 	var audio=document.getElementById('audio');
 	var play=document.getElementById('play');
 	var mute=document.getElementById('mute');
 	var volume=document.getElementById('volume');
 	audio.loop=true;
-	//Set event functions
+	// Set up event functions
 	audio.ondurationchange=audio.ontimeupdate=function(){document.getElementById('time').innerHTML=((Math.floor(audio.currentTime/60)<10)?'0':'')+String(Math.floor(audio.currentTime/60))+':'+(((audio.currentTime%60)<10)?'0':'')+String(Math.floor(audio.currentTime%60))+'/'+((Math.floor(audio.duration/60)<10)?'0':'')+String(Math.floor(audio.duration/60))+':'+(((audio.duration%60)<10)?'0':'')+String(Math.floor(audio.duration%60));};
 	audio.onended=function(){play.innerHTML=(audio.loop)?'&#9208;':'&#9205;';};
 	audio.onpause=function(){play.innerHTML='&#9205;';};

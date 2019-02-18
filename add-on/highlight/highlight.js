@@ -1,13 +1,19 @@
-//The highlights of functions and variables are still missing
+// The highlights of functions and variables are still missing
 window.addEventListener('DOMContentLoaded',LoadHighlight);
 function LoadHighlight()
 {
-	//Load the style sheet of highlight
+	// Load the style sheet of highlight
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
-	//Load and highlight the code
+	// Load the request
 	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
+	// Load soft tab request and set up soft tabs panel
 	if(request.softTab)
 		sessionStorage.setItem('softTab',request.softTab);
+	document.getElementsByTagName('nav')[0].innerHTML+='<br /><input type="checkbox" id="softTab" />Replace tabs with 4 spaces';
+	var softTab=document.getElementById('softTab');
+	softTab.checked=String(sessionStorage.getItem('softTab'))=='true';
+	softTab.onclick=function(){sessionStorage.setItem('softTab',softTab.checked);for(var t=0,code=document.getElementsByTagName('code');t<code.length;t++)code[t].innerHTML=softTab.checked?code[t].innerHTML.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;'):code[t].innerHTML.replace(/(&nbsp;){4}/g,'\t');};
+	// Load and highlight the code
 	if((document.getElementsByTagName('code').length==0)||(!request.oj)||(!request.pid))
 		return;
 	var ajax=new XMLHttpRequest();
@@ -18,20 +24,20 @@ function LoadHighlight()
 			return;
 		for(var t=0,code=document.getElementsByTagName('code'),codetext=ajax.responseText.split('\n\n');t<code.length;t++)
 		{
-			//Load the code
+			// Load the code
 			var source=codetext[t].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-			//Highlight constants
+			// Highlight constants
 			source=source.replace(/(\"[^\n]*?\"|\'[^\n]*?\')/g,'<span class="constant">$1</span>').replace(/\b([0-9][.0-9]*|maxint|maxlongint|true|false)\b/g,'<span class="constant">$1</span>');
-			//Highlight comments
+			// Highlight comments
 			source=source.replace(/(\/\/[^\n]*)/g,'<span class="comment">$1</span>');
-			//Hightlight keywords
+			// Hightlight keywords
 			if(code[t].lang=='cpp')
 				var keyword=['asm','auto','bool','break','case','catch','char','const','continue','default','define','delete','do','double','else','enum','explicit','extern','float','for','friend','goto','if','include','inline','int','long','mutable','namespace','new','null','operator','private','protected','public','register','return','short','signed','sizeof','static','struct','switch','template','this','throw','try','typedef','union','unsigned','using','virtual','void','volatile','while'];
 			if(code[t].lang=='pas')
 				var keyword=['and','ansistring','array','asm','begin','break','case','char','const','continue','div','do','double','downto','else','end','file','float','for','function','goto','if','in','inline','int64','integer','label','longint','mod','nil','not','object','of','operator','or','procedure','program','record','repeat','set','shl','shr','single','string','then','to','type','unit','until','uses','var','while','with','xor'];
 			for(var i=0;i<keyword.length;i++)
 				source=source.replace(RegExp('\\b('+keyword[i]+')\\b','g'),'<span class="keyword">$1</span>');
-			//Highlight commas
+			// Highlight commas
 			for(var i=0;i<source.length;i++)
 			{
 				for(var j=0,comma=['!','@','#','$','%','^','+','-','*','/','(',')','=','[',']','{','}','|',',','.',';',':','\\','?'];j<comma.length;j++)
@@ -44,10 +50,11 @@ function LoadHighlight()
 				}
 			}
 			source=source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g,'<span class="comma">&$1;</span>');
-			source=(sessionStorage.getItem('softTab')=='true')?source.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;'):source.replace(/(&nbsp;){4}/g,'\t');
+			// Process soft tabs
+			source=softTab.checked?source.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;'):source.replace(/(&nbsp;){4}/g,'\t');
 			code[t].innerHTML=source;
 		}
-		//Clear other highlights in comment and constant
+		// Clear other highlights in comment and constant
 		for(var i=0,comment=document.getElementsByClassName('comment');i<comment.length;i++)
 			comment[i].innerHTML=comment[i].innerHTML.replace(/<\/?span( class="[a-z]*")?>/g,'');
 		for(var i=0,constant=document.getElementsByClassName('constant');i<constant.length;i++)

@@ -1,9 +1,9 @@
 window.addEventListener('DOMContentLoaded',LoadMath);
 function LoadMath()
 {
-	//Load the style sheet of mathematical expressions
+	// Load the style sheet of mathematical expressions
 	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/math/math.css" />';
-	//Search and replace the expressions
+	// Search and replace the expressions
 	for(var t=0,data=document.getElementsByTagName('data');t<data.length;t++)
 	{
 	    var html=data[t].value;
@@ -29,7 +29,7 @@ function LoadMath()
 		}
 		data[t].innerHTML=html;	
 	}
-	//Update the font style of variable
+	// Update the font style of variable
 	for(var t=0,data=document.getElementsByClassName('v');t<data.length;t++)
 	{
 	    var html=data[t].innerHTML;
@@ -43,3 +43,14 @@ function LoadMath()
 		data[t].innerHTML=html;
 	}
 }
+/*
+b = sub
+c = constant
+f = fraction
+i = inline block
+l = line
+o = operator
+p = super
+t = topline
+v = variable
+*/
