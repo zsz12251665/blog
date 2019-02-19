@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -8,25 +8,25 @@
 			#list
 			{
 				display: flex;
-				flex-wrap:wrap;
+				flex-wrap: wrap;
 				justify-content: center;
 			}
 			#list a
 			{
+				background-color: var(--text-color);
+				color: var(--back-color);
 				flex-grow: 1;
 				max-width: 100%;
 				width: 30rem;
 			}
-			#list a section
+			#list a span, #list a time
 			{
-				background-color: var(--text-color);
-				color: var(--back-color);
-				overflow: hidden;
-				padding: 0.25rem;
+				display: block;
+				margin: 0.25rem;
 			}
 			#list a time
 			{
-				float: right;
+				text-align: end;
 			}
 		</style>
 	</head>
@@ -54,63 +54,78 @@
 			<section id="list">
 				<a href="/posts/?title=preface-founding">
 					<img src="/posts/preface-founding/cover.jpg" alt="End Of The Day" width="100%" />
-					<section><span>Preface: Founding</span><time>2017-02-13 20:09</time></section>
+					<span>Preface: Founding</span>
+					<time>2017-02-13 20:09</time>
 				</a>
 				<a href="/posts/?title=the-story-of-the-chorus-1">
 					<img src="/posts/the-story-of-the-chorus-1/cover.jpg" alt="Old Music Score" width="100%" />
-					<section><span>The Story of the Chorus (1)</span><time>2017-03-02 09:25</time></section>
+					<span>The Story of the Chorus (1)</span>
+					<time>2017-03-02 09:25</time>
 				</a>
 				<a href="/posts/?title=about-me-2017">
 					<img src="/posts/about-me-2017/cover.jpg" alt="Tablet and Coffee" width="100%" />
-					<section><span>About Me: 2017</span><time>2017-03-03 18:50</time></section>
+					<span>About Me: 2017</span>
+					<time>2017-03-03 18:50</time>
 				</a>
 				<a href="/posts/?title=the-story-of-the-chorus-2">
 					<img src="/posts/the-story-of-the-chorus-2/cover.jpg" alt="The Choir Stalls" width="100%" />
-					<section><span>The Story of the Chorus (2)</span><time>2017-03-16 13:37</time></section>
+					<span>The Story of the Chorus (2)</span>
+					<time>2017-03-16 13:37</time>
 				</a>
 				<a href="/posts/?title=the-story-of-the-chorus-3">
 					<img src="/posts/the-story-of-the-chorus-3/cover.jpg" alt="Microphone" width="100%" />
-					<section><span>The Story of the Chorus (3)</span><time>2017-03-27 19:33</time></section>
+					<span>The Story of the Chorus (3)</span>
+					<time>2017-03-27 19:33</time>
 				</a>
 				<a href="/posts/?title=a-trip-of-konjac">
 					<img src="/posts/a-trip-of-konjac/cover.jpg" alt="Screen" width="100%" />
-					<section><span>A Trip of Konjac</span><time>2017-05-03 22:02</time></section>
+					<span>A Trip of Konjac</span>
+					<time>2017-05-03 22:02</time>
 				</a>
 				<a href="/posts/?title=one-day-more">
 					<img src="/posts/one-day-more/cover.jpg" alt="Sailing Ship, Skyline" width="100%" />
-					<section><span>One Day More</span><time>2017-11-10 22:36</time></section>
+					<span>One Day More</span>
+					<time>2017-11-10 22:36</time>
 				</a>
 				<a href="/posts/?title=preface-the-1st-anniversary">
 					<img src="/posts/preface-the-1st-anniversary/cover.jpg" alt="Sun Rise Carinthia Austria Egelsee" width="100%" />
-					<section><span>Preface: the 1st Anniversary</span><time>2018-01-24 17:21</time></section>
+					<span>Preface: the 1st Anniversary</span>
+					<time>2018-01-24 17:21</time>
 				</a>
 				<a href="/posts/?title=happy-semi-retirement-1">
 					<img src="/posts/happy-semi-retirement-1/cover.jpg" alt="Fantasy Sunset" width="100%" />
-					<section><span>Happy Semi-retirement (1)</span><time>2018-05-02 22:01</time></section>
+					<span>Happy Semi-retirement (1)</span>
+					<time>2018-05-02 22:01</time>
 				</a>
 				<a href="/posts/?title=happy-semi-retirement-2">
 					<img src="/posts/happy-semi-retirement-2/cover.jpg" alt="Beijing At Night, China" width="100%" />
-					<section><span>Happy Semi-retirement (2)</span><time>2018-05-17 16:12</time></section>
+					<span>Happy Semi-retirement (2)</span>
+					<time>2018-05-17 16:12</time>
 				</a>
 				<a href="/posts/?title=a-unique-summer-camp-1">
 					<img src="/posts/a-unique-summer-camp-1/cover.jpg" alt="DJI OSMO" width="100%" />
-					<section><span>A Unique Summer Camp (1)</span><time>2018-07-17 22:19</time></section>
+					<span>A Unique Summer Camp (1)</span>
+					<time>2018-07-17 22:19</time>
 				</a>
 				<a href="/posts/?title=a-unique-summer-camp-2">
 					<img src="/posts/a-unique-summer-camp-2/cover.jpg" alt="Mars 2020" width="100%" />
-					<section><span>A Unique Summer Camp (2)</span><time>2018-07-27 16:07</time></section>
+					<span>A Unique Summer Camp (2)</span>
+					<time>2018-07-27 16:07</time>
 				</a>
 				<a href="/posts/?title=a-unique-summer-camp-3">
 					<img src="/posts/a-unique-summer-camp-3/cover.jpg" alt="Bavarian Alps Mountains, Lake, Berchtesgaden, Germany" width="100%" />
-					<section><span>A Unique Summer Camp (3)</span><time>2018-08-01 18:40</time></section>
+					<span>A Unique Summer Camp (3)</span>
+					<time>2018-08-01 18:40</time>
 				</a>
 				<a href="/posts/?title=october-collection">
 					<img src="/posts/october-collection/cover.jpg" alt="Loch Chon boathouse, Autumn" width="100%" />
-					<section><span>October Collection</span><time>2018-11-04 14:18</time></section>
+					<span>October Collection</span>
+					<time>2018-11-04 14:18</time>
 				</a>
 				<a href="/posts/?title=preface-the-2nd-anniversary">
 					<img src="/posts/preface-the-2nd-anniversary/cover.jpg" alt="Ama Dablam Mountain, Nepal" width="100%" />
-					<section><span>Preface: the 2nd Anniversary</span><time>2019-01-20 13:33</time></section>
+					<span>Preface: the 2nd Anniversary</span>
+					<time>2019-01-20 13:33</time>
 				</a>
 			</section>
 			<hr />

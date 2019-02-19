@@ -2,7 +2,7 @@ window.addEventListener('load',LoadMusic);
 function LoadMusic()
 {
 	// Set up the stylesheet
-	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
+	document.head.innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
 	// Load the request
 	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
 	if((!document.getElementById('music'))||(!request.title))

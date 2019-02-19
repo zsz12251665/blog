@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded',LoadMath);
 function LoadMath()
 {
 	// Load the style sheet of mathematical expressions
-	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/math/math.css" />';
+	document.head.innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/math/math.css" />';
 	// Search and replace the expressions
 	for(var t=0,data=document.getElementsByTagName('data');t<data.length;t++)
 	{

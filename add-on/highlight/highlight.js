@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded',LoadHighlight);
 function LoadHighlight()
 {
 	// Load the style sheet of highlight
-	document.getElementsByTagName('head')[0].innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
+	document.head.innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	// Load the request
 	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
 	// Load soft tab request and set up soft tabs panel
