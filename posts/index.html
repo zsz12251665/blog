@@ -7,17 +7,6 @@
 	</head>
 	<body class="bricks">
 		<nav class="btnfield">
-			<select id="theme">
-				<option value="Dfault">Default Theme</option>
-				<option value="bricks">Brick Wall</option>
-				<option value="foxtal">Fox's Tale</option>
-				<option value="matrix">Matrix Flow</option>
-				<option value="OParis">Oh, Paris</option>
-				<option value="sberry">Strawberry</option>
-				<option value="star9t">Starry Night</option>
-				<option value="vector">Vector</option>
-			</select>
-			<br />
 			<a href="/">Homepage</a>
 			<a href="/codes/">Code List</a>
 			<a href="/posts/">Post List</a>
@@ -30,8 +19,8 @@
 				<template id="listItem">
 					<a href="/posts/" style="background-color: var(--text-color);color: var(--back-color);flex-grow: 1;max-width: 100%;width: 30rem;">
 						<img src="/posts/cover.jpg" alt="IMAGE ALT" width="100%" />
-						<span style="display: block;margin: 0.25rem;">ITEM TITLE</span>
-						<time style="display: block;margin: 0.25rem;text-align: end;">ITEM TIME</time>
+						<div style="margin: 0.25rem;">ITEM TITLE</div>
+						<time style="margin: 0.25rem;text-align: end;">ITEM TIME</time>
 					</a>
 				</template>
 			</section>
@@ -41,24 +30,23 @@
 		<footer>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. Licensed under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 International License</a>. </footer>
 		<script type="text/javascript">
 			var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
+			var xhr=new XMLHttpRequest();
 			if(request.title)
 			{
-				var xhr=new XMLHttpRequest();
 				xhr.open('GET','/posts/'+request.title+'/index.html',false);
 				xhr.send();
 				if(xhr.status==200)
 					document.getElementsByTagName('article')[0].innerHTML=xhr.responseText;
 			}
-			else
+			if((!request.oj)||(xhr.status!=200))
 			{
-				var xhr=new XMLHttpRequest();
 				xhr.open('GET','/posts/list.json',false);
 				xhr.send();
-				for(var i=0,template=document.querySelector('template#listItem').content,list=JSON.parse(xhr.responseText);i<list.length;i++)
+				for(var i=0,template=document.querySelector('template#listItem').content,list=JSON.parse(xhr.responseText).sort(function(a,b){return (a.time<b.time)?-1:1;});i<list.length;i++)
 				{
 					template.querySelector('a').href='/posts/?title='+list[i].title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
 					template.querySelector('img').src='/posts/'+list[i].title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'')+'/cover.jpg';
-					template.querySelector('img').alt=template.querySelector('span').innerText=list[i].title;
+					template.querySelector('img').alt=template.querySelector('div').innerText=list[i].title;
 					template.querySelector('time').innerText=list[i].time;
 					document.querySelector('#list').appendChild(document.importNode(template,true));
 				}
