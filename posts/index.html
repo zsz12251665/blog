@@ -4,31 +4,6 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<title>Post List | zsz12251665's blog</title>
-		<style type="text/css">
-			#list
-			{
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
-			}
-			#list a
-			{
-				background-color: var(--text-color);
-				color: var(--back-color);
-				flex-grow: 1;
-				max-width: 100%;
-				width: 30rem;
-			}
-			#list a span, #list a time
-			{
-				display: block;
-				margin: 0.25rem;
-			}
-			#list a time
-			{
-				text-align: end;
-			}
-		</style>
 	</head>
 	<body class="bricks">
 		<nav class="btnfield">
@@ -51,82 +26,14 @@
 		<header>zsz12251665</header>
 		<article>
 			<h2 id="title">Post List</h2>
-			<section id="list">
-				<a href="/posts/?title=preface-founding">
-					<img src="/posts/preface-founding/cover.jpg" alt="End Of The Day" width="100%" />
-					<span>Preface: Founding</span>
-					<time>2017-02-13 20:09</time>
-				</a>
-				<a href="/posts/?title=the-story-of-the-chorus-1">
-					<img src="/posts/the-story-of-the-chorus-1/cover.jpg" alt="Old Music Score" width="100%" />
-					<span>The Story of the Chorus (1)</span>
-					<time>2017-03-02 09:25</time>
-				</a>
-				<a href="/posts/?title=about-me-2017">
-					<img src="/posts/about-me-2017/cover.jpg" alt="Tablet and Coffee" width="100%" />
-					<span>About Me: 2017</span>
-					<time>2017-03-03 18:50</time>
-				</a>
-				<a href="/posts/?title=the-story-of-the-chorus-2">
-					<img src="/posts/the-story-of-the-chorus-2/cover.jpg" alt="The Choir Stalls" width="100%" />
-					<span>The Story of the Chorus (2)</span>
-					<time>2017-03-16 13:37</time>
-				</a>
-				<a href="/posts/?title=the-story-of-the-chorus-3">
-					<img src="/posts/the-story-of-the-chorus-3/cover.jpg" alt="Microphone" width="100%" />
-					<span>The Story of the Chorus (3)</span>
-					<time>2017-03-27 19:33</time>
-				</a>
-				<a href="/posts/?title=a-trip-of-konjac">
-					<img src="/posts/a-trip-of-konjac/cover.jpg" alt="Screen" width="100%" />
-					<span>A Trip of Konjac</span>
-					<time>2017-05-03 22:02</time>
-				</a>
-				<a href="/posts/?title=one-day-more">
-					<img src="/posts/one-day-more/cover.jpg" alt="Sailing Ship, Skyline" width="100%" />
-					<span>One Day More</span>
-					<time>2017-11-10 22:36</time>
-				</a>
-				<a href="/posts/?title=preface-the-1st-anniversary">
-					<img src="/posts/preface-the-1st-anniversary/cover.jpg" alt="Sun Rise Carinthia Austria Egelsee" width="100%" />
-					<span>Preface: the 1st Anniversary</span>
-					<time>2018-01-24 17:21</time>
-				</a>
-				<a href="/posts/?title=happy-semi-retirement-1">
-					<img src="/posts/happy-semi-retirement-1/cover.jpg" alt="Fantasy Sunset" width="100%" />
-					<span>Happy Semi-retirement (1)</span>
-					<time>2018-05-02 22:01</time>
-				</a>
-				<a href="/posts/?title=happy-semi-retirement-2">
-					<img src="/posts/happy-semi-retirement-2/cover.jpg" alt="Beijing At Night, China" width="100%" />
-					<span>Happy Semi-retirement (2)</span>
-					<time>2018-05-17 16:12</time>
-				</a>
-				<a href="/posts/?title=a-unique-summer-camp-1">
-					<img src="/posts/a-unique-summer-camp-1/cover.jpg" alt="DJI OSMO" width="100%" />
-					<span>A Unique Summer Camp (1)</span>
-					<time>2018-07-17 22:19</time>
-				</a>
-				<a href="/posts/?title=a-unique-summer-camp-2">
-					<img src="/posts/a-unique-summer-camp-2/cover.jpg" alt="Mars 2020" width="100%" />
-					<span>A Unique Summer Camp (2)</span>
-					<time>2018-07-27 16:07</time>
-				</a>
-				<a href="/posts/?title=a-unique-summer-camp-3">
-					<img src="/posts/a-unique-summer-camp-3/cover.jpg" alt="Bavarian Alps Mountains, Lake, Berchtesgaden, Germany" width="100%" />
-					<span>A Unique Summer Camp (3)</span>
-					<time>2018-08-01 18:40</time>
-				</a>
-				<a href="/posts/?title=october-collection">
-					<img src="/posts/october-collection/cover.jpg" alt="Loch Chon boathouse, Autumn" width="100%" />
-					<span>October Collection</span>
-					<time>2018-11-04 14:18</time>
-				</a>
-				<a href="/posts/?title=preface-the-2nd-anniversary">
-					<img src="/posts/preface-the-2nd-anniversary/cover.jpg" alt="Ama Dablam Mountain, Nepal" width="100%" />
-					<span>Preface: the 2nd Anniversary</span>
-					<time>2019-01-20 13:33</time>
-				</a>
+			<section id="list" style="display: flex;flex-wrap: wrap;justify-content: center;">
+				<template id="listItem">
+					<a href="/posts/" style="background-color: var(--text-color);color: var(--back-color);flex-grow: 1;max-width: 100%;width: 30rem;">
+						<img src="/posts/cover.jpg" alt="IMAGE ALT" width="100%" />
+						<span style="display: block;margin: 0.25rem;">ITEM TITLE</span>
+						<time style="display: block;margin: 0.25rem;text-align: end;">ITEM TIME</time>
+					</a>
+				</template>
 			</section>
 			<hr />
 			<img src="cover.jpg" alt="Working Together" width="100%" />
@@ -141,6 +48,20 @@
 				xhr.send();
 				if(xhr.status==200)
 					document.getElementsByTagName('article')[0].innerHTML=xhr.responseText;
+			}
+			else
+			{
+				var xhr=new XMLHttpRequest();
+				xhr.open('GET','/posts/list.json',false);
+				xhr.send();
+				for(var i=0,template=document.querySelector('template#listItem').content,list=JSON.parse(xhr.responseText);i<list.length;i++)
+				{
+					template.querySelector('a').href='/posts/?title='+list[i].title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
+					template.querySelector('img').src='/posts/'+list[i].title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'')+'/cover.jpg';
+					template.querySelector('img').alt=template.querySelector('span').innerText=list[i].title;
+					template.querySelector('time').innerText=list[i].time;
+					document.querySelector('#list').appendChild(document.importNode(template,true));
+				}
 			}
 		</script>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>

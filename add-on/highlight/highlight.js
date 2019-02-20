@@ -6,23 +6,25 @@ function LoadHighlight()
 	document.head.innerHTML+='<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	// Load the request
 	var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
+	if((!document.querySelector('code'))||(!request.oj)||(!request.pid))
+		return;
 	// Load soft tab request and set up soft tabs panel
 	if(request.softTab)
 		sessionStorage.setItem('softTab',request.softTab);
-	document.getElementsByTagName('nav')[0].innerHTML+='<br /><input type="checkbox" id="softTab" />Replace tabs with 4 spaces';
-	var softTab=document.getElementById('softTab');
+	var softTab=document.createElement('div');
+	softTab.innerHTML+='<input type="checkbox" id="softTab" />Replace tabs with 4 spaces';
+	document.querySelector('nav').appendChild(softTab);
+	softTab=document.querySelector('#softTab');
 	softTab.checked=String(sessionStorage.getItem('softTab'))=='true';
-	softTab.onclick=function(){sessionStorage.setItem('softTab',softTab.checked);for(var t=0,code=document.getElementsByTagName('code');t<code.length;t++)code[t].innerHTML=softTab.checked?code[t].innerHTML.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;'):code[t].innerHTML.replace(/(&nbsp;){4}/g,'\t');};
+	softTab.onclick=function(){sessionStorage.setItem('softTab',softTab.checked);for(var t=0,code=document.querySelectorAll('code');t<code.length;t++)code[t].innerHTML=softTab.checked?code[t].innerHTML.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;'):code[t].innerHTML.replace(/(&nbsp;){4}/g,'\t');};
 	// Load and highlight the code
-	if((document.getElementsByTagName('code').length==0)||(!request.oj)||(!request.pid))
-		return;
 	var ajax=new XMLHttpRequest();
 	ajax.open('GET','/codes/'+request.oj+'/'+request.pid+'.code',true);
 	ajax.onreadystatechange=function()
 	{
 		if((ajax.readyState!=4)||(ajax.status!=200))
 			return;
-		for(var t=0,code=document.getElementsByTagName('code'),codetext=ajax.responseText.split('\n\n');t<code.length;t++)
+		for(var t=0,code=document.querySelectorAll('code'),codetext=ajax.responseText.split('\n\n');t<code.length;t++)
 		{
 			// Load the code
 			var source=codetext[t].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -55,9 +57,9 @@ function LoadHighlight()
 			code[t].innerHTML=source;
 		}
 		// Clear other highlights in comment and constant
-		for(var i=0,comment=document.getElementsByClassName('comment');i<comment.length;i++)
+		for(var i=0,comment=document.querySelectorAll('code span.comment');i<comment.length;i++)
 			comment[i].innerHTML=comment[i].innerHTML.replace(/<\/?span( class="[a-z]*")?>/g,'');
-		for(var i=0,constant=document.getElementsByClassName('constant');i<constant.length;i++)
+		for(var i=0,constant=document.querySelectorAll('code span.constant');i<constant.length;i++)
 			constant[i].innerHTML=constant[i].innerHTML.replace(/<\/?span( class="[a-z]*")?>/g,'');
 	}
 	ajax.send();
