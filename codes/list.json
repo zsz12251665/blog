@@ -1,6 +1,6 @@
 [
 	{
-		"oj":"BZOJ",
+		"abbr":"BZOJ",
 		"name":"LYDSY Education Online Judge",
 		"problems":[
 			{"id":"4300","time":"2016-12-21 20:18"},
@@ -11,7 +11,7 @@
 		]
 	},
 	{
-		"oj":"CF",
+		"abbr":"CF",
 		"name":"Codeforces<sup>&beta;</sup> <sub>Sponsored by Telegram</sub>",
 		"problems":[
 			{"id":"853A","time":"2017-10-20 10:41"},
@@ -30,7 +30,7 @@
 		]
 	},
 	{
-		"oj":"HDU",
+		"abbr":"HDU",
 		"name":"Hangzhou Dianzi University Online Judge",
 		"problems":[
 			{"id":"1052","time":"2017-01-22 11:28"},
@@ -49,7 +49,7 @@
 		]
 	},
 	{
-		"oj":"NOIP",
+		"abbr":"NOIP",
 		"name":"National Olympiad in Informatics in Provinces",
 		"problems":[
 			{"id":"2016S1","time":"2016-12-19 17:04"},
@@ -105,7 +105,7 @@
 		]
 	},
 	{
-		"oj":"POJ",
+		"abbr":"POJ",
 		"name":"Peking University JudgeOnline for ACM/ICPC",
 		"problems":[
 			{"id":"2388","time":"2018-01-05 21:20"},

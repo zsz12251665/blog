@@ -55,24 +55,24 @@
 			var xhr=new XMLHttpRequest();
 			xhr.open('GET','/codes/list.json',false);
 			xhr.send();
-			for(var i=0,template=document.querySelector('template#codeListItem').content,list=JSON.parse(xhr.responseText);i<list.length;i++)
+			for(let oj of JSON.parse(xhr.responseText))
 			{
-					console.log(list);
-					template.querySelector('caption a').href='/codes/?oj='+list[i].oj;
-					template.querySelector('caption a').innerText=list[i].oj;
-					template.querySelector('tbody').innerHTML='';
-					list[i].problems.sort(function(a,b){return (a.id<b.id)?-1:1;});
-					for(var j=0;j<list[i].problems.length;j++)
-						template.querySelector('tbody').innerHTML+='<tr><td><a href="/codes/?oj='+list[i].oj+'&pid='+list[i].problems[j].id+'">'+list[i].oj+' '+list[i].problems[j].id+'</a></td><td>'+list[i].problems[j].time+'</td>';
-					document.querySelector('#codeList').appendChild(document.importNode(template,true));
+				let template=document.querySelector('template#codeListItem').content;
+				template.querySelector('caption a').href='/codes/?oj='+oj.abbr;
+				template.querySelector('caption a').innerText=oj.abbr;
+				template.querySelector('tbody').innerHTML='';
+				for(let problem of oj.problems.sort(function(a,b){return (a.id<b.id)?-1:1;}))
+					template.querySelector('tbody').innerHTML+='<tr><td><a href="/codes/?oj='+oj.abbr+'&pid='+problem.id+'">'+oj.abbr+' '+problem.id+'</a></td><td>'+problem.time+'</td>';
+				document.querySelector('#codeList').appendChild(document.importNode(template,true));
 			}
 			xhr.open('GET','/posts/list.json',false);
 			xhr.send();
-			for(var i=0,template=document.querySelector('template#postListItem').content,list=JSON.parse(xhr.responseText).sort(function(a,b){return (a.title<b.title)?-1:1;});i<list.length;i++)
+			for(let post of JSON.parse(xhr.responseText).sort(function(a,b){return (a.title<b.title)?-1:1;}))
 			{
-				template.querySelector('a').href='/posts/?title='+list[i].title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
-				template.querySelector('a').innerText=list[i].title;
-				template.querySelector('td:last-child').innerText=list[i].time;
+				let template=document.querySelector('template#postListItem').content;
+				template.querySelector('a').href='/posts/?title='+post.title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
+				template.querySelector('a').innerText=post.title;
+				template.querySelector('td:last-child').innerText=post.time;
 				document.querySelector('#postList').appendChild(document.importNode(template,true));
 			}
 		</script>

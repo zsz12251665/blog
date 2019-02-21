@@ -17,7 +17,7 @@
 			<h2 id="title">Post List</h2>
 			<section id="list" style="display: flex;flex-wrap: wrap;justify-content: center;">
 				<template id="listItem">
-					<a href="/posts/" style="background-color: var(--text-color);color: var(--back-color);flex-grow: 1;max-width: 100%;width: 30rem;">
+					<a href="/posts/" style="background-color: var(--text-color);color: var(--back-color);flex-grow: 1;flex-shrink: 1;width: 30rem;">
 						<img src="/posts/cover.jpg" alt="IMAGE ALT" width="100%" />
 						<div style="margin: 0.25rem;">ITEM TITLE</div>
 						<time style="margin: 0.25rem;text-align: end;">ITEM TIME</time>
@@ -36,18 +36,19 @@
 				xhr.open('GET','/posts/'+request.title+'/index.html',false);
 				xhr.send();
 				if(xhr.status==200)
-					document.getElementsByTagName('article')[0].innerHTML=xhr.responseText;
+					document.querySelector('article').innerHTML=xhr.responseText;
 			}
-			if((!request.oj)||(xhr.status!=200))
+			if((!request.title)||(xhr.status!=200))
 			{
 				xhr.open('GET','/posts/list.json',false);
 				xhr.send();
-				for(var i=0,template=document.querySelector('template#listItem').content,list=JSON.parse(xhr.responseText).sort(function(a,b){return (a.time<b.time)?-1:1;});i<list.length;i++)
+				let template=document.querySelector('template#listItem').content;
+				for(let post of JSON.parse(xhr.responseText).sort(function(a,b){return (a.time<b.time)?-1:1;}))
 				{
-					template.querySelector('a').href='/posts/?title='+list[i].title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
-					template.querySelector('img').src='/posts/'+list[i].title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'')+'/cover.jpg';
-					template.querySelector('img').alt=template.querySelector('div').innerText=list[i].title;
-					template.querySelector('time').innerText=list[i].time;
+					template.querySelector('a').href='/posts/?title='+post.title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
+					template.querySelector('img').src='/posts/'+post.title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'')+'/cover.jpg';
+					template.querySelector('img').alt=template.querySelector('div').innerText=post.title;
+					template.querySelector('time').innerText=post.time;
 					document.querySelector('#list').appendChild(document.importNode(template,true));
 				}
 			}

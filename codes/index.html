@@ -31,20 +31,20 @@
 				xhr.open('GET','/codes/'+request.oj+'/'+(request.pid||'index')+'.html',false);
 				xhr.send();
 				if(xhr.status==200)
-					document.getElementsByTagName('article')[0].innerHTML=xhr.responseText;
+					document.querySelector('article').innerHTML=xhr.responseText;
 			}
 			if((!request.oj)||(xhr.status!=200))
 			{
 				xhr.open('GET','/codes/list.json',false);
 				xhr.send();
-				for(var i=0,template=document.querySelector('template#listItem').content,list=JSON.parse(xhr.responseText);i<list.length;i++)
+				let template=document.querySelector('template#listItem').content;
+				for(let oj of JSON.parse(xhr.responseText))
 				{
-					template.querySelector('a').href='/codes/?oj='+list[i].oj;
-					template.querySelector('a h3').innerHTML=list[i].name;
+					template.querySelector('a').href='/codes/?oj='+oj.abbr;
+					template.querySelector('a h3').innerHTML=oj.name;
 					template.querySelector('section').innerHTML='';
-					list[i].problems.sort(function(a,b){return (a.time<b.time)?-1:1;});
-					for(var j=0;j<list[i].problems.length;j++)
-						template.querySelector('section').innerHTML+='<a href="/codes/?oj='+list[i].oj+'&pid='+list[i].problems[j].id+'">'+list[i].oj+' '+list[i].problems[j].id+'<time>'+list[i].problems[j].time+'</time></a>';
+					for(let problem of oj.problems.sort(function(a,b){return (a.time<b.time)?-1:1;}))
+						template.querySelector('section').innerHTML+='<a href="/codes/?oj='+oj.abbr+'&pid='+problem.id+'">'+oj.abbr+' '+problem.id+'<time>'+problem.time+'</time></a>';
 					document.querySelector('#list').appendChild(document.importNode(template,true));
 				}
 			}
