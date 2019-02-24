@@ -21,7 +21,7 @@
 			<hr />
 			<a href="/codes/"><h3 align="center">Code List</h3></a>
 			<section id="codeList" class="flexwrapper">
-				<template id="codeListItem">
+				<template id="codeItem">
 					<table style="text-align: center;">
 						<caption><h4><a href="/codes/">OJ NAME</a></h4></caption>
 						<thead>
@@ -37,17 +37,21 @@
 			</section>
 			<hr />
 			<a href="/posts/"><h3 align="center">Post List</h3></a>
-			<table id="postList" style="margin: auto;text-align: center;">
-				<tr>
-					<th>Post Title</th>
-					<th>Published Time</th>
-				</tr>
-				<template id="postListItem">
+			<table style="margin: auto;text-align: center;">
+				<thead>
 					<tr>
-						<td><a href="/posts/">ITEM TITLE</a></td>
-						<td>ITEM TIME</td>
+						<th>Post Title</th>
+						<th>Published Time</th>
 					</tr>
-				</template>
+				</thead>
+				<tbody id="postList">
+					<template id="postItem">
+						<tr>
+							<td><a href="/posts/">ITEM TITLE</a></td>
+							<td>ITEM TIME</td>
+						</tr>
+					</template>
+				</tbody>
 			</table>
 		</article>
 		<footer>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. Licensed under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 International License</a>. </footer>
@@ -57,7 +61,7 @@
 			xhr.send();
 			for(let oj of JSON.parse(xhr.responseText))
 			{
-				let template=document.querySelector('template#codeListItem').content;
+				let template=document.querySelector('template#codeItem').content;
 				template.querySelector('caption a').href='/codes/?oj='+oj.abbr;
 				template.querySelector('caption a').innerText=oj.abbr;
 				template.querySelector('tbody').innerHTML='';
@@ -69,7 +73,7 @@
 			xhr.send();
 			for(let post of JSON.parse(xhr.responseText).sort(function(a,b){return (a.title<b.title)?-1:1;}))
 			{
-				let template=document.querySelector('template#postListItem').content;
+				let template=document.querySelector('template#postItem').content;
 				template.querySelector('a').href='/posts/?title='+post.title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
 				template.querySelector('a').innerText=post.title;
 				template.querySelector('td:last-child').innerText=post.time;
