@@ -16,7 +16,7 @@
 		<article>
 			<h2 id="title">Code List</h2>
 			<section id="list">
-				<template id="listItem">
+				<template>
 					<a href="/codes/"><h3 align="center">OJ NAME</h3></a>
 					<section class="btnfield flexwrapper"></section>
 				</template>
@@ -24,8 +24,7 @@
 		</article>
 		<footer>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. Licensed under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 International License</a>. </footer>
 		<script type="text/javascript">
-			var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}');
-			var xhr=new XMLHttpRequest();
+			var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}'),xhr=new XMLHttpRequest();
 			if(request.oj)
 			{
 				xhr.open('GET','/codes/'+request.oj+'/'+(request.pid||'index')+'.html',false);
@@ -37,7 +36,7 @@
 			{
 				xhr.open('GET','/codes/list.json',false);
 				xhr.send();
-				let template=document.querySelector('template#listItem').content;
+				let template=document.querySelector('#list template').content;
 				for(let oj of JSON.parse(xhr.responseText))
 				{
 					template.querySelector('a').href='/codes/?oj='+oj.abbr;
