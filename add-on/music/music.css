@@ -3,7 +3,7 @@
 	font-family: "Unicode";
 	src: url("/add-on/music/Unicode.woff");
 }
-#music
+div.music
 {
 	background-color: var(--text-color);
 	border-radius: 2rem;
@@ -11,7 +11,7 @@
 	padding: 0.25rem;
 	text-align: center;
 }
-#music b
+div.music b
 {
 	border-color: var(--back-color);
 	border-width: medium;
@@ -25,7 +25,7 @@
 	vertical-align: middle;
 	width: 1.2rem;
 }
-#music span#time
+div.music span.time
 {
 	color: var(--back-color);
 	font-size: small;
@@ -33,7 +33,7 @@
 	margin-right: 0.5rem;
 	vertical-align: middle;
 }
-#music span.range
+div.music span.range
 {
 	background-color: var(--link-color);
 	display: inline-block;
@@ -42,7 +42,7 @@
 	vertical-align: middle;
 	width: 5rem;
 }
-#music span.range span
+div.music span.range>span
 {
 	background-color: var(--back-color);
 	display: block;
