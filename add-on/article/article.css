@@ -53,10 +53,6 @@ caption
 {
 	font-weight: bold;
 }
-details
-{
-	padding: 0.5rem;
-}
 figure
 {
 	background-color: var(--link-color);
@@ -113,8 +109,7 @@ hr
 img
 {
 	display: block;
-	margin: auto;
-	max-width: 100%;
+	width: 100%;
 }
 nav
 {
