@@ -86,10 +86,11 @@ int main()
 			complexity=0;
 		else
 			sscanf(s,"O(n^%d)",&complexity);//sscanf is similar to scanf, but it does not read values from your terminal but from a string
-		int err=0,depth=0,max=0;//depth means the depth of the loops
+		int depth=0,max=0;//depth means the depth of the loops
+		bool err=false;
 		for(int i=0;i<l;i++)
 		{
-			if(err==1)
+			if(err)
 			{
 				scanf("%s",&s);
 				if(s[0]=='E')
@@ -104,7 +105,7 @@ int main()
 			{
 				depth--;
 				if(depth<0)
-					err=1;
+					err=true;
 				continue;
 			}
 			scanf("%s",&s);//Read the variable name
@@ -112,10 +113,10 @@ int main()
 			for(int j=0;j<depth;j++)//Check if there are two same variable names
 				if(v[j]==v[depth])
 				{
-					err=1;
+					err=true;
 					break;
 				}
-			if(err==1)
+			if(err)
 			{
 				scanf("%s",&s);
 				scanf("%s",&s);
@@ -144,15 +145,12 @@ int main()
 				max=c[depth];
 			depth++;
 		}
-		if((depth!=0)||(err==1))
+		if((depth!=0)||err)
 		{
 			printf("ERR\n");
 			continue;
 		}
-		if(max==complexity)
-			printf("Yes\n");
-		else
-			printf("No\n");
+		printf((max==complexity)?"Yes\n":"No\n");
 	}
 	return 0;
 }

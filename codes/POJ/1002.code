@@ -120,14 +120,14 @@ int main()
 			}
 		count[tmp]++;//Update the counter
 	}
-	int no_duplicates=1;
+	bool no_duplicates=true;
 	for(long i=0;i<10000000;i++)//Find duplicated numbers
 		if(count[i]>1)
 		{
 			printf("%d%d%d-%d%d%d%d %ld\n",i/1000000,i/100000%10,i/10000%10,i/1000%10,i/100%10,i/10%10,i%10,count[i]);//Print the number bit by bit
-			no_duplicates=0;
+			no_duplicates=false;
 		}
-	if(no_duplicates==1)
+	if(no_duplicates)
 		printf("No duplicates.");
 	return 0;
 }

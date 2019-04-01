@@ -42,15 +42,15 @@ int main()
 			scanf("%ld",&matrix[i][j]);
 	for(;t>0;t--)
 	{
-		int x,y,k,not_clever=0;
+		int x,y,k;
+		bool not_clever=false;
 		scanf("%d%d%d",&x,&y,&k);
 		x--;
 		y--;
-		for(int i=1;(i<k)&&(not_clever==0);i++)//Check each pair of lines
-			for(int j=1;(j<k)&&(not_clever==0);j++)
-				if(matrix[x+i][y]-matrix[x+i-1][y]!=matrix[x+i][y+j]-matrix[x+i-1][y+j])
-					not_clever=1;
-		if(not_clever==1)
+		for(int i=1;(i<k)&&(!not_clever);i++)//Check each pair of lines
+			for(int j=1;(j<k)&&(!not_clever);j++)
+				not_clever=matrix[x+i][y]-matrix[x+i-1][y]!=matrix[x+i][y+j]-matrix[x+i-1][y+j];
+		if(not_clever)
 			printf("N\n");
 		else
 			printf("Y\n");

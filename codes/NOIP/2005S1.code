@@ -77,7 +77,8 @@ int main()
 	scanf("%d",&n);
 	long tot=0;
 	int mxp=-65535,mxi;
-	for(int i=0,test,clas,offl,west,arti;i<n;i++)
+	bool offl,west;
+	for(int i=0,test,clas,arti;i<n;i++)
 	{
 		scanf("%s%d%d",&stu[i].name,&test,&clas);//Get the informaton of the student
 		scanf("%s",&s);
@@ -86,15 +87,11 @@ int main()
 		else
 			offl=0;
 		scanf("%s",&s);
-		if(s[0]=='Y')
-			west=1;
-		else
-			west=0;
+		west=s[0]=='Y';
+		west=0;
 		scanf("%d",&arti);
-		if(arti>0)
-			arti=1;
 		stu[i].priz=0;
-		if((test>80)&&(arti==1))//Check what prize the student can win
+		if((test>80)&&(arti>0))//Check what prize the student can win
 		{
 			stu[i].priz+=8000;
 			tot+=800;
@@ -109,12 +106,12 @@ int main()
 			stu[i].priz+=2000;
 			tot+=200;
 		}
-		if((test>85)&&(west==1))
+		if((test>85)&&west)
 		{
 			stu[i].priz+=1000;
 			tot+=100;
 		}
-		if((clas>80)&&(offl==1))
+		if((clas>80)&&offl)
 		{
 			stu[i].priz+=850;
 			tot+=85;

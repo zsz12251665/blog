@@ -37,17 +37,18 @@ begin
 end.
 
 #include<cstdio>
-int finger[10000],used[10001],n;
+int finger[10000],n;
+bool used[10001];
 int find(int a)
 {
 	for(int i=a+1;i<=n;i++)
-		if(used[i]==0)//If there is another finger that is not used
+		if(!used[i])//If there is another finger that is not used
 			return i;
 	return -1;
 }
 void add(int a)
 {
-	used[finger[a]]=0;
+	used[finger[a]]=false;
 	if(find(finger[a])==-1)
 	{
 		add(a-1);//Carry on the previous bit
@@ -55,7 +56,7 @@ void add(int a)
 	}
 	else
 		finger[a]=find(finger[a]);
-	used[finger[a]]=1;
+	used[finger[a]]=true;
 }
 int main()
 {
@@ -64,7 +65,7 @@ int main()
 	for(int i=0;i<n;i++)
 	{
 		scanf("%d",&finger[i]);
-		used[finger[i]]=1;
+		used[finger[i]]=true;
 	}
 	for(int i=0;i<m;i++)//To add m, just add 1 for m times
 		add(n-1);

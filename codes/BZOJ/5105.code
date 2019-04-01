@@ -1,10 +1,16 @@
 var
 	a,b,c,ans:int64;
-function gcd(a,b:int64):int64;
+function gcd(a,b:int64):int64;//This is a non-recursive form of the gcd function
+var
+	tmp:int64;
 begin
-	if b=0 then
-		exit(a);
-	exit(gcd(b,a mod b));//Divides their difference
+	while b<>0 do
+		begin
+			tmp:=a mod b;//Divides their difference
+			a:=b;
+			b:=tmp;
+		end;
+	exit(a);
 end;
 begin
 	read(a,b,c);
@@ -15,11 +21,15 @@ begin
 end.
 
 #include<cstdio>
-long long gcd(long long a,long long b)
+long long gcd(long long a,long long b)//This is a non-recursive form of the gcd function
 {
-	if(b==0)
-		return a;
-	return gcd(b,a%b);//Divides their difference
+	while(b!=0)
+	{
+		long long tmp=a%b;//Divides their difference
+		a=b;
+		b=tmp;
+	}
+	return a;
 }
 int main()
 {

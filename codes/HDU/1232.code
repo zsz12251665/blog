@@ -36,7 +36,8 @@ begin
 end.
 
 #include<cstdio>
-int uset[1000],count[1000];//The uset array is the merge-find set
+int uset[1000];//The uset array is the merge-find set
+bool count[1000];
 int find(int a)
 {
 	if(uset[a]!=a)
@@ -53,7 +54,7 @@ int main()
 		for(int i=0;i<n;i++)//Initialize the arrays
 		{
 			uset[i]=i;
-			count[i]=0;
+			count[i]=false;
 		}
 		for(int i=0,a,b;i<m;i++)
 		{
@@ -61,9 +62,9 @@ int main()
 			uset[find(a-1)]=find(b-1);//Union the sets
 		}
 		for(int i=0;i<n;i++)//Count the number of the tables
-			if(count[find(i)]==0)
+			if(!count[find(i)])
 			{
-				count[find(i)]=1;
+				count[find(i)]=true;
 				sum++;
 			}
 		printf("%d\n",sum-1);

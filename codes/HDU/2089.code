@@ -1,6 +1,6 @@
 var
 	n,m,i,count:longint;
-function lucky(a:longint):boolean;
+function is_good(a:longint):boolean;
 var
 	i:longint;
 begin
@@ -19,7 +19,7 @@ begin
 		begin
 			count:=0;
 			for i:=n to m do//Search the interval
-				if lucky(i) then
+				if is_good(i) then
 					inc(count);
 			writeln(count);
 			read(n,m);
@@ -27,12 +27,12 @@ begin
 end.
 
 #include<cstdio>
-int lucky(long a)
+bool is_good(long a)
 {
 	for(long i=1;i<a;i*=10)//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
 		if(((a/i)%100==62)||((a/i)%10==4))
-			return 1;
-	return 0;
+			return false;
+	return true;
 }
 int main()
 {
@@ -42,7 +42,7 @@ int main()
 	{
 		count=0;
 		for(long i=n;i<=m;i++)//Search the interval
-			if(lucky(i)==0)
+			if(is_good(i))
 				count++;
 		printf("%ld\n",count);
 		scanf("%ld%ld",&n,&m);
@@ -51,9 +51,9 @@ int main()
 }
 
 var
-	count:array[0..1000000]of longint;//count[i] keeps the number of the lucky numbers from 0 to i
+	count:array[0..1000000]of longint;//count[i] keeps the number of the is_good numbers from 0 to i
 	n,m,i:longint;
-function lucky(a:longint):boolean;
+function is_good(a:longint):boolean;
 begin
 	while a>0 do
 		begin
@@ -66,7 +66,7 @@ end;
 begin
 	count[0]:=1;
 	for i:=1 to 1000000 do
-		if lucky(i) then
+		if is_good(i) then
 			count[i]:=count[i-1]+1
 		else
 			count[i]:=count[i-1];
@@ -79,25 +79,19 @@ begin
 end.
 
 #include<cstdio>
-long count[1000001];//count[i] keeps the number of the lucky numbers from 0 to i
-int lucky(long a)
+long count[1000001];//count[i] keeps the number of the is_good numbers from 0 to i
+bool is_good(long a)
 {
-	while(a>0)
-	{
+	for(;a>0;a/=10)
 		if((a%100==62)||(a%10==4))
-			return 1;
-		a/=10;
-	}
-	return 0;
+			return false;
+	return true;
 }
 int main()
 {
 	count[0]=1;
 	for(long i=1;i<1000001;i++)//Fill the count[i]
-		if(lucky(i)==0)
-			count[i]=count[i-1]+1;
-		else
-			count[i]=count[i-1];
+		count[i]=(is_good(i))?count[i-1]+1:count[i-1];
 	long n,m;
 	scanf("%ld%ld",&n,&m);
 	while((n!=0)||(m!=0))

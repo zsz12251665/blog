@@ -3,7 +3,7 @@ var
 	k:array[0..128,0..128]of longint;
 	d,n,i,j,x,y,cnt:integer;
 	ans,sum:int64;
-	begin
+begin
 	cnt:=0;
 	ans:=0;
 	read(d,n);

@@ -51,11 +51,12 @@ int main()
 	int i;
 	while(scanf("%d",&i)!=EOF)
 	{
-		for(int j=99,start=0;j>=0;j--)
+		bool start=false;
+		for(int j=99;j>=0;j--)
 		{
-			if((ans[i][j]==0)&&(start==0))//Remove the prefix made up of 0
+			if((ans[i][j]==0)&&(!start))//Remove the prefix made up of 0
 				continue;
-			start=1;
+			start=true;
 			printf("%d",ans[i][j]);
 		}
 		printf("\n");

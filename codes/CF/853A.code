@@ -64,7 +64,7 @@ end.
 
 #include<cstdio>
 long c[300000],rank[300000];//rank[i] keeps the order of c[i]
-int timeline[600000];
+bool timeline[600000];
 void qsort(long l,long r)
 {
 	long x=l,y=r,std=c[rank[(l+r)/2]];
@@ -94,7 +94,7 @@ int main()
 	{
 		scanf("%ld",&c[i]);
 		rank[i]=i;
-		timeline[i]=0;
+		timeline[i]=false;
 	}
 	qsort(0,n-1);
 	long long sum=0;
@@ -102,16 +102,16 @@ int main()
 	{
 		if(rank[i]>mt+k)//Check if it is still able to depart as the initial schedule planned
 		{
-			timeline[rank[i]-k]=1;
+			timeline[rank[i]-k]=true;
 			c[rank[i]]=rank[i];//The c array is now scrolled to keep the moment to depart
 		}
 		else
 		{
 			sum+=(long long)c[rank[i]]*(mt+k-rank[i]);//If you do not change into long long, it may overlimit
-			timeline[mt]=1;
+			timeline[mt]=true;
 			c[rank[i]]=mt+k;
 		}
-		while(timeline[mt]==1)//Refresh the minimum time
+		while(timeline[mt])//Refresh the minimum time
 			mt++;
 	}
 	printf("%lld\n",sum);

@@ -7,7 +7,7 @@ begin
 	max:=0;
 	tmp:=0;
 	in_parentheses:=false;
-	readln(n);//For Pascal coders, it is a good choice to use readln while processing strings
+	readln(n);//For Pascal coders, it is a better choice to use readln while processing strings
 	readln(s);
 	for i:=1 to n do
 		begin
@@ -47,7 +47,8 @@ end.
 char s[256];
 int main()
 {
-	int n,cnt=0,max=0,tmp=0,in_parentheses=0;
+	int n,cnt=0,max=0,tmp=0;
+	bool in_parentheses=false;
 	scanf("%d%s",&n,&s);
 	for(int i=0;i<n;i++)
 	{
@@ -56,7 +57,7 @@ int main()
 			if(tmp>max)//Update the max length of words that is not in parentheses
 				max=tmp;
 			tmp=0;
-			in_parentheses=1;
+			in_parentheses=true;
 			continue;
 		}
 		if(s[i]==')')
@@ -64,14 +65,14 @@ int main()
 			if(tmp!=0)//Count the number of words that is in parentheses
 				cnt++;
 			tmp=0;
-			in_parentheses=0;
+			in_parentheses=false;
 			continue;
 		}
 		if(s[i]=='_')
 		{
-			if((in_parentheses==0)&&(tmp>max))//Update the max length of words that is not in parentheses
+			if((!in_parentheses)&&(tmp>max))//Update the max length of words that is not in parentheses
 				max=tmp;
-			if((in_parentheses==1)&&(tmp!=0))//Count the number of words that is in parentheses
+			if((in_parentheses)&&(tmp!=0))//Count the number of words that is in parentheses
 				cnt++;
 			tmp=0;
 			continue;

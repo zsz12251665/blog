@@ -83,7 +83,8 @@ begin
 end.
 
 #include<cstdio>
-int des[2000],nxt[2000],h[1000],dis_s[1000],dis_t[1000],queue[1000],inqueue[1000];
+int des[2000],nxt[2000],h[1000],dis_s[1000],dis_t[1000],queue[1000];
+bool inqueue[1000];
 int main()
 {
 	int n,m,s,t;
@@ -94,7 +95,7 @@ int main()
 	{
 		dis_s[i]=dis_t[i]=65535;
 		h[i]=-1;
-		inqueue[i]=0;
+		inqueue[i]=false;
 	}
 	for(int i=0,u,v;i<m;i++)//Read the edges
 	{
@@ -109,22 +110,22 @@ int main()
 		h[v]=2*i+1;
 	}
 	queue[0]=s;//Use SPFA to find the distance to s
-	inqueue[s]=1;
+	inqueue[s]=true;
 	dis_s[s]=0;
 	for(int u=0,v=1;u!=v;)//u is the head of the queue and v is the foot
 	{
 		int p=queue[u++];
 		u%=1000;
-		inqueue[p]=0;
+		inqueue[p]=false;
 		for(int i=h[p];i!=-1;i=nxt[i])
 			if(dis_s[des[i]]>dis_s[p]+1)
 			{
 				dis_s[des[i]]=dis_s[p]+1;
-				if(inqueue[des[i]]==0)
+				if(!inqueue[des[i]])
 				{
 					queue[v++]=des[i];
 					v%=1000;
-					inqueue[des[i]]=1;
+					inqueue[des[i]]=true;
 				}
 			}
 	}
@@ -140,11 +141,11 @@ int main()
 			if(dis_t[des[i]]>dis_t[p]+1)
 			{
 				dis_t[des[i]]=dis_t[p]+1;
-				if(inqueue[des[i]]==0)
+				if(!inqueue[des[i]])
 				{
 					queue[v++]=des[i];
 					v%=1000;
-					inqueue[des[i]]=1;
+					inqueue[des[i]]=true;
 				}
 			}
 	}

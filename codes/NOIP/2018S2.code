@@ -56,7 +56,8 @@ begin
 end.
 
 #include<cstdio>
-int a[100],unable[25001];
+int a[100];
+bool unable[25001];
 void qsort(int l,int r)
 {
 	int x=l,y=r;
@@ -85,20 +86,20 @@ int main()
 	for(scanf("%d",&t);t>0;t--)
 	{
 		for(int i=0;i<25001;i++)//Initialize the unable array
-			unable[i]=1;
+			unable[i]=true;
 		scanf("%d",&n);
 		for(int i=0;i<n;i++)
 		scanf("%d",&a[i]);
 		qsort(0,n-1);
 		int ans=0;
 		for(int i=0;i<n;i++)
-			if(unable[a[i]]==1)
+			if(unable[a[i]])
 			{
 				ans++;
-				unable[a[i]]=0;
+				unable[a[i]]=false;
 				for(int j=1;j+a[i]<25001;j++)//Update the unable array
-					if(unable[j]==0)
-						unable[j+a[i]]=0;
+					if(!unable[j])
+						unable[j+a[i]]=false;
 			}
 		printf("%d\n",ans);
 	}

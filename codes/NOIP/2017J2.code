@@ -32,16 +32,16 @@ end.
 
 #include<cstdio>
 long book[1000];
-int match(long book,long reader)
+bool match(long book,long reader)
 {
 	while(reader>0)
 	{
 		if((book%10!=reader%10)||(book==0))
-			return 0;
+			return false;
 		book/=10;//Move a bit forward
 		reader/=10;
 	}
-	return 1;
+	return true;
 }
 int main()
 {
@@ -54,7 +54,7 @@ int main()
 		long reader,ans=2147483647;
 		scanf("%d%ld",&tmp,&reader);
 		for(int j=0;j<n;j++)//Enumerate the books to find the right one
-			if((match(book[j],reader)==1)&&(book[j]<ans))
+			if(match(book[j],reader)&&(book[j]<ans))
 				ans=book[j];
 		if(ans==2147483647)
 			ans=-1;
