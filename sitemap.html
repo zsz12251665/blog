@@ -5,8 +5,8 @@
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<title>Sitemap | zsz12251665's blog</title>
 	</head>
-	<body class="vector">
-		<nav class="btnfield">
+	<body class="Vector">
+		<nav class="buttonField">
 			<a href="/">Homepage</a>
 			<a href="/codes/">Code List</a>
 			<a href="/posts/">Post List</a>
@@ -19,56 +19,73 @@
 			<p>Here is the sitemap of zsz12251665's blog. All pages offered a link here. </p>
 			<p>You can check the link below to find the page that you want to go. You can also click the header to go back to our <a href="/">Homepage</a>. </p>
 			<hr />
-			<a href="/codes/"><h3 align="center">Code List</h3></a>
-			<section id="codeList" class="flexwrapper">
+			<a href="/codes/">
+				<h3 style="text-align: center;">Code List</h3>
+			</a>
+			<section id="codeList" class="flexWrapper">
 				<template>
 					<table style="text-align: center;">
-						<caption><h4><a href="/codes/">OJ NAME</a></h4></caption>
+						<caption>
+							<h4><a href="/codes/">OJ NAME</a></h4>
+						</caption>
 						<thead>
-							<tr><th>Problem ID</th><th>Published Time</th></tr>
+							<tr>
+								<th>Problem ID</th>
+								<th>Published Time</th>
+							</tr>
 						</thead>
 						<tbody></tbody>
 					</table>
 				</template>
 			</section>
 			<hr />
-			<a href="/posts/"><h3 align="center">Post List</h3></a>
+			<a href="/posts/">
+				<h3 style="text-align: center;">Post List</h3>
+			</a>
 			<table style="margin: auto;text-align: center;">
 				<thead>
-					<tr><th>Post Title</th><th>Published Time</th></tr>
+					<tr>
+						<th>Post Title</th>
+						<th>Published Time</th>
+					</tr>
 				</thead>
 				<tbody id="postList">
 					<template>
-						<tr><td><a href="/posts/">ITEM TITLE</a></td><td>ITEM TIME</td></tr>
+						<tr>
+							<td><a href="/posts/">ITEM TITLE</a></td>
+							<td>ITEM TIME</td>
+						</tr>
 					</template>
 				</tbody>
 			</table>
 		</article>
 		<footer>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. Licensed under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 International License</a>. </footer>
 		<script type="text/javascript">
-			var xhr=new XMLHttpRequest();
-			xhr.open('GET','/codes/list.json',false);
-			xhr.send();
-			for(let oj of JSON.parse(xhr.responseText))
-			{
-				let template=document.querySelector('#codeList template').content;
-				template.querySelector('caption a').href='/codes/?oj='+oj.abbr;
-				template.querySelector('caption a').innerText=oj.abbr;
-				template.querySelector('tbody').innerHTML='';
-				for(let problem of oj.problems.sort(function(a,b){return (a.id<b.id)?-1:1;}))
-					template.querySelector('tbody').innerHTML+='<tr><td><a href="/codes/?oj='+oj.abbr+'&pid='+problem.id+'">'+oj.abbr+' '+problem.id+'</a></td><td>'+problem.time+'</td>';
-				document.querySelector('#codeList').appendChild(document.importNode(template,true));
-			}
-			xhr.open('GET','/posts/list.json',false);
-			xhr.send();
-			for(let post of JSON.parse(xhr.responseText).sort(function(a,b){return (a.title<b.title)?-1:1;}))
-			{
-				let template=document.querySelector('#postList template').content;
-				template.querySelector('a').href='/posts/?title='+post.title.toLowerCase().replace(/\W+/g,'-').replace(/-$/g,'');
-				template.querySelector('a').innerText=post.title;
-				template.querySelector('td:last-child').innerText=post.time;
-				document.querySelector('#postList').appendChild(document.importNode(template,true));
-			}
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/codes/list.json', false);
+xhr.send();
+for (let oj of JSON.parse(xhr.responseText)) {
+	let template = document.querySelector('#codeList template').content;
+	template.querySelector('caption a').href = '/codes/?oj=' + oj.abbr;
+	template.querySelector('caption a').innerText = oj.abbr;
+	template.querySelector('tbody').innerHTML = '';
+	for (let problem of oj.problems.sort(function (a, b) {
+			return (a.id < b.id) ? -1 : 1;
+		}))
+		template.querySelector('tbody').innerHTML += '<tr><td><a href="/codes/?oj=' + oj.abbr + '&pid=' + problem.id + '">' + oj.abbr + ' ' + problem.id + '</a></td><td>' + problem.time + '</td>';
+	document.querySelector('#codeList').appendChild(document.importNode(template, true));
+}
+xhr.open('GET', '/posts/list.json', false);
+xhr.send();
+for (let post of JSON.parse(xhr.responseText).sort(function (a, b) {
+		return (a.title < b.title) ? -1 : 1;
+	})) {
+	let template = document.querySelector('#postList template').content;
+	template.querySelector('a').href = '/posts/?title=' + post.title.toLowerCase().replace(/\W+/g, '-').replace(/-$/g, '');
+	template.querySelector('a').innerText = post.title;
+	template.querySelector('td:last-child').innerText = post.time;
+	document.querySelector('#postList').appendChild(document.importNode(template, true));
+}
 		</script>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 	</body>

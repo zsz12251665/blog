@@ -1,11 +1,11 @@
-body.bricks
+body.BrickWall
 {
 	--back-color: #600007;
-	--back-image: url("/add-on/article/bg/bricks.svg");
+	--back-image: url("/add-on/article/bg/BrickWall.svg");
 	--text-color: #FFFFFF;
 	--link-color: #FFFF00;
 }
-body.bricks code
+body.BrickWall code
 {
 	--code-color: #DADD98;
 	--comma-color: #FA8072;
@@ -15,14 +15,14 @@ body.bricks code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
-body.foxtal
+body.FoxTale
 {
 	--back-color: #884A31;
-	--back-image: url("/add-on/article/bg/foxtal.png");
+	--back-image: url("/add-on/article/bg/FoxTale.png");
 	--text-color: #FFF6D9;
 	--link-color: #F19C27;
 }
-body.foxtal code
+body.FoxTale code
 {
 	--code-color: #FFE0EF;
 	--comma-color: #FFCC00;
@@ -32,14 +32,14 @@ body.foxtal code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
-body.matrix
+body.MatrixFlow
 {
 	--back-color: #000000;
-	--back-image: url("/add-on/article/bg/matrix.png");
+	--back-image: url("/add-on/article/bg/MatrixFlow.png");
 	--text-color: #00FF00;
 	--link-color: #FF0000;
 }
-body.matrix code
+body.MatrixFlow code
 {
 	--code-color: #BFBFBF;
 	--comma-color: #007F00;
@@ -49,14 +49,14 @@ body.matrix code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
-body.OParis
+body.OhParis
 {
 	--back-color: #F0F8FF;
-	--back-image: url("/add-on/article/bg/OParis.png");
+	--back-image: url("/add-on/article/bg/OhParis.png");
 	--text-color: #5F9EA0;
 	--link-color: #4F2F6A;
 }
-body.OParis code
+body.OhParis code
 {
 	--code-color: #191970;
 	--comma-color: #76D7EA;
@@ -66,31 +66,14 @@ body.OParis code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
-body.sberry
-{
-	--back-color: #5E0010;
-	--back-image: url("/add-on/article/bg/sberry.png");
-	--text-color: #FFCCCB;
-	--link-color: #A3CE52;
-}
-body.sberry code
-{
-	--code-color: #FFFFFF;
-	--comma-color: #FED9BF;
-	--comment-color: #930013;
-	--constant-color: #AEF22F;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
-}
-body.star9t
+body.StarryNight
 {
 	--back-color: #252321;
-	--back-image: url("/add-on/article/bg/star9t.png");
+	--back-image: url("/add-on/article/bg/StarryNight.png");
 	--text-color: #E1BD29;
 	--link-color: #D2E9AF;
 }
-body.star9t code
+body.StarryNight code
 {
 	--code-color: #7CB9E8;
 	--comma-color: #B284BE;
@@ -100,14 +83,31 @@ body.star9t code
 	--keyword-color: var(--code-color);
 	--variable-color: var(--code-color);
 }
-body.vector
+body.Strawberry
+{
+	--back-color: #5E0010;
+	--back-image: url("/add-on/article/bg/Strawberry.png");
+	--text-color: #FFCCCB;
+	--link-color: #A3CE52;
+}
+body.Strawberry code
+{
+	--code-color: #FFFFFF;
+	--comma-color: #FED9BF;
+	--comment-color: #930013;
+	--constant-color: #AEF22F;
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
+body.Vector
 {
 	--back-color: #4F4F4F;
-	--back-image: url("/add-on/article/bg/vector.svg");
+	--back-image: url("/add-on/article/bg/Vector.svg");
 	--text-color: #B5E853;
 	--link-color: #B0E2FF;
 }
-body.vector code
+body.Vector code
 {
 	--code-color: #ACE1AF;
 	--comma-color: #859900;

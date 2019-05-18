@@ -5,8 +5,8 @@
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<title>Code List | zsz12251665's blog</title>
 	</head>
-	<body class="matrix">
-		<nav class="btnfield">
+	<body class="MatrixFlow">
+		<nav class="buttonField">
 			<a href="/">Homepage</a>
 			<a href="/codes/">Code List</a>
 			<a href="/posts/">Post List</a>
@@ -18,36 +18,38 @@
 			<time>Life is a bug. </time>
 			<section id="list">
 				<template>
-					<a href="/codes/"><h3 align="center">OJ NAME</h3></a>
-					<section class="btnfield flexwrapper"></section>
+					<a href="/codes/">
+						<h3 style="text-align: center;">OJ NAME</h3>
+					</a>
+					<section class="buttonField flexWrapper"></section>
 				</template>
 			</section>
 		</article>
 		<footer>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. Licensed under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 International License</a>. </footer>
 		<script type="text/javascript">
-			var request=JSON.parse('{'+location.search.slice(1).replace(/([^&=]*)=([^&]*)/g,'"$1":"$2"').replace(/&/g,',')+'}'),xhr=new XMLHttpRequest();
-			if(request.oj)
-			{
-				xhr.open('GET','/codes/'+request.oj+'/'+(request.pid||'index')+'.html',false);
-				xhr.send();
-				if(xhr.status==200)
-					document.querySelector('article').innerHTML=xhr.responseText;
-			}
-			if((!request.oj)||(xhr.status!=200))
-			{
-				xhr.open('GET','/codes/list.json',false);
-				xhr.send();
-				let template=document.querySelector('#list template').content;
-				for(let oj of JSON.parse(xhr.responseText))
-				{
-					template.querySelector('a').href='/codes/?oj='+oj.abbr;
-					template.querySelector('a h3').innerHTML=oj.name;
-					template.querySelector('section').innerHTML='';
-					for(let problem of oj.problems.sort(function(a,b){return (a.time<b.time)?-1:1;}))
-						template.querySelector('section').innerHTML+='<a href="/codes/?oj='+oj.abbr+'&pid='+problem.id+'">'+oj.abbr+' '+problem.id+'<time>'+problem.time+'</time></a>';
-					document.querySelector('#list').appendChild(document.importNode(template,true));
-				}
-			}
+var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}'),
+	xhr = new XMLHttpRequest();
+if (request.oj) {
+	xhr.open('GET', '/codes/' + request.oj + '/' + (request.pid || 'index') + '.html', false);
+	xhr.send();
+	if (xhr.status == 200)
+		document.querySelector('article').innerHTML = xhr.responseText;
+}
+if ((!request.oj) || (xhr.status != 200)) {
+	xhr.open('GET', '/codes/list.json', false);
+	xhr.send();
+	let template = document.querySelector('#list template').content;
+	for (let oj of JSON.parse(xhr.responseText)) {
+		template.querySelector('a').href = '/codes/?oj=' + oj.abbr;
+		template.querySelector('a h3').innerHTML = oj.name;
+		template.querySelector('section').innerHTML = '';
+		for (let problem of oj.problems.sort(function (a, b) {
+				return (a.time < b.time) ? -1 : 1;
+			}))
+			template.querySelector('section').innerHTML += '<a href="/codes/?oj=' + oj.abbr + '&pid=' + problem.id + '">' + oj.abbr + ' ' + problem.id + '<time>' + problem.time + '</time></a>';
+		document.querySelector('#list').appendChild(document.importNode(template, true));
+	}
+}
 		</script>
 		<script type="text/javascript" src="/add-on/article/article.js"></script>
 		<script type="text/javascript" src="/add-on/highlight/highlight.js"></script>

@@ -39,6 +39,19 @@ article
 	padding: 0.25rem;
 	width: 90%;
 }
+blockquote p::first-letter
+{
+	font-size: xx-large;
+}
+blockquote cite
+{
+	display: block;
+	text-align: end;
+}
+blockquote cite::before
+{
+	content: "From ";
+}
 body
 {
 	background-attachment: fixed;
@@ -163,7 +176,7 @@ table
 {
 	text-align: center;
 }
-.btnfield a
+.buttonField a
 {
 	border-color: var(--link-color);
 	border-radius: 1rem;
@@ -177,12 +190,12 @@ table
 	transition-property: background-color, color;
 	transition-timing-function: ease;
 }
-.btnfield a:focus, .btnfield a:hover
+.buttonField a:focus, .buttonField a:hover
 {
 	background-color: var(--link-color);
 	color: var(--back-color);
 }
-.flexwrapper
+.flexWrapper
 {
 	align-items:baseline;
 	display:flex;
