@@ -1,13 +1,10 @@
 zsz12251665's Blog
 
 You are now visiting the source project of zsz12251665's Blog. 
+
 zsz12251665's Blog is hosted on Github, with a backup on Coding. 
-To visit zsz12251665's Blog, please go to https://blog.zsz12251665.cf/
 
-All texts are licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. 
-All add-ons are licensed under the GNU General Public License Version 3. 
+This repository is licensed under the zsz12251665's License. 
 
-Technical To Do List: 
-1. Upate the highlight plugin for the blog (maybe later)
-2. Update the blog with dynamic pages using PHP (not now)
-3. Correct the language mistakes (long term)
+To Do: 
+1. Update the blog with dynamic pages using PHP
