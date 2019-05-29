@@ -1,3 +1,9 @@
+body code
+{
+	--function-color: var(--code-color);
+	--keyword-color: var(--code-color);
+	--variable-color: var(--code-color);
+}
 body.BrickWall
 {
 	--back-color: #600007;
@@ -11,9 +17,6 @@ body.BrickWall code
 	--comma-color: #FA8072;
 	--comment-color: #960018;
 	--constant-color: #15F4EE;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
 }
 body.FoxTale
 {
@@ -28,9 +31,6 @@ body.FoxTale code
 	--comma-color: #FFCC00;
 	--comment-color: #B87333;
 	--constant-color: #DC143C;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
 }
 body.MatrixFlow
 {
@@ -45,9 +45,6 @@ body.MatrixFlow code
 	--comma-color: #007F00;
 	--comment-color: #3F3F3F;
 	--constant-color: #7F7FFF;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
 }
 body.OhParis
 {
@@ -62,9 +59,6 @@ body.OhParis code
 	--comma-color: #76D7EA;
 	--comment-color: #B0C4DE;
 	--constant-color: #FFB366;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
 }
 body.StarryNight
 {
@@ -79,9 +73,6 @@ body.StarryNight code
 	--comma-color: #B284BE;
 	--comment-color: #333353;
 	--constant-color: #FFBF00;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
 }
 body.Strawberry
 {
@@ -96,9 +87,6 @@ body.Strawberry code
 	--comma-color: #FED9BF;
 	--comment-color: #930013;
 	--constant-color: #AEF22F;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
 }
 body.Vector
 {
@@ -113,7 +101,4 @@ body.Vector code
 	--comma-color: #859900;
 	--comment-color: #93A1A1;
 	--constant-color: #DC322F;
-	--function-color: var(--code-color);
-	--keyword-color: var(--code-color);
-	--variable-color: var(--code-color);
 }
