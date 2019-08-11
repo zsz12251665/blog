@@ -2,9 +2,9 @@
 window.addEventListener('DOMContentLoaded', LoadMath);
 
 function LoadMath() {
-	// Load the style sheet of mathematical expressions
+	// Append the style sheet
 	document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/math/math.css" />';
-	// Show the expressions
+	// Load the expressions
 	for (let data of document.querySelectorAll('data'))
 		data.innerHTML = data.value.replace(/([a-z])\{/g, '<span class="$1">').replace(/(?<!\\)\}/g, '</span>').replace(/\\(.)/g, '$1');
 	// Update the font style of variable

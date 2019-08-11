@@ -1,13 +1,13 @@
 window.addEventListener('DOMContentLoaded', LoadArticle);
 
 function LoadArticle() {
-	// Load the style sheet of article
+	// Append the style sheet
 	document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/article/article.css" />';
 	// Load the request
 	var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
-	// Load the title
-	if (document.querySelector('#title'))
-		document.title = document.querySelector('#title').innerText + ' | zsz12251665\'s Blog';
+	// Edit the title
+	if (document.querySelector('h2'))
+		document.title = document.querySelector('h2').innerText + ' | zsz12251665\'s Blog';
 	// Add event listeners
 	var nav = document.querySelector('nav');
 	document.querySelector('header').addEventListener('click', function (e) {

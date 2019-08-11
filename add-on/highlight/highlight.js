@@ -1,21 +1,21 @@
-// The highlights of function names and variables are still missing due to technical reasons
+// The highlights of function names and variables are still missing
 window.addEventListener('DOMContentLoaded', LoadHighlight);
 
 function LoadHighlight() {
-	// Load the style sheet of highlight
+	// Append the style sheet
 	document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	// Load the request
 	var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
 	if ((!document.querySelector('code')) || (!request.oj) || (!request.pid))
 		return;
-	// Load and highlight the code
+	// Load and highlight the codes
 	var ajax = new XMLHttpRequest();
 	ajax.open('GET', '/codes/' + request.oj + '/' + request.pid + '.code', true);
 	ajax.onreadystatechange = function () {
 		if ((ajax.readyState != 4) || (ajax.status != 200))
 			return;
 		for (let t = 0, code = document.querySelectorAll('code'), codeText = ajax.responseText.split('\n\n'); t < code.length; t++) {
-			// Load the code and highlight comments and constants
+			// Highlight comments and constants
 			let source = codeText[t].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/(\"[^\n]*?\"|\'[^\n]*?\')/g, '<span class="constant">$1</span>').replace(/\b([0-9][.0-9]*|maxint|maxlongint|true|false)\b/g, '<span class="constant">$1</span>').replace(/(\/\/[^\n]*)/g, '<span class="comment">$1</span>');
 			// Highlight keywords
 			if (code[t].lang == 'cpp')
@@ -41,14 +41,14 @@ function LoadHighlight() {
 			source = source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g, '<span class="comma">&$1;</span>');
 			code[t].innerHTML = source;
 		}
-		// Clear other highlights in comments and constants
+		// Clear highlights in comments and constants
 		for (let comment of document.querySelectorAll('code span.comment'))
 			comment.innerHTML = comment.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
 		for (let constant of document.querySelectorAll('code span.constant'))
 			constant.innerHTML = constant.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
 	}
 	ajax.send();
-	// Load soft tab and set up soft tabs panel
+	// Load soft tab and append soft tabs panel
 	if (request.softTab)
 		sessionStorage.setItem('softTab', request.softTab);
 	var softTab = document.createElement('div');
