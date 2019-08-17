@@ -7,7 +7,7 @@ function LoadMath() {
 	// Load the expressions
 	for (let data of document.querySelectorAll('data'))
 		data.innerHTML = data.value.replace(/([a-z])\{/g, '<span class="$1">').replace(/(?<!\\)\}/g, '</span>').replace(/\\(.)/g, '$1');
-	// Update the font style of variable
+	// Update font styles of variables
 	for (let variable of document.querySelectorAll('data span.v'))
 		for (let i = 0; i < 26; i++) {
 			variable.innerHTML = variable.innerHTML.replace(String.fromCharCode(i + 65), '&#' + String(119912 + i) + ';');

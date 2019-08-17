@@ -30,7 +30,7 @@ function LoadMusic() {
 			audio.paused ? audio.play() : audio.pause();
 		};
 		// Set time panel events
-		audio.ontimeupdate = function () {
+		audio.ondurationchange = audio.ontimeupdate = function () {
 			music.querySelector('span.time').innerText = ((audio.currentTime < 600) ? '0' : '') + String(Math.floor(audio.currentTime / 60)) + ((audio.currentTime % 60 < 10) ? ':0' : ':') + String(Math.floor(audio.currentTime % 60)) + ((audio.duration < 600) ? '/0' : '/') + String(Math.floor(audio.duration / 60)) + ((audio.duration % 60 < 10) ? ':0' : ':') + String(Math.floor(audio.duration % 60));
 		};
 		//Set volume events

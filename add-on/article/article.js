@@ -8,17 +8,18 @@ function LoadArticle() {
 	// Edit the title
 	if (document.querySelector('h2'))
 		document.title = document.querySelector('h2').innerText + ' | zsz12251665\'s Blog';
-	// Add event listeners
+	// Set the header and abbreviations functions
 	var nav = document.querySelector('nav');
 	document.querySelector('header').addEventListener('click', function (e) {
-		nav.style.top = nav.style.top ? '' : e.target.offsetHeight;
+		nav.style.top = nav.style.top ? null : e.target.offsetHeight;
 	});
 	for (let abbr of document.querySelectorAll('abbr'))
 		abbr.addEventListener('click', function (e) {
 			alert(e.target.title);
 		});
-	// Change the theme and set the theme selector
+	// Initialize the session storage value
 	sessionStorage.setItem('theme', request.theme || sessionStorage.getItem('theme') || 'DefaultTheme');
+	// Append the theme selector
 	var defaultTheme = document.body.className,
 		themeSelector = document.createElement('select'),
 		themeList = ['Brick Wall', 'Fox Tale', 'Matrix Flow', 'Oh, Paris', 'Starry Night', 'Strawberry', 'Vector'];
@@ -30,6 +31,7 @@ function LoadArticle() {
 	nav.insertBefore(themeSelector, nav.firstChild);
 	for (let option of themeSelector.options)
 		option.selected = option.value == sessionStorage.getItem('theme');
+	// Set the theme selector function
 	themeSelector.onchange = function () {
 		if (themeSelector.options[themeSelector.selectedIndex].value == 'RandomTheme')
 			themeSelector.selectedIndex = 2 + Math.floor(Math.random() * themeList.length);
@@ -37,5 +39,6 @@ function LoadArticle() {
 		if (document.body.className == 'DefaultTheme')
 			document.body.className = defaultTheme;
 	};
+	// Initialize the theme
 	themeSelector.onchange();
 }

@@ -30,36 +30,33 @@ function LoadHighlight() {
 					source = (source[i] == comma) ? source.slice(0, i) + '<span class="comma">' + comma + '</span>' + source.slice(i + 1) : source;
 				// Skip tags
 				if (source[i] == '<') {
-					while ((i < source.length) && (source[i] != '>'))
-						i++;
-					while ((i < source.length) && (source[i] != '<'))
-						i++;
-					while ((i < source.length) && (source[i] != '>'))
-						i++;
+					for (; (i < source.length) && (source[i] != '>'); i++);
+					for (; (i < source.length) && (source[i] != '<'); i++);
+					for (; (i < source.length) && (source[i] != '>'); i++);
 				}
 			}
 			source = source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g, '<span class="comma">&$1;</span>');
 			code[t].innerHTML = source;
 		}
 		// Clear highlights in comments and constants
-		for (let comment of document.querySelectorAll('code span.comment'))
-			comment.innerHTML = comment.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
-		for (let constant of document.querySelectorAll('code span.constant'))
-			constant.innerHTML = constant.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
+		for (let element of document.querySelectorAll('code span.comment, code span.constant'))
+			element.innerHTML = element.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
 	}
 	ajax.send();
-	// Load soft tab and append soft tabs panel
-	if (request.softTab)
-		sessionStorage.setItem('softTab', request.softTab);
-	var softTab = document.createElement('div');
-	softTab.innerHTML += '<input type="checkbox" />Soft Tab (replace tabs with 4 spaces)';
-	document.querySelector('nav').appendChild(softTab);
-	softTab = softTab.querySelector('input');
+	// Initialize the session storage value
+	sessionStorage.setItem('softTab', request.softTab || sessionStorage.getItem('softTab') || 'false');
+	// Append the soft tab panel
+	var softTabPanel = document.createElement('div');
+	softTabPanel.innerHTML = '<input type="checkbox" />Soft Tab (replace tabs with 4 spaces)';
+	document.querySelector('nav').appendChild(softTabPanel);
+	var softTab = softTabPanel.querySelector('input');
 	softTab.checked = String(sessionStorage.getItem('softTab')) == 'true';
+	// Set the soft tab panel function
 	softTab.onclick = function () {
-		sessionStorage.setItem('softTab', softTab.checked);
+		sessionStorage.setItem('softTab', String(softTab.checked));
 		for (let code of document.querySelectorAll('code'))
 			code.innerHTML = softTab.checked ? code.innerHTML.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') : code.innerHTML.replace(/(&nbsp;){4}/g, '\t');
 	};
+	// Initialize soft tab
 	softTab.onclick();
 }

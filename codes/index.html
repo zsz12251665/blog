@@ -16,12 +16,12 @@
 		<article>
 			<h2>Code List</h2>
 			<time>Life is a bug. </time>
-			<section id="list">
+			<section id="list" class="buttonField flexWrapper">
 				<template>
-					<a href="/codes/">
-						<h3 style="text-align: center;">OJ NAME</h3>
+					<a href="/codes/" style="width: 7rem;">
+						<span>PROBLEM ID</span>
+						<time>PROBLEM TIME</time>
 					</a>
-					<section class="buttonField flexWrapper"></section>
 				</template>
 			</section>
 		</article>
@@ -38,15 +38,19 @@ if (request.oj) {
 if ((!request.oj) || (xhr.status != 200)) {
 	xhr.open('GET', '/codes/list.json', false);
 	xhr.send();
-	let template = document.querySelector('#list template').content;
+	let template = document.querySelector('#list template').content,
+		list = new Array();
 	for (let oj of JSON.parse(xhr.responseText)) {
-		template.querySelector('a').href = '/codes/?oj=' + oj.abbr;
-		template.querySelector('a h3').innerHTML = oj.name;
-		template.querySelector('section').innerHTML = '';
-		for (let problem of oj.problems.sort(function (a, b) {
-				return (a.time < b.time) ? -1 : 1;
-			}))
-			template.querySelector('section').innerHTML += '<a href="/codes/?oj=' + oj.abbr + '&pid=' + problem.id + '">' + oj.abbr + ' ' + problem.id + '<time>' + problem.time + '</time></a>';
+		for (let problem of oj.problems)
+			problem.oj = oj.abbr;
+		list = list.concat(oj.problems);
+	}
+	for (let problem of list.sort(function (a, b) {
+			return (a.time > b.time) ? -1 : 1;
+		})) {
+		template.querySelector('a').href = '/codes/?oj=' + problem.oj + '&pid=' + problem.id;
+		template.querySelector('a span').innerText = problem.oj + ' ' + problem.id;
+		template.querySelector('a time').innerText = problem.time;
 		document.querySelector('#list').appendChild(document.importNode(template, true));
 	}
 }

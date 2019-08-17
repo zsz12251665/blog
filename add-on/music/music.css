@@ -1,7 +1,7 @@
 @font-face
 {
-	font-family: "Unicode";
-	src: url("/add-on/music/Unicode.woff");
+	font-family: "KeyFont";
+	src: url("/add-on/music/keys.woff");
 }
 div.music
 {
@@ -20,7 +20,7 @@ div.music b
 	color: var(--back-color);
 	cursor: pointer;
 	display: inline-block;
-	font-family: "Unicode";
+	font-family: "KeyFont";
 	height: 1.2rem;
 	vertical-align: middle;
 	width: 1.2rem;
