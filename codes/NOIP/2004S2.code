@@ -10,7 +10,7 @@ begin
 	inc(size);
 	fruit[size]:=a;
 	i:=size;//Maintain the heap
-	while (i>1)and(fruit[i]<fruit[i div 2]) do
+	while (i>1) and (fruit[i]<fruit[i div 2]) do
 		begin
 			tmp:=fruit[i];
 			fruit[i]:=fruit[i div 2];
@@ -28,7 +28,7 @@ begin
 	fruit[size]:=maxlongint;//Fill the null part with maxlongint
 	dec(size);
 	i:=1;//Maintain the heap
-	while (fruit[i*2]<fruit[i])or(fruit[i*2+1]<fruit[i]) do
+	while (fruit[i*2]<fruit[i]) or (fruit[i*2+1]<fruit[i]) do
 		begin
 			if fruit[i*2]<fruit[i*2+1] then
 				i:=i*2
@@ -66,13 +66,11 @@ void insert(long a)//The proceudure to insert a number into the fruit array
 {
 	size++;
 	fruit[size]=a;
-	int i=size;//Maintain the heap
-	while((i>1)&&(fruit[i]<fruit[i/2]))
+	while(int i=size;i>1 && fruit[i]<fruit[i/2];i/=2)//Maintain the heap
 	{
 		long tmp=fruit[i];
 		fruit[i]=fruit[i/2];
 		fruit[i/2]=tmp;
-		i/=2;
 	}
 }
 long extract()//The proceudure to extract the top from the fruit array
@@ -82,7 +80,7 @@ long extract()//The proceudure to extract the top from the fruit array
 	fruit[size]=2147483647;//Fill the null part with maxlongint
 	size--;
 	int i=1;//Maintain the heap
-	while((fruit[i*2]<fruit[i])||(fruit[i*2+1]<fruit[i]))
+	while(fruit[i*2]<fruit[i] || fruit[i*2+1]<fruit[i])
 	{
 		if(fruit[i*2]<fruit[i*2+1])
 			i*=2;

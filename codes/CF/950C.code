@@ -55,7 +55,7 @@ begin
 end.
 
 #include<cstdio>
-#include<cstring>//We need to use the strlen function in cstring
+#include<>//We need to use the strlen function in cstring
 char s[300000];
 long h[300000],f[300000],nxt[300000],len[300000];//The array h and the array f are the head and the foot of the adjacency table
 int main()

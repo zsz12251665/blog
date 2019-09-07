@@ -14,10 +14,10 @@ begin
 					begin
 						for k:=1 to 4 do
 							begin
-								done[i,k]:=not(done[i,k]);
-								done[k,j]:=not(done[k,j]);
+								done[i,k]:=not done[i,k];
+								done[k,j]:=not done[k,j];
 							end;
-						done[i,j]:=not(done[i,j]);//In the for-loop, (i,j) has been done twice, so add once more can keep that all the seven handles is done
+						done[i,j]:=not done[i,j];//In the for-loop, (i,j) has been done twice, so add once more can keep that all the seven handles is done
 					end;
 		end;
 	ans:=0;

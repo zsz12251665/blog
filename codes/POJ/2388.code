@@ -247,7 +247,7 @@ begin
 		begin
 			read(milk[i]);
 			j:=i;
-			while (j>1)and(milk[j div 2]>milk[j]) do//Replace this line with "while (j>1)and(milk[j div 2]<milk[j]) do" to sort in decrease order
+			while (j>1) and (milk[j div 2]>milk[j]) do//Replace this line with "while (j>1) and (milk[j div 2]<milk[j]) do" to sort in decrease order
 				begin
 					tmp:=milk[j];
 					milk[j]:=milk[j div 2];
@@ -259,9 +259,9 @@ begin
 		begin
 			milk[1]:=milk[n-i+1];
 			j:=1;
-			while (2*j<n-i+1)and(milk[j]>milk[2*j])or(2*j+1<n-i+1)and(milk[j]>milk[2*j+1]) do//Replace this line with "while (2*j<n-i+1)and(milk[j]<milk[2*j])or(2*j+1<n-i+1)and(milk[j]<milk[2*j+1]) do" to sort in decrease order
+			while (2*j<n-i+1) and (milk[j]>milk[2*j]) or (2*j+1<n-i+1) and (milk[j]>milk[2*j+1]) do//Replace this line with "while (2*j<n-i+1) and (milk[j]<milk[2*j]) or (2*j+1<n-i+1) and (milk[j]<milk[2*j+1]) do" to sort in decrease order
 				begin
-					if (2*j+1<n-i+1)and(milk[2*j]>milk[2*j+1]) then//Replace this line with "if (2*j+1<n-i+1)and(milk[2*j]<milk[2*j+1]) then" to sort in decrease order
+					if (2*j+1<n-i+1) and (milk[2*j]>milk[2*j+1]) then//Replace this line with "if (2*j+1<n-i+1) and (milk[2*j]<milk[2*j+1]) then" to sort in decrease order
 						j:=2*j+1
 					else
 						j:=2*j;
@@ -282,25 +282,19 @@ int main()
 	for(int i=0;i<n;i++)
 	{
 		scanf("%ld",&milk[i]);
-		int j=i;
-		while((j>0)&&(milk[(j-1)/2]>milk[j]))//Replace this line with "while((j>0)&&(milk[(j-1)/2]<milk[j]))" to sort in decrease order
+		for(int j=i;j>0 && milk[(j-1)/2]>milk[j];j=(j-1)/2)//Replace this line with "for(int j=i;j>0 && milk[(j-1)/2]<milk[j];j=(j-1)/2)" to sort in decrease order
 		{
 			long tmp=milk[j];
 			milk[j]=milk[(j-1)/2];
 			milk[(j-1)/2]=tmp;
-			j=(j-1)/2;
 		}
 	}
 	for(int i=0;i<n/2;i++)
 	{
 		milk[0]=milk[n-1-i];
-		int j=0;
-		while((2*j+1<n-1-i)&&(milk[j]>milk[2*j+1])||(2*j+2<n-1-i)&&(milk[j]>milk[2*j+2]))//Replace this line with "while((2*j+1<n-1-i)&&(milk[j]<milk[2*j+1])||(2*j+2<n-1-i)&&(milk[j]<milk[2*j+2]))" to sort in decrease order
+		for(int j=0;2*j+1<n-1-i && milk[j]>milk[2*j+1] || 2*j+2<n-1-i && milk[j]>milk[2*j+2];)//Replace this line with "for(int j=0;2*j+1<n-1-i && milk[j]<milk[2*j+1] || 2*j+2<n-1-i && milk[j]<milk[2*j+2];)" to sort in decrease order
 		{
-			if((2*j+2<n-1-i)&&(milk[2*j+1]>milk[2*j+2]))//Replace this line with "if((2*j+2<n-1-i)&&(milk[2*j+1]<milk[2*j+2]))" to sort in decrease order
-				j=2*j+2;
-			else
-				j=2*j+1;
+			j=(2*j+2<n-1-i && milk[2*j+1]>milk[2*j+2])?2*j+2:2*j+1;//Replace this line with "j=(2*j+2<n-1-i && milk[2*j+1]<milk[2*j+2])?2*j+2:2*j+1;" to sort in decrease order
 			long tmp=milk[j];
 			milk[j]=milk[(j-1)/2];
 			milk[(j-1)/2]=tmp;

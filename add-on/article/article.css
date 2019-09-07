@@ -193,6 +193,7 @@ table
 {
 	background-color: var(--link-color);
 	color: var(--back-color);
+	outline: none;
 }
 .flexWrapper
 {

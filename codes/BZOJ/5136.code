@@ -1,37 +1,37 @@
 var
-	matrix:array[1..500,1..500]of longint;
+	big_m:array[1..500,1..500]of longint;
 	n,m,x,y,k,i,j:integer;
 	t,ti:longint;
-	not_clever:boolean;
+	is_clever:boolean;
 begin
 	read(n,m,t);
 	for i:=1 to n do
 		for j:=1 to m do
-			read(matrix[i,j]);
+			read(big_m[i,j]);
 	for ti:=1 to t do
 		begin
-			not_clever:=false;
+			is_clever:=true;
 			read(x,y,k);
 			for i:=1 to k-1 do//Check each pair of lines
 				begin
 					for j:=1 to k-1 do
-						if matrix[x+i][y]-matrix[x+i-1][y]<>matrix[x+i][y+j]-matrix[x+i-1][y+j] then
+						if big_m[x+i,y]-big_m[x+i-1,y]<>big_m[x+i,y+j]-big_m[x+i-1,y+j] then//We set x2=x1-1, y2=y1-1 here to make sure it applies to the other numbers
 							begin
-								not_clever:=true;
+								is_clever:=false;
 								break;
 							end;
-					if not_clever then
+					if not is_clever then
 						break;
 				end;
-			if not_clever then
-				writeln('N')
+			if is_clever then
+				writeln('Y')
 			else
-				writeln('Y');
+				writeln('N');
 		end;
 end.
 
 #include<cstdio>
-long matrix[500][500];
+long big_m[500][500];
 int main()
 {
 	int n,m;
@@ -39,21 +39,18 @@ int main()
 	scanf("%d%d%ld",&n,&m,&t);
 	for(int i=0;i<n;i++)
 		for(int j=0;j<m;j++)
-			scanf("%ld",&matrix[i][j]);
+			scanf("%ld",&big_m[i][j]);
 	for(;t>0;t--)
 	{
 		int x,y,k;
-		bool not_clever=false;
+		bool is_clever=true;
 		scanf("%d%d%d",&x,&y,&k);
 		x--;
 		y--;
-		for(int i=1;(i<k)&&(!not_clever);i++)//Check each pair of lines
-			for(int j=1;(j<k)&&(!not_clever);j++)
-				not_clever=matrix[x+i][y]-matrix[x+i-1][y]!=matrix[x+i][y+j]-matrix[x+i-1][y+j];
-		if(not_clever)
-			printf("N\n");
-		else
-			printf("Y\n");
+		for(int i=1;i<k && is_clever;i++)//Check each pair of lines
+			for(int j=1;j<k && is_clever;j++)
+				is_clever=big_m[x+i][y]-big_m[x+i-1][y]==big_m[x+i][y+j]-big_m[x+i-1][y+j];//We set x2=x1-1, y2=y1-1 here to make sure it applies to the other numbers
+		printf(is_clever?"Y\n":"N\n");
 	}
 	return 0;
 }

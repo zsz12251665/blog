@@ -41,11 +41,11 @@ begin
 	j:=1;
 	for i:=1 to m do
 		begin
-			if (j>1)and(add[i]<big[1]) then//The ADD request which started with checking if the new element should be put into the big-root heap
+			if (j>1) and (add[i]<big[1]) then//The ADD request which started with checking if the new element should be put into the big-root heap
 				begin
 					small[i-j+1]:=big[1];//Put the root element of the big-root heap into the small-root heap
 					k:=i-j+1;
-					while (k>1)and(small[k]<small[k div 2]) do
+					while (k>1) and (small[k]<small[k div 2]) do
 						begin
 							tmp:=small[k];
 							small[k]:=small[k div 2];
@@ -54,9 +54,9 @@ begin
 						end;
 					big[1]:=add[i];//Replace the root element of the big-root heap with the new element
 					k:=1;
-					while (2*k<j)and(big[k]<big[2*k])or(2*k+1<j)and(big[k]<big[2*k+1]) do
+					while (2*k<j) and (big[k]<big[2*k]) or (2*k+1<j) and (big[k]<big[2*k+1]) do
 						begin
-							if (2*k+1<j)and(big[2*k]<big[2*k+1]) then
+							if (2*k+1<j) and (big[2*k]<big[2*k+1]) then
 								k:=2*k+1
 							else
 								k:=2*k;
@@ -69,7 +69,7 @@ begin
 				begin
 					small[i-j+1]:=add[i];//Simply add the new element into the small-root heap
 					k:=i-j+1;
-					while (k>1)and(small[k]<small[k div 2]) do
+					while (k>1) and (small[k]<small[k div 2]) do
 						begin
 							tmp:=small[k];
 							small[k]:=small[k div 2];
@@ -82,7 +82,7 @@ begin
 					writeln(small[1]);//Output the asking element
 					big[j]:=small[1];//Put the root element of the small-root heap into the big-root heap
 					k:=j;
-					while (k>1)and(big[k]>big[k div 2]) do
+					while (k>1) and (big[k]>big[k div 2]) do
 						begin
 							tmp:=big[k];
 							big[k]:=big[k div 2];
@@ -91,9 +91,9 @@ begin
 						end;
 					small[1]:=small[i-j+1];//Remove the root element of the small-root heap
 					k:=1;
-					while (2*k<i-j+1)and(small[k]>small[2*k])or(2*k+1<i-j+1)and(small[k]>small[2*k+1]) do
+					while (2*k<i-j+1) and (small[k]>small[2*k]) or (2*k+1<i-j+1) and (small[k]>small[2*k+1]) do
 						begin
-							if (2*k+1<i-j+1)and(small[2*k]>small[2*k+1]) then
+							if (2*k+1<i-j+1) and (small[2*k]>small[2*k+1]) then
 								k:=2*k+1
 							else
 								k:=2*k;
@@ -142,27 +142,21 @@ int main()
 	for(int j=0;j<n;j++)
 		scanf("%d",&get[j]);
 	qsort(0,n-1);//Sort the get array
-	for(int i=0,j=0,k;(i<m)&&(j<n);i++)
+	for(int i=0,j=0;i<m && j<n;i++)
 	{
-		if((j>0)&&(add[i]<big[0]))//The ADD request which started with checking if the new element should be put into the big-root heap
+		if(j>0 && add[i]<big[0])//The ADD request which started with checking if the new element should be put into the big-root heap
 		{
 			small[i-j]=big[0];//Put the root element of the big-root heap into the small-root heap
-			k=i-j;
-			while((k>0)&&(small[k]<small[(k-1)/2]))
+			for(int k=i-j;k>0 && small[k]<small[(k-1)/2];k=(k-1)/2)
 			{
 				long tmp=small[k];
 				small[k]=small[(k-1)/2];
 				small[(k-1)/2]=tmp;
-				k=(k-1)/2;
 			}
 			big[0]=add[i];//Replace the root element of the big-root heap with the new element
-			k=0;
-			while((2*k+1<j)&&(big[k]<big[2*k+1])||(2*k+2<j)&&(big[k]<big[2*k+2]))
+			for(int k=0;2*k+1<j && big[k]<big[2*k+1] || 2*k+2<j && big[k]<big[2*k+2];)
 			{
-				if((2*k+2<j)&&(big[2*k+1]<big[2*k+2]))
-					k=2*k+2;
-				else
-					k=2*k+1;
+				k=(2*k+2<j && big[2*k+1]<big[2*k+2])?2*k+2:2*k+1;
 				long tmp=big[k];
 				big[k]=big[(k-1)/2];
 				big[(k-1)/2]=tmp;
@@ -171,40 +165,32 @@ int main()
 		else
 		{
 			small[i-j]=add[i];//Simply add the new element into the small-root heap
-			k=i-j;
-			while((k>0)&&(small[k]<small[(k-1)/2]))
+			for(int k=i-j;k>0 && small[k]<small[(k-1)/2];k=(k-1)/2)
 			{
 				long tmp=small[k];
 				small[k]=small[(k-1)/2];
 				small[(k-1)/2]=tmp;
-				k=(k-1)/2;
 			}
 		}
-		while(i+1==get[j])//The GET request
+		for(;i+1==get[j];j++)//The GET request
 		{
 			printf("%ld\n",small[0]);//Output the asking element
 			big[j]=small[0];//Put the root element of the small-root heap into the big-root heap
-			k=j;
-			while((k>0)&&(big[k]>big[(k-1)/2]))
+			
+			for(int k=j;k>0 && big[k]>big[(k-1)/2];k=(k-1)/2)
 			{
 				long tmp=big[k];
 				big[k]=big[(k-1)/2];
 				big[(k-1)/2]=tmp;
-				k=(k-1)/2;
 			}
 			small[0]=small[i-j];//Remove the root element of the small-root heap
-			k=0;
-			while((2*k+1<i-j)&&(small[k]>small[2*k+1])||(2*k+2<i-j)&&(small[k]>small[2*k+2]))
+			for(int k=0;2*k+1<i-j && small[k]>small[2*k+1] || 2*k+2<i-j && small[k]>small[2*k+2];)
 			{
-				if((2*k+2<i-j)&&(small[2*k+1]>small[2*k+2]))
-					k=2*k+2;
-				else
-					k=2*k+1;
+				k=(2*k+2<i-j && small[2*k+1]>small[2*k+2])?2*k+2:2*k+1;
 				long tmp=small[k];
 				small[k]=small[(k-1)/2];
 				small[(k-1)/2]=tmp;
 			}
-			j++;
 		}
 	}
 	return 0;

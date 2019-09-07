@@ -29,7 +29,7 @@ begin
 				end;
 			if s[i]='_' then
 				begin
-					if not(in_parentheses) and(tmp>max) then//Update the max length of words that is not in parentheses
+					if not in_parentheses and(tmp>max) then//Update the max length of words that is not in parentheses
 						max:=tmp;
 					if in_parentheses and(tmp>0) then//Count the number of words that is in parentheses
 						inc(cnt);
@@ -70,17 +70,16 @@ int main()
 		}
 		if(s[i]=='_')
 		{
-			if((!in_parentheses)&&(tmp>max))//Update the max length of words that is not in parentheses
+			if(!in_parentheses && tmp>max)//Update the max length of words that is not in parentheses
 				max=tmp;
-			if((in_parentheses)&&(tmp!=0))//Count the number of words that is in parentheses
+			if(in_parentheses && tmp!=0)//Count the number of words that is in parentheses
 				cnt++;
 			tmp=0;
 			continue;
 		}
 		tmp++;
 	}
-	if(tmp>max)//Update the max length of words that is not in parentheses
-		max=tmp;
+	max=(tmp>max)?tmp:max;//Update the max length of words that is not in parentheses
 	printf("%d %d",max,cnt);
 	return 0;
 }

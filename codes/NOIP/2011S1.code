@@ -8,7 +8,7 @@ begin
 		read(a[i],b[i],g[i],k[i]);
 	read(x,y);
 	for i:=n downto 1 do//Remember that we need to output the top one
-		if (a[i]<=x)and(b[i]<=y)and(a[i]+g[i]>=x)and(b[i]+k[i]>=y) then//If it has covered the coordinate, output it then exit
+		if (a[i]<=x) and (b[i]<=y) and (a[i]+g[i]>=x) and (b[i]+k[i]>=y) then//If it has covered the coordinate, output it then exit
 			begin
 				write(i);
 				halt;
@@ -27,7 +27,7 @@ int main()
 	long x,y;
 	scanf("%ld%ld",&x,&y);
 	for(int i=n-1;i>=0;i--)//Remember that we need to output the top one
-		if((a[i]<=x)&&(b[i]<=y)&&(a[i]+g[i]>=x)&&(b[i]+k[i]>=y))//If it has covered the coordinate, output it then exit
+		if(a[i]<=x && b[i]<=y && a[i]+g[i]>=x && b[i]+k[i]>=y)//If it has covered the coordinate, output it then exit
 		{
 			printf("%d",i+1);//In C/C++, the array indexes are from 0 to n-1, so do not forget to add 1 when you output the index
 			return 0;

@@ -48,7 +48,7 @@ begin
 									if p=0 then
 										continue;
 									tmp:=fail[p];//If they are not matched, jump to the last match
-									while (tmp>0)and(next[tmp,i]=0) do
+									while (tmp>0) and (next[tmp,i]=0) do
 										tmp:=fail[tmp];
 									fail[next[p,i]]:=next[tmp,i];
 									if value[next[tmp,i]]=0 then//last is the last node of an model string
@@ -63,7 +63,7 @@ begin
 			readln(s);
 			for i:=1 to length(s) do//Scan the question string to find the model strings
 				begin
-					while (p<>0)and(next[p,ord(s[i])-96]=fail[p]) do//If they are not matched, jump to the last match
+					while (p<>0) and (next[p,ord(s[i])-96]=fail[p]) do//If they are not matched, jump to the last match
 						p:=fail[p];
 					p:=next[p,ord(s[i])-96];
 					tmp:=p;//Jump back to find out all model strings available
@@ -118,7 +118,7 @@ int main()
 					if(p==0)
 						continue;
 					long tmp=fail[p];//If they are not matched, jump to the last match
-					while((tmp>0)&&(next[tmp][i]==0))
+					while(tmp>0 && next[tmp][i]==0)
 						tmp=fail[tmp];
 					fail[next[p][i]]=next[tmp][i];
 					if(value[next[tmp][i]]==0)//last is the last node of an model string
@@ -132,7 +132,7 @@ int main()
 		scanf("%s",&s);
 		for(long i=0,p=0,len=strlen(s);i<len;i++)//Scan the question string to find the model strings
 		{
-			while((p!=0)&&(next[p][s[i]-'a']==fail[p]))//If they are not matched, jump to the last match
+			while(p!=0 && next[p][s[i]-'a']==fail[p])//If they are not matched, jump to the last match
 				p=fail[p];
 			p=next[p][s[i]-'a'];
 			for(long tmp=p;tmp!=0;tmp=last[tmp])//Jump back to find out all model strings available

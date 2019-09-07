@@ -24,7 +24,7 @@ var
 	mid:longint;
 begin
 	sum[p]:=sum[p]+int64(c)*(r-l+1);//Update the sum and remember to use int64
-	if (l=left[p])and(r=right[p]) then
+	if (l=left[p]) and (r=right[p]) then
 		begin
 			if l<>r then//Add the lazytag
 				lazytag[p]:=lazytag[p]+c;
@@ -41,7 +41,7 @@ begin
 		add(2*p,l,r,c);
 	if l>mid then
 		add(2*p+1,l,r,c);
-	if (l<=mid)and(r>mid) then
+	if (l<=mid) and (r>mid) then
 		begin
 			add(2*p,l,mid,c);
 			add(2*p+1,mid+1,r,c);
@@ -51,7 +51,7 @@ function search(p,l,r:longint):int64;//The searching operation
 var
 	mid:longint;
 begin
-	if (l=left[p])and(r=right[p]) then
+	if (l=left[p]) and (r=right[p]) then
 		exit(sum[p]);
 	mid:=(left[p]+right[p]) div 2;
 	if lazytag[p]<>0 then//Pass down the lazytag
@@ -64,7 +64,7 @@ begin
 		exit(search(2*p,l,r));
 	if l>mid then
 		exit(search(2*p+1,l,r));
-	if (l<=mid)and(r>mid) then
+	if (l<=mid) and (r>mid) then
 		exit(search(2*p,l,mid)+search(2*p+1,mid+1,r));
 end;
 begin
@@ -75,7 +75,7 @@ begin
 	for i:=1 to q do
 		begin
 			read(s);
-			while (s<>'C')and(s<>'Q') do
+			while (s<>'C') and (s<>'Q') do
 				read(s);
 			if s='C' then//The adding operation
 				begin
@@ -110,7 +110,7 @@ void init(long p,long l,long r)//Build and initialize the segment tree
 void add(long p,long l,long r,long c)//The adding operation
 {
 	sum[p]+=(long long)c*(r-l+1);//Update the sum and remember to use long long
-	if((l==left[p])&&(r==right[p]))
+	if(l==left[p] && r==right[p])
 	{
 		if(l!=r)//Add the lazytag
 			lazytag[p]+=c;
@@ -127,7 +127,7 @@ void add(long p,long l,long r,long c)//The adding operation
 		add(2*p+1,l,r,c);
 	if(l>mid)
 		add(2*p+2,l,r,c);
-	if((l<=mid)&&(r>mid))
+	if(l<=mid && r>mid)
 	{
 		add(2*p+1,l,mid,c);
 		add(2*p+2,mid+1,r,c);
@@ -135,7 +135,7 @@ void add(long p,long l,long r,long c)//The adding operation
 }
 long long search(long p,long l,long r)//The searching operation
 {
-	if((l==left[p])&&(r==right[p]))
+	if(l==left[p] && r==right[p])
 		return sum[p];
 	int mid=(left[p]+right[p])/2;
 	if(lazytag[p]!=0)//Pass down the lazytag
@@ -148,7 +148,7 @@ long long search(long p,long l,long r)//The searching operation
 		return search(2*p+1,l,r);
 	if(l>mid)
 		return search(2*p+2,l,r);
-	if((l<=mid)&&(r>mid))
+	if(l<=mid && r>mid)
 		return search(2*p+1,l,mid)+search(2*p+2,mid+1,r);
 }
 int main()
@@ -161,7 +161,7 @@ int main()
 	for(long i=0,a,b;i<q;i++)
 	{
 		char s=getchar();
-		while((s!='C')&&(s!='Q'))
+		while(s!='C' && s!='Q')
 			s=getchar();
 		if(s=='C')//The adding operation
 		{

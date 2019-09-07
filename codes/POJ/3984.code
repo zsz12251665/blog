@@ -22,25 +22,25 @@ begin
 	foot:=1;
 	while head<foot do//Make the BFS tree
 		begin
-			if (queue[head] mod 5>0)and(parent[queue[head]-1]=-1) then
+			if (queue[head] mod 5>0) and (parent[queue[head]-1]=-1) then
 				begin
 					queue[foot]:=queue[head]-1;
 					parent[queue[head]-1]:=queue[head];
 					inc(foot);
 				end;
-			if (queue[head] mod 5<4)and(parent[queue[head]+1]=-1) then
+			if (queue[head] mod 5<4) and (parent[queue[head]+1]=-1) then
 				begin
 					queue[foot]:=queue[head]+1;
 					parent[queue[head]+1]:=queue[head];
 					inc(foot);
 				end;
-			if (queue[head] div 5>0)and(parent[queue[head]-5]=-1) then
+			if (queue[head] div 5>0) and (parent[queue[head]-5]=-1) then
 				begin
 					queue[foot]:=queue[head]-5;
 					parent[queue[head]-5]:=queue[head];
 					inc(foot);
 				end;
-			if (queue[head] div 5<4)and(parent[queue[head]+5]=-1) then
+			if (queue[head] div 5<4) and (parent[queue[head]+5]=-1) then
 				begin
 					queue[foot]:=queue[head]+5;
 					parent[queue[head]+5]:=queue[head];
@@ -73,22 +73,22 @@ int main()
 	parent[0]=0;
 	while(head<foot)//Make the BFS tree
 	{
-		if((queue[head]%5>0)&&(parent[queue[head]-1]==-1))
+		if(queue[head]%5>0 && parent[queue[head]-1]==-1)
 		{
 			queue[foot++]=queue[head]-1;
 			parent[queue[head]-1]=queue[head];
 		}
-		if((queue[head]%5<4)&&(parent[queue[head]+1]==-1))
+		if(queue[head]%5<4 && parent[queue[head]+1]==-1)
 		{
 			queue[foot++]=queue[head]+1;
 			parent[queue[head]+1]=queue[head];
 		}
-		if((queue[head]/5>0)&&(parent[queue[head]-5]==-1))
+		if(queue[head]/5>0 && parent[queue[head]-5]==-1)
 		{
 			queue[foot++]=queue[head]-5;
 			parent[queue[head]-5]=queue[head];
 		}
-		if((queue[head]/5<4)&&(parent[queue[head]+5]==-1))
+		if(queue[head]/5<4 && parent[queue[head]+5]==-1)
 		{
 			queue[foot++]=queue[head]+5;
 			parent[queue[head]+5]=queue[head];

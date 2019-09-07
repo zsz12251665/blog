@@ -8,13 +8,13 @@ begin
 	if length[x,y]<>0 then//If the point has been searched, return the answer
 		exit(length[x,y]);
 	max:=0;//Search the longest length
-	if (x>1)and(height[x-1,y]<height[x,y])and(search(x-1,y)>max) then
+	if (x>1) and (height[x-1,y]<height[x,y]) and (search(x-1,y)>max) then
 		max:=length[x-1,y];
-	if (y>1)and(height[x,y-1]<height[x,y])and(search(x,y-1)>max) then
+	if (y>1) and (height[x,y-1]<height[x,y]) and (search(x,y-1)>max) then
 		max:=length[x,y-1];
-	if (x<r)and(height[x+1,y]<height[x,y])and(search(x+1,y)>max) then
+	if (x<r) and (height[x+1,y]<height[x,y]) and (search(x+1,y)>max) then
 		max:=length[x+1,y];
-	if (y<c)and(height[x,y+1]<height[x,y])and(search(x,y+1)>max) then
+	if (y<c) and (height[x,y+1]<height[x,y]) and (search(x,y+1)>max) then
 		max:=length[x,y+1];
 	length[x,y]:=max+1;//Do not forget to plus 1, or you'll forget to count this point
 	exit(length[x,y]);
@@ -42,13 +42,13 @@ int search(int x,int y)//Search function
 	if(length[x][y]!=0)//If the point has been searched, return the answer
 		return length[x][y];
 	int max=0;//Search the longest length
-	if((x>0)&&(height[x-1][y]<height[x][y])&&(search(x-1,y)>max))
+	if(x>0 && height[x-1][y]<height[x][y] && search(x-1,y)>max)
 		max=length[x-1][y];
-	if((y>0)&&(height[x][y-1]<height[x][y])&&(search(x,y-1)>max))
+	if(y>0 && height[x][y-1]<height[x][y] && search(x,y-1)>max)
 		max=length[x][y-1];
-	if((x<r-1)&&(height[x+1][y]<height[x][y])&&(search(x+1,y)>max))
+	if(x<r-1 && height[x+1][y]<height[x][y] && search(x+1,y)>max)
 		max=length[x+1][y];
-	if((y<c-1)&&(height[x][y+1]<height[x][y])&&(search(x,y+1)>max))
+	if(y<c-1 && height[x][y+1]<height[x][y] && search(x,y+1)>max)
 		max=length[x][y+1];
 	length[x][y]=max+1;//Do not forget to plus 1, or you'll forget to count this point
 	return length[x][y];

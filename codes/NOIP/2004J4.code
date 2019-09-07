@@ -7,7 +7,7 @@ var
 	i:integer;
 begin
 	for i:=a+1 to n do
-		if not(used[i]) then//If there is another finger that is not used
+		if not used[i] then//If there is another finger that is not used
 			exit(i);
 	exit(-1);
 end;

@@ -48,14 +48,14 @@ begin
 end;
 begin
 	read(m,n);
-	while (m<>-1)and(n<>-1) do
+	while (m<>-1) and (n<>-1) do
 		begin
 			for i:=1 to n do
 				read(j[i],f[i]);
 			msort(1,n);
 			ans:=0;
 			i:=1;
-			while (m>f[i])and(i<n) do//Take the javabeans from high reward to low one
+			while (m>f[i]) and (i<n) do//Take the javabeans from high reward to low one
 				begin
 					ans:=ans+j[i];
 					m:=m-f[i];
@@ -116,14 +116,14 @@ int main()
 {
 	int m,n;
 	scanf("%d%d",&m,&n);
-	while((m!=-1)&&(n!=-1))
+	while(m!=-1 && n!=-1)
 	{
 		for(int i=0;i<n;i++)
 			scanf("%d%d",&j[i],&f[i]);
 		msort(0,n-1);
 		long ans=0;
 		int i=0;
-		while((m>f[i])&&(i<n))//Take the javabeans from high reward to low one
+		while(m>f[i] && i<n)//Take the javabeans from high reward to low one
 		{
 			ans+=j[i];
 			m-=f[i];

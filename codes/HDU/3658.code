@@ -6,7 +6,7 @@ begin
 	fillchar(matrix,sizeof(matrix),0);//Construct the transition matrix
 	for i:=1 to 52 do//The difference of their ASCII code must not be greater than 32
 		for j:=1 to 52 do
-			if (j>i-26)and(j<i+26) then
+			if (j>i-26) and (j<i+26) then
 				begin
 					matrix[i,j]:=1;
 					matrix[i+52,j+52]:=1;
@@ -63,7 +63,7 @@ int main()
 	memset(matrix,0,sizeof matrix);//Construct the transition matrix
 	for(int i=0;i<52;i++)//The difference of their ASCII code must not be greater than 32
 		for(int j=0;j<52;j++)
-			if((j>i-26)&&(j<i+26))
+			if(j>i-26 && j<i+26)
 				matrix[i][j]=matrix[52+i][52+j]=1;
 	for(int i=0;i<26;i++)//The difference of their ASCII code is exactly 32
 		matrix[78+i][i]=matrix[52+i][26+i]=matrix[78+i][52+i]=matrix[52+i][78+i]=1;

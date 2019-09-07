@@ -2,7 +2,7 @@
 <time>2018-04-09 20:55 by zsz12251665</time>
 <h3>Problem</h3>
 <section class="buttonField">
-	<a target="_blank" href="https://vjudge.net/problem/HDU-3658">vjudge</a>
+	<a target="_blank" href="https://vjudge.net/problem/HDU-3658">Virtual Judge</a>
 	<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=3658">HDU</a>
 </section>
 <h3>Solution</h3>
@@ -21,7 +21,7 @@
 	<p>Obviously, it took us <data value="o{O}o{(}c{2}o{&times;}c{52}o{)}"></data> to finish a transition. Though the total time complexity is just <data value="o{O}o{(}v{m}o{)}"></data>, the constant and the multitasks will not allow us to pass the problem. So we need the power of the matrix to speed up. But how can we do it? </p>
 	<p>We will construct a transition matrix. For a transition matrix <data value="v{M}"></data>, <data value="v{M}b{v{x}o{,}v{y}}"></data> is the coefficient of <data value="v{dp}b{v{y}}"></data> in <data value="v{dp}b{v{x}}"></data>. Let's take Fibonacci sequence as an example. The transition matrix is <data value="o{[}i{c{1}l{}c{1}}o{&nbsp;}i{c{1}l{}c{0}}o{]}"></data>. Here, <data value="v{dp}b{v{i}o{,}c{0}}"></data> means <data value="v{F}b{v{i}}"></data> while <data value="v{dp}b{v{i}o{,}c{1}}"></data> means <data value="v{F}b{v{i}o{-}c{1}}"></data>. So according to the transition matrix, the transition formulas are <data value="v{dp}b{v{i}o{,}c{0}}o{=}c{1}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{0}}o{+}c{1}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{1}}o{=}v{dp}b{v{i}o{-}c{1}o{,}c{0}}o{+}v{dp}b{v{i}o{-}c{1}o{,}c{1}}"></data> and <data value="v{dp}b{v{i}o{,}c{1}}o{=}c{1}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{0}}o{+}c{0}o{&sdot;}v{dp}b{v{i}o{-}c{1}o{,}c{1}}o{=}v{dp}b{v{i}o{-}c{1}o{,}c{0}}"></data>. They just mean <data value="v{F}b{v{i}}o{=}v{F}b{v{i}o{-}c{1}}o{+}v{F}b{v{i}o{-}c{2}}"></data> and <data value="v{F}b{v{i}o{-}c{1}}o{=}v{F}b{v{i}o{-}c{1}}"></data>. </p>
 	<p>After constructing the transition matrix, we could know that if we multiply the matrix with the states array, we can finish the transition once. So we need to do it <data value="v{m}"></data> times. According to the associative property, we can use the power of the matrix, which is just <data value="o{O}o{(}o{lg}v{m}o{)}"></data>, to speed it up. This is how we speed up dp algorithm with the power of matrix. </p>
-	<p>P. S. I'm sorry that the solution was still not fast enough for Pascal to pass it while C++ managed though I've sorted <data value="v{m}"></data>. Please pay attenttion. </p>
+	<p>P. S. I'm sorry that the solution was still not fast enough for Pascal to pass it while C++ managed though I've sorted <data value="v{m}"></data>. Please pay attention. </p>
 </section>
 <h3>Code</h3>
 <section>

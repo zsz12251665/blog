@@ -7,11 +7,11 @@ begin
 	for m:=1 to 12 do//Enumerate the month
 		for d:=1 to 31 do//Enumerate the date
 			begin
-				if (m=2)and(d>29)or((m=4)or(m=6)or(m=9)or(m=11))and(d>30) then//Don't forget the short months
+				if (m=2) and (d>29) or ((m=4) or (m=6) or (m=9) or (m=11)) and (d>30) then//Don't forget the short months
 					continue;
 				date:=d mod 10*1000+d div 10*100+m mod 10*10+m div 10;//Calculate the year
 				date:=date*10000+m*100+d;//Get the complete date
-				if (left<=date)and(right>=date) then
+				if (left<=date) and (right>=date) then
 					inc(count);
 			end;
 	write(count);
@@ -26,11 +26,11 @@ int main()
 	for(int m=1;m<13;m++)//Enumerate the month
 		for(int d=1;d<32;d++)//Enumerate the date
 		{
-			if(((m==2)&&(d>29))||(((m==4)||(m==6)||(m==9)||(m==11))&&(d>30)))//Don't forget the short months
+			if(m==2 && d>29 || (m==4 || m==6 || m==9 || m==11) && d>30)//Don't forget the short months
 				continue;
 			date=d%10*1000+d/10*100+m%10*10+m/10;//Calculate the year
 			date=date*10000+m*100+d;//Get the complete date
-			if((left<=date)&&(right>=date))
+			if(left<=date && right>=date)
 				count++;
 		}
 	printf("%d",count);

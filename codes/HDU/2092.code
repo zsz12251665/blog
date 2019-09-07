@@ -3,7 +3,7 @@ var
 	delta:longint;
 begin
 	read(p,q);
-	while (p<>0)or(q<>0) do
+	while (p<>0) or (q<>0) do
 		begin
 			delta:=p*p-4*q;
 			if delta<0 then//If Δ<0, it won't have a square root
@@ -33,8 +33,7 @@ end.
 int main()
 {
 	int p,q;
-	scanf("%d%d",&p,&q);
-	while((p!=0)||(q!=0))
+	for(scanf("%d%d",&p,&q);p!=0 || q!=0;scanf("%d%d",&p,&q))
 	{
 		long delta=p*p-4*q;
 		if(delta<0)//If Δ<0, it won't have a square root
@@ -56,7 +55,6 @@ int main()
 				break;
 			}
 		}
-		scanf("%d%d",&p,&q);
 	}
 	return 0;
 }

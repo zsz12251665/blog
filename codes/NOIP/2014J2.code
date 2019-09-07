@@ -22,7 +22,7 @@ begin
 	read(a,b,l);
 	for i:=1 to l do//Enumerate every pair of (i,j) in [1..l]
 		for j:=1 to l do
-			if (gcd(i,j)=1)and(i*b>=a*j)and(i*y<x*j) then//i*b>=a*j <=> i/j>=a/b, i*y<x*j <=> i/j<x/y
+			if (gcd(i,j)=1) and (i*b>=a*j) and (i*y<x*j) then//i*b>=a*j <=> i/j>=a/b, i*y<x*j <=> i/j<x/y
 				begin
 					x:=i;
 					y:=j;
@@ -51,7 +51,7 @@ int main()
 	scanf("%ld%ld%d",&a,&b,&l);
 	for(int i=1;i<=l;i++)//Enumerate every pair of (i,j) in [1..l]
 		for(int j=1;j<=l;j++)
-			if((gcd(i,j)==1)&&(i*b>=a*j)&&(i*y<x*j))//i*b>=a*j <=> i/j>=a/b, i*y<x*j <=> i/j<x/y
+			if(gcd(i,j)==1 && i*b>=a*j && i*y<x*j)//i*b>=a*j <=> i/j>=a/b, i*y<x*j <=> i/j<x/y
 			{
 				x=i;
 				y=j;

@@ -58,7 +58,7 @@ int main()
 	{
 		if(isprime[i]==1)
 			prime[primesize++]=i;
-		for(long j=0;(j<primesize)&&(i*prime[j]<1000002);j++)
+		for(long j=0;j<primesize && i*prime[j]<1000002;j++)
 		{
 			isprime[i*prime[j]]=0;
 			if(i%prime[j]==0)
@@ -70,8 +70,8 @@ int main()
 	while(n!=0)
 	{
 		long ans=0;
-		for(long i=0;(prime[i]<=n/5)&&(i<primesize);i++)//Enumerate every pair of H-primes
-			for(long j=0;(prime[i]*prime[j]<=n)&&(j<primesize);j++)
+		for(long i=0;prime[i]<=n/5 && i<primesize;i++)//Enumerate every pair of H-primes
+			for(long j=0;prime[i]*prime[j]<=n && j<primesize;j++)
 				if(isprime[prime[i]*prime[j]]!=2)
 				{
 					isprime[prime[i]*prime[j]]=2;
@@ -98,7 +98,7 @@ begin
 				k:=4*i*j+i+j;//(4i+1)(4j+1)=4(4i*j+i+j)+1
 				if k>250000 then//To avoid overlimit
 					break;
-				if (isprime[i]=0)and(isprime[j]=0) then//Judge if it is a H-semi-prime
+				if (isprime[i]=0) and (isprime[j]=0) then//Judge if it is a H-semi-prime
 					isprime[k]:=1
 				else
 					isprime[k]:=-1;
@@ -130,7 +130,7 @@ int main()
 			long k=4*i*j+i+j;//(4i+1)(4j+1)=4(4i*j+i+j)+1
 			if(k>250000)//To avoid overlimit
 				break;
-			if((isprime[i]==0)&&(isprime[j]==0))//Judge if it is a H-semi-prime
+			if(isprime[i]==0 && isprime[j]==0)//Judge if it is a H-semi-prime
 				isprime[k]=1;
 			else
 				isprime[k]=-1;

@@ -68,9 +68,9 @@ begin
 			j:=h[p];
 			while j<>-1 do
 				begin
-					if (status[h_des[j]]=1)and(dis[h_des[j]]>dis[p]+1) then//Check if this point is optional
+					if (status[h_des[j]]=1) and (dis[h_des[j]]>dis[p]+1) then//Check if this point is optional
 						begin
-							if not(inqueue[h_des[j]]) then
+							if not inqueue[h_des[j]] then
 								begin
 									inqueue[h_des[j]]:=true;
 									queue[foot]:=h_des[j];
@@ -144,7 +144,7 @@ int main()
 		head=(head+1)%10000;
 		inqueue[p]=false;
 		for(long j=h[p];j!=-1;j=h_nxt[j])
-			if((status[h_des[j]]==1)&&(dis[h_des[j]]>dis[p]+1))//Check if this point is optional
+			if(status[h_des[j]]==1 && dis[h_des[j]]>dis[p]+1)//Check if this point is optional
 			{
 				if(!inqueue[h_des[j]])
 				{

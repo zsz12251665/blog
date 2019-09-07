@@ -4,18 +4,18 @@ function is_good(a:longint):boolean;
 var
 	i:longint;
 begin
-	i:=1;//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
+	i:=1;
 	while i<a do
 		begin
-			if ((a div i) mod 100=62)or((a div i) mod 10=4) then
+			if ((a div i) mod 100=62) or ((a div i) mod 10=4) then
 				exit(false);
-			i:=i*10;
+			i:=i*10;//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
 		end;
 	exit(true);
 end;
 begin
 	read(n,m);
-	while (n<>0)or(m<>0) do
+	while (n<>0) or (m<>0) do
 		begin
 			count:=0;
 			for i:=n to m do//Search the interval
@@ -30,22 +30,20 @@ end.
 bool is_good(long a)
 {
 	for(long i=1;i<a;i*=10)//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
-		if(((a/i)%100==62)||((a/i)%10==4))
+		if((a/i)%100==62 || (a/i)%10==4)
 			return false;
 	return true;
 }
 int main()
 {
-	long n,m,count;
-	scanf("%ld%ld",&n,&m);
-	while((n!=0)||(m!=0))
+	long n,m;
+	for(scanf("%ld%ld",&n,&m);n!=0 || m!=0;scanf("%ld%ld",&n,&m))
 	{
-		count=0;
+		long count=0;
 		for(long i=n;i<=m;i++)//Search the interval
 			if(is_good(i))
 				count++;
 		printf("%ld\n",count);
-		scanf("%ld%ld",&n,&m);
 	}
 	return 0;
 }
@@ -57,7 +55,7 @@ function is_good(a:longint):boolean;
 begin
 	while a>0 do
 		begin
-			if (a mod 100=62)or(a mod 10=4) then
+			if (a mod 100=62) or (a mod 10=4) then
 				exit(false);
 			a:=a div 10;
 		end;
@@ -71,7 +69,7 @@ begin
 		else
 			count[i]:=count[i-1];
 	read(n,m);
-	while (n<>0)or(m<>0) do
+	while (n<>0) or (m<>0) do
 		begin
 			writeln(count[m]-count[n-1]);//Don't forget to use the one before n, or you may lose the number n
 			read(n,m);
@@ -83,7 +81,7 @@ long count[1000001];//count[i] keeps the number of the is_good numbers from 0 to
 bool is_good(long a)
 {
 	for(;a>0;a/=10)
-		if((a%100==62)||(a%10==4))
+		if(a%100==62 || a%10==4)
 			return false;
 	return true;
 }
@@ -93,11 +91,7 @@ int main()
 	for(long i=1;i<1000001;i++)//Fill the count[i]
 		count[i]=(is_good(i))?count[i-1]+1:count[i-1];
 	long n,m;
-	scanf("%ld%ld",&n,&m);
-	while((n!=0)||(m!=0))
-	{
+	for(scanf("%ld%ld",&n,&m);n!=0 || m!=0;scanf("%ld%ld",&n,&m))
 		printf("%ld\n",count[m]-count[n-1]);//Don't forget to use the one before n, or you may lose the number n
-		scanf("%ld%ld",&n,&m);
-	}
 	return 0;
 }

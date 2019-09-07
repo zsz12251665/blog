@@ -1,7 +1,7 @@
 var
 	des,nxt:array[1..2000]of integer;
 	h,dis_s,dis_t,queue:array[1..1000]of integer;
-	inqueue:array[1..1000]of boolean;
+	in_queue:array[1..1000]of boolean;
 	n,m,s,t,i,u,v,p,ans:integer;
 begin
 	read(n,m,s,t);
@@ -10,7 +10,7 @@ begin
 			dis_s[i]:=maxint;
 			dis_t[i]:=maxint;
 			h[i]:=-1;
-			inqueue[i]:=false;
+			in_queue[i]:=false;
 		end;
 	for i:=1 to m do//Read the edges
 		begin
@@ -23,7 +23,7 @@ begin
 			h[v]:=2*i;
 		end;
 	queue[1]:=s;//Use SPFA to find the distance to s
-	inqueue[s]:=true;
+	in_queue[s]:=true;
 	dis_s[s]:=0;
 	u:=1;//u is the head of the queue and v is the foot
 	v:=2;
@@ -31,25 +31,25 @@ begin
 		begin
 			p:=queue[u];
 			u:=u mod 1000+1;
-			inqueue[p]:=false;
+			in_queue[p]:=false;
 			i:=h[p];
 			while i<>-1 do
 				begin
 					if dis_s[des[i]]>dis_s[p]+1 then
 						begin
 							dis_s[des[i]]:=dis_s[p]+1;
-							if not(inqueue[des[i]]) then
+							if not in_queue[des[i]] then
 								begin
 									queue[v]:=des[i];
 									v:=v mod 1000+1;
-									inqueue[des[i]]:=true;
+									in_queue[des[i]]:=true;
 								end;
 						end;
 					i:=nxt[i];
 				end;
 		end;
 	queue[1]:=t;//Use SPFA to find the distance to t
-	inqueue[t]:=true;
+	in_queue[t]:=true;
 	dis_t[t]:=0;
 	u:=1;
 	v:=2;
@@ -57,18 +57,18 @@ begin
 		begin
 			p:=queue[u];
 			u:=u mod 1000+1;
-			inqueue[p]:=false;
+			in_queue[p]:=false;
 			i:=h[p];
 			while i<>-1 do
 				begin
 					if dis_t[des[i]]>dis_t[p]+1 then
 						begin
 							dis_t[des[i]]:=dis_t[p]+1;
-							if not(inqueue[des[i]]) then
+							if not in_queue[des[i]] then
 								begin
 									queue[v]:=des[i];
 									v:=v mod 1000+1;
-									inqueue[des[i]]:=true;
+									in_queue[des[i]]:=true;
 								end;
 						end;
 					i:=nxt[i];
@@ -77,14 +77,14 @@ begin
 	ans:=0;
 	for u:=1 to n do//Enumerate the pairs to find the possible edges
 		for v:=1 to u-1 do
-			if (dis_s[u]+dis_t[v]+1>=dis_s[t])and(dis_t[u]+dis_s[v]+1>=dis_t[s]) then//Both dis_s[t] and dis_t[s] mean the distance between s and t
+			if (dis_s[u]+dis_t[v]+1>=dis_s[t]) and (dis_t[u]+dis_s[v]+1>=dis_t[s]) then//Both dis_s[t] and dis_t[s] mean the distance between s and t
 				inc(ans);
 	write(ans-m);//Remove the edges that already exist
 end.
 
 #include<cstdio>
 int des[2000],nxt[2000],h[1000],dis_s[1000],dis_t[1000],queue[1000];
-bool inqueue[1000];
+bool in_queue[1000];
 int main()
 {
 	int n,m,s,t;
@@ -95,7 +95,7 @@ int main()
 	{
 		dis_s[i]=dis_t[i]=65535;
 		h[i]=-1;
-		inqueue[i]=false;
+		in_queue[i]=false;
 	}
 	for(int i=0,u,v;i<m;i++)//Read the edges
 	{
@@ -110,49 +110,49 @@ int main()
 		h[v]=2*i+1;
 	}
 	queue[0]=s;//Use SPFA to find the distance to s
-	inqueue[s]=true;
+	in_queue[s]=true;
 	dis_s[s]=0;
 	for(int u=0,v=1;u!=v;)//u is the head of the queue and v is the foot
 	{
 		int p=queue[u++];
 		u%=1000;
-		inqueue[p]=false;
+		in_queue[p]=false;
 		for(int i=h[p];i!=-1;i=nxt[i])
 			if(dis_s[des[i]]>dis_s[p]+1)
 			{
 				dis_s[des[i]]=dis_s[p]+1;
-				if(!inqueue[des[i]])
+				if(!in_queue[des[i]])
 				{
 					queue[v++]=des[i];
 					v%=1000;
-					inqueue[des[i]]=true;
+					in_queue[des[i]]=true;
 				}
 			}
 	}
 	queue[0]=t;//Use SPFA to find the distance to t
-	inqueue[t]=1;
+	in_queue[t]=1;
 	dis_t[t]=0;
 	for(int u=0,v=1;u!=v;)
 	{
 		int p=queue[u++];
 		u%=1000;
-		inqueue[p]=0;
+		in_queue[p]=0;
 		for(int i=h[p];i!=-1;i=nxt[i])
 			if(dis_t[des[i]]>dis_t[p]+1)
 			{
 				dis_t[des[i]]=dis_t[p]+1;
-				if(!inqueue[des[i]])
+				if(!in_queue[des[i]])
 				{
 					queue[v++]=des[i];
 					v%=1000;
-					inqueue[des[i]]=true;
+					in_queue[des[i]]=true;
 				}
 			}
 	}
 	int ans=0;
 	for(int u=0;u<n;u++)//Enumerate the pairs to find the possible edges
 		for(int v=0;v<u;v++)
-			if((dis_s[u]+dis_t[v]+1>=dis_s[t])&&(dis_t[u]+dis_s[v]+1>=dis_t[s]))//Both dis_s[t] and dis_t[s] mean the distance between s and t
+			if(dis_s[u]+dis_t[v]+1>=dis_s[t] && dis_t[u]+dis_s[v]+1>=dis_t[s])//Both dis_s[t] and dis_t[s] mean the distance between s and t
 				ans++;
 	printf("%d",ans-m);//Remove the edges that already exist
 	return 0;

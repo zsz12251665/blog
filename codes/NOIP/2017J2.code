@@ -6,7 +6,7 @@ function match(book,reader:longint):boolean;
 begin
 	while reader>0 do
 		begin
-			if (book mod 10<>reader mod 10)or(book=0) then//If the index doesn't match or the length of the book index is too short
+			if (book mod 10<>reader mod 10) or (book=0) then//If the index doesn't match or the length of the book index is too short
 				exit(false);
 			book:=book div 10;//Move a bit forward
 			reader:=reader div 10;
@@ -22,7 +22,7 @@ begin
 			ans:=maxlongint;
 			read(tmp,reader);
 			for j:=1 to n do//Enumerate the books to find the right one
-				if (match(book[j],reader))and(book[j]<ans) then//If the index doesn't match or the length of the book index is too short
+				if (match(book[j],reader)) and (book[j]<ans) then//If the index doesn't match or the length of the book index is too short
 					ans:=book[j];
 				if ans=maxlongint then
 					ans:=-1;
@@ -36,7 +36,7 @@ bool match(long book,long reader)
 {
 	while(reader>0)
 	{
-		if((book%10!=reader%10)||(book==0))
+		if(book%10!=reader%10 || book==0)
 			return false;
 		book/=10;//Move a bit forward
 		reader/=10;
@@ -54,7 +54,7 @@ int main()
 		long reader,ans=2147483647;
 		scanf("%d%ld",&tmp,&reader);
 		for(int j=0;j<n;j++)//Enumerate the books to find the right one
-			if(match(book[j],reader)&&(book[j]<ans))
+			if(match(book[j],reader) && book[j]<ans)
 				ans=book[j];
 		if(ans==2147483647)
 			ans=-1;

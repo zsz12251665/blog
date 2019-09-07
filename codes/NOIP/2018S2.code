@@ -47,7 +47,7 @@ begin
 						inc(ans);
 						unable[a[i]]:=false;
 						for j:=1 to 25000-a[i] do//Update the unable array
-							if not(unable[j]) then
+							if not unable[j] then
 								unable[j+a[i]]:=false;
 					end;
 			writeln(ans);

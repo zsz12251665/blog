@@ -18,13 +18,13 @@ begin
 					tmp:=tmp div 10;
 				end;
 		end;
-	while not(EOF) do
+	while not EOF do
 		begin
 			readln(i);
 			start:=false;
 			for j:=100 downto 1 do
 				begin
-					if not(start)and(ans[i,j]=0) then//Remove the prefix made up of 0
+					if not start and(ans[i,j]=0) then//Remove the prefix made up of 0
 						continue;
 					start:=true;
 					write(ans[i,j]);
@@ -54,7 +54,7 @@ int main()
 		bool start=false;
 		for(int j=99;j>=0;j--)
 		{
-			if((ans[i][j]==0)&&(!start))//Remove the prefix made up of 0
+			if(ans[i][j]==0 && !start)//Remove the prefix made up of 0
 				continue;
 			start=true;
 			printf("%d",ans[i][j]);

@@ -9,7 +9,7 @@ begin
 	for i:=0 to n do//DP Part
 		for j:=0 to m do
 			begin
-				if (i=0)and(j=0) then
+				if (i=0) and (j=0) then
 					continue;
 				coe[i][j]:=0;
 				if i>0 then//Do not forget this, or your array index may be overlimited
@@ -32,7 +32,7 @@ int main()
 	for(long i=0;i<=n;i++)//DP Part
 		for(long j=0;j<=m;j++)
 		{
-			if((i==0)&&(j==0))
+			if(i==0 && j==0)
 				continue;
 			coe[i][j]=0;
 			if(i>0)//Do not forget this, or your array index may be overlimited

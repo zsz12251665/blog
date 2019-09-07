@@ -12,9 +12,8 @@ begin
 	if z[p]>=h-r then//Check if the mouse has got out
 		exit(true);
 	for i:=1 to n do//Find the way to go on
-		if not(visit[i])and((x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])<=4*r*r) then
-			if dfs(i) then
-				exit(true);
+		if not visit[i] and ((x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])<=4*r*r) and dfs(i) then
+			exit(true);
 	exit(false);
 end;
 begin
@@ -53,9 +52,8 @@ bool dfs(int p)
 	if(z[p]>=h-r)//Check if the mouse has got out
 		return true;
 	for(int i=0;i<n;i++)//Find the way to go on
-		if((!visit[i])&&((x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])<=4*r*r))
-			if(dfs(i))
-				return true;
+		if(!visit[i] && (x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])<=4*r*r && dfs(i))
+			return true;
 	return false;
 }
 int main()
@@ -71,7 +69,7 @@ int main()
 			scanf("%lld%lld%lld",&x[i],&y[i],&z[i]);
 		}
 		bool getout=false;
-		for(int i=0;(i<n)&&(getout==0);i++)//Enumerate the way to get in
+		for(int i=0;i<n && !getout;i++)//Enumerate the way to get in
 			if(z[i]<=r)
 				getout=dfs(i);
 		printf(getout?"Yes\n":"No\n");

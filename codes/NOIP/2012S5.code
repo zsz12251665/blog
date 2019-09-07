@@ -23,7 +23,7 @@ procedure subtract(d,l,r,p:longint);
 var
 	mid:longint;
 begin
-	if (l=left[p])and(r=right[p]) then//If the range is covered, set the lazytag
+	if (l=left[p]) and (r=right[p]) then//If the range is covered, set the lazytag
 	begin
 		min[p]:=min[p]-d;
 		lazytag[p]:=lazytag[p]+d;
@@ -40,7 +40,7 @@ begin
 		subtract(d,l,r,2*p);
 	if l>mid then
 		subtract(d,l,r,2*p+1);
-	if (l<=mid)and(r>mid) then
+	if (l<=mid) and (r>mid) then
 		begin
 			subtract(d,l,mid,2*p);
 			subtract(d,mid+1,r,2*p+1);
@@ -87,7 +87,7 @@ void init(long l,long r,long p)//Initialize the segment tree
 }
 void subtract(long d,long l,long r,long p)
 {
-	if((l==left[p])&&(r==right[p]))//If the range is covered, set the lazytag
+	if(l==left[p] && r==right[p])//If the range is covered, set the lazytag
 	{
 		min[p]-=d;
 		lazytag[p]+=d;
@@ -104,7 +104,7 @@ void subtract(long d,long l,long r,long p)
 		subtract(d,l,r,2*p+1);
 	if(l>mid)
 		subtract(d,l,r,2*p+2);
-	if((l<=mid)&&(r>mid))
+	if(l<=mid && r>mid)
 	{
 		subtract(d,l,mid,2*p+1);
 		subtract(d,mid+1,r,2*p+2);

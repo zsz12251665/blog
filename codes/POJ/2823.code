@@ -9,7 +9,7 @@ begin
 	foot:=1;
 	for i:=1 to k-1 do
 		begin
-			while (foot>head)and(a[i]<queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+			while (foot>head) and (a[i]<queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
 				dec(foot);
 			queue[foot]:=a[i];
 			index[foot]:=i;
@@ -17,7 +17,7 @@ begin
 		end;
 	for i:=k to n do
 		begin
-			while (foot>head)and(a[i]<queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+			while (foot>head) and (a[i]<queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
 				dec(foot);
 			queue[foot]:=a[i];
 			index[foot]:=i;
@@ -31,7 +31,7 @@ begin
 	foot:=1;
 	for i:=1 to k-1 do
 		begin
-			while (foot>head)and(a[i]>queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+			while (foot>head) and (a[i]>queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
 				dec(foot);
 			queue[foot]:=a[i];
 			index[foot]:=i;
@@ -39,7 +39,7 @@ begin
 		end;
 	for i:=k to n do
 		begin
-			while (foot>head)and(a[i]>queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
+			while (foot>head) and (a[i]>queue[foot-1]) do//Pop out the nodes in the end to keep the queue monotonous
 				dec(foot);
 			queue[foot]:=a[i];
 			index[foot]:=i;
@@ -61,7 +61,7 @@ int main()
 	long head=0,foot=0;
 	for(long i=0;i<k-1;i++)
 	{
-		while((foot>head)&&(a[i]<queue[foot-1]))//Pop out the nodes in the end to keep the queue monotonous
+		while(foot>head && a[i]<queue[foot-1])//Pop out the nodes in the end to keep the queue monotonous
 			foot--;
 		queue[foot]=a[i];
 		index[foot]=i;
@@ -69,7 +69,7 @@ int main()
 	}
 	for(long i=k-1;i<n;i++)
 	{
-		while((foot>head)&&(a[i]<queue[foot-1]))//Pop out the nodes in the end to keep the queue monotonous
+		while(foot>head && a[i]<queue[foot-1])//Pop out the nodes in the end to keep the queue monotonous
 			foot--;
 		queue[foot]=a[i];
 		index[foot]=i;
@@ -82,7 +82,7 @@ int main()
 	head=foot=0;
 	for(long i=0;i<k-1;i++)
 	{
-		while((foot>head)&&(a[i]>queue[foot-1]))//Pop out the nodes in the end to keep the queue monotonous
+		while(foot>head && a[i]>queue[foot-1])//Pop out the nodes in the end to keep the queue monotonous
 			foot--;
 		queue[foot]=a[i];
 		index[foot]=i;

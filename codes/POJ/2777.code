@@ -19,7 +19,7 @@ procedure change(p,l,r:longint;c:integer);//The setting operation
 var
 	mid:longint;
 begin
-	if (l=left[p])and(r=right[p]) then//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
+	if (l=left[p]) and (r=right[p]) then//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
 		begin
 			colour[p]:=1 shl c;
 			if l<>r then
@@ -37,26 +37,26 @@ begin
 		change(2*p,l,r,c);
 	if l>mid then
 		change(2*p+1,l,r,c);
-	if (l<=mid)and(r>mid) then
+	if (l<=mid) and (r>mid) then
 		begin
 			change(2*p,l,mid,c);
 			change(2*p+1,mid+1,r,c);
 		end;
-	colour[p]:=(colour[2*p])or(colour[2*p+1]);//Update the colour state
+	colour[p]:=(colour[2*p]) or (colour[2*p+1]);//Update the colour state
 end;
 function search(p,l,r:longint):longint;//The asking operation
 var
 	mid:longint;
 begin
-	if (lazytag[p]<>0)or(l=left[p])and(r=right[p]) then//Lazytag exists means the range is in the same colour, so we don't need to search
+	if (lazytag[p]<>0) or (l=left[p]) and (r=right[p]) then//Lazytag exists means the range is in the same colour, so we don't need to search
 		exit(colour[p]);
 	mid:=(left[p]+right[p]) div 2;
 	if r<=mid then
 		exit(search(2*p,l,r));
 	if l>mid then
 		exit(search(2*p+1,l,r));
-	if (l<=mid)and(r>mid) then
-		exit((search(2*p,l,mid))or(search(2*p+1,mid+1,r)));
+	if (l<=mid) and (r>mid) then
+		exit((search(2*p,l,mid)) or (search(2*p+1,mid+1,r)));
 end;
 begin
 	read(l,t,o);
@@ -64,7 +64,7 @@ begin
 	for i:=1 to o do
 		begin
 			read(s);
-			while (s<>'C')and(s<>'P') do
+			while (s<>'C') and (s<>'P') do
 				read(s);
 			if s='C' then//The setting operation
 				begin
@@ -102,7 +102,7 @@ void init(long p,long l,long r)//Build and initialize the segment tree
 }
 void change(long p,long l,long r,int c)//The setting operation
 {
-	if((l==left[p])&&(r==right[p]))//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
+	if(l==left[p] && r==right[p])//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
 	{
 		colour[p]=1<<c;
 		if(l!=r)
@@ -120,7 +120,7 @@ void change(long p,long l,long r,int c)//The setting operation
 		change(2*p+1,l,r,c);
 	if(l>mid)
 		change(2*p+2,l,r,c);
-	if((l<=mid)&&(r>mid))
+	if(l<=mid && r>mid)
 	{
 		change(2*p+1,l,mid,c);
 		change(2*p+2,mid+1,r,c);
@@ -129,14 +129,14 @@ void change(long p,long l,long r,int c)//The setting operation
 }
 long search(long p,long l,long r)//The asking operation
 {
-	if((lazytag[p]!=0)||(l==left[p])&&(r==right[p]))//Lazytag exists means the range is in the same colour, so we don't need to search
+	if(lazytag[p]!=0 || l==left[p] && r==right[p])//Lazytag exists means the range is in the same colour, so we don't need to search
 		return colour[p];
 	int mid=(left[p]+right[p])/2;
 	if(r<=mid)
 		return search(2*p+1,l,r);
 	if(l>mid)
 		return search(2*p+2,l,r);
-	if((l<=mid)&&(r>mid))
+	if(l<=mid && r>mid)
 		return search(2*p+1,l,mid)|search(2*p+2,mid+1,r);
 }
 int main()
@@ -148,7 +148,7 @@ int main()
 	for(long i=0,a,b;i<o;i++)
 	{
 		char s=getchar();
-		while((s!='C')&&(s!='P'))
+		while(s!='C' && s!='P')
 			s=getchar();
 		if(s=='C')//The setting operation
 		{

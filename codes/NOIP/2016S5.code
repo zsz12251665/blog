@@ -46,7 +46,7 @@ begin
 		begin
 			worm:=-maxlongint;//Find the longest worm
 			for j:=1 to 3 do
-				if (head[j]<=foot[j])and(worm<queue[j,head[j]]) then
+				if (head[j]<=foot[j]) and (worm<queue[j,head[j]]) then
 					begin
 						mx:=j;
 						worm:=queue[j,head[j]];
@@ -65,7 +65,7 @@ begin
 		begin
 			worm:=-maxlongint;//Find the longest worm
 			for j:=1 to 3 do
-				if (head[j]<=foot[j])and(worm<queue[j,head[j]]) then
+				if (head[j]<=foot[j]) and (worm<queue[j,head[j]]) then
 					begin
 						mx:=j;
 						worm:=queue[j,head[j]];
@@ -115,7 +115,7 @@ int main()
 		int mx;//Find the longest worm
 		long long worm=-2147483647;
 		for(int j=0;j<3;j++)
-			if((head[j]<foot[j])&&(queue[j][head[j]]>worm))
+			if(head[j]<foot[j] && queue[j][head[j]]>worm)
 			{
 				mx=j;
 				worm=queue[j][head[j]];
@@ -135,7 +135,7 @@ int main()
 		int mx;//Find the longest worm
 		long long worm=-2147483647;
 		for(int j=0;j<3;j++)
-			if((head[j]<foot[j])&&(queue[j][head[j]]>worm))
+			if(head[j]<foot[j] && queue[j][head[j]]>worm)
 			{
 				mx=j;
 				worm=queue[j][head[j]];

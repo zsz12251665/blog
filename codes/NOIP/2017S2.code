@@ -51,7 +51,7 @@ begin
 						c[depth]:=0
 					else
 						c[depth]:=c[depth-1];
-					if (c[depth]>-1)and(b=1000)and(a<>b) then//The loop increase the time complexity
+					if (c[depth]>-1) and (b=1000) and (a<>b) then//The loop increase the time complexity
 						inc(c[depth]);
 					if a>b then//The loop won't run
 						c[depth]:=-1;
@@ -137,7 +137,7 @@ int main()
 				c[depth]=0;
 			else
 				c[depth]=c[depth-1];
-			if((c[depth]>-1)&&(b==1000)&&(a!=b))//The loop increase the time complexity
+			if(c[depth]>-1 && b==1000 && a!=b)//The loop increase the time complexity
 				c[depth]++;
 			if(a>b)//The loop won't run
 				c[depth]=-1;
@@ -145,7 +145,7 @@ int main()
 				max=c[depth];
 			depth++;
 		}
-		if((depth!=0)||err)
+		if(depth!=0 || err)
 		{
 			printf("ERR\n");
 			continue;

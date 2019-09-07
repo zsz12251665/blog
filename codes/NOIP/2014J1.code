@@ -8,7 +8,7 @@ begin
 		read(a[i]);
 	for i:=1 to n do//Enumerate the numbers
 		for j:=0 to n*n-1 do//Enumerate the pairs in one loop by enumerating (j1-1)*n+(j2-1)
-			if (j div n<>j mod n)and(a[i]=a[j div n+1]+a[j mod n+1]) then
+			if (j div n<>j mod n) and (a[i]=a[j div n+1]+a[j mod n+1]) then
 				begin
 					inc(cnt);
 					break;//We are asked to count the number of the numbers, not the pairs
@@ -26,7 +26,7 @@ int main()
 		scanf("%d",&a[i]);
 	for(int i=0;i<n;i++)//Enumerate the numbers
 		for(int j=0;j<n*n;j++)//Enumerate the pairs in one loop by enumerating j1*n+j2
-			if((j/n!=j%n)&&(a[i]==a[j/n]+a[j%n]))
+			if(j/n!=j%n && a[i]==a[j/n]+a[j%n])
 			{
 				cnt++;
 				break;//We are asked to count the number of the numbers, not the pairs
