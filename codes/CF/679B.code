@@ -1,12 +1,11 @@
 var
-	h:integer;
-	a:longint;
 	m,x:int64;
+	h,a:longint;
 function cube(a:longint):int64;
 begin
 	exit(int64(a)*a*a);
 end;
-function count(m:int64):integer;//Count how many blocks can be added at most
+function count(m:int64):longint;//Count how many blocks can be added at most
 var
 	a:longint;
 begin
@@ -16,14 +15,14 @@ begin
 	while cube(a+1)<=m do
 		inc(a);
 	if cube(a)-1-cube(a-1)>m-cube(a) then//Choose the situation with the maximum volume remained
-		exit(1+count(cube(a)-1-cube(a-1)));
+		exit(1+count(cube(a)-1-cube(a-1)))
 	else
-		exit(1+count(m-cube(a)))
+		exit(1+count(m-cube(a)));
 end;
 begin
-	read(m);
-	h:=0;
 	x:=0;
+	h:=0;
+	read(m);
 	while m>0 do//m is the volume remained
 		begin
 			inc(h);
@@ -49,7 +48,7 @@ long long cube(long a)
 {
 	return (long long)a*a*a;
 }
-int count(long long m)//Count how many blocks can be added at most
+long count(long long m)//Count how many blocks can be added at most
 {
 	if(m<8)
 		return m;
@@ -63,15 +62,12 @@ int count(long long m)//Count how many blocks can be added at most
 }
 int main()
 {
-	long long m;
-	scanf("%lld",&m);
-	int h=0;
-	long long x=0;
-	while(m>0)//m is the volume remained
+	long long m,x=0;
+	long h=0,a;
+	for(scanf("%lld",&m);m>0;)//m is the volume remained
 	{
 		h++;
-		long a=1;//find the biggest cube
-		while(cube(a+1)<=m)
+		for(a=1;cube(a+1)<=m;)//find the biggest cube
 			a++;
 		if(count(cube(a)-1-cube(a-1))>count(m-cube(a)))//Choose the tallest solution
 		{
@@ -84,6 +80,6 @@ int main()
 			x+=cube(a);
 		}
 	}
-	printf("%d %lld\n",h,x);
+	printf("%ld %lld\n",h,x);
 	return 0;
 }

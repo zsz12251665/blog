@@ -1,7 +1,7 @@
 var
 	island:array[1..50,1..50]of integer;
-	lakex,lakey,size:array[1..2500]of integer;
-	lake,n,m,k,i,j,ans:integer;
+	lake:array[1..2500,1..3]of integer;//lake[i,1] is the x coordinate, lake[i,2] is the y coordinate, lake[i,3] is the size
+	cnt,n,m,k,i,j,ans:integer;
 	s:string;
 procedure qsort(l,r:integer);//Sort the lakes according to their sizes
 var
@@ -9,24 +9,24 @@ var
 begin
 	x:=l;
 	y:=r;
-	std:=size[(l+r) div 2];
+	std:=lake[(l+r) div 2,3];
 	while x<y do
 		begin
-			while size[x]<std do
+			while lake[x,3]<std do
 				inc(x);
-			while size[y]>std do
+			while lake[y,3]>std do
 				dec(y);
 			if x<=y then
 				begin
-					tmp:=size[x];//Exchange the lakes' information
-					size[x]:=size[y];
-					size[y]:=tmp;
-					tmp:=lakex[x];
-					lakex[x]:=lakex[y];
-					lakex[y]:=tmp;
-					tmp:=lakey[x];
-					lakey[x]:=lakey[y];
-					lakey[y]:=tmp;
+					tmp:=lake[x,1];//Exchange the information of lakes
+					lake[x,1]:=lake[y,1];
+					lake[y,1]:=tmp;
+					tmp:=lake[x,2];
+					lake[x,2]:=lake[y,2];
+					lake[y,2]:=tmp;
+					tmp:=lake[x,3];
+					lake[x,3]:=lake[y,3];
+					lake[y,3]:=tmp;
 					inc(x);
 					dec(y);
 				end;
@@ -69,7 +69,7 @@ begin
 		fill(x,y-1,mark,key);
 end;
 begin
-	lake:=0;
+	cnt:=0;
 	ans:=0;
 	readln(n,m,k);
 	for i:=1 to n do//Read the map of the island
@@ -89,19 +89,19 @@ begin
 			if island[i,j]=0 then
 				begin
 					fill(i,j,search(i,j),-2);
-					if island[i,j]>0 then//Keep the lakes' information
+					if island[i,j]>0 then//Keep the information of lakes
 						begin
-							inc(lake);
-							lakex[lake]:=i;
-							lakey[lake]:=j;
-							size[lake]:=island[i,j];
+							inc(cnt);
+							lake[cnt,1]:=i;
+							lake[cnt,2]:=j;
+							lake[cnt,3]:=island[i,j];
 						end;
 				end;
-	qsort(1,lake);
-	for i:=1 to lake-k do//Fill the smallest lakes with land
+	qsort(1,cnt);
+	for i:=1 to cnt-k do//Fill the smallest lakes with land
 		begin
-			ans:=ans+size[i];
-			fill(lakex[i],lakey[i],-1,size[i]);
+			ans:=ans+lake[i,3];
+			fill(lake[i,1],lake[i,2],-1,lake[i,3]);
 		end;
 	writeln(ans);
 	for i:=1 to n do
@@ -116,28 +116,28 @@ begin
 end.
 
 #include<cstdio>
-int island[50][50],lakex[2500],lakey[2500],size[2500],lake=0,n,m;
+int island[50][50],lake[2500][3],cnt=0,n,m;//lake[i][0] is the x coordinate, lake[i][1] is the y coordinate, lake[i][2] is the size
 char s[51];
 void qsort(int l,int r)//Sort the lakes according to their sizes
 {
-	int x=l,y=r,std=size[(l+r)/2];
+	int x=l,y=r,std=lake[(l+r)/2][2];
 	while(x<y)
 	{
-		while(size[x]<std)
+		while(lake[x][2]<std)
 			x++;
-		while(size[y]>std)
+		while(lake[y][2]>std)
 			y--;
 		if(x<=y)
 		{
-			int tmp=size[x];//Exchange the lakes' information
-			size[x]=size[y];
-			size[y]=tmp;
-			tmp=lakex[x];
-			lakex[x]=lakex[y];
-			lakex[y]=tmp;
-			tmp=lakey[x];
-			lakey[x]=lakey[y];
-			lakey[y]=tmp;
+			int tmp=lake[x][0];//Exchange the information of lakes
+			lake[x][0]=lake[y][0];
+			lake[y][0]=tmp;
+			tmp=lake[x][1];
+			lake[x][1]=lake[y][1];
+			lake[y][1]=tmp;
+			tmp=lake[x][2];
+			lake[x][2]=lake[y][2];
+			lake[y][2]=tmp;
 			x++;
 			y--;
 		}
@@ -195,19 +195,19 @@ int main()
 			if(island[i][j]==0)
 			{
 				fill(i,j,search(i,j),-2);
-				if(island[i][j]>0)//Keep the lakes' information
+				if(island[i][j]>0)//Keep the information of lakes
 				{
-					lakex[lake]=i;
-					lakey[lake]=j;
-					size[lake]=island[i][j];
-					lake++;
+					lake[cnt][0]=i;
+					lake[cnt][1]=j;
+					lake[cnt][2]=island[i][j];
+					cnt++;
 				}
 			}
-	qsort(0,lake-1);
-	for(int i=0;i<lake-k;i++)//Fill the smallest lakes with land
+	qsort(0,cnt-1);
+	for(int i=0;i<cnt-k;i++)//Fill the smallest lakes with land
 	{
-		ans+=size[i];
-		fill(lakex[i],lakey[i],-1,size[i]);
+		ans+=lake[i][2];
+		fill(lake[i][0],lake[i][1],-1,lake[i][2]);
 	}
 	printf("%d\n",ans);
 	for(int i=0;i<n;i++)

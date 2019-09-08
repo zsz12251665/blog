@@ -21,7 +21,7 @@ begin
 					end;
 			if is_added then
 				continue;
-			if s[i]='1' then//Too much '1' found so that it is impossible to divide the 01 string into serval zebra sequences
+			if s[i]='1' then//Too many '1's are found to divide the 01 string into serval zebra sequences
 				begin
 					write(-1);
 					halt;
@@ -40,9 +40,10 @@ begin
 				write(-1);
 				halt;
 			end;
-	writeln(cnt);//Output the answer
+	write(cnt);//Output the answer
 	for i:=1 to cnt do
 		begin
+			writeln;
 			write(len[i]);
 			j:=h[i];
 			while j<>-1 do
@@ -50,12 +51,11 @@ begin
 					write(' ',j);
 					j:=nxt[j];
 				end;
-			writeln;
 		end;
 end.
 
 #include<cstdio>
-#include<>//We need to use the strlen function in cstring
+#include<cstring>//We need to use the strlen function in cstring
 char s[300000];
 long h[300000],f[300000],nxt[300000],len[300000];//The array h and the array f are the head and the foot of the adjacency table
 int main()
@@ -69,15 +69,14 @@ int main()
 		for(long j=0;j<cnt;j++)//Enumerate the zebra sequences to find the suitable one
 			if(s[f[j]]!=s[i])
 			{
-				nxt[f[j]]=i;
-				f[j]=i;
+				f[j]=nxt[f[j]]=i;
 				len[j]++;
 				is_added=true;
 				break;
 			}
 		if(is_added)
 			continue;
-		if(s[i]=='1')//Too much '1' found so that it is impossible to divide the 01 string into serval zebra sequences
+		if(s[i]=='1')//Too many '1's are found to divide the 01 string into serval zebra sequences
 		{
 			printf("-1");
 			return 0;
@@ -114,8 +113,8 @@ begin
 	readln(s);
 	cnt:=0;
 	head[0]:=1;//Initialize the queue
-	foot[0]:=0;
 	head[1]:=1;
+	foot[0]:=0;
 	foot[1]:=0;
 	for i:=1 to length(s) do
 		begin
@@ -151,9 +150,10 @@ begin
 			write(-1);
 			halt;
 		end;
-	writeln(cnt);
+	write(cnt);
 	for i:=1 to cnt do
 		begin
+			writeln;
 			write(len[i]);
 			j:=h[i];
 			while j<>-1 do
@@ -161,7 +161,6 @@ begin
 					write(' ',j);
 					j:=nxt[j];
 				end;
-			writeln;
 		end;
 end.
 
@@ -173,15 +172,14 @@ int main()
 {
 	scanf("%s",&s);
 	long cnt=0;
-	head[0]=foot[0]=head[1]=foot[1]=0;//Initialize the queue
+	head[0]=head[1]=foot[0]=foot[1]=0;//Initialize the queue
 	for(long i=0,l=strlen(s);i<l;i++)
 	{
 		nxt[i]=-1;
 		if(head['1'-s[i]]!=foot['1'-s[i]])//Use queue to find the suitable zebra sequence in a short time
 		{
 			long j=queue['1'-s[i]][head['1'-s[i]]++];
-			nxt[f[j]]=i;
-			f[j]=i;
+			f[j]=nxt[f[j]]=i;
 			len[j]++;
 			queue[s[i]-'0'][foot[s[i]-'0']++]=j;
 			continue;

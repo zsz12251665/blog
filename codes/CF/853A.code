@@ -50,7 +50,7 @@ begin
 				end
 			else
 				begin
-					sum:=sum+int64(c[rank[i]])*(mt+k-rank[i]);//If you do not change into long long, it may overlimit
+					sum:=sum+int64(c[rank[i]])*(mt+k-rank[i]);//If you do not change it into int64, it may overflow
 					timeline[mt]:=true;
 					c[rank[i]]:=mt+k;
 				end;
@@ -107,7 +107,7 @@ int main()
 		}
 		else
 		{
-			sum+=(long long)c[rank[i]]*(mt+k-rank[i]);//If you do not change into long long, it may overlimit
+			sum+=(long long)c[rank[i]]*(mt+k-rank[i]);//If you do not change it into long long, it may overflow
 			timeline[mt]=true;
 			c[rank[i]]=mt+k;
 		}

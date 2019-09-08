@@ -2,19 +2,17 @@ var
 	n,a,b,c,d,max,min:longint;
 begin
 	read(n,a,b,c,d);
-	max:=-2147483647;
-	min:=2137483647;
-	if max<a+b then//Update maximum pair values
-		max:=a+b;
-	if max<a+c then
+	if a+c<a+b then//Update maximum pair values
+		max:=a+b
+	else
 		max:=a+c;
 	if max<b+d then
 		max:=b+d;
 	if max<c+d then
 		max:=c+d;
-	if min>a+b then//Update minimum pair values
-		min:=a+b;
-	if min>a+c then
+	if a+c>a+b then//Update minimum pair values
+		min:=a+b
+	else
 		min:=a+c;
 	if min>b+d then
 		min:=b+d;
@@ -31,23 +29,12 @@ int main()
 {
 	long n,a,b,c,d;
 	scanf("%ld%ld%ld%ld%ld",&n,&a,&b,&c,&d);
-	long max=-2147483647,min=2147483647;
-	if(max<a+b)//Update maximum pair values
-		max=a+b;
-	if(max<a+c)
-		max=a+c;
-	if(max<b+d)
-		max=b+d;
-	if(max<c+d)
-		max=c+d;
-	if(min>a+b)//Update minimum pair values
-		min=a+b;
-	if(min>a+c)
-		min=a+c;
-	if(min>b+d)
-		min=b+d;
-	if(min>c+d)
-		min=c+d;
+	long max=(a+c<a+b)?a+b:a+c;//Update maximum pair values
+	max=(max<b+d)?b+d:max;
+	max=(max<c+d)?c+d:max;
+	long min=(a+c>a+b)?a+b:a+c;//Update minimum pair values
+	min=(min>b+d)?b+d:min;
+	min=(min>c+d)?c+d:min;
 	if(max-min>n)//Pay attention to this situation
 		putchar('0');
 	else

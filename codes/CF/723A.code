@@ -2,7 +2,7 @@ var
 	a,b,c,tmp:integer;
 begin
 	read(a,b,c);//We use a0, b0, c0 to represent the original value of a, b, c
-	if a<b then//Using the third variable
+	if a<b then//Using another variable
 		begin
 			tmp:=a;//tmp=a0
 			a:=b;//a=b0
@@ -28,7 +28,7 @@ int main()
 {
 	int a,b,c;
 	scanf("%d%d%d",&a,&b,&c);//We use a0, b0, c0 to represent the original value of a, b, c
-	if(a<b)//Using the third variable
+	if(a<b)//Using another variable
 	{
 		int tmp=a;//tmp=a0
 		a=b;//a=b0

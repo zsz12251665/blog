@@ -2,27 +2,27 @@ var
 	x,y:array[1..100000]of longint;
 	n,m,ans,total_x,total_y,i,j:longint;
 begin
+	ans:=0;
 	read(n,m);
 	for i:=1 to n do
 		read(x[i]);
 	for i:=1 to m do
 		read(y[i]);
-	ans:=0;
-	i:=0;
-	j:=0;
+	i:=1;
+	j:=1;
 	total_x:=0;
 	total_y:=0;
-	while (i<n) or (j<m) do
+	while (i<=n) or (j<=m) do
 		begin
 			if total_x>total_y then//Add the smaller one
 				begin
-					inc(j);
 					total_y:=total_y+y[j];
+					inc(j);
 				end
 			else
 				begin
-					inc(i);
 					total_x:=total_x+x[i];
+					inc(i);
 				end;
 			if total_x=total_y then//Add it to the counter
 				inc(ans);
@@ -34,13 +34,12 @@ end.
 long x[100000],y[100000];
 int main()
 {
-	long n,m;
+	long n,m,ans=0;
 	scanf("%ld%ld",&n,&m);
 	for(long i=0;i<n;i++)
 		scanf("%ld",&x[i]);
 	for(long i=0;i<m;i++)
 		scanf("%ld",&y[i]);
-	long ans=0;
 	for(long i=0,j=0,total_x=0,total_y=0;i<n || j<m;)
 	{
 		if(total_x>total_y)//Add the smaller one
