@@ -4,11 +4,11 @@ var
 	fail,last:array[0..500000]of longint;
 	queue:array[1..500000]of longint;
 	value:array[0..500000]of integer;
-	t,n,ans:integer;
+	t,ti,n,ans:integer;
 	size,head,foot,p,i,tmp:longint;
 begin
 	readln(t);
-	while t>0 do
+	for ti:=1 to t do
 		begin
 			fillchar(next,sizeof(next),0);//Initialize the arrays
 			fillchar(fail,sizeof(fail),0);
@@ -22,14 +22,14 @@ begin
 					p:=0;
 					readln(s);
 					for i:=1 to length(s) do
-							if next[p,ord(s[i])-96]=0 then
-								begin
-									inc(size);
-									next[p,ord(s[i])-96]:=size;
-									p:=next[p,ord(s[i])-96];
-								end
-							else
+						if next[p,ord(s[i])-96]=0 then
+							begin
+								inc(size);
+								next[p,ord(s[i])-96]:=size;
 								p:=next[p,ord(s[i])-96];
+							end
+						else
+							p:=next[p,ord(s[i])-96];
 					inc(value[p]);
 				end;
 			queue[1]:=0;//Build the fail array
@@ -75,7 +75,6 @@ begin
 						end;
 				end;
 			writeln(ans);
-			dec(t);
 		end;
 end.
 

@@ -9,7 +9,7 @@ begin
 		begin
 			if ((a div i) mod 100=62) or ((a div i) mod 10=4) then
 				exit(false);
-			i:=i*10;//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
+			i:=i*10;//It is a little dangerous here because i may overflow and you'll get a WA
 		end;
 	exit(true);
 end;
@@ -29,7 +29,7 @@ end.
 #include<cstdio>
 bool is_good(long a)
 {
-	for(long i=1;i<a;i*=10)//It is a little dangerous to write like this because the i may overflow the data range and you'll get a WA, so it is improve in Solution 2
+	for(long i=1;i<a;i*=10)//It is a little dangerous here because i may overflow and you'll get a WA
 		if((a/i)%100==62 || (a/i)%10==4)
 			return false;
 	return true;

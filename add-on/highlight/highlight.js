@@ -1,9 +1,9 @@
 // The highlights of function names and variables are still missing
 window.addEventListener('DOMContentLoaded', LoadHighlight);
+// Append the style sheet
+document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 
 function LoadHighlight() {
-	// Append the style sheet
-	document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/highlight/highlight.css" />';
 	// Load the request
 	var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
 	if ((!document.querySelector('code')) || (!request.oj) || (!request.pid))
@@ -21,7 +21,7 @@ function LoadHighlight() {
 			if (code[t].lang == 'cpp')
 				var keywordList = ['asm', 'auto', 'bool', 'break', 'case', 'catch', 'char', 'const', 'continue', 'default', 'define', 'delete', 'do', 'double', 'else', 'enum', 'explicit', 'extern', 'float', 'for', 'friend', 'goto', 'if', 'include', 'inline', 'int', 'long', 'mutable', 'namespace', 'new', 'null', 'operator', 'private', 'protected', 'public', 'register', 'return', 'short', 'signed', 'sizeof', 'static', 'struct', 'switch', 'template', 'this', 'throw', 'try', 'typedef', 'union', 'unsigned', 'using', 'virtual', 'void', 'volatile', 'while'];
 			if (code[t].lang == 'pas')
-				var keywordList = ['and', 'ansistring', 'array', 'asm', 'begin', 'break', 'case', 'char', 'const', 'continue', 'div', 'do', 'double', 'downto', 'else', 'end', 'file', 'float', 'for', 'function', 'goto', 'if', 'in', 'inline', 'int64', 'integer', 'label', 'longint', 'mod', 'nil', 'not', 'object', 'of', 'operator', 'or', 'procedure', 'program', 'record', 'repeat', 'set', 'shl', 'shr', 'single', 'string', 'then', 'to', 'type', 'unit', 'until', 'uses', 'var', 'while', 'with', 'xor'];
+				var keywordList = ['and', 'ansistring', 'array', 'asm', 'begin', 'boolean', 'break', 'case', 'char', 'const', 'continue', 'div', 'do', 'double', 'downto', 'else', 'end', 'file', 'float', 'for', 'function', 'goto', 'if', 'in', 'inline', 'int64', 'integer', 'label', 'longint', 'mod', 'nil', 'not', 'object', 'of', 'operator', 'or', 'procedure', 'program', 'record', 'repeat', 'set', 'shl', 'shr', 'single', 'string', 'then', 'to', 'type', 'unit', 'until', 'uses', 'var', 'while', 'with', 'xor'];
 			for (let keyword of keywordList)
 				source = source.replace(RegExp('\\b(' + keyword + ')\\b', 'g'), '<span class="keyword">$1</span>');
 			// Highlight commas

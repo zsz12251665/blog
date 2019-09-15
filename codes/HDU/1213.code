@@ -1,12 +1,12 @@
 var
-	uset:array[1..1000]of integer;//The uset array is the merge-find set
-	count:array[1..1000]of boolean;
+	mf_set:array[1..1000]of integer;//The array mf_set is the merge-find set
+	is_counted:array[1..1000]of boolean;
 	t,ti,n,m,sum,i,a,b:integer;
 function find(a:integer):integer;
 begin
-	if uset[a]<>a then
-		uset[a]:=find(uset[a]);
-	exit(uset[a]);
+	if mf_set[a]<>a then
+		mf_set[a]:=find(mf_set[a]);
+	exit(mf_set[a]);
 end;
 begin
 	read(t);
@@ -16,18 +16,18 @@ begin
 			read(n,m);
 			for i:=1 to n do//Initialize the arrays
 				begin
-					uset[i]:=i;
-					count[i]:=false;
+					mf_set[i]:=i;
+					is_counted[i]:=false;
 				end;
 			for i:=1 to m do
 				begin
 					read(a,b);
-					uset[find(a)]:=find(b);//Union the sets
+					mf_set[find(a)]:=find(b);//Merge the sets
 				end;
 			for i:=1 to n do//Count the number of the tables
-				if not count[find(i)] then
+				if not is_counted[find(i)] then
 					begin
-						count[find(i)]:=true;
+						is_counted[find(i)]:=true;
 						inc(sum);
 					end;
 			writeln(sum);
@@ -35,36 +35,35 @@ begin
 end.
 
 #include<cstdio>
-int uset[1000];//The uset array is the merge-find set
-bool count[1000];
+int mf_set[1000];//The array mf_set is the merge-find set
+bool is_counted[1000];
 int find(int a)
 {
-	if(uset[a]!=a)
-		uset[a]=find(uset[a]);
-	return uset[a];
+	if(mf_set[a]!=a)
+		mf_set[a]=find(mf_set[a]);
+	return mf_set[a];
 }
 int main()
 {
 	int t;
-	scanf("%d",&t);
-	for(int ti=0;ti<t;ti++)
+	for(scanf("%d",&t);t>0;t--)
 	{
 		int n,m,sum=0;
 		scanf("%d%d",&n,&m);
 		for(int i=0;i<n;i++)//Initialize the arrays
 		{
-			uset[i]=i;
-			count[i]=false;
+			mf_set[i]=i;
+			is_counted[i]=false;
 		}
 		for(int i=0,a,b;i<m;i++)
 		{
 			scanf("%d%d",&a,&b);
-			uset[find(a-1)]=find(b-1);//Union the sets
+			mf_set[find(a-1)]=find(b-1);//Merge the sets
 		}
 		for(int i=0;i<n;i++)//Count the number of the tables
-			if(!count[find(i)])
+			if(!is_counted[find(i)])
 			{
-				count[find(i)]=true;
+				is_counted[find(i)]=true;
 				sum++;
 			}
 		printf("%d\n",sum);

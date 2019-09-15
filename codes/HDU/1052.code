@@ -1,7 +1,6 @@
 var
-	copy,king,tian:array[1..1000]of integer;//The array copy is used to save a copy while doing merge sort
-	n,i,ans:integer;
-	kingh,tianh,kingf,tianf:integer;//kingh and kingf are the numbers of the king's best and worst horse, tianh and tianf are the number of Tian's best and worst ones
+	copy,king,tian:array[1..1000]of integer;//The array copy is used to save a copy in merge sort
+	n,i,ans,king_best,tian_best,king_worst,tian_worst:integer;
 procedure msort(l,r:integer);
 var
 	x,y:integer;
@@ -38,7 +37,7 @@ begin
 					inc(x);
 				end;
 		end;
-	copy:=tian;//In order to avoid using too many pointers, I sort the array king and array tian at the same time
+	copy:=tian;//We sort the array king and array tian at the same time here
 	x:=l;
 	y:=(l+r) div 2+1;
 	for i:=l to r do
@@ -77,39 +76,39 @@ begin
 				read(king[i]);
 			msort(1,n);
 			ans:=0;
-			kingh:=1;
-			tianh:=1;
-			kingf:=n;
-			tianf:=n;
+			king_best:=1;
+			tian_best:=1;
+			king_worst:=n;
+			tian_worst:=n;
 			for i:=1 to n do//The greedy part
 				begin
- 					if tian[tianf]>king[kingf] then
+ 					if tian[tian_worst]>king[king_worst] then
 						begin
 							inc(ans);
-							dec(tianf);
-							dec(kingf);
+							dec(tian_worst);
+							dec(king_worst);
 							continue;
 						end;
-					if tian[tianf]<king[kingf] then
+					if tian[tian_worst]<king[king_worst] then
 						begin
 							dec(ans);
-							dec(tianf);
-							inc(kingh);
+							dec(tian_worst);
+							inc(king_best);
 							continue;
 						end;
-					if tian[tianh]>king[kingh] then
+					if tian[tian_best]>king[king_best] then
 						begin
 							inc(ans);
-							inc(tianh);
-							inc(kingh);
+							inc(tian_best);
+							inc(king_best);
 							continue;
 						end;
-					if tian[tianf]<king[kingh] then
+					if tian[tian_worst]<king[king_best] then
 						dec(ans);
-					if tian[tianf]>king[kingh] then
+					if tian[tian_worst]>king[king_best] then
 						inc(ans);
-					dec(tianf);
-					inc(kingh);
+					dec(tian_worst);
+					inc(king_best);
 				end;
 			writeln(ans*200);
 			read(n);
@@ -117,7 +116,6 @@ begin
 end.
 
 #include<cstdio>
-#include<cstring>//We need to use the memcpy function in cstring
 int copy[1000],king[1000],tian[1000];//The array copy is used to save a copy while doing merge sort
 void msort(int l,int r)
 {
@@ -125,7 +123,8 @@ void msort(int l,int r)
 		return;
 	msort(l,(l+r)/2);
 	msort((l+r)/2+1,r);
-	memcpy(copy,king,sizeof king);
+	for(int i=l;i<=r;i++)
+		copy[i]=king[i];
 	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
 	{
 		if(x>(l+r)/2)
@@ -143,7 +142,8 @@ void msort(int l,int r)
 		else
 			king[i]=copy[x++];
 	}
-	memcpy(copy,tian,sizeof tian);//In order to avoid using too many pointers, I sort the array king and array tian at the same time
+	for(int i=l;i<=r;i++)//We sort the array king and array tian at the same time here
+		copy[i]=tian[i];
 	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
 	{
 		if(x>(l+r)/2)
@@ -165,47 +165,45 @@ void msort(int l,int r)
 int main()
 {
 	int n;
-	scanf("%d",&n);
-	while(n!=0)
+	for(scanf("%d",&n);n!=0;scanf("%d",&n))
 	{
 		for(int i=0;i<n;i++)
 			scanf("%d",&tian[i]);
 		for(int i=0;i<n;i++)
 			scanf("%d",&king[i]);
 		msort(0,n-1);
-		int ans=0,kingh=0,tianh=0,kingf=n-1,tianf=n-1;//kingh and kingf are the numbers of the king's best and worst horse, tianh and tianf are the number of Tian's best and worst ones
+		int ans=0,king_best=0,tian_best=0,king_worst=n-1,tian_worst=n-1;
 		for(int i=0;i<n;i++)//The greedy part
 		{
-			if(tian[tianf]>king[kingf])
+			if(tian[tian_worst]>king[king_worst])
 			{
 				ans++;
-				tianf--;
-				kingf--;
+				tian_worst--;
+				king_worst--;
 				continue;
 			}
-			if(tian[tianf]<king[kingf])
+			if(tian[tian_worst]<king[king_worst])
 			{
 				ans--;
-				tianf--;
-				kingh++;
+				tian_worst--;
+				king_best++;
 				continue;
 			}
-			if(tian[tianh]>king[kingh])
+			if(tian[tian_best]>king[king_best])
 			{
 				ans++;
-				tianh++;
-				kingh++;
+				tian_best++;
+				king_best++;
 				continue;
 			}
-			if(tian[tianf]<king[kingh])
+			if(tian[tian_worst]<king[king_best])
 				ans--;
-			if(tian[tianh]>king[kingh])
+			if(tian[tian_worst]>king[king_best])
 				ans++;
-			tianf--;
-			kingh++;
+			tian_worst--;
+			king_best++;
 		}
 		printf("%d\n",ans*200);
-		scanf("%d",&n);
 	}
 	return 0;
 }

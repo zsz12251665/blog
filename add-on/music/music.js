@@ -1,8 +1,8 @@
 window.addEventListener('load', LoadMusic);
+// Append the style sheet
+document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
 
 function LoadMusic() {
-	// Append the style sheet
-	document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
 	// Enumerate audio elements
 	for (let audio of document.querySelectorAll('article audio')) {
 		// Append the user interface

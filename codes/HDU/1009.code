@@ -1,5 +1,5 @@
 var
-	j,f,cj,cf:array[1..1000]of integer;//The array cf and cj are used to save a copy while doing merge sort
+	j,f,cj,cf:array[1..1000]of integer;//The array cf and cj are used to save a copy in merge sort
 	m,n,i:integer;
 	ans:longint;
 procedure msort(l,r:integer);
@@ -30,19 +30,17 @@ begin
 					inc(x);
 					continue;
 				end;
-			if cj[x]*cf[y]>cj[y]*cf[x] then//Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid deviding 0
+			if cj[x]*cf[y]>cj[y]*cf[x] then//Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid dividing 0
 				begin
 					j[i]:=cj[x];
 					f[i]:=cf[x];
 					inc(x);
-					continue;
 				end
 			else
 				begin
 					j[i]:=cj[y];
 					f[i]:=cf[y];
 					inc(y);
-					continue;
 				end;
 		end;
 end;
@@ -55,7 +53,7 @@ begin
 			msort(1,n);
 			ans:=0;
 			i:=1;
-			while (m>f[i]) and (i<n) do//Take the javabeans from high reward to low one
+			while (i<=n) and (m>f[i]) do//Take the JavaBeans from high rewards to low ones
 				begin
 					ans:=ans+j[i];
 					m:=m-f[i];
@@ -70,70 +68,63 @@ begin
 end.
 
 #include<cstdio>
-#include<cstring>//We need to use the memcpy function in cstring
-int j[1000],f[1000],cj[1000],cf[1000];//The array cf and cj are used to save a copy while doing merge sort
+int j[1000],f[1000],cj[1000],cf[1000];//The array cf and cj are used to save a copy in merge sort
 void msort(int l,int r)
 {
 	if(l>=r)
 		return;
 	msort(l,(l+r)/2);
 	msort((l+r)/2+1,r);
-	memcpy(cj,j,sizeof j);
-	memcpy(cf,f,sizeof f);
+	for(int i=l;i<=r;i++)
+	{
+		cj[i]=j[i];
+		cf[i]=f[i];
+	}
 	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
 	{
 		if(x>(l+r)/2)
 		{
 			j[i]=cj[y];
-			f[i]=cf[y];
-			y++;
+			f[i]=cf[y++];
 			continue;
 		}
 		if(y>r)
 		{
 			j[i]=cj[x];
-			f[i]=cf[x];
-			x++;
+			f[i]=cf[x++];
 			continue;
 		}
-		if(cj[x]*cf[y]>cj[y]*cf[x])//Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid deviding 0
+		if(cj[x]*cf[y]>cj[y]*cf[x])//Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid dividing 0
 		{
 			j[i]=cj[x];
-			f[i]=cf[x];
-			x++;
-			continue;
+			f[i]=cf[x++];
 		}
 		else
 		{
 			j[i]=cj[y];
-			f[i]=cf[y];
-			y++;
-			continue;
+			f[i]=cf[y++];
 		}
 	}
 }
 int main()
 {
 	int m,n;
-	scanf("%d%d",&m,&n);
-	while(m!=-1 && n!=-1)
+	for(scanf("%d%d",&m,&n);m!=-1 && n!=-1;scanf("%d%d",&m,&n))
 	{
 		for(int i=0;i<n;i++)
 			scanf("%d%d",&j[i],&f[i]);
 		msort(0,n-1);
 		long ans=0;
 		int i=0;
-		while(m>f[i] && i<n)//Take the javabeans from high reward to low one
+		for(;i<n && m>f[i];i++)//Take the JavaBeans from high rewards to low ones
 		{
 			ans+=j[i];
 			m-=f[i];
-			i++;
 		}
 		if(i<n)
 			printf("%.3lf\n",ans+m*1.0/f[i]*j[i]);
 		else
 			printf("%ld.000\n",ans);//Do not forget the 3 numbers after the digit
-		scanf("%d%d",&m,&n);
 	}
  	return 0;
 }

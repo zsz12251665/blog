@@ -1,26 +1,27 @@
 var
-	win,lose:array[1..1000]of longint;//the array win keeps the winner list and the array lose keeps the loser list
-	n,i,j,champion:longint;//champion keeps the champion of the game
+	win,lose:array[1..1000]of int64;//the array win keeps the winner list and the array lose keeps the loser list
+	champion:int64;
+	n,i,j:longint;
 procedure getname(a:longint);//A function that keeps the name strings in integers so that it can be easily compared
 var
 	s:string;
-	i,power:longint;
+	i:longint;
+	p:int64;
 begin
 	win[a]:=0;
 	lose[a]:=0;
-	power:=1;
 	readln(s);
-	for i:=1 to pos(' ',s)-1 do//Turn name strings to integers
+	p:=1;//Turn name strings to integers
+	for i:=1 to pos(' ',s)-1 do
 		begin
-			win[a]:=win[a]+power*ord(s[i]);
-			power:=power*128;
+			win[a]:=win[a]+p*ord(s[i]);
+			p:=p*128;
 		end;
-	s:=copy(s,pos(' ',s)+1,length(s));
-	power:=1;
-	for i:=1 to length(s) do
+	p:=1;
+	for i:=pos(' ',s)+1 to length(s) do
 		begin
-			lose[a]:=lose[a]+power*ord(s[i]);
-			power:=power*128;
+			lose[a]:=lose[a]+p*ord(s[i]);
+			p:=p*128;
 		end;
 end;
 begin
@@ -33,7 +34,7 @@ begin
 				for j:=1 to n do
 					if win[j]=lose[i] then
 						win[j]:=-1;
-			champion:=-1;//If champion is -1, it means there is no champion
+			champion:=-1;//champion=-1 means there is no champion
 			for i:=1 to n do//Scan the array win to check if there are more than one champion or no champion
 				if (win[i]<>-1) and (win[i]<>champion) then
 					if champion=-1 then
@@ -53,22 +54,24 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the strlen function in cstring
-long win[1000],lose[1000];//the array win keeps the winner list and the array lose keeps the loser list
+long long win[1000],lose[1000];//the array win keeps the winner list and the array lose keeps the loser list
 void getname(long a)//A function that keeps the name strings in integers so that it can be easily compared
 {
 	char s[256];
 	win[a]=lose[a]=0;
 	scanf("%s",&s);
-	for(int i=0,power=1;i<strlen(s);i++)//Turn name strings to integers
+	long long p=1;//Turn name strings to integers
+	for(int i=0,len=strlen(s);i<len;i++)
 	{
-		win[a]+=power*s[i];
-		power*=128;
+		win[a]+=p*s[i];
+		p*=128;
 	}
 	scanf("%s",&s);
-	for(int i=0,power=1;i<strlen(s);i++)
+	p=1;
+	for(int i=0,len=strlen(s);i<len;i++)
 	{
-		lose[a]+=power*s[i];
-		power*=128;
+		lose[a]+=p*s[i];
+		p*=128;
 	}
 }
 int main()
@@ -82,7 +85,7 @@ int main()
 			for(int j=0;j<n;j++)
 				if(win[j]==lose[i])
 					win[j]=-1;
-		long champion=-1;//champion keeps the champion of the game and if it is -1, it means there is no champion
+		long long champion=-1;//champion=-1 means there is no champion
 		for(int i=0;i<n;i++)//Scan the array win to check if there are more than one champion or no champion
 			if(win[i]!=-1 && champion!=win[i])
 				if(champion==-1)
