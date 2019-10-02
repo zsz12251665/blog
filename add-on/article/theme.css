@@ -35,7 +35,7 @@ body.FoxTale code
 body.MatrixFlow
 {
 	--back-color: #000000;
-	--back-image: url("/add-on/article/bg/MatrixFlow.png");
+	--back-image: url("/add-on/article/bg/MatrixFlow.svg");
 	--text-color: #00FF00;
 	--link-color: #FF0000;
 }

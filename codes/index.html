@@ -35,7 +35,7 @@ if (request.oj) {
 	if (xhr.status == 200)
 		document.querySelector('article').innerHTML = xhr.responseText;
 }
-if ((!request.oj) || (xhr.status != 200)) {
+if (!request.oj || xhr.status != 200) {
 	xhr.open('GET', '/codes/list.json', false);
 	xhr.send();
 	let template = document.querySelector('#list template').content,

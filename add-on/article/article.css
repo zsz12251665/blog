@@ -48,10 +48,6 @@ blockquote cite
 	display: block;
 	text-align: end;
 }
-blockquote cite::before
-{
-	content: "From ";
-}
 body
 {
 	background-attachment: fixed;
@@ -101,21 +97,24 @@ h1, h2
 }
 header
 {
-	background-color: var(--back-color);
-	border-bottom-color: var(--link-color);
-	border-bottom-style: solid;
-	border-bottom-width: thick;
 	cursor: pointer;
 	font-family: "Century Gothic", sans-serif;
 	font-size: xx-large;
 	font-weight: bold;
+	top: 0;
+	z-index: 2;
+}
+header, nav
+{
+	background-color: var(--back-color);
+	border-bottom-color: var(--link-color);
+	border-bottom-style: solid;
+	border-bottom-width: thick;
 	left: 0;
 	padding: 0.1rem;
 	position: fixed;
 	right: 0;
 	text-align: center;
-	top: 0;
-	z-index: 2;
 }
 hr
 {
@@ -129,24 +128,11 @@ img
 }
 nav
 {
-	background-color: var(--back-color);
-	border-bottom-color: var(--link-color);
-	border-bottom-style: solid;
-	border-bottom-width: thick;
-	left: 0;
-	padding: 0.1rem;
-	position: fixed;
-	right: 0;
-	text-align: center;
 	top: -100%;
 	transition-duration: 0.5s;
 	transition-property: top;
 	transition-timing-function: ease;
 	z-index: 1;
-}
-option
-{
-	font-family: "Century Schoolbook", serif;
 }
 select
 {
@@ -154,7 +140,7 @@ select
 	border-radius: 1rem;
 	border-style: none;
 	color: var(--back-color);
-	font-family: "Century Gothic", sans-serif;
+	font-family: "Century Schoolbook", serif;
 	padding: 0.25rem;
 }
 summary

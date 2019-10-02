@@ -1,34 +1,46 @@
 @font-face
 {
 	font-family: "STIX";
-	src: url("/add-on/math/STIX.woff");
+	src: local("STIX Two Math"), url("/add-on/math/STIX2Math.woff2");
+}
+@font-face
+{
+	font-family: "STIX";
+	font-style: italic;
+	font-weight: bold;
+	src: local("STIX Two Text Bold Italic"), url("/add-on/math/STIX2Text-BoldItalic.woff2");
 }
 data
 {
 	display: inline;
 	font-family: "STIX", serif;
-	font-style: normal;
 	line-height: 100%;
 }
 data span.b
 {
-	display: inline-block;
-	font-size: smaller;
+	text-align: start;
 	vertical-align: sub;
 }
-data span.c, data span.o, data span.v
+data span.b, data span.f, data span.i, data span.p
 {
 	display: inline-block;
-	padding-left: 0.05rem;
-	padding-right: 0.05rem;
+	font-size: smaller;
+}
+data span.c, data span.o
+{
+	font-style: normal;
+	font-weight: normal;
+}
+data span.c, data span.o, span.v
+{
+	display: inline-block;
+	margin-left: 0.08rem;
+	margin-right: 0.08rem;
 }
 data span.f
 {
-	display: inline-block;
-	font-size: smaller;
 	text-align: center;
 	vertical-align: middle;
-	width: auto;
 }
 data span.f span.l:empty
 {
@@ -38,11 +50,8 @@ data span.f span.l:empty
 }
 data span.i
 {
-	display: inline-block;
-	font-size: smaller;
 	text-align: start;
 	vertical-align: middle;
-	width: auto;
 }
 data span.l:empty
 {
@@ -55,8 +64,7 @@ data span.o
 }
 data span.p
 {
-	display: inline-block;
-	font-size: smaller;
+	text-align: start;
 	vertical-align: super;
 }
 data span.t
@@ -66,4 +74,9 @@ data span.t
 	border-top-width: thin;
 	display: inline;
 	padding-top: 0.1rem;
+}
+data span.v
+{
+	font-style: italic;
+	font-weight: bold;
 }

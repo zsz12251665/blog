@@ -1,7 +1,7 @@
 @font-face
 {
 	font-family: "KeyFont";
-	src: url("/add-on/music/keys.woff");
+	src: url("/add-on/music/KeyFont.woff");
 }
 div.music
 {

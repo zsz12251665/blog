@@ -38,7 +38,7 @@ if (request.title) {
 	if (xhr.status == 200)
 		document.querySelector('article').innerHTML = xhr.responseText;
 }
-if ((!request.title) || (xhr.status != 200)) {
+if (!request.title || xhr.status != 200) {
 	xhr.open('GET', '/posts/list.json', false);
 	xhr.send();
 	let template = document.querySelector('#list template').content;

@@ -1,7 +1,7 @@
 @font-face
 {
 	font-family: "Source Code Pro";
-	src: url("/add-on/highlight/Source Code Pro.woff");
+	src: local("Source Code Pro"), url("/add-on/highlight/SourceCodePro-Regular.otf.woff2");
 }
 code
 {

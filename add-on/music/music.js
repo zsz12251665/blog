@@ -17,11 +17,11 @@ function LoadMusic() {
 		audio.loop = true;
 		// Set ending events
 		audio.onended = function () {
-			play.innerHTML = (audio.loop) ? '&#9208;' : '&#9205;';
+			play.innerHTML = audio.loop ? '&#9208;' : '&#9205;';
 		};
 		// Set play and pause events
 		audio.onpause = audio.onplay = function () {
-			play.innerHTML = (audio.paused) ? '&#9205;' : '&#9208;';
+			play.innerHTML = audio.paused ? '&#9205;' : '&#9208;';
 		};
 		music.querySelector('b.repeat').onclick = function (e) {
 			e.target.innerHTML = (audio.loop = !audio.loop) ? '&#128257;' : '&#128256;';
@@ -31,18 +31,21 @@ function LoadMusic() {
 		};
 		// Set time panel events
 		audio.ondurationchange = audio.ontimeupdate = function () {
-			music.querySelector('span.time').innerText = ((audio.currentTime < 600) ? '0' : '') + String(Math.floor(audio.currentTime / 60)) + ((audio.currentTime % 60 < 10) ? ':0' : ':') + String(Math.floor(audio.currentTime % 60)) + ((audio.duration < 600) ? '/0' : '/') + String(Math.floor(audio.duration / 60)) + ((audio.duration % 60 < 10) ? ':0' : ':') + String(Math.floor(audio.duration % 60));
+			function TimeToString(a) {
+				return ((a < 600) ? '0' : '') + String(Math.floor(a / 60)) + ((a % 60 < 10) ? ':0' : ':') + String(Math.floor(a % 60));
+			}
+			music.querySelector('span.time').innerText = TimeToString(audio.currentTime) + '/' + TimeToString(audio.duration);
 		};
 		//Set volume events
 		audio.onvolumechange = function () {
-			volume.style.width = (audio.muted) ? '0%' : (String(audio.volume * 100) + '%');
+			volume.style.width = audio.muted ? '0%' : String(audio.volume * 100) + '%';
 		};
 		mute.onclick = function () {
 			mute.innerHTML = (audio.muted = !audio.muted) ? '&#128264;' : '&#128266;';
 		};
 		volume.parentElement.onclick = function (e) {
-			audio.volume = (!Number(e.offsetX / e.target.offsetWidth)) ? 1 : Number(e.offsetX / e.target.offsetWidth);
-			if (audio.muted ^ (!Number(e.offsetX / e.target.offsetWidth)))
+			audio.volume = !Number(e.offsetX / e.target.offsetWidth) ? 1 : Number(e.offsetX / e.target.offsetWidth);
+			if (audio.muted ^ !Number(e.offsetX / e.target.offsetWidth))
 				mute.click();
 		};
 		// Initialize the time panel

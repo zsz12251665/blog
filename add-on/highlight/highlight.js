@@ -6,13 +6,13 @@ document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on
 function LoadHighlight() {
 	// Load the request
 	var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
-	if ((!document.querySelector('code')) || (!request.oj) || (!request.pid))
+	if (!document.querySelector('code') || !request.oj || !request.pid)
 		return;
 	// Load and highlight the codes
 	var ajax = new XMLHttpRequest();
 	ajax.open('GET', '/codes/' + request.oj + '/' + request.pid + '.code', true);
 	ajax.onreadystatechange = function () {
-		if ((ajax.readyState != 4) || (ajax.status != 200))
+		if (ajax.readyState != 4 || ajax.status != 200)
 			return;
 		for (let t = 0, code = document.querySelectorAll('code'), codeText = ajax.responseText.split('\n\n'); t < code.length; t++) {
 			// Highlight comments and constants
@@ -30,9 +30,9 @@ function LoadHighlight() {
 					source = (source[i] == comma) ? source.slice(0, i) + '<span class="comma">' + comma + '</span>' + source.slice(i + 1) : source;
 				// Skip tags
 				if (source[i] == '<') {
-					for (; (i < source.length) && (source[i] != '>'); i++);
-					for (; (i < source.length) && (source[i] != '<'); i++);
-					for (; (i < source.length) && (source[i] != '>'); i++);
+					for (; i < source.length && source[i] != '>'; i++);
+					for (; i < source.length && source[i] != '<'; i++);
+					for (; i < source.length && source[i] != '>'; i++);
 				}
 			}
 			source = source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g, '<span class="comma">&$1;</span>');

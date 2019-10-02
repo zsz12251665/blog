@@ -14,8 +14,8 @@ function LoadArticle() {
 		nav.style.top = nav.style.top ? null : e.target.offsetHeight;
 	});
 	for (let abbr of document.querySelectorAll('abbr'))
-		abbr.addEventListener('click', function (e) {
-			alert(e.target.title);
+		abbr.addEventListener('click', function () {
+			alert(abbr.title);
 		});
 	// Initialize the session storage value
 	sessionStorage.setItem('theme', request.theme || sessionStorage.getItem('theme') || 'DefaultTheme');
