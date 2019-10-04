@@ -8,6 +8,8 @@ function LoadHighlight() {
 	var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
 	if (!document.querySelector('code') || !request.oj || !request.pid)
 		return;
+	// Initialize the session storage value of soft tab
+	sessionStorage.setItem('highlight.softTab', request.softTab || sessionStorage.getItem('highlight.softTab') || 'false');
 	// Load and highlight the codes
 	var ajax = new XMLHttpRequest();
 	ajax.open('GET', '/codes/' + request.oj + '/' + request.pid + '.code', true);
@@ -36,27 +38,12 @@ function LoadHighlight() {
 				}
 			}
 			source = source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g, '<span class="comma">&$1;</span>');
-			code[t].innerHTML = source;
+			// Set the soft tabs
+			code[t].innerHTML = (sessionStorage.getItem('highlight.softTab') == 'true') ? source.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') : source;
 		}
 		// Clear highlights in comments and constants
 		for (let element of document.querySelectorAll('code span.comment, code span.constant'))
 			element.innerHTML = element.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
 	}
 	ajax.send();
-	// Initialize the session storage value
-	sessionStorage.setItem('softTab', request.softTab || sessionStorage.getItem('softTab') || 'false');
-	// Append the soft tab panel
-	var softTabPanel = document.createElement('div');
-	softTabPanel.innerHTML = '<input type="checkbox" />Soft Tab (replace tabs with 4 spaces)';
-	document.querySelector('nav').appendChild(softTabPanel);
-	var softTab = softTabPanel.querySelector('input');
-	softTab.checked = String(sessionStorage.getItem('softTab')) == 'true';
-	// Set the soft tab panel function
-	softTab.onclick = function () {
-		sessionStorage.setItem('softTab', String(softTab.checked));
-		for (let code of document.querySelectorAll('code'))
-			code.innerHTML = softTab.checked ? code.innerHTML.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') : code.innerHTML.replace(/(&nbsp;){4}/g, '\t');
-	};
-	// Initialize soft tab
-	softTab.onclick();
 }

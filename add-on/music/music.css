@@ -1,9 +1,5 @@
-@font-face
-{
-	font-family: "KeyFont";
-	src: url("/add-on/music/KeyFont.woff");
-}
-div.music
+@import url("/add-on/icon/icon.css");
+aside.music
 {
 	background-color: var(--text-color);
 	border-radius: 2rem;
@@ -11,7 +7,7 @@ div.music
 	padding: 0.25rem;
 	text-align: center;
 }
-div.music b
+aside.music b
 {
 	border-color: var(--back-color);
 	border-width: medium;
@@ -20,12 +16,11 @@ div.music b
 	color: var(--back-color);
 	cursor: pointer;
 	display: inline-block;
-	font-family: "KeyFont";
 	height: 1.2rem;
 	vertical-align: middle;
 	width: 1.2rem;
 }
-div.music span.time
+aside.music span.time
 {
 	color: var(--back-color);
 	font-size: small;
@@ -33,7 +28,7 @@ div.music span.time
 	margin-right: 0.5rem;
 	vertical-align: middle;
 }
-div.music span.range
+aside.music span.range
 {
 	background-color: var(--link-color);
 	display: inline-block;
@@ -42,7 +37,7 @@ div.music span.range
 	vertical-align: middle;
 	width: 5rem;
 }
-div.music span.range>span
+aside.music span.range>span
 {
 	background-color: var(--back-color);
 	display: block;

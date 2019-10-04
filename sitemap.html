@@ -6,60 +6,72 @@
 		<title>Sitemap | zsz12251665's blog</title>
 	</head>
 	<body class="Vector">
-		<nav class="buttonField">
-			<a href="/">Homepage</a>
-			<a href="/codes/">Code List</a>
-			<a href="/posts/">Post List</a>
-			<a href="/sitemap.html">Sitemap</a>
-		</nav>
-		<header>zsz12251665</header>
-		<article>
-			<h2>Sitemap</h2>
-			<time>Welcome, stray people! </time>
+		<header>
+			<span>zsz12251665</span>
+			<aside>
+				<ul class="buttonList flexWrapper">
+					<a href="/"><li class="icon home"></li></a>
+					<a href="/codes/"><li class="icon code"></li></a>
+					<a href="/posts/"><li class="icon book"></li></a>
+					<a href="/sitemap.html"><li class="icon map"></li></a>
+					<a href="/settings.html"><li class="icon gear"></li></a>
+				</ul>
+			</aside>
+		</header>
+		<main>
+			<h1>Sitemap</h1>
+			<p>Welcome, stray people! </p>
 			<p>Here is the sitemap of zsz12251665's blog. All pages offered a link here. </p>
 			<p>You can check the link below to find the page that you want to go. You can also click the header to go back to our <a href="/">Homepage</a>. </p>
 			<hr />
-			<a href="/codes/">
-				<h3 style="text-align: center;">Code List</h3>
-			</a>
-			<section id="codeList" class="flexWrapper">
-				<template>
-					<table style="text-align: center;">
-						<caption>
-							<h4><a href="/codes/">OJ NAME</a></h4>
-						</caption>
-						<thead>
-							<tr>
-								<th style="width: 7rem;">Problem ID</th>
-								<th>Published Time</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
-				</template>
+			<section>
+				<a href="/codes/">
+					<h2 style="text-align: center;">Code List</h2>
+				</a>
+				<div id="codeList" class="flexWrapper">
+					<template>
+						<table style="text-align: center;">
+							<caption>
+								<h3><a href="/codes/">OJ NAME</a></h3>
+							</caption>
+							<thead>
+								<tr>
+									<th style="width: 7rem;">Problem ID</th>
+									<th>Published Time</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</template>
+				</div>
 			</section>
 			<hr />
-			<a href="/posts/">
-				<h3 style="text-align: center;">Post List</h3>
-			</a>
-			<table style="margin: auto;text-align: center;">
-				<thead>
-					<tr>
-						<th>Post Title</th>
-						<th>Published Time</th>
-					</tr>
-				</thead>
-				<tbody id="postList">
-					<template>
+			<section>
+				<a href="/posts/">
+					<h2 style="text-align: center;">Post List</h2>
+				</a>
+				<table style="margin: auto;text-align: center;">
+					<thead>
 						<tr>
-							<td><a href="/posts/">ITEM TITLE</a></td>
-							<td>ITEM TIME</td>
+							<th>Post Title</th>
+							<th>Published Time</th>
 						</tr>
-					</template>
-				</tbody>
-			</table>
-		</article>
-		<footer>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. Licensed under the <a href="/LICENCE">zsz12251665's Licence</a>. </footer>
+					</thead>
+					<tbody id="postList">
+						<template>
+							<tr>
+								<td><a href="/posts/">ITEM TITLE</a></td>
+								<td>ITEM TIME</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</section>
+		</main>
+		<footer>
+			<p>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. </p>
+			<p>Licensed under the <a href="/LICENCE">zsz12251665's Licence</a>. </p>
+		</footer>
 		<script type="text/javascript">
 var xhr = new XMLHttpRequest();
 xhr.open('GET', '/codes/list.json', false);

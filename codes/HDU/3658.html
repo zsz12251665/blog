@@ -1,12 +1,14 @@
-<h2>HDU 3658</h2>
-<time>2018-04-09 20:55 by zsz12251665</time>
-<h3>Problem</h3>
-<section class="buttonField">
-	<a target="_blank" href="https://vjudge.net/problem/HDU-3658">Virtual Judge</a>
-	<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=3658">HDU</a>
-</section>
-<h3>Solution</h3>
+<h1>HDU 3658</h1>
+<p><time>2018-04-09 20:55</time> by zsz12251665</p>
 <section>
+	<h2>Problem</h2>
+	<ul class="buttonList">
+		<a target="_blank" href="https://vjudge.net/problem/HDU-3658"><li>Virtual Judge</li></a>
+		<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=3658"><li>HDU</li></a>
+	</ul>
+</section>
+<section>
+	<h2>Solution</h2>
 	<p>In this problem, we will talk about how to use the power of the matrix to speed up <abbr title="dynamic planning">dp</abbr> algorithm. </p>
 	<p>The dp array will be like <data value="v{dp}b{v{i}o{,}v{j}o{,}v{c}}"></data>, which means the number of the words when we have chosen the first <data value="v{i}"></data> letters,  with <data value="v{j}"></data> as the last one and <data value="v{c}"></data> which shows if there has been a difference of a pair of neighbour letters which is exactly 32. Now we can write down the state transition formulas: </p>
 	<ul>
@@ -23,10 +25,14 @@
 	<p>After constructing the transition matrix, we could know that if we multiply the matrix with the states array, we can finish the transition once. So we need to do it <data value="v{m}"></data> times. According to the associative property, we can use the power of the matrix, which is just <data value="o{O}o{(}o{lg}v{m}o{)}"></data>, to speed it up. This is how we speed up dp algorithm with the power of matrix. </p>
 	<p>P. S. I'm sorry that the solution was still not fast enough for Pascal to pass it while C++ managed though I've sorted <data value="v{m}"></data>. Please pay attention. </p>
 </section>
-<h3>Code</h3>
 <section>
-	<p>Pascal</p>
-	<code lang="pas"></code>
-	<p>C++</p>
-	<code lang="cpp"></code>
+	<h2>Code</h2>
+	<section>
+		<h3>Pascal</h3>
+		<code lang="pas"></code>
+	</section>
+	<section>
+		<h3>C++</h3>
+		<code lang="cpp"></code>
+	</section>
 </section>

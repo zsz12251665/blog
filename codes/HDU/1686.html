@@ -1,12 +1,14 @@
-<h2>HDU 1686</h2>
-<time>2018-04-24 21:36 by zsz12251665</time>
-<h3>Problem</h3>
-<section class="buttonField">
-	<a target="_blank" href="https://vjudge.net/problem/HDU-1686">Virtual Judge</a>
-	<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=1686">HDU</a>
-</section>
-<h3>Solution</h3>
+<h1>HDU 1686</h1>
+<p><time>2018-04-24 21:36</time> by zsz12251665</p>
 <section>
+	<h2>Problem</h2>
+	<ul class="buttonList">
+		<a target="_blank" href="https://vjudge.net/problem/HDU-1686"><li>Virtual Judge</li></a>
+		<a target="_blank" href="http://acm.hdu.edu.cn/showproblem.php?pid=1686"><li>HDU</li></a>
+	</ul>
+</section>
+<section>
+	<h2>Solution</h2>
 	<p>This problem is a simple practice of <abbr title="Knuth-Morris-Pratt string searching algorithm">KMP</abbr>, which I have been trying to understand it and use it since last weekend. However, even until now I still have some problems understanding this damn code. So let's just take it easy. </p>
 	<p>As we all know, a simple way to find a model string in the question string is to enumerate the position of the model string, which is the position of the character which the first character of the model string matches. Then you scan the whole model string to check if every character below matches too. So the time complexity is <data value="o{O}o{(}v{n}o{}v{m}o{)}"></data>, which <data value="v{n}"></data> and <data value="v{m}"></data> means the length of the question string and the model string. However, you can find that some characters does not need to be compared once more. For example, for a model string "ABCA", if you find it unmatched at the third character, there is no need to move the position 1 or 2 or 3 forward because it must not match. That's how KMP works. </p>
 	<p>So KMP is based on a simple rule: when your scanning pointer has reached to a character, you've known what characters before it are. If we can use this information, we don't need to move the pointer back. This makes KMP efficient. The way we make it is the partial match table (what it is and how we calculate it will be introduced later). When we found an unmatched character, the position of the model string we move forward is the difference of the number of the characters we've matched and the partial match value. </p>
@@ -50,10 +52,14 @@
 	<p>By the way, this problem is as same as <a href="/codes/?oj=POJ&pid=3461">POJ 3461</a>. I wrote this problem's solution just because POJ was broken and I have to hand the code to HDU last night. </p>
 	<p>P. S. It is very odd that Pascal passed POJ 3461 but not this problem! </p>
 </section>
-<h3>Code</h3>
 <section>
-	<p>Pascal</p>
-	<code lang="pas"></code>
-	<p>C++</p>
-	<code lang="cpp"></code>
+	<h2>Code</h2>
+	<section>
+		<h3>Pascal</h3>
+		<code lang="pas"></code>
+	</section>
+	<section>
+		<h3>C++</h3>
+		<code lang="cpp"></code>
+	</section>
 </section>

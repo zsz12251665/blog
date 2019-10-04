@@ -1,12 +1,14 @@
-<h2>BZOJ 1197</h2>
-<time>2017-03-30 16:20 by zsz12251665</time>
-<h3>Problem</h3>
-<section class="buttonField">
-	<a target="_blank" href="https://vjudge.net/problem/HYSBZ-1197">Virtual Judge</a>
-	<a target="_blank" href="https://www.lydsy.com/JudgeOnline/problem.php?id=1197">BZOJ</a>
-</section>
-<h3>Solution</h3>
+<h1>BZOJ 1197</h1>
+<p><time>2017-03-30 16:20</time> by zsz12251665</p>
 <section>
+	<h2>Problem</h2>
+	<ul class="buttonList">
+		<a target="_blank" href="https://vjudge.net/problem/HYSBZ-1197"><li>Virtual Judge</li></a>
+		<a target="_blank" href="https://www.lydsy.com/JudgeOnline/problem.php?id=1197"><li>BZOJ</li></a>
+	</ul>
+</section>
+<section>
+	<h2>Solution</h2>
 	<p>The meeting with the problem was during an in-team competition, the problems of which are from <abbr title="Hunan Olympiad in Informatics">HNOI</abbr>. It was the only one which I had the idea on what the problem is. But I had no idea on the solution. After the competition, one of my friends advised me to write out every pair of <data value="o{(}v{n}o{,}v{m}o{)}"></data>. And I did it. Then I had a sheet like this: </p>
 	<table style="margin: auto;text-align: center;">
 		<thead>
@@ -64,10 +66,14 @@
 	</table>
 	<p>According to the limited data, we can find some interesting rules. First of all, it is obvious that the number of kinds of flowers always equals 1 when <data value="c{0}"></data>. Besides, if <data value="c{1}"></data> and <data value="v{m}o{&ge;}c{1}"></data>, the number of kinds of flowers is 2 times as large as <data value="v{m}"></data>. What's more, when <data value="v{n}o{&ge;}c{2}"></data> and <data value="v{m}o{&ge;}c{1}"></data>, the number of kinds of flowers equals the sum of the one with <data value="o{(}v{n}o{-}c{1}o{,}v{m}o{-}c{1}o{)}"></data> and the one with <data value="o{(}v{n}o{,}v{m}o{-}c{1}o{)}"></data>. And that's the solution! I don't know how to prove it, but the when I submitted the code with this solution, it did return an <abbr title="Accepted">AC</abbr>. </p>
 </section>
-<h3>Code</h3>
 <section>
-	<p>Pascal</p>
-	<code lang="pas"></code>
-	<p>C++</p>
-	<code lang="cpp"></code>
+	<h2>Code</h2>
+	<section>
+		<h3>Pascal</h3>
+		<code lang="pas"></code>
+	</section>
+	<section>
+		<h3>C++</h3>
+		<code lang="cpp"></code>
+	</section>
 </section>

@@ -1,4 +1,5 @@
 @import url("/add-on/article/theme.css");
+@import url("/add-on/icon/icon.css");
 @font-face
 {
 	font-family: "Century Gothic";
@@ -28,17 +29,6 @@ abbr:hover
 {
 	text-decoration: none;
 }
-article
-{
-	background-color: var(--back-color);
-	border-radius: 0.5rem;
-	box-sizing: border-box;
-	margin: auto;
-	margin-top: 3rem;
-	min-height: 100%;
-	padding: 0.25rem;
-	width: 90%;
-}
 blockquote p::first-letter
 {
 	font-size: xx-large;
@@ -50,7 +40,6 @@ blockquote cite
 }
 body
 {
-	background-attachment: fixed;
 	background-color: var(--back-color);
 	background-image: var(--back-image);
 	color: var(--text-color);
@@ -77,11 +66,21 @@ figure img
 	border-style: solid;
 	border-width: thin;
 }
-footer, time
+footer
 {
-	display: block;
-	font-size: x-small;
+	background-color: var(--text-color);
+	color: var(--back-color);
+	font-size: smaller;
+	padding: 0.1rem 5%;
+}
+h1
+{
+	text-align: center;
+}
+h1 + p
+{
 	font-style: italic;
+	font-size: x-small;
 	text-align: center;
 }
 h1, h2, h3, h4, h5, h6
@@ -91,30 +90,37 @@ h1, h2, h3, h4, h5, h6
 	margin-bottom: 0.5rem;
 	margin-top: 0.5rem;
 }
-h1, h2
-{
-	text-align: center;
-}
 header
 {
-	cursor: pointer;
+	align-items: center;
+	background-color: var(--link-color);
+	color: var(--back-color);
+	display: flex;
+	flex-wrap: wrap;
 	font-family: "Century Gothic", sans-serif;
-	font-size: xx-large;
-	font-weight: bold;
-	top: 0;
-	z-index: 2;
+	justify-content: space-between;
 }
-header, nav
+header a
 {
-	background-color: var(--back-color);
-	border-bottom-color: var(--link-color);
-	border-bottom-style: solid;
-	border-bottom-width: thick;
-	left: 0;
-	padding: 0.1rem;
-	position: fixed;
-	right: 0;
-	text-align: center;
+	--link-color: var(--text-color);
+}
+header > aside
+{
+	box-sizing: border-box;
+	flex-grow: 1;
+	width: 12rem;
+}
+header > aside > ul
+{
+	margin: 0;
+}
+header > span
+{
+	box-sizing: border-box;
+	font-size: x-large;
+	min-width: min-content;
+	padding-inline-start: 1rem;
+	width: calc(100% - 12rem);
 }
 hr
 {
@@ -126,22 +132,20 @@ img
 	display: block;
 	width: 100%;
 }
-nav
+main
 {
-	top: -100%;
-	transition-duration: 0.5s;
-	transition-property: top;
-	transition-timing-function: ease;
-	z-index: 1;
+	background-color: var(--back-color);
+	margin: 0 5%;
+	min-height: 100%;
+	padding: 0.5rem;
 }
-select
+section > h3
 {
-	background-color: var(--link-color);
-	border-radius: 1rem;
-	border-style: none;
-	color: var(--back-color);
-	font-family: "Century Schoolbook", serif;
-	padding: 0.25rem;
+	padding-inline-start: 1em;
+}
+section > h4
+{
+	padding-inline-start: 2em;
 }
 summary
 {
@@ -161,7 +165,18 @@ table
 	margin-bottom: 0.1rem;
 	margin-top: 0.1rem;
 }
-.buttonField a
+time
+{
+	font-style: italic;
+	font-size: x-small;
+	text-align: center;
+}
+ul.buttonList
+{
+	margin: 0.1rem;
+	padding: 0;
+}
+ul.buttonList > a > li
 {
 	border-color: var(--link-color);
 	border-radius: 1rem;
@@ -175,13 +190,16 @@ table
 	transition-property: background-color, color;
 	transition-timing-function: ease;
 }
-.buttonField a:focus, .buttonField a:hover
+ul.buttonList > a:focus
+{
+	outline: none;
+}
+ul.buttonList > a:focus > li, .buttonList > a:hover > li
 {
 	background-color: var(--link-color);
 	color: var(--back-color);
-	outline: none;
 }
-.flexWrapper
+*.flexWrapper
 {
 	align-items: baseline;
 	display: flex;

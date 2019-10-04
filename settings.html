@@ -1,0 +1,102 @@
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<title>Settings | zsz12251665's blog</title>
+	</head>
+	<body class="Vector">
+		<header>
+			<span>zsz12251665</span>
+			<aside>
+				<ul class="buttonList flexWrapper">
+					<a href="/"><li class="icon home"></li></a>
+					<a href="/codes/"><li class="icon code"></li></a>
+					<a href="/posts/"><li class="icon book"></li></a>
+					<a href="/sitemap.html"><li class="icon map"></li></a>
+					<a href="/settings.html"><li class="icon gear"></li></a>
+				</ul>
+			</aside>
+		</header>
+		<main>
+			<h1>Settings</h1>
+			<p>Customize your trip in my blog here! </p>
+			<p>Attention: Your preference settings will only be kept in this session. </p>
+			<form action="javascript:void(0);">
+				<section>
+					<h2>Article - Theme</h2>
+					<ul class="flexWrapper" style="list-style-type: none;padding: 0;">
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="DefaultTheme" name="article.theme" value="DefaultTheme" />
+							<label for="DefaultTheme"><i>Default Theme</i></label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="RandomTheme" name="article.theme" value="RandomTheme" />
+							<label for="RandomTheme"><i>Random Theme</i></label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="BrickWall" name="article.theme" value="BrickWall" /
+							><label for="BrickWall">Brick Wall</label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id=FoxTale"" name="article.theme" value="FoxTale" />
+							<label for="FoxTale">Fox Tale</label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="MatrixFlow" name="article.theme" value="MatrixFlow" />
+							<label for="MatrixFlow">Matrix Flow</label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="OhParis" name="article.theme" value="OhParis" />
+							<label for="OhParis">Oh, Paris</label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="StarryNight" name="article.theme" value="StarryNight" />
+							<label for="StarryNight">Starry Night</label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="Strawberry" name="article.theme" value="Strawberry" />
+							<label for="Strawberry">Strawberry</label>
+						</li>
+						<li style="flex-grow: 1;min-width: 150px;width: 33%;">
+							<input type="radio" id="Vector" name="article.theme" value="Vector" />
+							<label for="Vector">Vector</label>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Highlight - Soft Tab</h2>
+						<input type="checkbox" id="softTab" name="article.theme" value="softTab" />
+						<label for="softTab">Using Soft Tab</label>
+				</section>
+				<div style="text-align: center;">
+					<button class="reset">Reset</button>
+					<button class="submit">Submit</button>
+				</div>
+			</form>
+		</main>
+		<footer>
+			<p>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. </p>
+			<p>Licensed under the <a href="/LICENCE">zsz12251665's Licence</a>. </p>
+		</footer>
+		<script type="text/javascript">
+var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
+sessionStorage.setItem('article.theme', request.theme || sessionStorage.getItem('article.theme') || 'DefaultTheme');
+sessionStorage.setItem('highlight.softTab', request.softTab || sessionStorage.getItem('highlight.softTab') || 'false');
+document.querySelector('form button.reset').onclick = function () {
+	for (let radio of document.querySelectorAll('form input[type="radio"]'))
+		radio.checked = radio.value == sessionStorage.getItem('article.theme');
+		document.querySelector('form input[type="checkbox"]').checked = sessionStorage.getItem('highlight.softTab') == 'true';
+}
+document.querySelector('form button.submit').onclick = function () {
+	for (let radio of document.querySelectorAll('form input[type="radio"]'))
+		if (radio.checked)
+			sessionStorage.setItem('article.theme', radio.value);
+	sessionStorage.setItem('highlight.softTab', String(document.querySelector('form input[type="checkbox"]').checked));
+	window.location.reload();
+}
+document.querySelector('form button.reset').onclick();
+		</script>
+		<script type="text/javascript" src="/add-on/article/article.js"></script>
+	</body>
+</html>

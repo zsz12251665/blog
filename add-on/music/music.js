@@ -4,27 +4,28 @@ document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on
 
 function LoadMusic() {
 	// Enumerate audio elements
-	for (let audio of document.querySelectorAll('article audio')) {
+	for (let audio of document.querySelectorAll('main audio')) {
 		// Append the user interface
-		var music = document.createElement('div');
+		var music = document.createElement('aside');
 		music.className = 'music';
-		music.innerHTML = '<b class="play">&#9205;</b><span class="time">00:00/00:00</span><b class="repeat">&#128257;</b><span class="range"><span></span></span><b class="mute">&#128266;</b>';
+		music.innerHTML = '<b class="icon play"></b><span class="time">00:00/00:00</span><b class="icon repeat"></b><span class="range"><span></span></span><b class="icon volume-up"></b>';
 		audio.parentElement.insertBefore(music, audio);
 		// Initialize values
-		var mute = music.querySelector('b.mute'),
-			play = music.querySelector('b.play'),
+		var mute = music.querySelector('b.icon.volume-up'),
+			play = music.querySelector('b.icon.play'),
+			repeat = music.querySelector('b.icon.repeat'),
 			volume = music.querySelector('span.range>span');
 		audio.loop = true;
 		// Set ending events
 		audio.onended = function () {
-			play.innerHTML = audio.loop ? '&#9208;' : '&#9205;';
+			play.className = 'icon ' + (audio.loop ? 'pause' : 'play');
 		};
 		// Set play and pause events
 		audio.onpause = audio.onplay = function () {
-			play.innerHTML = audio.paused ? '&#9205;' : '&#9208;';
+			play.className = 'icon ' + (audio.paused ? 'play' : 'pause');
 		};
-		music.querySelector('b.repeat').onclick = function (e) {
-			e.target.innerHTML = (audio.loop = !audio.loop) ? '&#128257;' : '&#128256;';
+		repeat.onclick = function () {
+			repeat.className = 'icon ' + ((audio.loop = !audio.loop) ? 'repeat' : 'random');
 		};
 		play.onclick = function () {
 			audio.paused ? audio.play() : audio.pause();
@@ -41,7 +42,7 @@ function LoadMusic() {
 			volume.style.width = audio.muted ? '0%' : String(audio.volume * 100) + '%';
 		};
 		mute.onclick = function () {
-			mute.innerHTML = (audio.muted = !audio.muted) ? '&#128264;' : '&#128266;';
+			mute.className = 'icon ' + ((audio.muted = !audio.muted) ? 'volume-off' : 'volume-up');
 		};
 		volume.parentElement.onclick = function (e) {
 			audio.volume = !Number(e.offsetX / e.target.offsetWidth) ? 1 : Number(e.offsetX / e.target.offsetWidth);

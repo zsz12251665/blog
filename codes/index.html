@@ -6,26 +6,37 @@
 		<title>Code List | zsz12251665's blog</title>
 	</head>
 	<body class="MatrixFlow">
-		<nav class="buttonField">
-			<a href="/">Homepage</a>
-			<a href="/codes/">Code List</a>
-			<a href="/posts/">Post List</a>
-			<a href="/sitemap.html">Sitemap</a>
-		</nav>
-		<header>zsz12251665</header>
-		<article>
-			<h2>Code List</h2>
-			<time>Life is a bug. </time>
-			<section id="list" class="buttonField flexWrapper">
+		<header>
+			<span>zsz12251665</span>
+			<aside>
+				<ul class="buttonList flexWrapper">
+					<a href="/"><li class="icon home"></li></a>
+					<a href="/codes/"><li class="icon code"></li></a>
+					<a href="/posts/"><li class="icon book"></li></a>
+					<a href="/sitemap.html"><li class="icon map"></li></a>
+					<a href="/settings.html"><li class="icon gear"></li></a>
+				</ul>
+			</aside>
+		</header>
+		<main>
+			<h1>Code List</h1>
+			<p>Life is a bug. </p>
+			<ul id="list" class="buttonList flexWrapper">
 				<template>
-					<a href="/codes/" style="width: 7rem;">
-						<span>PROBLEM ID</span>
-						<time>PROBLEM TIME</time>
+					<a href="/codes/">
+						<li style="width: 7rem;">
+							<span>PROBLEM ID</span>
+							<br />
+							<time>PROBLEM TIME</time>
+						</li>
 					</a>
 				</template>
-			</section>
-		</article>
-		<footer>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. Licensed under the <a href="/LICENCE">zsz12251665's Licence</a>. </footer>
+			</ul>
+		</main>
+		<footer>
+			<p>&copy; 2016-2019 zsz12251665. Theme by zsz12251665. </p>
+			<p>Licensed under the <a href="/LICENCE">zsz12251665's Licence</a>. </p>
+		</footer>
 		<script type="text/javascript">
 var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}'),
 	xhr = new XMLHttpRequest();
@@ -33,7 +44,7 @@ if (request.oj) {
 	xhr.open('GET', '/codes/' + request.oj + '/' + (request.pid || 'index') + '.html', false);
 	xhr.send();
 	if (xhr.status == 200)
-		document.querySelector('article').innerHTML = xhr.responseText;
+		document.querySelector('main').innerHTML = xhr.responseText;
 }
 if (!request.oj || xhr.status != 200) {
 	xhr.open('GET', '/codes/list.json', false);
