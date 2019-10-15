@@ -5,8 +5,7 @@ var
 	tmp:longint;
 procedure qsort(l,r:integer);//The quick sort is used to make sure the get operation in increasing order, it isn't necessary
 var
-	x,y:integer;
-	tmp,std:longint;
+	x,y,tmp,std:integer;
 begin
 	x:=l;
 	y:=r;
@@ -113,8 +112,7 @@ long add[30000],small[30000],big[30000];
 int get[30000];
 void qsort(int l,int r)//The quick sort is used to make sure the get operation in increasing order, it isn't necessary
 {
-	int x=l,y=r;
-	long std=get[(l+r)/2];
+	int x=l,y=r,std=get[(l+r)/2];
 	while(x<y)
 	{
 		while(get[x]<std)
@@ -123,7 +121,7 @@ void qsort(int l,int r)//The quick sort is used to make sure the get operation i
 			y--;
 		if(x<=y)
 		{
-			long tmp=get[x];
+			int tmp=get[x];
 			get[x++]=get[y];
 			get[y--]=tmp;
 		}

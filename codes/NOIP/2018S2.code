@@ -4,8 +4,7 @@ var
 	t,n,ans,i,j:integer;
 procedure qsort(l,r:integer);
 var
-	x,y:integer;
-	tmp,std:longint;
+	x,y,tmp,std:integer;
 begin
 	x:=l;
 	y:=r;
@@ -60,8 +59,7 @@ int a[100];
 bool unable[25001];
 void qsort(int l,int r)
 {
-	int x=l,y=r;
-	long std=a[(l+r)/2];
+	int x=l,y=r,std=a[(l+r)/2];
 	while(x<y)
 	{
 		while(a[x]<std)
@@ -70,7 +68,7 @@ void qsort(int l,int r)
 			y--;
 		if(x<=y)
 		{
-			long tmp=a[x];
+			int tmp=a[x];
 			a[x++]=a[y];
 			a[y--]=tmp;
 		}
