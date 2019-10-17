@@ -40,6 +40,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int field[39][39];
 int main()
 {

@@ -25,6 +25,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 char s[100][51];//Make the string a little bigger, or you may got an OLE
 int count[100];
 int main()

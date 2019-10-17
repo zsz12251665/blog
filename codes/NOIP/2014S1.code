@@ -38,6 +38,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int a[200],b[200];
 int main()
 {

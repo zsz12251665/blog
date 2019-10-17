@@ -108,6 +108,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long add[30000],small[30000],big[30000];
 int get[30000];
 void qsort(int l,int r)//The quick sort is used to make sure the get operation in increasing order, it isn't necessary

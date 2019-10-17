@@ -78,6 +78,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long queue[3][8000000],foot[3],head[3];//Don't worry about the memory because you are given 512 MB in this problem
 void qsort(long l,long r)
 {

@@ -20,6 +20,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	long n,ans=2147483647,tmp,prc,amt;//Remember to make the ans as large as possible to make sure that you can get the cost of each kind

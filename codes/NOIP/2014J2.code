@@ -31,6 +31,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int gcd(int a,int b)//Check if a and b are co-prime to each other
 {
 	if(a<b)

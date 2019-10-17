@@ -21,6 +21,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long coe[1000][1000];
 int main()
 {

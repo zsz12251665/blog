@@ -20,6 +20,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	int cash=0,save=0,spend;

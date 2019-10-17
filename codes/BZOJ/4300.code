@@ -26,6 +26,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long dp[32];
 int main()
 {

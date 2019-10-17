@@ -23,6 +23,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int gcd(int a,int b)//Calculate the greatest common division of a and b
 {
 	if(a%b==0)

@@ -14,6 +14,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long long f[11][101];//f[n][m] keeps the number of kinds of flowers
 int main()
 {

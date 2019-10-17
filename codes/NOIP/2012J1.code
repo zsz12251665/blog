@@ -20,6 +20,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 bool prime(long n)
 {
 	for(long i=2;i*i<n;i++)//Attention that the loop is from 2 because 2 is the smallest prime

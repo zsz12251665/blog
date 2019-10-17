@@ -55,6 +55,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the memset function and the memcpy function in cstring
+using namespace std;
 long long matrix[30][30],answer[30][30],multi[30][30],power[30][30],sum[30][30],temp[30][30];
 int main()
 {

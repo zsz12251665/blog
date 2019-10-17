@@ -12,6 +12,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	int p,e,i,d,t=0;

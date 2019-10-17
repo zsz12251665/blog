@@ -25,6 +25,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int a[100],inca[100],deca[100];
 int main()
 {

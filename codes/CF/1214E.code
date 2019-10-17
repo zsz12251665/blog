@@ -56,6 +56,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long d[100000],rank[100000],chain[200000];
 void qsort(long l,long r)//Sort the pairs according to the distances
 {

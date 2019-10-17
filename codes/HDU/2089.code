@@ -27,6 +27,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 bool is_good(long a)
 {
 	for(long i=1;i<a;i*=10)//It is a little dangerous here because i may overflow and you'll get a WA
@@ -77,6 +78,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long count[1000001];//count[i] keeps the number of the is_good numbers from 0 to i
 bool is_good(long a)
 {

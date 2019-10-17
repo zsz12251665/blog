@@ -36,6 +36,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int height[100][100],length[100][100],r,c;
 int search(int x,int y)//Search function
 {

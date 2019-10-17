@@ -25,6 +25,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	long n,a,b,c,d;

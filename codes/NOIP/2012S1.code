@@ -11,6 +11,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the strlen function in cstring
+using namespace std;
 int main()
 {
 	char key[100],txt[1000];

@@ -49,6 +49,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int p[50][50];
 int main()
 {

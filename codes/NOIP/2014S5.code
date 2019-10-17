@@ -88,6 +88,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long h_nxt[200000],f_nxt[200000],h[10000],f[10000];//the h arrays are the edges in the normal order, the f ones are the edges in the reverse order
 int h_des[200000],f_des[200000],dis[10000],status[10000],queue[10000];
 bool inqueue[10000];

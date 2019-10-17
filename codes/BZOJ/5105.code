@@ -20,6 +20,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long long gcd(long long a,long long b)//This is a non-recursive form of the gcd function
 {
 	while(b!=0)

@@ -44,6 +44,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long long cube(long a)
 {
 	return (long long)a*a*a;

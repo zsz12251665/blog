@@ -33,6 +33,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 bool done[4][4];
 int main()
 {

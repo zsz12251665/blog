@@ -42,6 +42,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int matrix[4],power[4],tmp[4];
 int main()
 {

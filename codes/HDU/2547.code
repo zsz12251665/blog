@@ -12,6 +12,7 @@ end.
 
 #include<cstdio>
 #include<cmath>//We need to use the sqrt function in cmath
+using namespace std;
 int main()//This problem does not need any comments to explain it
 {
 	int t;

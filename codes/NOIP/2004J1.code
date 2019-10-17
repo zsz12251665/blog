@@ -14,8 +14,9 @@ begin
 		end;
 	writeln(ans);
 end.
-C++
 
+#include<cstdio>
+using namespace std;
 int main()
 {
 	int ans=0,mxt=8,a,b;//mxt equals 8 because she won't be unhappy if the time is less than 8 hours

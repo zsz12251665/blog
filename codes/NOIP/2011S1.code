@@ -17,6 +17,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long a[10000],b[10000],g[10000],k[10000];
 int main()
 {

@@ -48,6 +48,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int isprime[1000002];//We Mark H-primes with 1, H-semi-primes with 2 and the others with 0
 long prime[1000002],queue[1000002],primesize=0;
 int main()
@@ -118,6 +119,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long ans[250001];//We use n to show the H-number 4n+1 and the maxinum of n is 250000
 int isprime[250001];//We Mark H-primes with 0, H-semi-primes with 1 and the others with -1
 int main()

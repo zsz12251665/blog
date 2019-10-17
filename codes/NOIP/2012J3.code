@@ -19,6 +19,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long dp[101][101];
 int main()
 {

@@ -17,6 +17,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	double d;

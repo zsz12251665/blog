@@ -28,6 +28,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	long n,h,rise,drop,lh,lrise=1,ldrop=1;//We just need h[i] and h[i-1], so we can scroll it by h and lh, etc.

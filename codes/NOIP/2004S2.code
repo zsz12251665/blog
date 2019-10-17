@@ -60,6 +60,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long fruit[20000];//To avoid overlimit, I made the fruit array twice larger
 int size=0;
 void insert(long a)//The proceudure to insert a number into the fruit array

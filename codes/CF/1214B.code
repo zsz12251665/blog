@@ -13,6 +13,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int min(int a,int b)//The function of the minimum number of two (4 is too complex to compare)
 {
 	return (a<b)?a:b;

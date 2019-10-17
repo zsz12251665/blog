@@ -64,6 +64,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 struct student
 {
 	char name[20];

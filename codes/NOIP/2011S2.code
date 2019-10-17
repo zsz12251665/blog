@@ -27,6 +27,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the memcpy function in cstring
+using namespace std;
 long count[50],last[50];
 int main()
 {

@@ -68,6 +68,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int j[1000],f[1000],cj[1000],cf[1000];//The array cf and cj are used to save a copy in merge sort
 void msort(int l,int r)
 {

@@ -116,6 +116,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int copy[1000],king[1000],tian[1000];//The array copy is used to save a copy while doing merge sort
 void msort(int l,int r)
 {

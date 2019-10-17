@@ -68,6 +68,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 bool map[1000000],a[1000000][4];
 long n,m;
 char s[1000001];

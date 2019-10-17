@@ -49,6 +49,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the memset function and the strlen function in cstring
+using namespace std;
 long count[10000000];
 char s[64];
 int main()

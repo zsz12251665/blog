@@ -51,6 +51,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long a[1000000],queue[1000000],index[1000000];
 int main()
 {

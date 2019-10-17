@@ -91,6 +91,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long long sum[262144];
 long arr[100000],left[262144],right[262144],lazytag[262144];
 void init(long p,long l,long r)//Build and initialize the segment tree

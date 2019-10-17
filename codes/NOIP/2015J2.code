@@ -43,6 +43,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 char field[102][102];//Make the minefield a liitle larger to avoid the subscript out of range
 int main()
 {

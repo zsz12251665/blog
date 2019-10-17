@@ -13,6 +13,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int apple[10];
 int main()
 {

@@ -46,6 +46,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long time[100000],queue[100000],head=0,foot=1;//The time array is used to mark if it is visited and keep the time to reach
 int main()
 {
@@ -88,4 +89,5 @@ int main()
 		}
 		tmp=foot;
 	}
+	return 0;
 }

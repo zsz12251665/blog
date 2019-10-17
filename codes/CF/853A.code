@@ -63,6 +63,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long c[300000],rank[300000];//rank[i] keeps the order of c[i]
 bool timeline[600000];
 void qsort(long l,long r)

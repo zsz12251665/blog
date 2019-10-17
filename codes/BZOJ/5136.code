@@ -31,6 +31,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long big_m[500][500];
 int main()
 {

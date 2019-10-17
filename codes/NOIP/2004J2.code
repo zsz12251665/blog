@@ -44,6 +44,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int p[20][20];
 int main()
 {

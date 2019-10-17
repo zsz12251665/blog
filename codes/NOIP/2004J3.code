@@ -45,6 +45,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 char s[1024];
 char traversal(int l,int r)//The function of recursion
 {

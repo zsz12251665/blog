@@ -52,6 +52,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int field[25],parent[25],queue[25],head=0,foot=1;//To make the queue smaller, we use one-dimensional array with (x,y)=field[5x+y]
 void show(int a)//Print the answer in reverse order by the function stack
 {

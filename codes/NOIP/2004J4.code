@@ -37,6 +37,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int finger[10000],n;
 bool used[10001];
 int find(int a)

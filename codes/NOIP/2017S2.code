@@ -72,6 +72,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the strcmp function in cstring
+using namespace std;
 char s[100],v[100];//The array v keeps the variable names
 int c[100];
 int main()

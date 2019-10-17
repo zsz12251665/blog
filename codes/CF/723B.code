@@ -44,6 +44,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 char s[256];
 int main()
 {

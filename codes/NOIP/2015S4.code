@@ -30,6 +30,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long d[50001];
 int main()
 {

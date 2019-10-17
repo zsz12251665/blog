@@ -18,6 +18,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long milk[10000];
 int main()
 {
@@ -57,6 +58,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long milk[10000];
 int main()
 {
@@ -116,6 +118,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long milk[10000];
 void qsort(int l,int r)
 {
@@ -200,6 +203,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the memcpy function in cstring
+using namespace std;
 long milk[10000],copy[10000];
 void msort(int l,int r)
 {
@@ -274,6 +278,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long milk[10000];
 int main()
 {
@@ -329,6 +334,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int counter[1000001];
 int main()
 {

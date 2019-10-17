@@ -116,6 +116,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int island[50][50],lake[2500][3],cnt=0,n,m;//lake[i][0] is the x coordinate, lake[i][1] is the y coordinate, lake[i][2] is the size
 char s[51];
 void qsort(int l,int r)//Sort the lakes according to their sizes

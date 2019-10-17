@@ -17,6 +17,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	int l,r,a;
@@ -46,6 +47,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	int l,r,a;

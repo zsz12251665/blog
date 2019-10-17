@@ -35,6 +35,7 @@ end.
 
 #include<cstdio>
 #include<cmath>//We need to use the fmax function and the fmin function in cmath
+using namespace std;
 long k[129][129];
 int main()
 {

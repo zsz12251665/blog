@@ -22,6 +22,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	long n;

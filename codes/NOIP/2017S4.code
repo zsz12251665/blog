@@ -43,6 +43,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int n;
 bool visit[1000];//Remember to set up a visit array to prevent your dfs from falling into a loop
 long long x[1000],y[1000],z[1000],h,r;//To avoid overlimit or too many type conversions, I set the large integers as long long directly

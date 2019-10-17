@@ -80,6 +80,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the memset function and the strlen function in cstring
+using namespace std;
 long next[500000][26],fail[500000],last[500000],queue[500000];
 int value[500000];
 char s[1000000];

@@ -38,6 +38,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long long exgcd(long long a,long long b,long long &x,long long &y)//A combined version of exGCD and GCD
 {
 	if(b==0)

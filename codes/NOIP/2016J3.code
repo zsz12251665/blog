@@ -36,6 +36,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long nation[300000],count[100001],time[100000],passenger[100001];//The nationalies are from 1 to 100000, so we need a count array with a size of 100001 since the array is started from 0 in C++
 int main()
 {

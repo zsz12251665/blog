@@ -87,6 +87,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long left[262144],right[262144],colour[262144];
 int lazytag[262144];
 void init(long p,long l,long r)//Build and initialize the segment tree

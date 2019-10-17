@@ -34,6 +34,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int ans[251][100];//ans[i][j] is the j-th bit of ans[i] from the right
 int main()
 {

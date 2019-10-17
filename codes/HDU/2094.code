@@ -54,6 +54,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the strlen function in cstring
+using namespace std;
 long long win[1000],lose[1000];//the array win keeps the winner list and the array lose keeps the loser list
 void getname(long a)//A function that keeps the name strings in integers so that it can be easily compared
 {

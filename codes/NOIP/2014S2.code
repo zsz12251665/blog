@@ -51,6 +51,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
  long des[400000],nxt[400000],h[200000];
 int w[200000];
 int main()

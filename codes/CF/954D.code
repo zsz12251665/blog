@@ -83,6 +83,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int des[2000],nxt[2000],h[1000],dis_s[1000],dis_t[1000],queue[1000];
 bool in_queue[1000];
 int main()

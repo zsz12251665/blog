@@ -46,6 +46,7 @@ end.
 
 #include<cstdio>
 #include<cstring>//We need to use the strlen function in cstring
+using namespace std;
 char s[1000001],t[10001];
 int match[10000];
 int main()

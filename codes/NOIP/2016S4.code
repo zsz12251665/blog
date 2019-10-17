@@ -33,6 +33,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int c[2001][2001],sum[2001][2001];
 int main()
 {

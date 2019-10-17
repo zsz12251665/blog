@@ -70,6 +70,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long left[4000000],right[4000000],min[4000000],lazytag[4000000],a[1000000];
 void init(long l,long r,long p)//Initialize the segment tree
 {

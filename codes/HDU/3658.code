@@ -64,6 +64,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 long long matrix[104][104],answer[104][104],power[104][104],temp[104][104];
 int main()
 {

@@ -12,6 +12,7 @@ begin
 end.
 
 #include<cstdio>
+using namespace std;
 int main()
 {
 	double sum=0.0,tmp;
