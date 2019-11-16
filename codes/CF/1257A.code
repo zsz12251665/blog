@@ -1,0 +1,48 @@
+var
+	t,ti,n,x,a,b,i:integer;
+begin
+	read(t);
+	for ti:=1 to t do
+		begin
+			read(n,x,a,b);
+			if a>b then//Make sure a is smaller than b
+				begin
+					i:=a;
+					a:=b;
+					b:=i;
+				end;
+			for i:=1 to x do//Swap the students
+				if a=1 then
+					if b=n then
+						break
+					else
+						inc(b)
+				else
+					dec(a);
+			writeln(b-a);
+		end;
+end.
+
+#include<cstdio>
+using namespace std;
+int main()
+{
+	int t,n,x,a,b;
+	for(scanf("%d",&t);t>0;t--)
+	{
+		scanf("%d%d%d%d",&n,&x,&a,&b);
+		if(a>b)//Make sure a is smaller than b
+		{
+			int i=a;
+			a=b;
+			b=i;
+		}
+		for(int i=0;i<x && (a!=1 || b!=n);i++)//Swap the students
+			if(a!=1)
+				a--;
+			else
+				b++;
+		printf("%d\n",b-a);
+	}
+	return 0;
+}

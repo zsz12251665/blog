@@ -7,8 +7,8 @@ end.
 
 #include<cstdio>
 using namespace std;
-int main()
-{//No comments available
+int main()//No comments available
+{
 	long long a,b;
 	scanf("%lld%lld",&a,&b);
 	printf("%lld",a*b-a-b);
