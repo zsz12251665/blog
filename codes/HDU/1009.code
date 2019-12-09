@@ -1,5 +1,5 @@
 var
-	j,f,cj,cf:array[1..1000]of integer;//The array cf and cj are used to save a copy in merge sort
+	j,f,cj,cf:array[1..1000]of integer;// The array cf and cj are used to save a copy in merge sort
 	m,n,i:integer;
 	ans:longint;
 procedure msort(l,r:integer);
@@ -30,7 +30,7 @@ begin
 					inc(x);
 					continue;
 				end;
-			if cj[x]*cf[y]>cj[y]*cf[x] then//Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid dividing 0
+			if cj[x]*cf[y]>cj[y]*cf[x] then// Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid dividing 0
 				begin
 					j[i]:=cj[x];
 					f[i]:=cf[x];
@@ -53,7 +53,7 @@ begin
 			msort(1,n);
 			ans:=0;
 			i:=1;
-			while (i<=n) and (m>f[i]) do//Take the JavaBeans from high rewards to low ones
+			while (i<=n) and (m>f[i]) do// Take the JavaBeans from high rewards to low ones
 				begin
 					ans:=ans+j[i];
 					m:=m-f[i];
@@ -62,14 +62,14 @@ begin
 			if i<=n then
 				writeln(ans+m/f[i]*j[i]:0:3)
 			else
-				writeln(ans,'.000');//Do not forget the 3 numbers after the digit
+				writeln(ans,'.000');// Do not forget the 3 numbers after the digit
 			read(m,n);
 		end;
 end.
 
 #include<cstdio>
 using namespace std;
-int j[1000],f[1000],cj[1000],cf[1000];//The array cf and cj are used to save a copy in merge sort
+int j[1000],f[1000],cj[1000],cf[1000];// The array cf and cj are used to save a copy in merge sort
 void msort(int l,int r)
 {
 	if(l>=r)
@@ -95,7 +95,7 @@ void msort(int l,int r)
 			f[i]=cf[x++];
 			continue;
 		}
-		if(cj[x]*cf[y]>cj[y]*cf[x])//Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid dividing 0
+		if(cj[x]*cf[y]>cj[y]*cf[x])// Not using (cj[x]/cf[x])>(cj[y]/cj[y]) is to avoid dividing 0
 		{
 			j[i]=cj[x];
 			f[i]=cf[x++];
@@ -117,7 +117,7 @@ int main()
 		msort(0,n-1);
 		long ans=0;
 		int i=0;
-		for(;i<n && m>f[i];i++)//Take the JavaBeans from high rewards to low ones
+		for(;i<n && m>f[i];i++)// Take the JavaBeans from high rewards to low ones
 		{
 			ans+=j[i];
 			m-=f[i];
@@ -125,7 +125,7 @@ int main()
 		if(i<n)
 			printf("%.3lf\n",ans+m*1.0/f[i]*j[i]);
 		else
-			printf("%ld.000\n",ans);//Do not forget the 3 numbers after the digit
+			printf("%ld.000\n",ans);// Do not forget the 3 numbers after the digit
 	}
  	return 0;
 }

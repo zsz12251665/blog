@@ -1,7 +1,7 @@
 var
 	num,l:array[1..200000]of longint;
 	a,b,c,len,i:longint;
-procedure qsort(l,r:longint);//Sort the array num in increasing order
+procedure qsort(l,r:longint);// Sort the array num in increasing order
 var
 	x,y,tmp,std:longint;
 begin
@@ -28,7 +28,7 @@ begin
 	if r>x then
 		qsort(x,r);
 end;
-function find(a,b,p:longint):longint;//Find the position to be replaced
+function find(a,b,p:longint):longint;// Find the position to be replaced
 begin
 	if a>b then
 		exit(a);
@@ -41,10 +41,10 @@ begin
 	read(a,b,c);
 	for i:=1 to a+b+c do
 		read(num[i]);
-	qsort(1,a);//Sort everyone's problems to make sure their problems are increasing
+	qsort(1,a);// Sort everyone's problems to make sure their problems are increasing
 	qsort(a+1,a+b);
 	qsort(a+b+1,a+b+c);
-	len:=1;//Searching for the longest increasing sequence
+	len:=1;// Searching for the longest increasing sequence
 	l[1]:=num[1];
 	for i:=2 to a+b+c do
 		if num[i]>l[len] then
@@ -60,7 +60,7 @@ end.
 #include<cstdio>
 using namespace std;
 long num[200000],l[200000];
-void qsort(long l,long r)//Sort the array num in increasing order
+void qsort(long l,long r)// Sort the array num in increasing order
 {
 	long x=l,y=r,std=num[(l+r)/2];
 	while(x<y)
@@ -81,7 +81,7 @@ void qsort(long l,long r)//Sort the array num in increasing order
 	if(x<r)
 		qsort(x,r);
 }
-long find(long a,long b,long p)//Find the position to be replaced
+long find(long a,long b,long p)// Find the position to be replaced
 {
 	if(a>b)
 		return a;
@@ -93,10 +93,10 @@ int main()
 	scanf("%ld%ld%ld",&a,&b,&c);
 	for(long i=0;i<a+b+c;i++)
 		scanf("%ld",&num[i]);
-	qsort(0,a-1);//Sort everyone's problems to make sure their problems are increasing
+	qsort(0,a-1);// Sort everyone's problems to make sure their problems are increasing
 	qsort(a,a+b-1);
 	qsort(a+b,a+b+c-1);
-	long len=1;//Searching for the longest increasing sequence
+	long len=1;// Searching for the longest increasing sequence
 	l[0]=num[0];
 	for(int i=1;i<a+b+c;i++)
 		if(num[i]>l[len-1])

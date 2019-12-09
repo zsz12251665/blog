@@ -6,7 +6,7 @@ begin
 	for i:=1 to t do
 		begin
 			read(u,v,w,l);
-			writeln(l/(u+v)*w:0:3);//In Pascal, the / operator returns a real number answer while the div operator returns an integer (And the div operator is only available for integers but not real numbers)
+			writeln(l/(u+v)*w:0:3);// In Pascal, the / operator returns a real number answer while the div operator returns an integer (And the div operator is only available for integers but not real numbers)
 		end;
 end.
 
@@ -19,7 +19,7 @@ int main()
 	{
 		double u,v,w,l;
 		scanf("%lf%lf%lf%lf",&u,&v,&w,&l);
-		printf("%.3lf\n",l/(u+v)*w);//In C/C++, the / operator returns an integer answer (truncate the digits after the decimal point) if both are integers, otherwise the answer will be a real number
+		printf("%.3lf\n",l/(u+v)*w);// In C/C++, the / operator returns an integer answer (truncate the digits after the decimal point) if both are integers, otherwise the answer will be a real number
 	}
 	return 0;
 }

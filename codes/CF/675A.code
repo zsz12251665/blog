@@ -12,7 +12,7 @@ begin
 			write('NO');
 			halt;
 		end;
-	if ((b-a) mod c=0) and ((a>b) xor (c>0)) then//Pay attention to the division you use! It mustn't be 0 or you will catch some errors
+	if ((b-a) mod c=0) and ((a>b) xor (c>0)) then// Pay attention to the division you use! It mustn't be 0 or you will catch some errors
 		write('YES')
 	else
 		write('NO');
@@ -34,6 +34,6 @@ int main()
 		printf("NO");
 		return 0;
 	}
-	printf(((b-a)%c==0 && (a>b ^ c>0))?"YES":"NO");//Pay attention to the division you use! It mustn't be 0 or you will catch some errors
+	printf(((b-a)%c==0 && (a>b ^ c>0))?"YES":"NO");// Pay attention to the division you use! It mustn't be 0 or you will catch some errors
 	return 0;
 }

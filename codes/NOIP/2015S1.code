@@ -3,12 +3,12 @@ var
 	n,i,j,t:integer;
 begin
 	read(n);
-	for i:=1 to n do//Initialize the field array
+	for i:=1 to n do// Initialize the field array
 		for j:=1 to n do
 			field[i,j]:=0;
 	i:=1;
 	j:=n div 2+1;
-	for t:=1 to n*n do//Put the numbers into the field array
+	for t:=1 to n*n do// Put the numbers into the field array
 		begin
 			field[i,j]:=t;
 			if (i=1) and (j<>n) then
@@ -31,7 +31,7 @@ begin
 					inc(j);
 				end;
 		end;
-	for i:=1 to n do//Print the field array
+	for i:=1 to n do// Print the field array
 		begin
 			for j:=1 to n do
 				write(field[i,j],' ');
@@ -46,12 +46,12 @@ int main()
 {
 	int n,i,j;
 	scanf("%d",&n);
-	for(i=0;i<n;i++)//Initialize the field array
+	for(i=0;i<n;i++)// Initialize the field array
 		for(j=0;j<n;j++)
 			field[i][j]=0;
 	i=0;
 	j=n/2;
-	for(int t=1;t<=n*n;t++)//Put the numbers into the field array
+	for(int t=1;t<=n*n;t++)// Put the numbers into the field array
 	{
 		field[i][j]=t;
 		if(i==0 && j!=n-1)
@@ -74,7 +74,7 @@ int main()
 			j++;
 		}
 	}
-	for(i=0;i<n;i++)//Print the field array
+	for(i=0;i<n;i++)// Print the field array
 	{
 		for(j=0;j<n;j++)
 			printf("%d ",field[i][j]);

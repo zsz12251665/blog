@@ -1,7 +1,7 @@
 var
 	a,b,c,power,ans,gcd:int64;
 	i,k:integer;
-function exgcd(a,b:int64;var x,y:int64):int64;//A combined version of exGCD and GCD
+function exgcd(a,b:int64;var x,y:int64):int64;// A combined version of exGCD and GCD
 begin
 	if b=0 then
 		begin
@@ -20,17 +20,17 @@ begin
 			for i:=1 to k do
 				power:=power*2;
 			b:=b-a;
-			if b<0 then//Make sure the number is positive
+			if b<0 then// Make sure the number is positive
 				b:=b+power;
 			gcd:=exgcd(c,power,ans,a);
-			if b mod gcd<>0 then//There is no need to check if c is 0
+			if b mod gcd<>0 then// There is no need to check if c is 0
 				begin
 					writeln('FOREVER');
 					read(a,b,c,k);
 					continue;
 				end;
 			ans:=ans*(b div gcd) mod (power div gcd);
-			if ans<0 then//Make sure the number is positive
+			if ans<0 then// Make sure the number is positive
 				ans:=ans+power div gcd;
 			writeln(ans);
 			read(a,b,c,k);
@@ -39,7 +39,7 @@ end.
 
 #include<cstdio>
 using namespace std;
-long long exgcd(long long a,long long b,long long &x,long long &y)//A combined version of exGCD and GCD
+long long exgcd(long long a,long long b,long long &x,long long &y)// A combined version of exGCD and GCD
 {
 	if(b==0)
 	{
@@ -61,16 +61,16 @@ int main()
 		for(int i=0;i<k;i++)
 			power*=2;
 		b-=a;
-		if(b<0)//Make sure the number is positive
+		if(b<0)// Make sure the number is positive
 			b+=power;
 		long long gcd=exgcd(c,power,ans,a);
-		if(b%gcd!=0)//There is no need to check if c is 0
+		if(b%gcd!=0)// There is no need to check if c is 0
 		{
 			printf("FOREVER\n");
 			continue;
 		}
 		ans=ans*(b/gcd)%(power/gcd);
-		if(ans<0)//Make sure the number is positive
+		if(ans<0)// Make sure the number is positive
 			ans+=power/gcd;
 		printf("%lld\n",ans);
 	}

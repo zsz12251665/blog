@@ -7,7 +7,7 @@ var
 	i:integer;
 begin
 	for i:=a+1 to n do
-		if not used[i] then//If there is another finger that is not used
+		if not used[i] then// If there is another finger that is not used
 			exit(i);
 	exit(-1);
 end;
@@ -16,8 +16,8 @@ begin
 	used[finger[a]]:=false;
 	if find(finger[a])=-1 then
 		begin
-			add(a-1);//Carry on the previous bit
-			finger[a]:=find(0);//Find the smallest finger that is not used
+			add(a-1);// Carry on the previous bit
+			finger[a]:=find(0);// Find the smallest finger that is not used
 		end
 	else
 		finger[a]:=find(finger[a]);
@@ -30,7 +30,7 @@ begin
 			read(finger[i]);
 			used[finger[i]]:=true;
 		end;
-	for i:=1 to m do//To add m, just add 1 for m times
+	for i:=1 to m do// To add m, just add 1 for m times
 		add(n);
 	for i:=1 to n do
 		write(finger[i],' ');
@@ -43,7 +43,7 @@ bool used[10001];
 int find(int a)
 {
 	for(int i=a+1;i<=n;i++)
-		if(!used[i])//If there is another finger that is not used
+		if(!used[i])// If there is another finger that is not used
 			return i;
 	return -1;
 }
@@ -52,8 +52,8 @@ void add(int a)
 	used[finger[a]]=false;
 	if(find(finger[a])==-1)
 	{
-		add(a-1);//Carry on the previous bit
-		finger[a]=find(0);//Find the smallest finger that is not used
+		add(a-1);// Carry on the previous bit
+		finger[a]=find(0);// Find the smallest finger that is not used
 	}
 	else
 		finger[a]=find(finger[a]);
@@ -68,7 +68,7 @@ int main()
 		scanf("%d",&finger[i]);
 		used[finger[i]]=true;
 	}
-	for(int i=0;i<m;i++)//To add m, just add 1 for m times
+	for(int i=0;i<m;i++)// To add m, just add 1 for m times
 		add(n-1);
 	for(int i=0;i<n;i++)
 		printf("%d ",finger[i]);

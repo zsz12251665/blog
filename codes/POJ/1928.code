@@ -6,26 +6,26 @@ begin
 	read(t);
 	for ti:=1 to t do
 		begin
-			maxi:=1;//The coordinate of the tree with most peanuts
+			maxi:=1;// The coordinate of the tree with most peanuts
 			maxj:=1;
 			read(n,m,k);
 			for i:=1 to n do
 				for j:=1 to m do
 					begin
 						read(p[i,j]);
-						if p[i,j]>p[maxi,maxj] then//Find the tree with most peanuts
+						if p[i,j]>p[maxi,maxj] then// Find the tree with most peanuts
 							begin
 								maxi:=i;
 								maxj:=j;
 							end;
 					end;
-			lasti:=0;//Decide the start point, it is the coordinate of the last visited tree
+			lasti:=0;// Decide the start point, it is the coordinate of the last visited tree
 			lastj:=maxj;
 			sum:=0;
-			k:=k-abs(maxj-lastj)-1;//Calculate the extra time
-			if maxi>lasti then//If max point isn't on the way back
+			k:=k-abs(maxj-lastj)-1;// Calculate the extra time
+			if maxi>lasti then// If max point isn't on the way back
 				k:=k-(maxi-lasti)*2;
-			while k>=0 do//Check if it's in the time constraint
+			while k>=0 do// Check if it's in the time constraint
 				begin
 					sum:=sum+p[maxi,maxj];
 					p[maxi,maxj]:=0;
@@ -35,13 +35,13 @@ begin
 					maxj:=1;
 					for i:=1 to n do
 						for j:=1 to m do
-							if p[i,j]>p[maxi,maxj] then//Find the tree with most peanuts
+							if p[i,j]>p[maxi,maxj] then// Find the tree with most peanuts
 								begin
 									maxi:=i;
 									maxj:=j;
 								end;
-					k:=k-abs(maxj-lastj)-1;//Calculate the extra time
-					if maxi>lasti then//If max point isn't on the way back
+					k:=k-abs(maxj-lastj)-1;// Calculate the extra time
+					if maxi>lasti then// If max point isn't on the way back
 						k:=k-(maxi-lasti)*2;
 				end;
 			writeln(sum);
@@ -56,22 +56,22 @@ int main()
 	int t;
 	for(scanf("%d",&t);t>0;t--)
 	{
-		int n,m,k,maxi=0,maxj=0;//The coordinate of the tree with most peanuts
+		int n,m,k,maxi=0,maxj=0;// The coordinate of the tree with most peanuts
 		scanf("%d%d%d",&n,&m,&k);
 		for(int i=0;i<n;i++)
 			for(int j=0;j<m;j++)
 			{
 				scanf("%d",&p[i][j]);
-				if(p[i][j]>p[maxi][maxj])//Find the tree with most peanuts
+				if(p[i][j]>p[maxi][maxj])// Find the tree with most peanuts
 				{
 					maxi=i;
 					maxj=j;
 				}
 			}
-		int lasti=-1,lastj=maxj;//Decide the start point, it is the coordinate of the last visited tree
+		int lasti=-1,lastj=maxj;// Decide the start point, it is the coordinate of the last visited tree
 		long sum=0;
-		k-=((maxj>lastj)?(maxj-lastj):(lastj-maxj))+1;//Calculate the extra time
-		if(maxi>lasti)//If max point isn't on the way back
+		k-=((maxj>lastj)?(maxj-lastj):(lastj-maxj))+1;// Calculate the extra time
+		if(maxi>lasti)// If max point isn't on the way back
 			k-=(maxi-lasti)*2;
 		while(k>=0)
 		{
@@ -82,13 +82,13 @@ int main()
 			maxi=maxj=0;
 			for(int i=0;i<n;i++)
 				for(int j=0;j<m;j++)
-					if(p[i][j]>p[maxi][maxj])//Find the tree with most peanuts
+					if(p[i][j]>p[maxi][maxj])// Find the tree with most peanuts
 					{
 						maxi=i;
 						maxj=j;
 					}
-			k-=((maxj>lastj)?(maxj-lastj):(lastj-maxj))+1;//Calculate the extra time
-			if(maxi>lasti)//If max point isn't on the way back
+			k-=((maxj>lastj)?(maxj-lastj):(lastj-maxj))+1;// Calculate the extra time
+			if(maxi>lasti)// If max point isn't on the way back
 				k-=(maxi-lasti)*2;
 		}
 		printf("%ld\n",sum);

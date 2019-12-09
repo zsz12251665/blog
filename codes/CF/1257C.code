@@ -1,5 +1,5 @@
 var
-	last:array[1..200000]of longint;//Array last records the last of position of the numbers
+	last:array[1..200000]of longint;// Array last records the last of position of the numbers
 	t,ti:integer;
 	n,a,min,i:longint;
 begin
@@ -8,9 +8,9 @@ begin
 		begin
 			min:=maxlongint;
 			read(n);
-			for i:=1 to n do//Initialize the array last
+			for i:=1 to n do// Initialize the array last
 				last[i]:=-1;
-			for i:=1 to n do//Scan the sequence to find the closest pairs
+			for i:=1 to n do// Scan the sequence to find the closest pairs
 				begin
 					read(a);
 					if (last[a]<>-1) and (min>i-last[a]+1) then
@@ -26,7 +26,7 @@ end.
 
 #include<cstdio>
 using namespace std;
-long last[200000];//Array last records the last of position of the numbers
+long last[200000];// Array last records the last of position of the numbers
 int main()
 {
 	int t;
@@ -34,9 +34,9 @@ int main()
 	{
 		long n,a,min=2147483647;
 		scanf("%ld",&n);
-		for(long i=0;i<=n;i++)//Initialize the array last
+		for(long i=0;i<=n;i++)// Initialize the array last
 			last[i]=-1;
-		for(long i=0;i<n;i++)//Scan the sequence to find the closest pairs
+		for(long i=0;i<n;i++)// Scan the sequence to find the closest pairs
 		{
 			scanf("%ld",&a);
 			if(last[a]!=-1 && min>i-last[a]+1)

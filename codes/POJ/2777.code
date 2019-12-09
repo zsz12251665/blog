@@ -4,7 +4,7 @@ var
 	l,o,i,a,b,cset:longint;
 	t:integer;
 	s:char;
-procedure init(p,l,r:longint);//Build and initialize the segment tree
+procedure init(p,l,r:longint);// Build and initialize the segment tree
 begin
 	left[p]:=l;
 	right[p]:=r;
@@ -15,11 +15,11 @@ begin
 	init(2*p,l,(l+r) div 2);
 	init(2*p+1,(l+r) div 2+1,r);
 end;
-procedure change(p,l,r:longint;c:integer);//The setting operation
+procedure change(p,l,r:longint;c:integer);// The setting operation
 var
 	mid:longint;
 begin
-	if (l=left[p]) and (r=right[p]) then//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
+	if (l=left[p]) and (r=right[p]) then// If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
 		begin
 			colour[p]:=1 shl c;
 			if l<>r then
@@ -27,7 +27,7 @@ begin
 			exit;
 		end;
 	mid:=(left[p]+right[p]) div 2;
-	if lazytag[p]<>0 then//Pass down the lazytag
+	if lazytag[p]<>0 then// Pass down the lazytag
 		begin
 			change(2*p,left[p],mid,lazytag[p]);
 			change(2*p+1,mid+1,right[p],lazytag[p]);
@@ -42,13 +42,13 @@ begin
 			change(2*p,l,mid,c);
 			change(2*p+1,mid+1,r,c);
 		end;
-	colour[p]:=(colour[2*p]) or (colour[2*p+1]);//Update the colour state
+	colour[p]:=(colour[2*p]) or (colour[2*p+1]);// Update the colour state
 end;
-function search(p,l,r:longint):longint;//The asking operation
+function search(p,l,r:longint):longint;// The asking operation
 var
 	mid:longint;
 begin
-	if (lazytag[p]<>0) or (l=left[p]) and (r=right[p]) then//Lazytag exists means the range is in the same colour, so we don't need to search
+	if (lazytag[p]<>0) or (l=left[p]) and (r=right[p]) then// Lazytag exists means the range is in the same colour, so we don't need to search
 		exit(colour[p]);
 	mid:=(left[p]+right[p]) div 2;
 	if r<=mid then
@@ -60,22 +60,22 @@ begin
 end;
 begin
 	read(l,t,o);
-	init(1,1,l);//Build and initialize the segment tree
+	init(1,1,l);// Build and initialize the segment tree
 	for i:=1 to o do
 		begin
 			read(s);
 			while (s<>'C') and (s<>'P') do
 				read(s);
-			if s='C' then//The setting operation
+			if s='C' then// The setting operation
 				begin
 					read(a,b,t);
 					change(1,a,b,t);
 				end;
-			if s='P' then//The asking operation
+			if s='P' then// The asking operation
 				begin
 					read(a,b);
 					cset:=search(1,a,b);
-					t:=0;//Count the number of colours
+					t:=0;// Count the number of colours
 					while cset<>0 do
 						begin
 							t:=t+cset mod 2;
@@ -90,7 +90,7 @@ end.
 using namespace std;
 long left[262144],right[262144],colour[262144];
 int lazytag[262144];
-void init(long p,long l,long r)//Build and initialize the segment tree
+void init(long p,long l,long r)// Build and initialize the segment tree
 {
 	left[p]=l;
 	right[p]=r;
@@ -101,9 +101,9 @@ void init(long p,long l,long r)//Build and initialize the segment tree
 	init(2*p+1,l,(l+r)/2);
 	init(2*p+2,(l+r)/2+1,r);
 }
-void change(long p,long l,long r,int c)//The setting operation
+void change(long p,long l,long r,int c)// The setting operation
 {
-	if(l==left[p] && r==right[p])//If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
+	if(l==left[p] && r==right[p])// If the range is covered, set the lazytag (that's why the operation is O(lg(n)))
 	{
 		colour[p]=1<<c;
 		if(l!=r)
@@ -111,7 +111,7 @@ void change(long p,long l,long r,int c)//The setting operation
 		return;
 	}
 	int mid=(left[p]+right[p])/2;
-	if(lazytag[p]!=0)//Pass down the lazytag
+	if(lazytag[p]!=0)// Pass down the lazytag
 	{
 		change(2*p+1,left[p],mid,lazytag[p]);
 		change(2*p+2,mid+1,right[p],lazytag[p]);
@@ -126,11 +126,11 @@ void change(long p,long l,long r,int c)//The setting operation
 		change(2*p+1,l,mid,c);
 		change(2*p+2,mid+1,r,c);
 	}
-	colour[p]=colour[2*p+1]|colour[2*p+2];//Update the colour state
+	colour[p]=colour[2*p+1]|colour[2*p+2];// Update the colour state
 }
-long search(long p,long l,long r)//The asking operation
+long search(long p,long l,long r)// The asking operation
 {
-	if(lazytag[p]!=0 || l==left[p] && r==right[p])//Lazytag exists means the range is in the same colour, so we don't need to search
+	if(lazytag[p]!=0 || l==left[p] && r==right[p])// Lazytag exists means the range is in the same colour, so we don't need to search
 		return colour[p];
 	int mid=(left[p]+right[p])/2;
 	if(r<=mid)
@@ -145,22 +145,22 @@ int main()
 	long l,o;
 	int t;
 	scanf("%ld%d%ld",&l,&t,&o);
-	init(0,1,l);//Build and init the segment tree
+	init(0,1,l);// Build and init the segment tree
 	for(long i=0,a,b;i<o;i++)
 	{
 		char s=getchar();
 		while(s!='C' && s!='P')
 			s=getchar();
-		if(s=='C')//The setting operation
+		if(s=='C')// The setting operation
 		{
 			scanf("%ld%ld%d",&a,&b,&t);
 			change(0,a,b,t);
 		}
-		if(s=='P')//The asking operation
+		if(s=='P')// The asking operation
 		{
 			scanf("%ld%ld",&a,&b);
 			long cset=search(0,a,b);
-			t=0;//Count the number of colours
+			t=0;// Count the number of colours
 			while(cset!=0)
 			{
 				t+=cset%2;

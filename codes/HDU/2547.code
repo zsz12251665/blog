@@ -1,7 +1,7 @@
 var
 	t,i:integer;
 	a,b,c,d:double;
-begin//This problem does not need any comments to explain it
+begin// This problem does not need any comments to explain it
 	read(t);
 	for i:=1 to t do
 		begin
@@ -11,9 +11,9 @@ begin//This problem does not need any comments to explain it
 end.
 
 #include<cstdio>
-#include<cmath>//We need to use the sqrt function in cmath
+#include<cmath>// We need to use the sqrt function in cmath
 using namespace std;
-int main()//This problem does not need any comments to explain it
+int main()// This problem does not need any comments to explain it
 {
 	int t;
 	for(scanf("%d",&t);t>0;t--)

@@ -5,18 +5,18 @@ procedure solve;
 var
 	p,q,r,s,t,top,i:integer;
 begin
-	for p:=0 to 1 do//Enumerate every possible group of (p,q,r,s,t)
+	for p:=0 to 1 do// Enumerate every possible group of (p,q,r,s,t)
 		for q:=0 to 1 do
 			for r:=0 to 1 do
 				for s:=0 to 1 do
 					for t:=0 to 1 do
 						begin
 							top:=1;
-							for i:=length(wff) downto 1 do//Do not forget to scan from end to start since it's a prefix expression
+							for i:=length(wff) downto 1 do// Do not forget to scan from end to start since it's a prefix expression
 								case wff[i] of
 									'p':
 										begin
-											stack[top]:=p;//Add number into the stack
+											stack[top]:=p;// Add number into the stack
 											inc(top);
 										end;
 									'q':
@@ -42,7 +42,7 @@ begin
 									'K':
 										begin
 											dec(top);
-											stack[top-1]:=stack[top]*stack[top-1];//Calculate the answer and add it back to the stack
+											stack[top-1]:=stack[top]*stack[top-1];// Calculate the answer and add it back to the stack
 										end;
 									'A':
 										begin
@@ -80,30 +80,30 @@ begin
 	readln(wff);
 	while wff<>'0' do
 		begin
-			solve;//There are over 5 loops, so an exit in another function can simplify the code
+			solve;// There are over 5 loops, so an exit in another function can simplify the code
 			readln(wff);
 		end;
 end.
 
 #include<cstdio>
-#include<cstring>//We need to use the strlen function in cstring
+#include<cstring>// We need to use the strlen function in cstring
 using namespace std;
 int stack[100];
 char wff[100];
 void solve()
 {
-	for(int p=0;p<2;p++)//Enumerate every possible group of (p,q,r,s,t)
+	for(int p=0;p<2;p++)// Enumerate every possible group of (p,q,r,s,t)
 		for(int q=0;q<2;q++)
 			for(int r=0;r<2;r++)
 				for(int s=0;s<2;s++)
 					for(int t=0;t<2;t++)
 					{
 						int top=0;
-						for(int i=strlen(wff)-1;i>=0;i--)//Do not forget to scan from end to start since it's a prefix expression
+						for(int i=strlen(wff)-1;i>=0;i--)// Do not forget to scan from end to start since it's a prefix expression
 							switch(wff[i])
 							{
 								case 'p':
-									stack[top]=p;//Add number into the stack
+									stack[top]=p;// Add number into the stack
 									top++;
 									break;
 								case 'q':
@@ -124,7 +124,7 @@ void solve()
 									break;
 								case 'K':
 									top--;
-									stack[top-1]=stack[top]*stack[top-1];//Calculate the answer and add it back to the stack
+									stack[top-1]=stack[top]*stack[top-1];// Calculate the answer and add it back to the stack
 									break;
 								case 'A':
 									top--;
@@ -155,7 +155,7 @@ int main()
 	scanf("%s",&wff);
 	while(wff[0]!='0')
 	{
-		solve();//There are over 5 loops, so a return in another function can simplify the code
+		solve();// There are over 5 loops, so a return in another function can simplify the code
 		scanf("%s",&wff);
 	}
 	return 0;

@@ -16,7 +16,7 @@ begin
 	mxp:=-maxint;
 	for i:=1 to n do
 		begin
-			readln(s);//Get the information of the student
+			readln(s);// Get the information of the student
 			stu[i].name:=copy(s,1,pos(' ',s)-1);
 			s:=copy(s,pos(' ',s)+1,255);
 			val(copy(s,1,pos(' ',s)-1),test);
@@ -27,7 +27,7 @@ begin
 			west:=(s[3]='Y');
 			article:=(s[5]<>'0');
 			stu[i].prize:=0;
-			if (test>80)and article then//Check what prizee the student can win
+			if (test>80)and article then// Check what prizee the student can win
 				begin
 					stu[i].prize:=stu[i].prize+8000;
 					total:=total+800;
@@ -52,7 +52,7 @@ begin
 					stu[i].prize:=stu[i].prize+850;
 					total:=total+85;
 				end;
-			if mxp<stu[i].prize then//Keep the student who win the most prizees
+			if mxp<stu[i].prize then// Keep the student who win the most prizees
 				begin
 					mxp:=stu[i].prize;
 					mxi:=i;
@@ -69,7 +69,7 @@ struct student
 {
 	char name[20];
 	int prize;
-};//Do not forget the semicolon, or it may lead to some error
+};// Do not forget the semicolon, or it may lead to some error
 student stu[100];
 char s[20];
 int main()
@@ -81,7 +81,7 @@ int main()
 	bool officer,west;
 	for(int i=0,test,class,article;i<n;i++)
 	{
-		scanf("%s%d%d",&stu[i].name,&test,&class);//Get the information of the student
+		scanf("%s%d%d",&stu[i].name,&test,&class);// Get the information of the student
 		scanf("%s",&s);
 		if(s[0]=='Y')
 			officer=1;
@@ -92,7 +92,7 @@ int main()
 		west=0;
 		scanf("%d",&article);
 		stu[i].prize=0;
-		if(test>80 && article>0)//Check what prizee the student can win
+		if(test>80 && article>0)// Check what prizee the student can win
 		{
 			stu[i].prize+=8000;
 			total+=800;
@@ -117,7 +117,7 @@ int main()
 			stu[i].prize+=850;
 			total+=85;
 		}
-		if(mxp<stu[i].prize)//Keep the student who win the most prizees
+		if(mxp<stu[i].prize)// Keep the student who win the most prizees
 		{
 			mxp=stu[i].prize;
 			mxi=i;

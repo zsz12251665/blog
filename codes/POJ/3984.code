@@ -1,7 +1,7 @@
 var
-	field,parent,queue:array[0..24]of integer;//To make the queue smaller, we use one-dimensional array with (x,y)=field[5x+y]
+	field,parent,queue:array[0..24]of integer;// To make the queue smaller, we use one-dimensional array with (x,y)=field[5x+y]
 	head,foot,i:integer;
-procedure show(a:integer);//Print the answer in reverse order by the function stack
+procedure show(a:integer);// Print the answer in reverse order by the function stack
 begin
 	if a<>0 then
 		show(parent[a]);
@@ -20,7 +20,7 @@ begin
 	parent[0]:=0;
 	head:=0;
 	foot:=1;
-	while head<foot do//Make the BFS tree
+	while head<foot do// Make the BFS tree
 		begin
 			if (queue[head] mod 5>0) and (parent[queue[head]-1]=-1) then
 				begin
@@ -48,13 +48,13 @@ begin
 				end;
 			inc(head);
 		end;
-	show(24);//Print the path
+	show(24);// Print the path
 end.
 
 #include<cstdio>
 using namespace std;
-int field[25],parent[25],queue[25],head=0,foot=1;//To make the queue smaller, we use one-dimensional array with (x,y)=field[5x+y]
-void show(int a)//Print the answer in reverse order by the function stack
+int field[25],parent[25],queue[25],head=0,foot=1;// To make the queue smaller, we use one-dimensional array with (x,y)=field[5x+y]
+void show(int a)// Print the answer in reverse order by the function stack
 {
 	if(a!=0)
 		show(parent[a]);
@@ -72,7 +72,7 @@ int main()
 	}
 	queue[0]=0;
 	parent[0]=0;
-	while(head<foot)//Make the BFS tree
+	while(head<foot)// Make the BFS tree
 	{
 		if(queue[head]%5>0 && parent[queue[head]-1]==-1)
 		{
@@ -96,6 +96,6 @@ int main()
 		}
 		head++;
 	}
-	show(24);//Print the path
+	show(24);// Print the path
 	return 0;
 }

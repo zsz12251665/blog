@@ -1,8 +1,8 @@
 var
-	time,queue:array[0..100000]of longint;//The time array is used to mark if it is visited and keep the time to reach
+	time,queue:array[0..100000]of longint;// The time array is used to mark if it is visited and keep the time to reach
 	head,foot,tmp,n,k,t:longint;
 begin
-	for t:=0 to 100000 do//Initialize the time array
+	for t:=0 to 100000 do// Initialize the time array
 		time[t]:=-1;
 	read(n,k);
 	t:=0;
@@ -10,13 +10,13 @@ begin
 	foot:=1;
 	time[n]:=0;
 	queue[head]:=n;
-	tmp:=foot;//tmp is used to keep the end of the queue of this minute
+	tmp:=foot;// tmp is used to keep the end of the queue of this minute
 	while true do
 		begin
 			inc(t);
 			while head<> tmp do
 				begin
-					if queue[head]=k then//If FJ has come to k, print the time and halt
+					if queue[head]=k then// If FJ has come to k, print the time and halt
 						begin
 							write(time[queue[head]]);
 							halt;
@@ -25,7 +25,7 @@ begin
 						begin
 							time[queue[head]+1]:=t;
 							queue[foot]:=queue[head]+1;
-							foot:=(foot+1) mod 100000;//Don't forget to modulo 100000 to avoid getting over array limit
+							foot:=(foot+1) mod 100000;// Don't forget to modulo 100000 to avoid getting over array limit
 						end;
 					if (queue[head]>-1) and (time[queue[head]-1]=-1) then
 						begin
@@ -47,22 +47,22 @@ end.
 
 #include<cstdio>
 using namespace std;
-long time[100000],queue[100000],head=0,foot=1;//The time array is used to mark if it is visited and keep the time to reach
+long time[100000],queue[100000],head=0,foot=1;// The time array is used to mark if it is visited and keep the time to reach
 int main()
 {
-	for(long t=0;t<100000;i++)//Initialize the time array
+	for(long t=0;t<100000;i++)// Initialize the time array
 		time[t]=-1;
 	long n,k,t=0;
 	scanf("%d%d",&n,&k);
 	time[n]=0;
 	queue[head]=n;
-	long tmp=foot;//tmp is used to keep the end of the queue of this minute
+	long tmp=foot;// tmp is used to keep the end of the queue of this minute
 	while(true)
 	{
 		t++;
 		while(head!=tmp)
 		{
-			if(queue[head]==k)//If FJ has come to k, print the time and return
+			if(queue[head]==k)// If FJ has come to k, print the time and return
 			{
 				printf("%d",time[queue[head]]);
 				return 0;
@@ -71,7 +71,7 @@ int main()
 			{
 				time[queue[head]+1]=t;
 				queue[foot]=queue[head]+1;
-				foot=(foot+1)%100000;//Don't forget to modulo 100000 to avoid getting over array limit
+				foot=(foot+1)%100000;// Don't forget to modulo 100000 to avoid getting over array limit
 			}
 			if(queue[head]>-1 && time[queue[head]-1]==-1)
 			{

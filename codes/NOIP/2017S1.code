@@ -1,13 +1,13 @@
 var
 	a,b:int64;
-begin//No comments available
+begin// No comments available
 	read(a,b);
 	write(a*b-a-b);
 end.
 
 #include<cstdio>
 using namespace std;
-int main()//No comments available
+int main()// No comments available
 {
 	long long a,b;
 	scanf("%lld%lld",&a,&b);

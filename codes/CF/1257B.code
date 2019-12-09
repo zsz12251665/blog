@@ -1,7 +1,7 @@
 var
 	t,ti:integer;
 	x,y:longint;
-begin//No comments available
+begin// No comments available
 	read(t);
 	for ti:=1 to t do
 		begin
@@ -15,7 +15,7 @@ end.
 
 #include<cstdio>
 using namespace std;
-int main()//No comments available
+int main()// No comments available
 {
 	int t;
 	for(scanf("%d",&t);t>0;t--)

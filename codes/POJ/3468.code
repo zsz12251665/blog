@@ -5,7 +5,7 @@ var
 	n,q,i,a,b:longint;
 	c:integer;
 	s:char;
-procedure init(p,l,r:longint);//Build and initialize the segment tree
+procedure init(p,l,r:longint);// Build and initialize the segment tree
 begin
 	left[p]:=l;
 	right[p]:=r;
@@ -19,19 +19,19 @@ begin
 	init(2*p+1,(l+r) div 2+1,r);
 	sum[p]:=sum[2*p]+sum[2*p+1];
 end;
-procedure add(p,l,r,c:longint);//The adding operation
+procedure add(p,l,r,c:longint);// The adding operation
 var
 	mid:longint;
 begin
-	sum[p]:=sum[p]+int64(c)*(r-l+1);//Update the sum and remember to use int64
+	sum[p]:=sum[p]+int64(c)*(r-l+1);// Update the sum and remember to use int64
 	if (l=left[p]) and (r=right[p]) then
 		begin
-			if l<>r then//Add the lazytag
+			if l<>r then// Add the lazytag
 				lazytag[p]:=lazytag[p]+c;
 			exit;
 		end;
 	mid:=(left[p]+right[p]) div 2;
-	if lazytag[p]<>0 then//Pass down the lazytag
+	if lazytag[p]<>0 then// Pass down the lazytag
 		begin
 			add(2*p,left[p],mid,lazytag[p]);
 			add(2*p+1,mid+1,right[p],lazytag[p]);
@@ -47,14 +47,14 @@ begin
 			add(2*p+1,mid+1,r,c);
 		end;
 end;
-function search(p,l,r:longint):int64;//The searching operation
+function search(p,l,r:longint):int64;// The searching operation
 var
 	mid:longint;
 begin
 	if (l=left[p]) and (r=right[p]) then
 		exit(sum[p]);
 	mid:=(left[p]+right[p]) div 2;
-	if lazytag[p]<>0 then//Pass down the lazytag
+	if lazytag[p]<>0 then// Pass down the lazytag
 		begin
 			add(2*p,left[p],mid,lazytag[p]);
 			add(2*p+1,mid+1,right[p],lazytag[p]);
@@ -71,18 +71,18 @@ begin
 	read(n,q);
 	for i:=1 to n do
 		read(arr[i]);
-	init(1,1,n);//Build and initialize the segment tree
+	init(1,1,n);// Build and initialize the segment tree
 	for i:=1 to q do
 		begin
 			read(s);
 			while (s<>'C') and (s<>'Q') do
 				read(s);
-			if s='C' then//The adding operation
+			if s='C' then// The adding operation
 				begin
 					read(a,b,c);
 					add(1,a,b,c);
 				end;
-			if s='Q' then//The searching operation
+			if s='Q' then// The searching operation
 				begin
 					read(a,b);
 					writeln(search(1,a,b));
@@ -94,7 +94,7 @@ end.
 using namespace std;
 long long sum[262144];
 long arr[100000],left[262144],right[262144],lazytag[262144];
-void init(long p,long l,long r)//Build and initialize the segment tree
+void init(long p,long l,long r)// Build and initialize the segment tree
 {
 	left[p]=l;
 	right[p]=r;
@@ -108,17 +108,17 @@ void init(long p,long l,long r)//Build and initialize the segment tree
 	init(2*p+2,(l+r)/2+1,r);
 	sum[p]=sum[2*p+1]+sum[2*p+2];
 }
-void add(long p,long l,long r,long c)//The adding operation
+void add(long p,long l,long r,long c)// The adding operation
 {
-	sum[p]+=(long long)c*(r-l+1);//Update the sum and remember to use long long
+	sum[p]+=(long long)c*(r-l+1);// Update the sum and remember to use long long
 	if(l==left[p] && r==right[p])
 	{
-		if(l!=r)//Add the lazytag
+		if(l!=r)// Add the lazytag
 			lazytag[p]+=c;
 		return;
 	}
 	int mid=(left[p]+right[p])/2;
-	if(lazytag[p]!=0)//Pass down the lazytag
+	if(lazytag[p]!=0)// Pass down the lazytag
 	{
 		add(2*p+1,left[p],mid,lazytag[p]);
 		add(2*p+2,mid+1,right[p],lazytag[p]);
@@ -134,12 +134,12 @@ void add(long p,long l,long r,long c)//The adding operation
 		add(2*p+2,mid+1,r,c);
 	}
 }
-long long search(long p,long l,long r)//The searching operation
+long long search(long p,long l,long r)// The searching operation
 {
 	if(l==left[p] && r==right[p])
 		return sum[p];
 	int mid=(left[p]+right[p])/2;
-	if(lazytag[p]!=0)//Pass down the lazytag
+	if(lazytag[p]!=0)// Pass down the lazytag
 	{
 		add(2*p+1,left[p],mid,lazytag[p]);
 		add(2*p+2,mid+1,right[p],lazytag[p]);
@@ -158,19 +158,19 @@ int main()
 	scanf("%ld%ld",&n,&q);
 	for(int i=0;i<n;i++)
 		scanf("%ld",&arr[i]);
-	init(0,1,n);//Build and initialize the segment tree
+	init(0,1,n);// Build and initialize the segment tree
 	for(long i=0,a,b;i<q;i++)
 	{
 		char s=getchar();
 		while(s!='C' && s!='Q')
 			s=getchar();
-		if(s=='C')//The adding operation
+		if(s=='C')// The adding operation
 		{
 			int c;
 			scanf("%ld%ld%d",&a,&b,&c);
 			add(0,a,b,c);
 		}
-		if(s=='Q')//The searching operation
+		if(s=='Q')// The searching operation
 		{
 			scanf("%ld%ld",&a,&b);
 			printf("%lld\n",search(0,a,b));

@@ -6,14 +6,14 @@ begin
 	readln(n,m);
 	for i:=1 to n do
 		readln(face[i],job[i]);
-	p:=1;//Start from the 1st toy
+	p:=1;// Start from the 1st toy
 	for i:=1 to m do
 		begin
 			readln(d,s);
 			if face[p]=d then
-				p:=(p+n-s-1) mod n+1//Move clockwise
+				p:=(p+n-s-1) mod n+1// Move clockwise
 			else
-				p:=(p+s-1) mod n+1;//Move counterclockwise
+				p:=(p+s-1) mod n+1;// Move counterclockwise
 		end;
 	writeln(copy(job[p],2,20));
 end.
@@ -28,15 +28,15 @@ int main()
 	scanf("%ld%ld",&n,&m);
 	for(long i=0;i<n;i++)
 		scanf("%d%s",&face[i],&job[i]);
-	long p=0;//Start from the 1st toy
+	long p=0;// Start from the 1st toy
 	for(long i=0;i<m;i++)
 	{
 		long d,s;
 		scanf("%ld%ld",&d,&s);
 		if(face[p]==d)
-			p+=n-s;//Move clockwise
+			p+=n-s;// Move clockwise
 		else
-			p+=s;//Move counterclockwise
+			p+=s;// Move counterclockwise
 		p%=n;
 	}
 	printf("%s",job[p]);

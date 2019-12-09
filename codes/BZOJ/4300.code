@@ -3,7 +3,7 @@ var
 	n,ans,max,a,i,j:longint;
 begin
 	ans:=0;
-	for j:=0 to 31 do//Initialize the dp array
+	for j:=0 to 31 do// Initialize the dp array
 		dp[j]:=0;
 	read(n);
 	for i:=1 to n do
@@ -11,14 +11,14 @@ begin
 			max:=0;
 			read(a);
 			for j:=0 to 31 do
-				if (a and (1 shl j)<>0) and (max<dp[j]) then//Find the length of the longest subsequence that a[i] can append
+				if (a and (1 shl j)<>0) and (max<dp[j]) then// Find the length of the longest subsequence that a[i] can append
 					max:=dp[j];
 			inc(max);
 			for j:=0 to 31 do
-				if (a and (1 shl j)<>0) and (dp[j]<max) then//Update the dp array
+				if (a and (1 shl j)<>0) and (dp[j]<max) then// Update the dp array
 					begin
 						dp[j]:=max;
-						if ans<dp[j] then//Update the answer
+						if ans<dp[j] then// Update the answer
 							ans:=dp[j];
 					end;
 		end;
@@ -31,7 +31,7 @@ long dp[32];
 int main()
 {
 	long n,ans=0;
-	for(long j=0;j<32;j++)//Initialize the dp array
+	for(long j=0;j<32;j++)// Initialize the dp array
 		dp[j]=0;
 	scanf("%ld",&n);
 	for(long i=0;i<n;i++)
@@ -39,14 +39,14 @@ int main()
 		long a,max=0;
 		scanf("%ld",&a);
 		for(long j=0;j<32;j++)
-			if((a&(1<<j))!=0 && max<dp[j])//Find the length of the longest subsequence that a[i] can append
+			if((a&(1<<j))!=0 && max<dp[j])// Find the length of the longest subsequence that a[i] can append
 				max=dp[j];
 		max++;
 		for(long j=0;j<32;j++)
-			if((a&(1<<j))!=0 && dp[j]<max)//Update the dp array
+			if((a&(1<<j))!=0 && dp[j]<max)// Update the dp array
 			{
 				dp[j]=max;
-				if(ans<dp[j])//Update the answer
+				if(ans<dp[j])// Update the answer
 					ans=dp[j];
 			}
 	}

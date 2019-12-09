@@ -1,12 +1,12 @@
 var
 	a,b,c,ans:int64;
-function gcd(a,b:int64):int64;//This is a non-recursive form of the gcd function
+function gcd(a,b:int64):int64;// This is a non-recursive form of the gcd function
 var
 	tmp:int64;
 begin
 	while b<>0 do
 		begin
-			tmp:=a mod b;//Divides their difference
+			tmp:=a mod b;// Divides their difference
 			a:=b;
 			b:=tmp;
 		end;
@@ -21,11 +21,11 @@ end.
 
 #include<cstdio>
 using namespace std;
-long long gcd(long long a,long long b)//This is a non-recursive form of the gcd function
+long long gcd(long long a,long long b)// This is a non-recursive form of the gcd function
 {
 	while(b!=0)
 	{
-		long long tmp=a%b;//Divides their difference
+		long long tmp=a%b;// Divides their difference
 		a=b;
 		b=tmp;
 	}

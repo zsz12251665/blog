@@ -1,6 +1,6 @@
 var
-	visit:array[1..1000]of boolean;//Remember to set up a visit array to prevent your dfs from falling into a loop
-	x,y,z:array[1..1000]of int64;//To avoid overlimit or too many type conversions, I set the large integers as int64 directly
+	visit:array[1..1000]of boolean;// Remember to set up a visit array to prevent your dfs from falling into a loop
+	x,y,z:array[1..1000]of int64;// To avoid overlimit or too many type conversions, I set the large integers as int64 directly
 	h,r:int64;
 	t,n,i,j:integer;
 	getout:boolean;
@@ -8,10 +8,10 @@ function dfs(p:integer):boolean;
 var
 	i:integer;
 begin
-	visit[p]:=true;//Set the visit tag
-	if z[p]>=h-r then//Check if the mouse has got out
+	visit[p]:=true;// Set the visit tag
+	if z[p]>=h-r then// Check if the mouse has got out
 		exit(true);
-	for i:=1 to n do//Find the way to go on
+	for i:=1 to n do// Find the way to go on
 		if not visit[i] and ((x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])<=4*r*r) and dfs(i) then
 			exit(true);
 	exit(false);
@@ -27,7 +27,7 @@ begin
 					read(x[i],y[i],z[i]);
 				end;
 			getout:=false;
-			for i:=1 to n do//Enumerate the way to get in
+			for i:=1 to n do// Enumerate the way to get in
 				begin
 					if z[i]<=r then
 						getout:=dfs(i);
@@ -45,14 +45,14 @@ end.
 #include<cstdio>
 using namespace std;
 int n;
-bool visit[1000];//Remember to set up a visit array to prevent your dfs from falling into a loop
-long long x[1000],y[1000],z[1000],h,r;//To avoid overlimit or too many type conversions, I set the large integers as long long directly
+bool visit[1000];// Remember to set up a visit array to prevent your dfs from falling into a loop
+long long x[1000],y[1000],z[1000],h,r;// To avoid overlimit or too many type conversions, I set the large integers as long long directly
 bool dfs(int p)
 {
-	visit[p]=true;//Set the visit tag
-	if(z[p]>=h-r)//Check if the mouse has got out
+	visit[p]=true;// Set the visit tag
+	if(z[p]>=h-r)// Check if the mouse has got out
 		return true;
-	for(int i=0;i<n;i++)//Find the way to go on
+	for(int i=0;i<n;i++)// Find the way to go on
 		if(!visit[i] && (x[i]-x[p])*(x[i]-x[p])+(y[i]-y[p])*(y[i]-y[p])+(z[i]-z[p])*(z[i]-z[p])<=4*r*r && dfs(i))
 			return true;
 	return false;
@@ -70,7 +70,7 @@ int main()
 			scanf("%lld%lld%lld",&x[i],&y[i],&z[i]);
 		}
 		bool getout=false;
-		for(int i=0;i<n && !getout;i++)//Enumerate the way to get in
+		for(int i=0;i<n && !getout;i++)// Enumerate the way to get in
 			if(z[i]<=r)
 				getout=dfs(i);
 		printf(getout?"Yes\n":"No\n");

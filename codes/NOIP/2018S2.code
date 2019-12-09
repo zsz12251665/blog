@@ -33,7 +33,7 @@ begin
 	read(t);
 	while t>0 do
 		begin
-			for i:=1 to 25000 do//Initialize the unable array
+			for i:=1 to 25000 do// Initialize the unable array
 				unable[i]:=true;
 			read(n);
 			for i:=1 to n do
@@ -45,7 +45,7 @@ begin
 					begin
 						inc(ans);
 						unable[a[i]]:=false;
-						for j:=1 to 25000-a[i] do//Update the unable array
+						for j:=1 to 25000-a[i] do// Update the unable array
 							if not unable[j] then
 								unable[j+a[i]]:=false;
 					end;
@@ -84,7 +84,7 @@ int main()
 	int t,n;
 	for(scanf("%d",&t);t>0;t--)
 	{
-		for(int i=0;i<25001;i++)//Initialize the unable array
+		for(int i=0;i<25001;i++)// Initialize the unable array
 			unable[i]=true;
 		scanf("%d",&n);
 		for(int i=0;i<n;i++)
@@ -96,7 +96,7 @@ int main()
 			{
 				ans++;
 				unable[a[i]]=false;
-				for(int j=1;j+a[i]<25001;j++)//Update the unable array
+				for(int j=1;j+a[i]<25001;j++)// Update the unable array
 					if(!unable[j])
 						unable[j+a[i]]=false;
 			}

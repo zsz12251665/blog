@@ -8,7 +8,7 @@ begin
 	while k>0 do
 		begin
 			for j:=1 to i do
-				if k>0 then//Do not forget to check if k equals 0 in the loop, or you may give too much coins
+				if k>0 then// Do not forget to check if k equals 0 in the loop, or you may give too much coins
 					begin
 						ans:=ans+i;
 						dec(k);
@@ -28,7 +28,7 @@ int main()
 	while(k>0)
 	{
 		for(int j=0;j<i;j++)
-			if(k>0)//Do not forget to check if k equals 0 in the loop, or you may give too much coins
+			if(k>0)// Do not forget to check if k equals 0 in the loop, or you may give too much coins
 			{
 				ans+=i;
 				k--;

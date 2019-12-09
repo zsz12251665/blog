@@ -14,7 +14,7 @@ begin
 	total_y:=0;
 	while (i<=n) or (j<=m) do
 		begin
-			if total_x>total_y then//Add the smaller one
+			if total_x>total_y then// Add the smaller one
 				begin
 					total_y:=total_y+y[j];
 					inc(j);
@@ -24,7 +24,7 @@ begin
 					total_x:=total_x+x[i];
 					inc(i);
 				end;
-			if total_x=total_y then//Add it to the counter
+			if total_x=total_y then// Add it to the counter
 				inc(ans);
 		end;
 	write(ans);
@@ -43,11 +43,11 @@ int main()
 		scanf("%ld",&y[i]);
 	for(long i=0,j=0,total_x=0,total_y=0;i<n || j<m;)
 	{
-		if(total_x>total_y)//Add the smaller one
+		if(total_x>total_y)// Add the smaller one
 			total_y+=y[j++];
 		else
 			total_x+=x[i++];
-		if(total_x==total_y)//Add it to the counter
+		if(total_x==total_y)// Add it to the counter
 			ans++;
 	}
 	printf("%ld",ans);

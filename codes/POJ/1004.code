@@ -8,7 +8,7 @@ begin
 			read(tmp);
 			sum:=sum+tmp;
 		end;
-	write('$',sum/12:0:2);//In pascal write(sum:0:2); prints the sum with 2 digits and take the place of 0 chars. But if the length is over 0, this part makes no sence
+	write('$',sum/12:0:2);// In pascal write(sum:0:2); prints the sum with 2 digits and take the place of 0 chars. But if the length is over 0, this part makes no sence
 end.
 
 #include<cstdio>
@@ -21,6 +21,6 @@ int main()
 		scanf("%lf",&tmp);
 		sum+=tmp;
 	}
-	printf("$%.2lf",sum/12.0);//In C/C++, the %.2lf in the format string of printf() function means to print the real number with 2 digits
+	printf("$%.2lf",sum/12.0);// In C/C++, the %.2lf in the format string of printf() function means to print the real number with 2 digits
 	return 0;
 }

@@ -1,5 +1,5 @@
 var
-	copy,king,tian:array[1..1000]of integer;//The array copy is used to save a copy in merge sort
+	copy,king,tian:array[1..1000]of integer;// The array copy is used to save a copy in merge sort
 	n,i,ans,king_best,tian_best,king_worst,tian_worst:integer;
 procedure msort(l,r:integer);
 var
@@ -37,7 +37,7 @@ begin
 					inc(x);
 				end;
 		end;
-	copy:=tian;//We sort the array king and array tian at the same time here
+	copy:=tian;// We sort the array king and array tian at the same time here
 	x:=l;
 	y:=(l+r) div 2+1;
 	for i:=l to r do
@@ -80,7 +80,7 @@ begin
 			tian_best:=1;
 			king_worst:=n;
 			tian_worst:=n;
-			for i:=1 to n do//The greedy part
+			for i:=1 to n do// The greedy part
 				begin
  					if tian[tian_worst]>king[king_worst] then
 						begin
@@ -117,7 +117,7 @@ end.
 
 #include<cstdio>
 using namespace std;
-int copy[1000],king[1000],tian[1000];//The array copy is used to save a copy while doing merge sort
+int copy[1000],king[1000],tian[1000];// The array copy is used to save a copy while doing merge sort
 void msort(int l,int r)
 {
 	if(l>=r)
@@ -143,7 +143,7 @@ void msort(int l,int r)
 		else
 			king[i]=copy[x++];
 	}
-	for(int i=l;i<=r;i++)//We sort the array king and array tian at the same time here
+	for(int i=l;i<=r;i++)// We sort the array king and array tian at the same time here
 		copy[i]=tian[i];
 	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
 	{
@@ -174,7 +174,7 @@ int main()
 			scanf("%d",&king[i]);
 		msort(0,n-1);
 		int ans=0,king_best=0,tian_best=0,king_worst=n-1,tian_worst=n-1;
-		for(int i=0;i<n;i++)//The greedy part
+		for(int i=0;i<n;i++)// The greedy part
 		{
 			if(tian[tian_worst]>king[king_worst])
 			{

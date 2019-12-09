@@ -8,7 +8,7 @@ begin
 		read(milk[i]);
 	for i:=2 to n do
 		for j:=1 to i-1 do
-			if milk[i]<milk[j] then//Replace this line with "if milk[i]>milk[j] then" to sort in decrease order
+			if milk[i]<milk[j] then// Replace this line with "if milk[i]>milk[j] then" to sort in decrease order
 				begin
 					tmp:=milk[j];
 					milk[j]:=milk[i];
@@ -28,7 +28,7 @@ int main()
 		scanf("%ld",&milk[i]);
 	for(int i=1;i<n;i++)
 		for(int j=0;j<i;j++)
-			if(milk[i]<milk[j])//Replace this line with "if(milk[i]>milk[j])" to sort in decrease order
+			if(milk[i]<milk[j])// Replace this line with "if(milk[i]>milk[j])" to sort in decrease order
 			{
 				long tmp=milk[j];
 				milk[j]=milk[i];
@@ -48,7 +48,7 @@ begin
 		read(milk[i]);
 	for i:=1 to n-1 do
 		for j:=1 to n-i do
-			if milk[j]>milk[j+1] then//Replace this line with "if milk[j]<milk[j+1] then" to sort in decrease order
+			if milk[j]>milk[j+1] then// Replace this line with "if milk[j]<milk[j+1] then" to sort in decrease order
 				begin
 					tmp:=milk[j];
 					milk[j]:=milk[j+1];
@@ -68,7 +68,7 @@ int main()
 		scanf("%ld",&milk[i]);
 	for(int i=1;i<n;i++)
 		for(int j=0;j<n-i;j++)
-			if(milk[j]>milk[j+1])//Replace this line with "if(milk[j]<milk[j+1])" to sort in decrease order
+			if(milk[j]>milk[j+1])// Replace this line with "if(milk[j]<milk[j+1])" to sort in decrease order
 			{
 				long tmp=milk[j];
 				milk[j]=milk[j+1];
@@ -91,9 +91,9 @@ begin
 	std:=milk[(l+r) div 2];
 	while x<y do
 		begin
-			while milk[x]<std do//Replace this line with "while milk[x]>std do" to sort in decrease order
+			while milk[x]<std do// Replace this line with "while milk[x]>std do" to sort in decrease order
 				inc(x);
-			while milk[y]>std do//Replace this line with "while milk[y]<std do" to sort in decrease order
+			while milk[y]>std do// Replace this line with "while milk[y]<std do" to sort in decrease order
 				dec(y);
 			if x<=y then
 				begin
@@ -126,9 +126,9 @@ void qsort(int l,int r)
 	long std=milk[(l+r)/2];
 	while(x<y)
 	{
-		while(milk[x]<std)//Replace this line with "while(milk[x]>std)" to sort in decrease order
+		while(milk[x]<std)// Replace this line with "while(milk[x]>std)" to sort in decrease order
 			x++;
-		while(milk[y]>std)//Replace this line with "while(milk[y]<std)" to sort in decrease order
+		while(milk[y]>std)// Replace this line with "while(milk[y]<std)" to sort in decrease order
 			y--;
 		if(x<=y)
 		{
@@ -181,7 +181,7 @@ begin
 					inc(x);
 					continue;
 				end;
-			if copy[x]>copy[y] then//Replace this line with "if copy[x]<copy[y] then" to sort in decrease order
+			if copy[x]>copy[y] then// Replace this line with "if copy[x]<copy[y] then" to sort in decrease order
 				begin
 					milk[i]:=copy[y];
 					inc(y);
@@ -202,7 +202,7 @@ begin
 end.
 
 #include<cstdio>
-#include<cstring>//We need to use the memcpy function in cstring
+#include<cstring>// We need to use the memcpy function in cstring
 using namespace std;
 long milk[10000],copy[10000];
 void msort(int l,int r)
@@ -224,7 +224,7 @@ void msort(int l,int r)
 			milk[i]=copy[x++];
 			continue;
 		}
-		if(copy[x]>copy[y])//Replace this line with "if(copy[x]<copy[y])" to sort in decrease order
+		if(copy[x]>copy[y])// Replace this line with "if(copy[x]<copy[y])" to sort in decrease order
 			milk[i]=copy[y++];
 		else
 			milk[i]=copy[x++];
@@ -251,7 +251,7 @@ begin
 		begin
 			read(milk[i]);
 			j:=i;
-			while (j>1) and (milk[j div 2]>milk[j]) do//Replace this line with "while (j>1) and (milk[j div 2]<milk[j]) do" to sort in decrease order
+			while (j>1) and (milk[j div 2]>milk[j]) do// Replace this line with "while (j>1) and (milk[j div 2]<milk[j]) do" to sort in decrease order
 				begin
 					tmp:=milk[j];
 					milk[j]:=milk[j div 2];
@@ -263,9 +263,9 @@ begin
 		begin
 			milk[1]:=milk[n-i+1];
 			j:=1;
-			while (2*j<n-i+1) and (milk[j]>milk[2*j]) or (2*j+1<n-i+1) and (milk[j]>milk[2*j+1]) do//Replace this line with "while (2*j<n-i+1) and (milk[j]<milk[2*j]) or (2*j+1<n-i+1) and (milk[j]<milk[2*j+1]) do" to sort in decrease order
+			while (2*j<n-i+1) and (milk[j]>milk[2*j]) or (2*j+1<n-i+1) and (milk[j]>milk[2*j+1]) do// Replace this line with "while (2*j<n-i+1) and (milk[j]<milk[2*j]) or (2*j+1<n-i+1) and (milk[j]<milk[2*j+1]) do" to sort in decrease order
 				begin
-					if (2*j+1<n-i+1) and (milk[2*j]>milk[2*j+1]) then//Replace this line with "if (2*j+1<n-i+1) and (milk[2*j]<milk[2*j+1]) then" to sort in decrease order
+					if (2*j+1<n-i+1) and (milk[2*j]>milk[2*j+1]) then// Replace this line with "if (2*j+1<n-i+1) and (milk[2*j]<milk[2*j+1]) then" to sort in decrease order
 						j:=2*j+1
 					else
 						j:=2*j;
@@ -287,7 +287,7 @@ int main()
 	for(int i=0;i<n;i++)
 	{
 		scanf("%ld",&milk[i]);
-		for(int j=i;j>0 && milk[(j-1)/2]>milk[j];j=(j-1)/2)//Replace this line with "for(int j=i;j>0 && milk[(j-1)/2]<milk[j];j=(j-1)/2)" to sort in decrease order
+		for(int j=i;j>0 && milk[(j-1)/2]>milk[j];j=(j-1)/2)// Replace this line with "for(int j=i;j>0 && milk[(j-1)/2]<milk[j];j=(j-1)/2)" to sort in decrease order
 		{
 			long tmp=milk[j];
 			milk[j]=milk[(j-1)/2];
@@ -297,9 +297,9 @@ int main()
 	for(int i=0;i<n/2;i++)
 	{
 		milk[0]=milk[n-1-i];
-		for(int j=0;2*j+1<n-1-i && milk[j]>milk[2*j+1] || 2*j+2<n-1-i && milk[j]>milk[2*j+2];)//Replace this line with "for(int j=0;2*j+1<n-1-i && milk[j]<milk[2*j+1] || 2*j+2<n-1-i && milk[j]<milk[2*j+2];)" to sort in decrease order
+		for(int j=0;2*j+1<n-1-i && milk[j]>milk[2*j+1] || 2*j+2<n-1-i && milk[j]>milk[2*j+2];)// Replace this line with "for(int j=0;2*j+1<n-1-i && milk[j]<milk[2*j+1] || 2*j+2<n-1-i && milk[j]<milk[2*j+2];)" to sort in decrease order
 		{
-			j=(2*j+2<n-1-i && milk[2*j+1]>milk[2*j+2])?2*j+2:2*j+1;//Replace this line with "j=(2*j+2<n-1-i && milk[2*j+1]<milk[2*j+2])?2*j+2:2*j+1;" to sort in decrease order
+			j=(2*j+2<n-1-i && milk[2*j+1]>milk[2*j+2])?2*j+2:2*j+1;// Replace this line with "j=(2*j+2<n-1-i && milk[2*j+1]<milk[2*j+2])?2*j+2:2*j+1;" to sort in decrease order
 			long tmp=milk[j];
 			milk[j]=milk[(j-1)/2];
 			milk[(j-1)/2]=tmp;
@@ -323,7 +323,7 @@ begin
 			inc(counter[milk]);
 		end;
 	tmp:=0;
-	for milk:=1 to 1000000 do//Replace this line with "for milk:=1000000 downto 1 do" to sort in decrease order
+	for milk:=1 to 1000000 do// Replace this line with "for milk:=1000000 downto 1 do" to sort in decrease order
 		if tmp+counter[milk]>n div 2 then
 			begin
 				write(milk);
@@ -349,7 +349,7 @@ int main()
 		counter[milk]++;
 	}
 	int tmp=0;
-	for(long milk=1;milk<1000001;milk++)//Replace this line with "for(long milk=1000000;milk>0;milk--)" to sort in decrease order
+	for(long milk=1;milk<1000001;milk++)// Replace this line with "for(long milk=1000000;milk>0;milk--)" to sort in decrease order
 		if(tmp+counter[milk]>n/2)
 		{
 			printf("%ld",milk);

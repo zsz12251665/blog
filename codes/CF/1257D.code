@@ -1,7 +1,7 @@
 var
 	a,p,s:array[1..200000]of longint;
 	t,ti,n,m,i,j,cnt,ans,max:longint;
-procedure qsort(l,r:longint);//Sort the heroes
+procedure qsort(l,r:longint);// Sort the heroes
 var
 	x,y,tmp,std_p,std_s:longint;
 begin
@@ -49,28 +49,28 @@ begin
 			for i:=1 to m do
 				read(p[i],s[i]);
 			qsort(1,m);
-			if max>p[1] then//Check whether all the monsters can be defeated
+			if max>p[1] then// Check whether all the monsters can be defeated
 				begin
 					writeln(-1);
 					continue;
 				end;
 			max:=-1;
-			for i:=1 to m do//Remove the useless heroes 
+			for i:=1 to m do// Remove the useless heroes 
 				if s[i]>max then
 					max:=s[i]
 				else
 					p[i]:=-1;
 			qsort(1,m);
-			i:=1;//Use greedy algorithm to defeat as many monsters as possible
+			i:=1;// Use greedy algorithm to defeat as many monsters as possible
 			while i<=n do
 				begin
 					cnt:=0;
 					max:=a[i];
-					for j:=1 to m do//Replace a hero with less power but more endurance
+					for j:=1 to m do// Replace a hero with less power but more endurance
 						begin
 							if (i>n) or (max>p[j]) then
 								break;
-							while (i<=n) and (cnt<s[j]) and (p[j]>=max) do//Defeating monsters
+							while (i<=n) and (cnt<s[j]) and (p[j]>=max) do// Defeating monsters
 								begin
 									inc(i);
 									inc(cnt);
@@ -87,7 +87,7 @@ end.
 #include<cstdio>
 using namespace std;
 long a[200000],p[200000],s[200000];
-void qsort(long l,long r)//Sort the heroes
+void qsort(long l,long r)// Sort the heroes
 {
 	long x=l,y=r,std_p=p[(l+r)/2],std_s=s[(l+r)/2];
 	while(x<y)
@@ -127,22 +127,22 @@ int main()
 		for(long i=0;i<m;i++)
 			scanf("%ld%ld",&p[i],&s[i]);
 		qsort(0,m-1);
-		if(max>p[0])//Check whether all the monsters can be defeated
+		if(max>p[0])// Check whether all the monsters can be defeated
 		{
 			printf("-1\n");
 			continue;
 		}
-		for(long i=0,max=-1;i<m;i++)//Remove the useless heroes
+		for(long i=0,max=-1;i<m;i++)// Remove the useless heroes
 			if(s[i]>max)
 				max=s[i];
 			else
 				p[i]=-1;
 		qsort(0,m-1);
-		for(long i=0;i<n;ans++)//Use greedy algorithm to defeat as many monsters as possible
+		for(long i=0;i<n;ans++)// Use greedy algorithm to defeat as many monsters as possible
 		{
 			long cnt=0,max=a[i];
-			for(long j=0;j<m && i<n && max<=p[j];j++)//Replace a hero with less power but more endurance
-				while(i<n && cnt<s[j] && max<=p[j])//Defeating monsters
+			for(long j=0;j<m && i<n && max<=p[j];j++)// Replace a hero with less power but more endurance
+				while(i<n && cnt<s[j] && max<=p[j])// Defeating monsters
 				{
 					i++;
 					cnt++;

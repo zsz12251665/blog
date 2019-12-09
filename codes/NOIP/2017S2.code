@@ -1,8 +1,8 @@
 var
-	v:array[1..100]of char;//The array v keeps the variable names
+	v:array[1..100]of char;// The array v keeps the variable names
 	s:string;
 	c:array[1..100]of integer;
-	t,l,complexity,depth,max,a,b,i,j:integer;//depth means the depth of the loops
+	t,l,complexity,depth,max,a,b,i,j:integer;// depth means the depth of the loops
 	err:boolean;
 begin
 	read(t);
@@ -10,10 +10,10 @@ begin
 		begin
 			read(l);
 			readln(s);
-			if s=' O(1)' then//Read the time complexity
+			if s=' O(1)' then// Read the time complexity
 				complexity:=0
 			else
-				val(copy(s,6,length(s)-6),complexity);//val(s,n) is a procedure which turns a string s into a number and save it in n
+				val(copy(s,6,length(s)-6),complexity);// val(s,n) is a procedure which turns a string s into a number and save it in n
 			err:=false;
 			depth:=1;
 			max:=0;
@@ -22,15 +22,15 @@ begin
 					readln(s);
 					if err then
 						continue;
-					if s='E' then//Quit a loop
+					if s='E' then// Quit a loop
 						begin
 							dec(depth);
 							if depth<0 then
 								err:=true;
 							continue;
 						end;
-					v[depth]:=s[3];//Read the variable name
-					for j:=1 to depth-1 do//Check if there are two same variable names
+					v[depth]:=s[3];// Read the variable name
+					for j:=1 to depth-1 do// Check if there are two same variable names
 						if v[j]=v[depth] then
 							begin
 								err:=true;
@@ -51,9 +51,9 @@ begin
 						c[depth]:=0
 					else
 						c[depth]:=c[depth-1];
-					if (c[depth]>-1) and (b=1000) and (a<>b) then//The loop increase the time complexity
+					if (c[depth]>-1) and (b=1000) and (a<>b) then// The loop increase the time complexity
 						inc(c[depth]);
-					if a>b then//The loop won't run
+					if a>b then// The loop won't run
 						c[depth]:=-1;
 					if c[depth]>max then
 						max:=c[depth];
@@ -71,9 +71,9 @@ begin
 end.
 
 #include<cstdio>
-#include<cstring>//We need to use the strcmp function in cstring
+#include<cstring>// We need to use the strcmp function in cstring
 using namespace std;
-char s[100],v[100];//The array v keeps the variable names
+char s[100],v[100];// The array v keeps the variable names
 int c[100];
 int main()
 {
@@ -83,11 +83,11 @@ int main()
 	{
 		int l,complexity;
 		scanf("%d%s",&l,&s);
-		if(strcmp("O(1)",s)==0)//Read the time complexity
+		if(strcmp("O(1)",s)==0)// Read the time complexity
 			complexity=0;
 		else
-			sscanf(s,"O(n^%d)",&complexity);//sscanf is similar to scanf, but it does not read values from your terminal but from a string
-		int depth=0,max=0;//depth means the depth of the loops
+			sscanf(s,"O(n^%d)",&complexity);// sscanf is similar to scanf, but it does not read values from your terminal but from a string
+		int depth=0,max=0;// depth means the depth of the loops
 		bool err=false;
 		for(int i=0;i<l;i++)
 		{
@@ -102,16 +102,16 @@ int main()
 				continue;
 			}
 			scanf("%s",&s);
-			if(s[0]=='E')//Quit a loop
+			if(s[0]=='E')// Quit a loop
 			{
 				depth--;
 				if(depth<0)
 					err=true;
 				continue;
 			}
-			scanf("%s",&s);//Read the variable name
+			scanf("%s",&s);// Read the variable name
 			v[depth]=s[0];
-			for(int j=0;j<depth;j++)//Check if there are two same variable names
+			for(int j=0;j<depth;j++)// Check if there are two same variable names
 				if(v[j]==v[depth])
 				{
 					err=true;
@@ -138,9 +138,9 @@ int main()
 				c[depth]=0;
 			else
 				c[depth]=c[depth-1];
-			if(c[depth]>-1 && b==1000 && a!=b)//The loop increase the time complexity
+			if(c[depth]>-1 && b==1000 && a!=b)// The loop increase the time complexity
 				c[depth]++;
-			if(a>b)//The loop won't run
+			if(a>b)// The loop won't run
 				c[depth]=-1;
 			if(c[depth]>max)
 				max=c[depth];

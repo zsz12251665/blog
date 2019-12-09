@@ -2,19 +2,19 @@ var
 	n:longint;
 begin
 	read(n);
-	if n<0 then//Check if n is a negative number
+	if n<0 then// Check if n is a negative number
 		begin
 			write('-');
 			n:=-n;
 		end;
-	if n=0 then//Check if n is zero
+	if n=0 then// Check if n is zero
 		begin
 			write('0');
 			halt;
 		end;
-	while n mod 10=0 do//Remove the prefix zero
+	while n mod 10=0 do// Remove the prefix zero
 		n:=n div 10;
-	while n>0 do//Reverse the number
+	while n>0 do// Reverse the number
 		begin
 			write(n mod 10);
 			n:=n div 10;
@@ -27,19 +27,19 @@ int main()
 {
 	long n;
 	scanf("%ld",&n);
-	if(n<0)//Check if n is a negative number
+	if(n<0)// Check if n is a negative number
 	{
 		putchar('-');
 		n=-n;
 	}
-	if(n==0)//Check if n is zero
+	if(n==0)// Check if n is zero
 	{
 		putchar('0');
 		return 0;
 	}
-	while(n%10==0)//Remove the prefix zero
+	while(n%10==0)// Remove the prefix zero
 		n/=10;
-	while(n>0)//Reverse the number
+	while(n>0)// Reverse the number
 	{
 		printf("%d",n%10);
 		n/=10;

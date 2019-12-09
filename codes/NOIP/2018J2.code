@@ -17,10 +17,10 @@ begin
 		read(a[i]);
 	read(m,p1,s1,s2);
 	a[p1]:=a[p1]+s1;
-	for i:=1 to n do//Calculate the difference of their powers
+	for i:=1 to n do// Calculate the difference of their powers
 		diff:=diff+int64(i-m)*a[i];
-	for i:=1 to n do//Enumerate the position to put your soldiers
-		if abs(int64(i-m)*s2+diff)<abs(int64(p2-m)*s2+diff) then//int64 is required because the data can reach 5,000,000
+	for i:=1 to n do// Enumerate the position to put your soldiers
+		if abs(int64(i-m)*s2+diff)<abs(int64(p2-m)*s2+diff) then// int64 is required because the data can reach 5,000,000
 			p2:=i;
 	write(p2);
 end.
@@ -41,11 +41,11 @@ int main()
 		scanf("%ld",&a[i]);
 	scanf("%ld%ld%ld%ld",&m,&p1,&s1,&s2);
 	a[p1-1]+=s1;
-	m--;//C++ starts an array from 0, so remember to minus 1
-	for(long i=0;i<n;i++)//Calculate the difference of their powers
+	m--;// C++ starts an array from 0, so remember to minus 1
+	for(long i=0;i<n;i++)// Calculate the difference of their powers
 		diff+=(long long)a[i]*(i-m);
-	for(long i=0;i<n;i++)//Enumerate the position to put your soldiers
-		if(abs((long long)s2*(i-m)+diff)<abs((long long)s2*(p2-m)+diff))//long long is required because the data can reach 5,000,000
+	for(long i=0;i<n;i++)// Enumerate the position to put your soldiers
+		if(abs((long long)s2*(i-m)+diff)<abs((long long)s2*(p2-m)+diff))// long long is required because the data can reach 5,000,000
 			p2=i;
 	printf("%ld",p2+1);
 	return 0;

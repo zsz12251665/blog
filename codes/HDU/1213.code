@@ -1,5 +1,5 @@
 var
-	mf_set:array[1..1000]of integer;//The array mf_set is the merge-find set
+	mf_set:array[1..1000]of integer;// The array mf_set is the merge-find set
 	is_counted:array[1..1000]of boolean;
 	t,ti,n,m,sum,i,a,b:integer;
 function find(a:integer):integer;
@@ -14,7 +14,7 @@ begin
 		begin
 			sum:=0;
 			read(n,m);
-			for i:=1 to n do//Initialize the arrays
+			for i:=1 to n do// Initialize the arrays
 				begin
 					mf_set[i]:=i;
 					is_counted[i]:=false;
@@ -22,9 +22,9 @@ begin
 			for i:=1 to m do
 				begin
 					read(a,b);
-					mf_set[find(a)]:=find(b);//Merge the sets
+					mf_set[find(a)]:=find(b);// Merge the sets
 				end;
-			for i:=1 to n do//Count the number of the tables
+			for i:=1 to n do// Count the number of the tables
 				if not is_counted[find(i)] then
 					begin
 						is_counted[find(i)]:=true;
@@ -36,7 +36,7 @@ end.
 
 #include<cstdio>
 using namespace std;
-int mf_set[1000];//The array mf_set is the merge-find set
+int mf_set[1000];// The array mf_set is the merge-find set
 bool is_counted[1000];
 int find(int a)
 {
@@ -51,7 +51,7 @@ int main()
 	{
 		int n,m,sum=0;
 		scanf("%d%d",&n,&m);
-		for(int i=0;i<n;i++)//Initialize the arrays
+		for(int i=0;i<n;i++)// Initialize the arrays
 		{
 			mf_set[i]=i;
 			is_counted[i]=false;
@@ -59,9 +59,9 @@ int main()
 		for(int i=0,a,b;i<m;i++)
 		{
 			scanf("%d%d",&a,&b);
-			mf_set[find(a-1)]=find(b-1);//Merge the sets
+			mf_set[find(a-1)]=find(b-1);// Merge the sets
 		}
-		for(int i=0;i<n;i++)//Count the number of the tables
+		for(int i=0;i<n;i++)// Count the number of the tables
 			if(!is_counted[find(i)])
 			{
 				is_counted[find(i)]=true;

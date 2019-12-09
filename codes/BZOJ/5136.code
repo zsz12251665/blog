@@ -12,10 +12,10 @@ begin
 		begin
 			is_clever:=true;
 			read(x,y,k);
-			for i:=1 to k-1 do//Check each pair of lines
+			for i:=1 to k-1 do// Check each pair of lines
 				begin
 					for j:=1 to k-1 do
-						if big_m[x+i,y]-big_m[x+i-1,y]<>big_m[x+i,y+j]-big_m[x+i-1,y+j] then//We set x2=x1-1, y2=y1-1 here to make sure it applies to the other numbers
+						if big_m[x+i,y]-big_m[x+i-1,y]<>big_m[x+i,y+j]-big_m[x+i-1,y+j] then// We set x2=x1-1, y2=y1-1 here to make sure it applies to the other numbers
 							begin
 								is_clever:=false;
 								break;
@@ -48,9 +48,9 @@ int main()
 		scanf("%d%d%d",&x,&y,&k);
 		x--;
 		y--;
-		for(int i=1;i<k && is_clever;i++)//Check each pair of lines
+		for(int i=1;i<k && is_clever;i++)// Check each pair of lines
 			for(int j=1;j<k && is_clever;j++)
-				is_clever=big_m[x+i][y]-big_m[x+i-1][y]==big_m[x+i][y+j]-big_m[x+i-1][y+j];//We set x2=x1-1, y2=y1-1 here to make sure it applies to the other numbers
+				is_clever=big_m[x+i][y]-big_m[x+i-1][y]==big_m[x+i][y+j]-big_m[x+i-1][y+j];// We set x2=x1-1, y2=y1-1 here to make sure it applies to the other numbers
 		printf(is_clever?"Y\n":"N\n");
 	}
 	return 0;
