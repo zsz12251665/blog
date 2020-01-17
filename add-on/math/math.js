@@ -1,4 +1,4 @@
-// b = sub; c = constant; f = fraction; i = inline block; l = line; o = operator; p = super; t = top line; v = variable
+// b = sub; c = constant; f = fraction; i = inline block; l = line; m = matrix; o = operator; p = super; t = top line; v = variable
 window.addEventListener('DOMContentLoaded', LoadMath);
 // Append the style sheet
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/math/math.css" />';

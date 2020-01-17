@@ -1,12 +1,12 @@
 var
-	mf_set:array[1..1000]of integer;// The array mf_set is the merge-find set
+	uf_set:array[1..1000]of integer;// The array uf_set is the union find set
 	is_counted:array[1..1000]of boolean;
 	t,ti,n,m,sum,i,a,b:integer;
 function find(a:integer):integer;
 begin
-	if mf_set[a]<>a then
-		mf_set[a]:=find(mf_set[a]);
-	exit(mf_set[a]);
+	if uf_set[a]<>a then
+		uf_set[a]:=find(uf_set[a]);
+	exit(uf_set[a]);
 end;
 begin
 	read(n);
@@ -16,13 +16,13 @@ begin
 			sum:=0;
 			for i:=1 to n do// Initialize the arrays
 				begin
-					mf_set[i]:=i;
+					uf_set[i]:=i;
 					is_counted[i]:=false;
 				end;
 			for i:=1 to m do
 				begin
 					read(a,b);
-					mf_set[find(a)]:=find(b);// Merge the sets
+					uf_set[find(a)]:=find(b);// Merge the sets
 				end;
 			for i:=1 to n do// Count the number of the tables
 				if not is_counted[find(i)] then
@@ -37,13 +37,13 @@ end.
 
 #include<cstdio>
 using namespace std;
-int mf_set[1000];// The array mf_set is the merge-find set
+int uf_set[1000];// The array uf_set is the union find set
 bool is_counted[1000];
 int find(int a)
 {
-	if(mf_set[a]!=a)
-		mf_set[a]=find(mf_set[a]);
-	return mf_set[a];
+	if(uf_set[a]!=a)
+		uf_set[a]=find(uf_set[a]);
+	return uf_set[a];
 }
 int main()
 {
@@ -54,13 +54,13 @@ int main()
 		sum=0;
 		for(int i=0;i<n;i++)// Initialize the arrays
 		{
-			mf_set[i]=i;
+			uf_set[i]=i;
 			is_counted[i]=false;
 		}
 		for(int i=0,a,b;i<m;i++)
 		{
 			scanf("%d%d",&a,&b);
-			mf_set[find(a-1)]=find(b-1);// Merge the sets
+			uf_set[find(a-1)]=find(b-1);// Merge the sets
 		}
 		for(int i=0;i<n;i++)// Count the number of the tables
 			if(!is_counted[find(i)])

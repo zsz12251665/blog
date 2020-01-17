@@ -21,7 +21,7 @@ data span.b
 	text-align: start;
 	vertical-align: sub;
 }
-data span.b, data span.f, data span.i, data span.p
+data span.b, data span.f, data span.i, data span.m, data span.p
 {
 	display: inline-block;
 	font-size: smaller;
@@ -37,7 +37,7 @@ data span.c, data span.o, span.v
 	margin-left: 0.08rem;
 	margin-right: 0.08rem;
 }
-data span.f
+data span.f, data span.m
 {
 	text-align: center;
 	vertical-align: middle;

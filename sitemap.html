@@ -82,7 +82,7 @@ for (let oj of JSON.parse(xhr.responseText)) {
 	template.querySelector('caption a').innerText = oj.abbr;
 	template.querySelector('tbody').innerHTML = '';
 	for (let problem of oj.problems.sort(function (a, b) {
-			return (a.id < b.id) ? -1 : 1;
+			return (a.id.length < b.id.length || a.id.length == b.id.length && a.id < b.id) ? -1 : 1;
 		}))
 		template.querySelector('tbody').innerHTML += '<tr><td><a href="/codes/?oj=' + oj.abbr + '&pid=' + problem.id + '">' + oj.abbr + ' ' + problem.id + '</a></td><td>' + problem.time + '</td>';
 	document.querySelector('#codeList').appendChild(document.importNode(template, true));
