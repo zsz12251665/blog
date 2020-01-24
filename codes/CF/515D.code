@@ -4,7 +4,7 @@ var
 	n,m,i,j:integer;
 	is_unique:boolean;
 	s:ansistring;
-function check(x,y:integer):boolean;//Check if it is a slot
+function check(x,y:integer):boolean;// Check if it is a slot
 var
 	i,cnt:integer;
 begin
@@ -18,7 +18,7 @@ procedure update(x,y:integer);
 var
 	i:integer;
 begin
-	for i:=1 to 4 do//Find the right direction to fill the slot with a tile
+	for i:=1 to 4 do// Find the right direction to fill the slot with a tile
 		if (x+dx[i]>0) and (x+dx[i]<=n) and (y+dy[i]>0) and (y+dy[i]<=m) and (field[x+dx[i],y+dy[i]]='.') then
 			begin
 				if i=1 then
@@ -45,7 +45,7 @@ begin
 				y:=y+dy[i];
 				break;
 			end;
-	for i:=1 to 4 do//Check if there are any new slot around
+	for i:=1 to 4 do// Check if there are any new slot around
 		if (x+dx[i]>0) and (x+dx[i]<=n) and (y+dy[i]>0) and (y+dy[i]<=m) and (field[x+dx[i],y+dy[i]]='.') and check(x+dx[i],y+dy[i]) then
 			update(x+dx[i],y+dy[i]);
 end;
@@ -61,15 +61,15 @@ begin
 	readln(n,m);
 	for i:=1 to n do
 		begin
-			readln(s);//String and char array are different in Pascal, so you need to separate the chars
+			readln(s);// String and char array are different in Pascal, so you need to separate the chars
 			for j:=1 to m do
 				field[i,j]:=s[j];
 		end;
-	for i:=1 to n do//Find the point with 1 edge remains and fill it with a tile
+	for i:=1 to n do// Find the point with 1 edge remains and fill it with a tile
 		for j:=1 to m do
 			if (field[i,j]='.') and check(i,j) then
 				update(i,j);
-	is_unique:=true;//Check if there are any point empty
+	is_unique:=true;// Check if there are any point empty
 	for i:=1 to n do
 		for j:=1 to m do
 			if field[i,j]='.' then
@@ -77,7 +77,7 @@ begin
 	if is_unique then
 		for i:=1 to n do
 			begin
-				s:='';//Due to the large amount of data, you need to recombine the char array as an string or you will get an ILE
+				s:='';// Due to the large amount of data, you need to recombine the char array as an string or you will get an ILE
 				for j:=1 to m do
 					s:=s+field[i,j];
 				writeln(s);
@@ -88,9 +88,9 @@ end.
 
 #include<cstdio>
 using namespace std;
-char field[2000][2001];//A char for '\0' is required, so you need 2001 but not 2000
+char field[2000][2001];// A char for '\0' is required, so you need 2001 but not 2000
 int n,m,dx[4]={1,-1,0,0},dy[4]={0,0,1,-1};
-bool check(int x,int y)//Check if it is a slot
+bool check(int x,int y)// Check if it is a slot
 {
 	int cnt=0;
 	for(int i=0;i<4;++i)
@@ -100,7 +100,7 @@ bool check(int x,int y)//Check if it is a slot
 }
 void update(int x,int y)
 {
-	for(int i=0;i<4;++i)//Find the right direction to fill the slot with a tile
+	for(int i=0;i<4;++i)// Find the right direction to fill the slot with a tile
 		if(x+dx[i]>=0 && x+dx[i]<n && y+dy[i]>=0 && y+dy[i]<m && field[x+dx[i]][y+dy[i]]=='.')
 		{
 			if(i==0)
@@ -127,7 +127,7 @@ void update(int x,int y)
 			y+=dy[i];
 			break;
 		}
-	for(int i=0;i<4;++i)//Check if there are any new slot around
+	for(int i=0;i<4;++i)// Check if there are any new slot around
 		if(x+dx[i]>=0 && x+dx[i]<n && y+dy[i]>=0 && y+dy[i]<m && field[x+dx[i]][y+dy[i]]=='.' && check(x+dx[i],y+dy[i]))
 			update(x+dx[i],y+dy[i]);
 }
@@ -136,11 +136,11 @@ int main()
 	scanf("%d%d",&n,&m);
 	for(int i=0;i<n;++i)
 		scanf("%s",field[i]);
-	for(int i=0;i<n;++i)//Find the point with 1 edge remains and fill it with a tile
+	for(int i=0;i<n;++i)// Find the point with 1 edge remains and fill it with a tile
 		for(int j=0;j<m;++j)
 			if(field[i][j]=='.' && check(i,j))
 				update(i,j);
-	bool is_unique=true;//Check if there are any point empty
+	bool is_unique=true;// Check if there are any point empty
 	for(int i=0;is_unique && i<n;++i)
 		for(int j=0;is_unique && j<m;++j)
 			is_unique=field[i][j]!='.';

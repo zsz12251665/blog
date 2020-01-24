@@ -8,13 +8,13 @@ begin
 		f[p]:=find(f[p]);
 	exit(f[p]);
 end;
-procedure merge(a,b:longint);//Merge the sets
+procedure merge(a,b:longint);// Merge the sets
 var
 	fa,fb:longint;
 begin
 	fa:=find(a);
 	fb:=find(b);
-	if c[fa]<c[fb] then//Make sure the root of the set is the smallest
+	if c[fa]<c[fb] then// Make sure the root of the set is the smallest
 		f[fb]:=fa
 	else
 		f[fa]:=fb;
@@ -25,14 +25,14 @@ begin
 	for i:=1 to n do
 		begin
 			read(c[i]);
-			f[i]:=i;//Initialize the union find set
+			f[i]:=i;// Initialize the union find set
 		end;
 	for i:=1 to m do
 		begin
 			read(x,y);
 			merge(x,y);
 		end;
-	for i:=1 to n do//Bribe the characters
+	for i:=1 to n do// Bribe the characters
 		if c[find(i)]<>-1 then
 			begin
 				ans:=ans+c[find(i)];
@@ -50,10 +50,10 @@ long find(long p)
 		f[p]=find(f[p]);
 	return f[p];
 }
-void merge(long a,long b)//Merge the sets
+void merge(long a,long b)// Merge the sets
 {
 	int fa=find(a),fb=find(b);
-	if(c[fa]<c[fb])//Make sure the root of the set is the smallest
+	if(c[fa]<c[fb])// Make sure the root of the set is the smallest
 		f[fb]=fa;
 	else
 		f[fa]=fb;
@@ -66,14 +66,14 @@ int main()
 	for(long i=0;i<n;++i)
 	{
 		scanf("%d",&c[i]);
-		f[i]=i;//Initialize the union find set
+		f[i]=i;// Initialize the union find set
 	}
 	for(long i=0,x,y;i<m;++i)
 	{
 		scanf("%d%d",&x,&y);
 		merge(x-1,y-1);
 	}
-	for(long i=0;i<n;++i)//Bribe the characters
+	for(long i=0;i<n;++i)// Bribe the characters
 		if(c[find(i)]!=-1)
 		{
 			ans+=c[find(i)];

@@ -6,7 +6,7 @@ var
 begin
 	ans:=1;
 	read(n,f[1],f[2],f[3],c);
-	for i:=1 to 5 do//Initialize the matrices
+	for i:=1 to 5 do// Initialize the matrices
 		begin
 			for j:=1 to 5 do
 				begin
@@ -24,7 +24,7 @@ begin
 	pwr[4,4]:=1;
 	pwr[5,5]:=1;
 	pwr[4,5]:=2;
-	n:=n-3;//Run the power of the matrix
+	n:=n-3;// Run the power of the matrix
 	while n>0 do
 		begin
 			if n mod 2=1 then
@@ -52,7 +52,7 @@ begin
 					pwr[i,j]:=tmp[i,j];
 			n:=n div 2;
 		end;
-	t:=(2*coe[1,4]+coe[1,5]) mod 1000000006;//Calculate the power of c
+	t:=(2*coe[1,4]+coe[1,5]) mod 1000000006;// Calculate the power of c
 	while t>0 do
 		begin
 			if t mod 2=1 then
@@ -60,7 +60,7 @@ begin
 			c:=c*c mod 1000000007;
 			t:=t div 2;
 		end;
-	for i:=1 to 3 do//Calculate the power of f
+	for i:=1 to 3 do// Calculate the power of f
 		while coe[1,i]>0 do
 			begin
 				if coe[1,i] mod 2=1 then
@@ -78,7 +78,7 @@ int main()
 {
 	long long n,f[3],c,ans=1;
 	scanf("%lld%lld%lld%lld%lld",&n,&f[0],&f[1],&f[2],&c);
-	for(int i=0;i<5;++i)//Initialize the matrices
+	for(int i=0;i<5;++i)// Initialize the matrices
 	{
 		for(int j=0;j<5;++j)
 			coe[i][j]=pwr[i][j]=0;
@@ -86,7 +86,7 @@ int main()
 	}
 	pwr[0][0]=pwr[0][1]=pwr[0][2]=pwr[0][3]=pwr[1][0]=pwr[2][1]=pwr[3][3]=pwr[4][4]=1;
 	pwr[3][4]=2;
-	for(n-=3;n>0;n/=2)//Run the power of the matrix
+	for(n-=3;n>0;n/=2)// Run the power of the matrix
 	{
 		if(n%2==1)
 		{
@@ -112,13 +112,13 @@ int main()
 			for(int j=0;j<5;++j)
 				pwr[i][j]=tmp[i][j];
 	}
-	for(long long t=(2*coe[0][3]+coe[0][4])%1000000006;t>0;t/=2)//Calculate the power of c
+	for(long long t=(2*coe[0][3]+coe[0][4])%1000000006;t>0;t/=2)// Calculate the power of c
 	{
 		if(t%2==1)
 			ans=ans*c%1000000007;
 		c=c*c%1000000007;
 	}
-	for(int i=0;i<3;++i)//Calculate the power of f
+	for(int i=0;i<3;++i)// Calculate the power of f
 		for(;coe[0][i]>0;coe[0][i]/=2)
 		{
 			if(coe[0][i]%2==1)
