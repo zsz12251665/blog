@@ -83,12 +83,14 @@
 var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
 sessionStorage.setItem('article.theme', request.theme || sessionStorage.getItem('article.theme') || 'DefaultTheme');
 sessionStorage.setItem('highlight.softTab', request.softTab || sessionStorage.getItem('highlight.softTab') || 'false');
-document.querySelector('form button.reset').onclick = function () {
+document.querySelector('form button.reset').onclick = function ()
+{
 	for (let radio of document.querySelectorAll('form input[type="radio"]'))
 		radio.checked = radio.value == sessionStorage.getItem('article.theme');
-		document.querySelector('form input[type="checkbox"]').checked = sessionStorage.getItem('highlight.softTab') == 'true';
+	document.querySelector('form input[type="checkbox"]').checked = sessionStorage.getItem('highlight.softTab') == 'true';
 }
-document.querySelector('form button.submit').onclick = function () {
+document.querySelector('form button.submit').onclick = function ()
+{
 	for (let radio of document.querySelectorAll('form input[type="radio"]'))
 		if (radio.checked)
 			sessionStorage.setItem('article.theme', radio.value);
