@@ -27,13 +27,13 @@ int main()
 	scanf("%d",&k);
 	while(k>0)
 	{
-		for(int j=0;j<i;j++)
+		for(int j=0;j<i;++j)
 			if(k>0)// Do not forget to check if k equals 0 in the loop, or you may give too much coins
 			{
 				ans+=i;
-				k--;
+				--k;
 			}
-		i++;
+		++i;
 	}
 	printf("%ld",ans);
 	return 0;

@@ -52,21 +52,21 @@ int main()
 	{
 		scanf("%d",&m);
 		sum=0;
-		for(int i=0;i<n;i++)// Initialize the arrays
+		for(int i=0;i<n;++i)// Initialize the arrays
 		{
 			uf_set[i]=i;
 			is_counted[i]=false;
 		}
-		for(int i=0,a,b;i<m;i++)
+		for(int i=0,a,b;i<m;++i)
 		{
 			scanf("%d%d",&a,&b);
 			uf_set[find(a-1)]=find(b-1);// Merge the sets
 		}
-		for(int i=0;i<n;i++)// Count the number of the tables
+		for(int i=0;i<n;++i)// Count the number of the tables
 			if(!is_counted[find(i)])
 			{
 				is_counted[find(i)]=true;
-				sum++;
+				++sum;
 			}
 		printf("%d\n",sum-1);
 	}

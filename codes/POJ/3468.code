@@ -156,10 +156,10 @@ int main()
 {
 	long n,q;
 	scanf("%ld%ld",&n,&q);
-	for(int i=0;i<n;i++)
+	for(int i=0;i<n;++i)
 		scanf("%ld",&arr[i]);
 	init(0,1,n);// Build and initialize the segment tree
-	for(long i=0,a,b;i<q;i++)
+	for(long i=0,a,b;i<q;++i)
 	{
 		char s=getchar();
 		while(s!='C' && s!='Q')

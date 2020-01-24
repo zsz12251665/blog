@@ -146,7 +146,7 @@ int main()
 	int t;
 	scanf("%ld%d%ld",&l,&t,&o);
 	init(0,1,l);// Build and init the segment tree
-	for(long i=0,a,b;i<o;i++)
+	for(long i=0,a,b;i<o;++i)
 	{
 		char s=getchar();
 		while(s!='C' && s!='P')

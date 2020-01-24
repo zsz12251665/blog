@@ -65,8 +65,8 @@ int main()
 		}
 		ans+=4*n-4;// Solve the problem recursively
 		n=n-2;
-		i--;
-		j--;
+		--i;
+		--j;
 	}
 	printf("%ld",ans);
 	return 0;

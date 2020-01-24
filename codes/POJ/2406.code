@@ -36,11 +36,11 @@ int main()
 	for(scanf("%s",&s);strcmp(s,".")!=0;scanf("%s",&s))
 	{
 		long len=strlen(s);
-		for(long i=1;i<=len;i++)// Enumerate the length of a period
+		for(long i=1;i<=len;++i)// Enumerate the length of a period
 			if(len%i==0)
 			{
 				bool is_period=true;
-				for(long j=0;j<len;j++)// Scan the whole string to check if it is a period
+				for(long j=0;j<len;++j)// Scan the whole string to check if it is a period
 					if(s[j]!=s[j%i])
 					{
 						is_period=false;

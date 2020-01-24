@@ -40,19 +40,23 @@
 		<script type="text/javascript">
 var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}'),
 	xhr = new XMLHttpRequest();
-if (request.title) {
+if (request.title)
+{
 	xhr.open('GET', '/posts/' + request.title + '/index.html', false);
 	xhr.send();
 	if (xhr.status == 200)
 		document.querySelector('main').innerHTML = xhr.responseText;
 }
-if (!request.title || xhr.status != 200) {
+if (!request.title || xhr.status != 200)
+{
 	xhr.open('GET', '/posts/list.json', false);
 	xhr.send();
 	let template = document.querySelector('#list template').content;
-	for (let post of JSON.parse(xhr.responseText).sort(function (a, b) {
-			return (a.time < b.time) ? -1 : 1;
-		})) {
+	for (let post of JSON.parse(xhr.responseText).sort(function (a, b)
+	{
+		return (a.time < b.time) ? -1 : 1;
+	}))
+	{
 		template.querySelector('a').href = '/posts/?title=' + post.title.toLowerCase().replace(/\W+/g, '-').replace(/-$/g, '');
 		template.querySelector('img').src = '/posts/' + post.title.toLowerCase().replace(/\W+/g, '-').replace(/-$/g, '') + '/cover.jpg';
 		template.querySelector('img').alt = template.querySelector('div').innerText = post.title;

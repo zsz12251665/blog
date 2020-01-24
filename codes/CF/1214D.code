@@ -108,10 +108,10 @@ void search(long p,int mode)
 int main()
 {
 	scanf("%ld%ld",&n,&m);
-	for(long i=0;i<n;i++)
+	for(long i=0;i<n;++i)
 	{
 		scanf("%s",s);
-		for(long j=0;j<m;j++)
+		for(long j=0;j<m;++j)
 		{
 			map[i*m+j]=s[j]=='.';
 			a[i*m+j][0]=a[i*m+j][1]=a[i*m+j][2]=a[i*m+j][3]=false;
@@ -126,7 +126,7 @@ int main()
 	search(n*m-1,1);// Search from end to start
 	search(0,2);// Search with n first
 	search(0,3);// Search with m first
-	for(long i=1;i<n*m-1;i++)// Find the common cell except the start and the end
+	for(long i=1;i<n*m-1;++i)// Find the common cell except the start and the end
 		if(a[i][2] && a[i][3])
 		{
 			putchar('1');

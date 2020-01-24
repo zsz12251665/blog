@@ -57,15 +57,15 @@ int search(int x,int y)// Search function
 int main()
 {
 	scanf("%d%d",&r,&c);
-	for(int i=0;i<r;i++)
-		for(int j=0;j<c;j++)
+	for(int i=0;i<r;++i)
+		for(int j=0;j<c;++j)
 		{
 			length[i][j]=0;// Initialize the length array
 			scanf("%d",&height[i][j]);
 		}
 	int ans=0;// Search the longest length of each point and keep the longest one
-	for(int i=0;i<r;i++)
-		for(int j=0;j<c;j++)
+	for(int i=0;i<r;++i)
+		for(int j=0;j<c;++j)
 			if(search(i,j)>ans)
 				ans=length[i][j];
 	printf("%d",ans);

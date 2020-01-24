@@ -41,9 +41,9 @@ int main()
 	for(scanf("%ld%ld",&n,&m);n!=0 || m!=0;scanf("%ld%ld",&n,&m))
 	{
 		long count=0;
-		for(long i=n;i<=m;i++)// Search the interval
+		for(long i=n;i<=m;++i)// Search the interval
 			if(is_good(i))
-				count++;
+				++count;
 		printf("%ld\n",count);
 	}
 	return 0;
@@ -90,7 +90,7 @@ bool is_good(long a)
 int main()
 {
 	count[0]=1;
-	for(long i=1;i<1000001;i++)// Fill the count[i]
+	for(long i=1;i<1000001;++i)// Fill the count[i]
 		count[i]=(is_good(i))?count[i-1]+1:count[i-1];
 	long n,m;
 	for(scanf("%ld%ld",&n,&m);n!=0 || m!=0;scanf("%ld%ld",&n,&m))

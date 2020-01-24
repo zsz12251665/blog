@@ -50,7 +50,7 @@ using namespace std;
 long time[100000],queue[100000],head=0,foot=1;// The time array is used to mark if it is visited and keep the time to reach
 int main()
 {
-	for(long t=0;t<100000;i++)// Initialize the time array
+	for(long t=0;t<100000;++i)// Initialize the time array
 		time[t]=-1;
 	long n,k,t=0;
 	scanf("%d%d",&n,&k);
@@ -59,7 +59,7 @@ int main()
 	long tmp=foot;// tmp is used to keep the end of the queue of this minute
 	while(true)
 	{
-		t++;
+		++t;
 		while(head!=tmp)
 		{
 			if(queue[head]==k)// If FJ has come to k, print the time and return

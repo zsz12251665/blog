@@ -25,7 +25,7 @@ int main()
 {
 	long n,ans=2147483647,tmp,prc,amt;// Remember to make the ans as large as possible to make sure that you can get the cost of each kind
 	scanf("%ld",&n);
-	for(long i=0;i<3;i++)
+	for(long i=0;i<3;++i)
 	{
 		scanf("%ld%ld",&amt,&prc);
 		tmp=0;

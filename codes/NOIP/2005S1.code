@@ -79,7 +79,7 @@ int main()
 	long total=0;
 	int mxp=-65535,mxi;
 	bool officer,west;
-	for(int i=0,test,class,article;i<n;i++)
+	for(int i=0,test,class,article;i<n;++i)
 	{
 		scanf("%s%d%d",&stu[i].name,&test,&class);// Get the information of the student
 		scanf("%s",&s);

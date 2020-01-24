@@ -62,7 +62,7 @@ void show(int a)// Print the answer in reverse order by the function stack
 }
 int main()
 {
-	for(int i=0;i<25;i++)
+	for(int i=0;i<25;++i)
 	{
 		scanf("%d",&field[i]);
 		if(field[i]==1)
@@ -94,7 +94,7 @@ int main()
 			queue[foot++]=queue[head]+5;
 			parent[queue[head]+5]=queue[head];
 		}
-		head++;
+		++head;
 	}
 	show(24);// Print the path
 	return 0;

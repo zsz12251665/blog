@@ -59,7 +59,7 @@ int main()
 	{
 		if(isprime[i]==1)
 			prime[primesize++]=i;
-		for(long j=0;j<primesize && i*prime[j]<1000002;j++)
+		for(long j=0;j<primesize && i*prime[j]<1000002;++j)
 		{
 			isprime[i*prime[j]]=0;
 			if(i%prime[j]==0)
@@ -71,15 +71,15 @@ int main()
 	while(n!=0)
 	{
 		long ans=0;
-		for(long i=0;prime[i]<=n/5 && i<primesize;i++)// Enumerate every pair of H-primes
-			for(long j=0;prime[i]*prime[j]<=n && j<primesize;j++)
+		for(long i=0;prime[i]<=n/5 && i<primesize;++i)// Enumerate every pair of H-primes
+			for(long j=0;prime[i]*prime[j]<=n && j<primesize;++j)
 				if(isprime[prime[i]*prime[j]]!=2)
 				{
 					isprime[prime[i]*prime[j]]=2;
 					queue[ans++]=prime[i]*prime[j];
 				}
 		printf("%ld %ld\n",n,ans);
-		for(long i=0;i<ans;i++)// The mark of H-semi-primes in the queue needs to be removed to avoid being not counted
+		for(long i=0;i<ans;++i)// The mark of H-semi-primes in the queue needs to be removed to avoid being not counted
 			isprime[queue[i]]=0;
 		scanf("%ld",&n);
 	}
@@ -124,10 +124,10 @@ long ans[250001];// We use n to show the H-number 4n+1 and the maxinum of n is 2
 int isprime[250001];// We Mark H-primes with 0, H-semi-primes with 1 and the others with -1
 int main()
 {
-	for(long i=1;i<250001;i++)// Initialize the isprime array
+	for(long i=1;i<250001;++i)// Initialize the isprime array
 		isprime[i]=0;
-	for(long i=1;i<250001;i++)// Enumerate every pair of H-numbers
-		for(long j=1;j<250001;j++)
+	for(long i=1;i<250001;++i)// Enumerate every pair of H-numbers
+		for(long j=1;j<250001;++j)
 		{
 			long k=4*i*j+i+j;// (4i+1)(4j+1)=4(4i*j+i+j)+1
 			if(k>250000)// To avoid overlimit
@@ -138,7 +138,7 @@ int main()
 				isprime[k]=-1;
 		}
 	ans[0]=0;// Count the number of H-semi-primes from 1 to 4n+1
-	for(long i=1;i<250001;i++)
+	for(long i=1;i<250001;++i)
 		if(isprime[i]==1)
 			ans[i]=ans[i-1]+1;
 		else

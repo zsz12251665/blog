@@ -2,9 +2,11 @@ window.addEventListener('load', LoadMusic);
 // Append the style sheet
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/music/music.css" />';
 
-function LoadMusic() {
+function LoadMusic()
+{
 	// Enumerate audio elements
-	for (let audio of document.querySelectorAll('main audio')) {
+	for (let audio of document.querySelectorAll('main audio'))
+	{
 		// Append the user interface
 		var music = document.createElement('aside');
 		music.className = 'music';
@@ -17,34 +19,43 @@ function LoadMusic() {
 			volume = music.querySelector('span.range>span');
 		audio.loop = true;
 		// Set ending events
-		audio.onended = function () {
+		audio.onended = function ()
+		{
 			play.className = 'icon ' + (audio.loop ? 'pause' : 'play');
 		};
 		// Set play and pause events
-		audio.onpause = audio.onplay = function () {
+		audio.onpause = audio.onplay = function ()
+		{
 			play.className = 'icon ' + (audio.paused ? 'play' : 'pause');
 		};
-		repeat.onclick = function () {
+		repeat.onclick = function ()
+		{
 			repeat.className = 'icon ' + ((audio.loop = !audio.loop) ? 'repeat' : 'random');
 		};
-		play.onclick = function () {
+		play.onclick = function ()
+		{
 			audio.paused ? audio.play() : audio.pause();
 		};
 		// Set time panel events
-		audio.ondurationchange = audio.ontimeupdate = function () {
-			function TimeToString(a) {
+		audio.ondurationchange = audio.ontimeupdate = function ()
+		{
+			function TimeToString(a)
+			{
 				return ((a < 600) ? '0' : '') + String(Math.floor(a / 60)) + ((a % 60 < 10) ? ':0' : ':') + String(Math.floor(a % 60));
 			}
 			music.querySelector('span.time').innerText = TimeToString(audio.currentTime) + '/' + TimeToString(audio.duration);
 		};
 		//Set volume events
-		audio.onvolumechange = function () {
+		audio.onvolumechange = function ()
+		{
 			volume.style.width = audio.muted ? '0%' : String(audio.volume * 100) + '%';
 		};
-		mute.onclick = function () {
+		mute.onclick = function ()
+		{
 			mute.className = 'icon ' + ((audio.muted = !audio.muted) ? 'volume-off' : 'volume-up');
 		};
-		volume.parentElement.onclick = function (e) {
+		volume.parentElement.onclick = function (e)
+		{
 			audio.volume = !Number(e.offsetX / e.target.offsetWidth) ? 1 : Number(e.offsetX / e.target.offsetWidth);
 			if (audio.muted ^ !Number(e.offsetX / e.target.offsetWidth))
 				mute.click();

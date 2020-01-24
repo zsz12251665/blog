@@ -76,22 +76,26 @@
 var xhr = new XMLHttpRequest();
 xhr.open('GET', '/codes/list.json', false);
 xhr.send();
-for (let oj of JSON.parse(xhr.responseText)) {
+for (let oj of JSON.parse(xhr.responseText))
+{
 	let template = document.querySelector('#codeList template').content;
 	template.querySelector('caption a').href = '/codes/?oj=' + oj.abbr;
 	template.querySelector('caption a').innerText = oj.abbr;
 	template.querySelector('tbody').innerHTML = '';
-	for (let problem of oj.problems.sort(function (a, b) {
-			return (a.id.length < b.id.length || a.id.length == b.id.length && a.id < b.id) ? -1 : 1;
-		}))
+	for (let problem of oj.problems.sort(function (a, b)
+	{
+		return (a.id.length < b.id.length || a.id.length == b.id.length && a.id < b.id) ? -1 : 1;
+	}))
 		template.querySelector('tbody').innerHTML += '<tr><td><a href="/codes/?oj=' + oj.abbr + '&pid=' + problem.id + '">' + oj.abbr + ' ' + problem.id + '</a></td><td>' + problem.time + '</td>';
 	document.querySelector('#codeList').appendChild(document.importNode(template, true));
 }
 xhr.open('GET', '/posts/list.json', false);
 xhr.send();
-for (let post of JSON.parse(xhr.responseText).sort(function (a, b) {
-		return (a.title < b.title) ? -1 : 1;
-	})) {
+for (let post of JSON.parse(xhr.responseText).sort(function (a, b)
+{
+	return (a.title < b.title) ? -1 : 1;
+}))
+{
 	let template = document.querySelector('#postList template').content;
 	template.querySelector('a').href = '/posts/?title=' + post.title.toLowerCase().replace(/\W+/g, '-').replace(/-$/g, '');
 	template.querySelector('a').innerText = post.title;

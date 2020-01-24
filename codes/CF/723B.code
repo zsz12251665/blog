@@ -51,7 +51,7 @@ int main()
 	int n,cnt=0,max=0,tmp=0;
 	bool in_parentheses=false;
 	scanf("%d%s",&n,&s);
-	for(int i=0;i<n;i++)
+	for(int i=0;i<n;++i)
 	{
 		if(s[i]=='(')
 		{
@@ -63,7 +63,7 @@ int main()
 		if(s[i]==')')
 		{
 			if(tmp>0)// Count the number of words that is in parentheses
-				cnt++;
+				++cnt;
 			tmp=0;
 			in_parentheses=false;
 			continue;
@@ -73,11 +73,11 @@ int main()
 			if(!in_parentheses && tmp>max)// Update the max length of words that is not in parentheses
 				max=tmp;
 			if(in_parentheses && tmp>0)// Count the number of words that is in parentheses
-				cnt++;
+				++cnt;
 			tmp=0;
 			continue;
 		}
-		tmp++;
+		++tmp;
 	}
 	max=(tmp>max)?tmp:max;// Update the max length of words that is not in parentheses
 	printf("%d %d",max,cnt);

@@ -87,7 +87,7 @@ char s[1000000];
 int main()
 {
 	int t;
-	for(scanf("%d",&t);t>0;t--)
+	for(scanf("%d",&t);t>0;--t)
 	{
 		memset(next,0,sizeof next);// Initialize the arrays
 		memset(fail,0,sizeof fail);
@@ -95,11 +95,11 @@ int main()
 		memset(value,0,sizeof value);
 		int n,ans=0;
 		scanf("%d",&n);
-		for(long size=0;n>0;n--)// Build the trie
+		for(long size=0;n>0;--n)// Build the trie
 		{
 			long p=0;
 			scanf("%s",&s);
-			for(int i=0,len=strlen(s);i<len;i++)
+			for(int i=0,len=strlen(s);i<len;++i)
 			{
 				if(next[p][s[i]-'a']==0)
 					next[p][s[i]-'a']=++size;
@@ -111,7 +111,7 @@ int main()
 		for(long head=0,foot=1;head!=foot;)
 		{
 			long p=queue[head++];
-			for(int i=0;i<26;i++)
+			for(int i=0;i<26;++i)
 				if(next[p][i]!=0)
 				{
 					queue[foot++]=next[p][i];
@@ -130,7 +130,7 @@ int main()
 					next[p][i]=fail[p];
 		}
 		scanf("%s",&s);
-		for(long i=0,p=0,len=strlen(s);i<len;i++)// Scan the question string to find the model strings
+		for(long i=0,p=0,len=strlen(s);i<len;++i)// Scan the question string to find the model strings
 		{
 			while(p!=0 && next[p][s[i]-'a']==fail[p])// If they are not matched, jump to the last match
 				p=fail[p];

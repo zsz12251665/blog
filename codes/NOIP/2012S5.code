@@ -116,10 +116,10 @@ int main()
 {
 	long n,m;
 	scanf("%ld%ld",&n,&m);
-	for(long i=0;i<n;i++)
+	for(long i=0;i<n;++i)
 		scanf("%ld",&a[i]);
 	init(0,n-1,0);
-	for(long i=0,d,s,t;i<m;i++)
+	for(long i=0,d,s,t;i<m;++i)
 	{
 		scanf("%ld%ld%ld",&d,&s,&t);
 		subtract(d,s-1,t-1,0);

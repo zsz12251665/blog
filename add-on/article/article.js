@@ -2,7 +2,8 @@ window.addEventListener('DOMContentLoaded', LoadArticle);
 // Append the style sheet
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/article/article.css" />';
 
-function LoadArticle() {
+function LoadArticle()
+{
 	// Load the request
 	var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}');
 	// Initialize the session storage value of theme
@@ -12,7 +13,8 @@ function LoadArticle() {
 		document.title = document.querySelector('h1').innerText + ' | zsz12251665\'s Blog';
 	// Set abbreviations functions
 	for (let abbr of document.querySelectorAll('abbr'))
-		abbr.addEventListener('click', function () {
+		abbr.addEventListener('click', function ()
+		{
 			alert(abbr.title);
 		});
 	// Apply the theme

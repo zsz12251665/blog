@@ -57,11 +57,11 @@ int main()
 	memset(count,0,sizeof count);// Initialize the counter
 	long n;
 	scanf("%ld",&n);
-	for(long i=0;i<n;i++)
+	for(long i=0;i<n;++i)
 	{
 		scanf("%s",&s);
 		long tmp=0;// Decode the telephone number
-		for(int j=0,len=strlen(s);j<len;j++)
+		for(int j=0,len=strlen(s);j<len;++j)
 			switch(s[j])// Pay attention that in C++ it is illeagal to use "case '2','A','B','C':" just like Pascal, but it will continue to run the code below until a "break" no matter if there was a "case"
 			{
 				case '0':
@@ -122,7 +122,7 @@ int main()
 		count[tmp]++;// Update the counter
 	}
 	bool no_duplicates=true;
-	for(long i=0;i<10000000;i++)// Find duplicated numbers
+	for(long i=0;i<10000000;++i)// Find duplicated numbers
 		if(count[i]>1)
 		{
 			printf("%d%d%d-%d%d%d%d %ld\n",i/1000000,i/100000%10,i/10000%10,i/1000%10,i/100%10,i/10%10,i%10,count[i]);// Print the number bit by bit

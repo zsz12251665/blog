@@ -58,9 +58,9 @@ int main()
 {
 	long n;
 	scanf("%ld",&n);
-	for(long i=0;i<n;i++)// Initialize the adjacency table
+	for(long i=0;i<n;++i)// Initialize the adjacency table
 		h[i]=-1;
-	for(long i=1,u,v;i<n;i++)
+	for(long i=1,u,v;i<n;++i)
 	{
 		scanf("%ld%ld",&u,&v);
 		des[2*i-2]=v-1;// Put both sides of the edge into adjacency table
@@ -70,10 +70,10 @@ int main()
 		h[u-1]=2*i-2;
 		h[v-1]=2*i-1;
 	}
-	for(long i=0;i<n;i++)
+	for(long i=0;i<n;++i)
 		scanf("%d",&w[i]);
 	long sum=0,max=0;// sum is the sum of the united weights, max is the maximum united weight
-	for(long i=0;i<n;i++)
+	for(long i=0;i<n;++i)
 	{
 		int linear=0,square=0,first=-1,second=-1;// first keeps the first biggest weight and second keeps the second one
 		for(long j=h[i];j!=-1;j=nxt[j])

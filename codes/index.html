@@ -40,25 +40,30 @@
 		<script type="text/javascript">
 var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}'),
 	xhr = new XMLHttpRequest();
-if (request.oj) {
+if (request.oj)
+{
 	xhr.open('GET', '/codes/' + request.oj + '/' + (request.pid || 'index') + '.html', false);
 	xhr.send();
 	if (xhr.status == 200)
 		document.querySelector('main').innerHTML = xhr.responseText;
 }
-if (!request.oj || xhr.status != 200) {
+if (!request.oj || xhr.status != 200)
+{
 	xhr.open('GET', '/codes/list.json', false);
 	xhr.send();
 	let template = document.querySelector('#list template').content,
 		list = new Array();
-	for (let oj of JSON.parse(xhr.responseText)) {
+	for (let oj of JSON.parse(xhr.responseText))
+	{
 		for (let problem of oj.problems)
 			problem.oj = oj.abbr;
 		list = list.concat(oj.problems);
 	}
-	for (let problem of list.sort(function (a, b) {
-			return (a.time > b.time) ? -1 : 1;
-		})) {
+	for (let problem of list.sort(function (a, b)
+	{
+		return (a.time > b.time) ? -1 : 1;
+	}))
+	{
 		template.querySelector('a').href = '/codes/?oj=' + problem.oj + '&pid=' + problem.id;
 		template.querySelector('a span').innerText = problem.oj + ' ' + problem.id;
 		template.querySelector('a time').innerText = problem.time;

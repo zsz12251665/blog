@@ -3,8 +3,9 @@ window.addEventListener('DOMContentLoaded', LoadMath);
 // Append the style sheet
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="/add-on/math/math.css" />';
 
-function LoadMath() {
+function LoadMath()
+{
 	// Load the expressions
 	for (let data of document.querySelectorAll('data'))
-		data.innerHTML = data.value.replace(/\\(.)/g,'$1\\').replace(/([a-z])\{/g, '<span class="$1">').replace(/\}(?!\\)/g, '</span>').replace(/(.)\\/g, '$1');
+		data.innerHTML = data.value.replace(/\\(.)/g, '$1\\').replace(/([a-z])\{(?!\\)/g, '<span class="$1">').replace(/\}(?!\\)/g, '</span>').replace(/(.)\\/g, '$1');
 }

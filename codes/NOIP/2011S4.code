@@ -30,8 +30,8 @@ int main()
 	a%=10007;// Avoid making the coefficient too large
 	b%=10007;
 	coe[0][0]=1;
-	for(long i=0;i<=n;i++)// DP Part
-		for(long j=0;j<=m;j++)
+	for(long i=0;i<=n;++i)// DP Part
+		for(long j=0;j<=m;++j)
 		{
 			if(i==0 && j==0)
 				continue;

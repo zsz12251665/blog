@@ -125,9 +125,9 @@ void qsort(int l,int r)// Sort the lakes according to their sizes
 	while(x<y)
 	{
 		while(lake[x][2]<std)
-			x++;
+			++x;
 		while(lake[y][2]>std)
-			y--;
+			--y;
 		if(x<=y)
 		{
 			int tmp=lake[x][0];// Exchange the information of lakes
@@ -139,8 +139,8 @@ void qsort(int l,int r)// Sort the lakes according to their sizes
 			tmp=lake[x][2];
 			lake[x][2]=lake[y][2];
 			lake[y][2]=tmp;
-			x++;
-			y--;
+			++x;
+			--y;
 		}
 	}
 	if(l<y)
@@ -182,17 +182,17 @@ int main()
 {
 	int k,ans=0;
 	scanf("%d%d%d",&n,&m,&k);
-	for(int i=0;i<n;i++)// Read the map of the island
+	for(int i=0;i<n;++i)// Read the map of the island
 	{
 		scanf("%s",&s);
-		for(int j=0;j<m;j++)
+		for(int j=0;j<m;++j)
 			if(s[j]=='*')// -1 means land, -10000 means sea, 0 means water
 				island[i][j]=-1;
 			else
 				island[i][j]=(i==0 || j==0 || i==n-1 || j==m-1)?-10000:0;
 	}
-	for(int i=0;i<n;i++)// Find all the lakes on the island
-		for(int j=0;j<m;j++)
+	for(int i=0;i<n;++i)// Find all the lakes on the island
+		for(int j=0;j<m;++j)
 			if(island[i][j]==0)
 			{
 				fill(i,j,search(i,j),-2);
@@ -201,19 +201,19 @@ int main()
 					lake[cnt][0]=i;
 					lake[cnt][1]=j;
 					lake[cnt][2]=island[i][j];
-					cnt++;
+					++cnt;
 				}
 			}
 	qsort(0,cnt-1);
-	for(int i=0;i<cnt-k;i++)// Fill the smallest lakes with land
+	for(int i=0;i<cnt-k;++i)// Fill the smallest lakes with land
 	{
 		ans+=lake[i][2];
 		fill(lake[i][0],lake[i][1],-1,lake[i][2]);
 	}
 	printf("%d\n",ans);
-	for(int i=0;i<n;i++)
+	for(int i=0;i<n;++i)
 	{
-		for(int j=0;j<m;j++)
+		for(int j=0;j<m;++j)
 			if(island[i][j]==-1)
 				putchar('*');
 			else

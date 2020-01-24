@@ -16,7 +16,7 @@ using namespace std;
 int main()// This problem does not need any comments to explain it
 {
 	int t;
-	for(scanf("%d",&t);t>0;t--)
+	for(scanf("%d",&t);t>0;--t)
 	{
 		double a,b,c,d;
 		scanf("%lf%lf%lf%lf",&a,&b,&c,&d);

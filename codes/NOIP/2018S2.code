@@ -64,9 +64,9 @@ void qsort(int l,int r)
 	while(x<y)
 	{
 		while(a[x]<std)
-			x++;
+			++x;
 		while(a[y]>std)
-			y--;
+			--y;
 		if(x<=y)
 		{
 			int tmp=a[x];
@@ -82,21 +82,21 @@ void qsort(int l,int r)
 int main()
 {
 	int t,n;
-	for(scanf("%d",&t);t>0;t--)
+	for(scanf("%d",&t);t>0;--t)
 	{
-		for(int i=0;i<25001;i++)// Initialize the unable array
+		for(int i=0;i<25001;++i)// Initialize the unable array
 			unable[i]=true;
 		scanf("%d",&n);
-		for(int i=0;i<n;i++)
+		for(int i=0;i<n;++i)
 		scanf("%d",&a[i]);
 		qsort(0,n-1);
 		int ans=0;
-		for(int i=0;i<n;i++)
+		for(int i=0;i<n;++i)
 			if(unable[a[i]])
 			{
-				ans++;
+				++ans;
 				unable[a[i]]=false;
-				for(int j=1;j+a[i]<25001;j++)// Update the unable array
+				for(int j=1;j+a[i]<25001;++j)// Update the unable array
 					if(!unable[j])
 						unable[j+a[i]]=false;
 			}

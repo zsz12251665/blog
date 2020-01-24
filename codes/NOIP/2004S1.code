@@ -24,7 +24,7 @@ using namespace std;
 int main()
 {
 	int cash=0,save=0,spend;
-	for(int i=0;i<12;i++)
+	for(int i=0;i<12;++i)
 	{
 		scanf("%d",&spend);
 		cash+=300-spend;

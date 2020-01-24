@@ -76,12 +76,12 @@ void msort(int l,int r)
 		return;
 	msort(l,(l+r)/2);
 	msort((l+r)/2+1,r);
-	for(int i=l;i<=r;i++)
+	for(int i=l;i<=r;++i)
 	{
 		cj[i]=j[i];
 		cf[i]=f[i];
 	}
-	for(int i=l,x=l,y=(l+r)/2+1;i<=r;i++)
+	for(int i=l,x=l,y=(l+r)/2+1;i<=r;++i)
 	{
 		if(x>(l+r)/2)
 		{
@@ -112,12 +112,12 @@ int main()
 	int m,n;
 	for(scanf("%d%d",&m,&n);m!=-1 && n!=-1;scanf("%d%d",&m,&n))
 	{
-		for(int i=0;i<n;i++)
+		for(int i=0;i<n;++i)
 			scanf("%d%d",&j[i],&f[i]);
 		msort(0,n-1);
 		long ans=0;
 		int i=0;
-		for(;i<n && m>f[i];i++)// Take the JavaBeans from high rewards to low ones
+		for(;i<n && m>f[i];++i)// Take the JavaBeans from high rewards to low ones
 		{
 			ans+=j[i];
 			m-=f[i];
