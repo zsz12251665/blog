@@ -12,46 +12,42 @@
 }
 data
 {
-	display: inline;
+	display: inline-block;
 	font-family: "STIX", serif;
 	line-height: 100%;
 }
+data span
+{
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+}
 data span.b
 {
-	text-align: start;
 	vertical-align: sub;
 }
 data span.b, data span.f, data span.i, data span.m, data span.p
 {
-	display: inline-block;
 	font-size: smaller;
+}
+data span.b, data span.i, data span.p, data span.t
+{
+	text-align: start;
+}
+data span.c, data span.f, data span.m, data span.o, data, span.v
+{
+	text-align: center;
 }
 data span.c, data span.o
 {
 	font-style: normal;
 	font-weight: normal;
 }
-data span.c, data span.o, span.v
-{
-	display: inline-block;
-	margin-left: 0.08rem;
-	margin-right: 0.08rem;
-}
-data span.f, data span.m
-{
-	text-align: center;
-	vertical-align: middle;
-}
-data span.f span.l:empty
+data span.f span.l:empty, data span.t
 {
 	border-top-color: var(--text-color);
 	border-top-style: solid;
 	border-top-width: thin;
-}
-data span.i
-{
-	text-align: start;
-	vertical-align: middle;
 }
 data span.l:empty
 {
@@ -61,19 +57,15 @@ data span.l:empty
 data span.o
 {
 	font-size: larger;
+	margin: 0 0.05em;
 }
 data span.p
 {
-	text-align: start;
 	vertical-align: super;
 }
 data span.t
 {
-	border-top-color: var(--text-color);
-	border-top-style: solid;
-	border-top-width: thin;
-	display: inline;
-	padding-top: 0.1rem;
+	line-height: 1.5;
 }
 data span.v
 {
