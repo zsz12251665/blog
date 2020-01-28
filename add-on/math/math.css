@@ -14,7 +14,7 @@ data
 {
 	display: inline-block;
 	font-family: "STIX", serif;
-	line-height: 100%;
+	text-align: start;
 }
 data span
 {
@@ -26,22 +26,21 @@ data span.b
 {
 	vertical-align: sub;
 }
-data span.b, data span.f, data span.i, data span.m, data span.p
+data span.b, data span.i, data span.p
 {
 	font-size: smaller;
-}
-data span.b, data span.i, data span.p, data span.t
-{
 	text-align: start;
-}
-data span.c, data span.f, data span.m, data span.o, data, span.v
-{
-	text-align: center;
 }
 data span.c, data span.o
 {
 	font-style: normal;
 	font-weight: normal;
+	text-align: center;
+}
+data span.f, data span.m
+{
+	font-size: smaller;
+	text-align: center;
 }
 data span.f span.l:empty, data span.t
 {
@@ -66,9 +65,11 @@ data span.p
 data span.t
 {
 	line-height: 1.5;
+	text-align: start;
 }
 data span.v
 {
 	font-style: italic;
 	font-weight: bold;
+	text-align: center;
 }

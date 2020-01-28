@@ -1,7 +1,7 @@
 @font-face
 {
 	font-family: "FontAwesome";
-	src: url("/add-on/icon/fontawesome-webfont.woff2");
+	src: url("/add-on/article/fontawesome-webfont.woff2");
 }
 *.icon::before
 {
