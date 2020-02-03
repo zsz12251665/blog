@@ -573,9 +573,9 @@ begin
 				end;
 			ans:=0;
 			bfs(1,n);
-			//To enable gap optimization, uncomment the block below
+			// To enable gap optimization, uncomment the block below
 			{
-			for i:=0 to n do//Initialize the cnt array
+			for i:=0 to n do// Initialize the cnt array
 				cnt[i]:=0;
 			for i:=1 to n do
 				inc(cnt[d[i]]);
@@ -583,7 +583,7 @@ begin
 			while d[1]<n do// Run DFS until the start point and the end point is not connected
 				begin
 					tmp:=dfs(1,n,maxint);
-					//To enable gap optimization, uncomment the block below
+					// To enable gap optimization, uncomment the block below
 					{
 					if tmp<0 then// Check if there is gap
 						break;
@@ -674,7 +674,7 @@ int main()
 		bfs(0,n-1);
 		// To enable gap optimization, uncomment the block below
 		/*
-		for(int i=0;i<=n;++i)//Initialize the cnt array
+		for(int i=0;i<=n;++i)// Initialize the cnt array
 			cnt[i]=0;
 		for(int i=0;i<n;++i)
 			++cnt[d[i]];
