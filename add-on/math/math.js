@@ -12,7 +12,7 @@ function LoadMath()
 	// Load the expressions
 	for (let data of document.querySelectorAll('data'))
 		data.innerHTML = data.value.replace(/\\(.)/g, '$1\\').replace(/([a-z])\{(?!\\)/g, '<span class="$1">').replace(/\}(?!\\)/g, '</span>').replace(/(.)\\/g, '$1');
-	//Scale the bracket beside the matrix
+	// Scale the bracket beside the matrix
 	if (sessionStorage.getItem('math.largeBrackets') == 'true')
 		for (let data of document.querySelectorAll('data'))
 			for (let matrix of data.querySelectorAll('span.m'))

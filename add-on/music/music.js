@@ -45,7 +45,7 @@ function LoadMusic()
 			}
 			music.querySelector('span.time').innerText = TimeToString(audio.currentTime) + '/' + TimeToString(audio.duration);
 		};
-		//Set volume events
+		// Set volume events
 		audio.onvolumechange = function ()
 		{
 			volume.style.width = audio.muted ? '0%' : String(audio.volume * 100) + '%';

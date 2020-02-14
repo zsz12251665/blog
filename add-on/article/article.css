@@ -3,18 +3,18 @@
 @font-face
 {
 	font-family: "Century Gothic";
-	src: local("Century Gothic"), url("/add-on/article/Century Gothic.woff");
+	src: local("Century Gothic"), url("/add-on/article/CenturyGothic.woff");
 }
 @font-face
 {
 	font-family: "Century Schoolbook";
 	font-style: italic;
-	src: local("Century Schoolbook Italic"), local("Century Italic"), url("/add-on/article/Century Italic.woff");
+	src: local("Century Schoolbook Italic"), local("Century Italic"), url("/add-on/article/CenturyItalic.woff");
 }
 @font-face
 {
 	font-family: "Century Schoolbook";
-	src: local("Century Schoolbook"), local("Century"), url("/add-on/article/Century Schoolbook.woff");
+	src: local("Century Schoolbook"), local("Century"), url("/add-on/article/CenturySchoolbook.woff");
 }
 a
 {
