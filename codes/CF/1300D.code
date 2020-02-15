@@ -1,0 +1,44 @@
+var
+	x,y:array[1..100000]of longint;
+	n,i:longint;
+begin
+	read(n);
+	if n mod 2=1 then// There are odd points (edges)
+		begin
+			write('NO');
+			halt;
+		end;
+	for i:=1 to n do
+		read(x[i],y[i]);
+	for i:=1 to n div 2 do
+		if (x[i+1]-x[i]<>x[i+n div 2]-x[(i+n div 2) mod n+1]) or (y[i+1]-y[i]<>y[i+n div 2]-y[(i+n div 2) mod n+1]) then// The vectors of the subtenses are not opposite to each other
+			begin
+				write('NO');
+				halt;
+			end;
+	write('YES');
+end.
+
+#include<cstdio>
+using namespace std;
+long x[100000],y[100000];
+int main()
+{
+	long n;
+	scanf("%ld",&n);
+	if(n%2==1)// There are odd points (edges)
+	{
+		printf("NO");
+		return 0;
+	}
+	for(long i=0;i<n;++i)
+		scanf("%ld%ld",&x[i],&y[i]);
+	for(long i=0;i<n/2;++i)
+		if(x[i+1]-x[i]!=x[i+n/2]-x[(i+n/2+1)%n]||y[i+1]-y[i]!=y[i+n/2]-y[(i+n/2+1)%n])// The vectors of the subtenses are not opposite to each other
+		{
+			printf("NO");
+			return 0;
+		}
+	printf("YES");
+	return 0;
+}
