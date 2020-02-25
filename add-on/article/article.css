@@ -153,19 +153,21 @@ summary
 	font-weight: bold;
 	text-align: center;
 }
-table, td, th
+table
+{
+	border-color: var(--text-color);
+	border-style: solid;
+	border-width: medium;
+	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
+}
+td, th
 {
 	border-color: var(--text-color);
 	border-style: solid;
 	border-width: thin;
 }
-table
-{
-	border-width: medium;
-	margin-bottom: 0.1rem;
-	margin-top: 0.1rem;
-}
-time
+time:not(td > time)
 {
 	font-style: italic;
 	font-size: x-small;

@@ -62,7 +62,7 @@
 						<template>
 							<tr>
 								<td><a href="/posts/">ITEM TITLE</a></td>
-								<td>ITEM TIME</td>
+								<td><time>ITEM TIME</time></td>
 							</tr>
 						</template>
 					</tbody>
@@ -87,7 +87,7 @@ for (let oj of JSON.parse(xhr.responseText))
 	{
 		return (a.id.length < b.id.length || a.id.length == b.id.length && a.id < b.id) ? -1 : 1;
 	}))
-		template.querySelector('tbody').innerHTML += '<tr><td><a href="/codes/?oj=' + oj.abbr + '&pid=' + problem.id + '">' + oj.abbr + ' ' + problem.id + '</a></td><td>' + problem.time + '</td>';
+		template.querySelector('tbody').innerHTML += '<tr><td><a href="/codes/?oj=' + oj.abbr + '&pid=' + problem.id + '">' + oj.abbr + ' ' + problem.id + '</a></td><td><time>' + problem.time + '</time></td>';
 	document.querySelector('#codeList').appendChild(document.importNode(template, true));
 }
 xhr.open('GET', '/posts/list.json', false);
@@ -100,7 +100,7 @@ for (let post of JSON.parse(xhr.responseText).sort(function (a, b)
 	let template = document.querySelector('#postList template').content;
 	template.querySelector('a').href = '/posts/?title=' + post.title.toLowerCase().replace(/\W+/g, '-').replace(/-$/g, '');
 	template.querySelector('a').innerText = post.title;
-	template.querySelector('td:last-child').innerText = post.time;
+	template.querySelector('td>time').innerText = post.time;
 	document.querySelector('#postList').appendChild(document.importNode(template, true));
 }
 		</script>

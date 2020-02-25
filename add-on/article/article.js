@@ -18,10 +18,10 @@ function LoadArticle()
 			alert(abbr.title);
 		});
 	// Apply the theme
-	var themeList = ['BrickWall', 'FoxTale', 'MatrixFlow', 'OhParis', 'StarryNight', 'Strawberry', 'Vector'];
-	if (sessionStorage.getItem('article.theme') == 'RandomTheme')
-		document.body.className = themeList[Math.floor(Math.random() * themeList.length)];
-	for (let theme of themeList)
-		if (sessionStorage.getItem('article.theme') == theme)
-			document.body.className = theme;
+	let themeList = ['BrickWall', 'FoxTale', 'MatrixFlow', 'OhParis', 'StarryNight', 'Strawberry', 'Vector'];
+	if (themeList.includes(sessionStorage.getItem('article.theme')))
+		document.body.className = sessionStorage.getItem('article.theme');
+	else
+		if (sessionStorage.getItem('article.theme') == 'RandomTheme')
+			document.body.className = themeList[Math.floor(Math.random() * themeList.length)];
 }

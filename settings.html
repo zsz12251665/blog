@@ -92,18 +92,18 @@ sessionStorage.setItem('highlight.softTab', request.softTab || sessionStorage.ge
 sessionStorage.setItem('math.largeBrackets', request.largeBrackets || sessionStorage.getItem('math.largeBrackets') || 'false');
 document.querySelector('form button.reset').onclick = function ()
 {
-	for (let radio of document.querySelectorAll('form>section#theme>input[type="radio"]'))
+	for (let radio of document.querySelectorAll('form > section#theme input[type="radio"]'))
 		radio.checked = radio.value == sessionStorage.getItem('article.theme');
-	document.querySelector('form>section#softTab>input#softTab').checked = sessionStorage.getItem('highlight.softTab') == 'true';
-	document.querySelector('form>section#largeBrackets>input#largeBrackets').checked = sessionStorage.getItem('math.largeBrackets') == 'true';
+	document.querySelector('form > section#softTab input#softTab').checked = sessionStorage.getItem('highlight.softTab') == 'true';
+	document.querySelector('form > section#largeBrackets input#largeBrackets').checked = sessionStorage.getItem('math.largeBrackets') == 'true';
 }
 document.querySelector('form button.submit').onclick = function ()
 {
-	for (let radio of document.querySelectorAll('form>section#theme>input[type="radio"]'))
+	for (let radio of document.querySelectorAll('form > section#theme input[type="radio"]'))
 		if (radio.checked)
 			sessionStorage.setItem('article.theme', radio.value);
-	sessionStorage.setItem('highlight.softTab', String(document.querySelector('form>section#softTab>input#softTab').checked));
-	sessionStorage.setItem('math.largeBrackets', String(document.querySelector('form>section#largeBrackets>input#largeBrackets').checked));
+	sessionStorage.setItem('highlight.softTab', String(document.querySelector('form > section#softTab input#softTab').checked));
+	sessionStorage.setItem('math.largeBrackets', String(document.querySelector('form > section#largeBrackets input#largeBrackets').checked));
 	window.location.reload();
 }
 document.querySelector('form button.reset').onclick();
