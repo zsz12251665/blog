@@ -167,12 +167,6 @@ td, th
 	border-style: solid;
 	border-width: thin;
 }
-time:not(td > time)
-{
-	font-style: italic;
-	font-size: x-small;
-	text-align: center;
-}
 ul.buttonList
 {
 	margin: 0.1rem;
@@ -200,6 +194,12 @@ ul.buttonList > a:focus > li, .buttonList > a:hover > li
 {
 	background-color: var(--link-color);
 	color: var(--back-color);
+}
+*:not(td) > time
+{
+	font-style: italic;
+	font-size: x-small;
+	text-align: center;
 }
 *.flexWrapper
 {
