@@ -11,17 +11,18 @@ function LoadHighlight()
 		return;
 	// Initialize the session storage value of soft tab
 	sessionStorage.setItem('highlight.softTab', request.softTab || sessionStorage.getItem('highlight.softTab') || 'false');
-	// Load and highlight the codes
-	var ajax = new XMLHttpRequest();
-	ajax.open('GET', '/codes/' + request.oj + '/' + request.pid + '.code', true);
-	ajax.onreadystatechange = function ()
+	// Load and highlight
+	for (let t = 0, code = document.querySelectorAll('code'); t < code.length; ++t)
 	{
-		if (ajax.readyState != 4 || ajax.status != 200)
-			return;
-		for (let t = 0, code = document.querySelectorAll('code'), codeText = ajax.responseText.split('\n\n'); t < code.length; ++t)
+		// Load the codes
+		let ajax = new XMLHttpRequest();
+		ajax.open('GET', '/codes/' + request.oj + '/' + request.pid + '/' + String(t) + '.' + code[t].lang, true);
+		ajax.onreadystatechange = function ()
 		{
+			if (ajax.readyState != 4 || ajax.status != 200)
+				return;
 			// Highlight constants
-			let source = codeText[t].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/(\"[^\n]*?\"|\'[^\n]*?\')/g, '<span class="constant">$1</span>').replace(/\b([0-9][.0-9]*|maxint|maxlongint|true|false)\b/g, '<span class="constant">$1</span>');
+			let source = ajax.responseText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/(\"[^\n]*?\"|\'[^\n]*?\')/g, '<span class="constant">$1</span>').replace(/\b([0-9][.0-9]*|maxint|maxlongint|true|false)\b/g, '<span class="constant">$1</span>');
 			// High light comments
 			if (code[t].lang == 'cpp')
 				for (let i = 0; i < source.length - 1; ++i)
@@ -87,10 +88,10 @@ function LoadHighlight()
 			source = source.replace(/&(amp|lt|gt)<span class="comma">;<\/span>/g, '<span class="comma">&$1;</span>');
 			// Set the soft tabs
 			code[t].innerHTML = (sessionStorage.getItem('highlight.softTab') == 'true') ? source.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') : source;
+			// Clear highlights in comments and constants
+			for (let element of code[t].querySelectorAll('span.comment, span.constant'))
+				element.innerHTML = element.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
 		}
-		// Clear highlights in comments and constants
-		for (let element of document.querySelectorAll('code span.comment, code span.constant'))
-			element.innerHTML = element.innerHTML.replace(/<\/?span( class="[a-z]*")?>/g, '');
+		ajax.send();
 	}
-	ajax.send();
 }

@@ -42,7 +42,7 @@ var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*
 	xhr = new XMLHttpRequest();
 if (request.oj)
 {
-	xhr.open('GET', '/codes/' + request.oj + '/' + (request.pid || 'index') + '.html', false);
+	xhr.open('GET', '/codes/' + request.oj + '/' + (request.pid ? request.pid + '/' : '') + 'index.html', false);
 	xhr.send();
 	if (xhr.status == 200)
 		document.querySelector('main').innerHTML = xhr.responseText;
