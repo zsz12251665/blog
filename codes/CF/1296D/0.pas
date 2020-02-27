@@ -1,7 +1,7 @@
 var
 	cost:array[1..200000]of longint;
 	n,a,b,k,h,i,ans:longint;
-procedure qsort(l,r:integer);// Sort the cost array in increasing order
+procedure qsort(l,r:longint);// Sort the cost array in increasing order
 var
 	x,y,tmp,std:longint;
 begin
