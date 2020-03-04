@@ -1,8 +1,10 @@
+@import url("/add-on/article/theme.css");
 @import url("/add-on/article/icon.css");
 aside.music
 {
 	background-color: var(--text-color);
 	border-radius: 2rem;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 	display: inline-block;
 	padding: 0.25rem;
 	text-align: center;
@@ -20,14 +22,6 @@ aside.music b
 	vertical-align: middle;
 	width: 1.2rem;
 }
-aside.music span.time
-{
-	color: var(--back-color);
-	font-size: small;
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
-	vertical-align: middle;
-}
 aside.music span.range
 {
 	background-color: var(--link-color);
@@ -37,7 +31,7 @@ aside.music span.range
 	vertical-align: middle;
 	width: 5rem;
 }
-aside.music span.range>span
+aside.music span.range > span
 {
 	background-color: var(--back-color);
 	display: block;
@@ -46,4 +40,12 @@ aside.music span.range>span
 	transition-property: width;
 	transition-timing-function: linear;
 	width: 100%;
+}
+aside.music span.time
+{
+	color: var(--back-color);
+	font-size: small;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	vertical-align: middle;
 }

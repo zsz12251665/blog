@@ -16,10 +16,30 @@
 	font-family: "Century Schoolbook";
 	src: local("Century Schoolbook"), local("Century"), url("/add-on/article/CenturySchoolbook.woff");
 }
+*:not(td) > time
+{
+	font-style: italic;
+	font-size: x-small;
+	text-align: center;
+}
+*.flexWrapper
+{
+	align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
 a
 {
 	color: var(--link-color);
 	text-decoration: none;
+}
+a:focus
+{
+	outline-color: var(--link-color);
+	outline-style: auto;
+	outline-width: thin;
 }
 abbr
 {
@@ -29,20 +49,22 @@ abbr:hover
 {
 	text-decoration: none;
 }
-blockquote p::first-letter
-{
-	font-size: xx-large;
-}
 blockquote cite
 {
 	display: block;
 	text-align: end;
+}
+blockquote p::first-letter
+{
+	font-size: xx-large;
 }
 body
 {
 	background-color: var(--back-color);
 	background-image: var(--back-image);
 	color: var(--text-color);
+	display: flex;
+	flex-direction: column;
 	font-family: "Century Schoolbook", serif;
 	margin: 0;
 	text-align: justify;
@@ -54,17 +76,21 @@ caption
 figure
 {
 	background-color: var(--link-color);
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	border-radius: 0.25rem;
 	color: var(--back-color);
 	display: inline-block;
 	margin: 1rem;
-	padding: 0.25rem;
 	text-align: initial;
+}
+figure figcaption
+{
+	padding: 0.25rem;
 }
 figure img
 {
-	border-color: var(--back-color);
-	border-style: solid;
-	border-width: thin;
+	border-top-left-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
 }
 footer
 {
@@ -77,12 +103,6 @@ h1
 {
 	text-align: center;
 }
-h1 + p
-{
-	font-style: italic;
-	font-size: x-small;
-	text-align: center;
-}
 h1, h2, h3, h4, h5, h6
 {
 	color: var(--text-color);
@@ -90,37 +110,37 @@ h1, h2, h3, h4, h5, h6
 	margin-bottom: 0.5rem;
 	margin-top: 0.5rem;
 }
+h1 + p
+{
+	font-style: italic;
+	font-size: x-small;
+	text-align: center;
+}
 header
 {
 	align-items: center;
 	background-color: var(--link-color);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 	color: var(--back-color);
 	display: flex;
 	flex-wrap: wrap;
 	font-family: "Century Gothic", sans-serif;
-	justify-content: space-between;
-}
-header a
-{
-	--link-color: var(--text-color);
+	padding: 0.5rem;
 }
 header > aside
 {
-	box-sizing: border-box;
 	flex-grow: 1;
-	width: 12rem;
-}
-header > aside > ul
-{
-	margin: 0;
 }
 header > span
 {
-	box-sizing: border-box;
+	flex-grow: 2147483647; /* Set to Infinity */
 	font-size: x-large;
 	min-width: min-content;
 	padding-inline-start: 1rem;
-	width: calc(100% - 12rem);
+}
+header a
+{
+	padding: 0 0.5rem;
 }
 hr
 {
@@ -135,8 +155,10 @@ img
 main
 {
 	background-color: var(--back-color);
-	margin: 0 5%;
-	min-height: 100%;
+	border-radius: 0.5rem;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	flex-grow: 1;
+	margin: 5px 5%;
 	padding: 0.5rem;
 }
 section > h3
@@ -172,8 +194,13 @@ ul.buttonList
 	margin: 0.1rem;
 	padding: 0;
 }
+ul.buttonList > a
+{
+	outline: none;
+}
 ul.buttonList > a > li
 {
+	background-color: var(--back-color);
 	border-color: var(--link-color);
 	border-radius: 1rem;
 	border-style: solid;
@@ -183,28 +210,12 @@ ul.buttonList > a > li
 	padding: 0.25rem;
 	text-align: center;
 	transition-duration: 0.5s;
-	transition-property: background-color, color;
+	transition-property: background-color, border-color, color;
 	transition-timing-function: ease;
 }
-ul.buttonList > a:focus
-{
-	outline: none;
-}
-ul.buttonList > a:focus > li, .buttonList > a:hover > li
+ul.buttonList > a:focus > li, ul.buttonList > a:hover > li
 {
 	background-color: var(--link-color);
+	border-color: var(--back-color);
 	color: var(--back-color);
-}
-*:not(td) > time
-{
-	font-style: italic;
-	font-size: x-small;
-	text-align: center;
-}
-*.flexWrapper
-{
-	align-items: baseline;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
 }

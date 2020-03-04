@@ -24,10 +24,14 @@
 			<p>Life is but a hard and tortuous journey. </p>
 			<div id="list" class="flexWrapper" style="flex-flow: row-reverse wrap-reverse;">
 				<template>
-					<a href="/posts/" style="background-color: var(--text-color);color: var(--back-color);flex: auto;width: 30rem;">
-						<img src="/posts/cover.jpg" alt="IMAGE ALT" />
-						<div style="margin: 0.25rem;">ITEM TITLE</div>
-						<time style="display: block;margin: 0.25rem;text-align: end;">ITEM TIME</time>
+					<a href="/posts/" style="flex: auto; margin: 0.5rem; width: 30rem;">
+						<figure style="background-color: var(--text-color); margin: 0; width: 100%;">
+							<img src="/posts/cover.jpg" alt="IMAGE ALT" />
+							<figcaption>
+								<div>ITEM TITLE</div>
+								<time style="display: block; text-align: end;">ITEM TIME</time>
+							</figcaption>
+						</figure>
 					</a>
 				</template>
 			</div>
@@ -36,7 +40,7 @@
 		</main>
 		<footer>
 			<p>&copy; 2016-2020 zsz12251665. Theme by zsz12251665. </p>
-			<p>Licensed under the <a href="/LICENCE">zsz12251665's Licence</a>. </p>
+			<p>Licensed under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 Public License</a>. </p>
 		</footer>
 		<script type="text/javascript">
 var request = JSON.parse('{' + location.search.slice(1).replace(/([^&=]*)=([^&]*)/g, '"$1":"$2"').replace(/&/g, ',') + '}'),
