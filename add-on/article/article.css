@@ -29,7 +29,6 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
-
 a
 {
 	color: var(--link-color);
@@ -81,16 +80,12 @@ figure
 	color: var(--back-color);
 	display: inline-block;
 	margin: 1rem;
+	overflow: hidden;
 	text-align: initial;
 }
 figure figcaption
 {
 	padding: 0.25rem;
-}
-figure img
-{
-	border-top-left-radius: 0.25rem;
-	border-top-right-radius: 0.25rem;
 }
 footer
 {
@@ -107,8 +102,7 @@ h1, h2, h3, h4, h5, h6
 {
 	color: var(--text-color);
 	font-family: "Century Gothic", sans-serif;
-	margin-bottom: 0.5rem;
-	margin-top: 0.5rem;
+	margin: 0.5em 0;
 }
 h1 + p
 {
@@ -180,8 +174,7 @@ table
 	border-color: var(--text-color);
 	border-style: solid;
 	border-width: medium;
-	margin-bottom: 0.1rem;
-	margin-top: 0.1rem;
+	margin: 0.1rem 0;
 }
 td, th
 {

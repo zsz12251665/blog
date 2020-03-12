@@ -15,12 +15,11 @@ code
 	display: block;
 	font-family: "Source Code Pro", monospace;
 	font-size: smaller;
-	margin: auto;
+	margin: 0 5%;
 	overflow-x: auto;
 	padding: 0.5rem;
 	tab-size: 4;
 	white-space: pre;
-	width: 90%;
 }
 code span.comma
 {
